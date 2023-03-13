@@ -1,2 +1,11 @@
-@import './common';
-@import './example';
+@import './utils/common';
+@import './utils//mixins';
+@import './utils//vars';
+@import './components/header';
+@import './components/hero';
+@import './components/mainblock';
+@import './components/modal-cocktails';
+@import './components/modal-fav-cocktails';
+@import './components/modal-fav-ingredients';
+@import './components/modal-ingredients';
+@import './components/footer';
