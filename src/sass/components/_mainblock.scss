@@ -4,7 +4,7 @@ $accent: #FD5103;
     margin-left: auto;
     margin-right: auto;
     min-width: 320px;
-    max-width: 480px;
+    max-width: 1280px;
     text-align: center;
 }
 
@@ -15,7 +15,8 @@ $accent: #FD5103;
 
 .cocktails-list {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -52,8 +53,11 @@ $accent: #FD5103;
 .cocktail-label {
     overflow: hidden;
     height: 42px;
+    max-width: 238px;
     margin-top: 48px;
     margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
 
     text-align: center;
     color: #202025;
