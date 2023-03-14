@@ -1,5 +1,6 @@
-import { getRandomCocktail } from "./js/mainblock/renderCocktails";
+import { pourCocktails } from "./js/mainblock/mainblock";
+import { viewportWidthCheck } from "./js/mainblock/mainblock";
+import { accumulateCocktails } from "./js/mainblock/mainblock";
+import { VIEWPORT_SIZES } from "./js/const";
 
-getRandomCocktail();
-getRandomCocktail();
-getRandomCocktail();
+pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
