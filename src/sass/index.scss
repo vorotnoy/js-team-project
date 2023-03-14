@@ -1,9 +1,12 @@
+@import './utils//vars';
 @import './utils/common';
 @import './utils//mixins';
-@import './utils//vars';
+
+@import './components/container';
 @import './components/header';
 @import './components/hero';
 @import './components/mainblock';
+@import './components/paginations';
 @import './components/modal-cocktails';
 @import './components/modal-fav-cocktails';
 @import './components/modal-fav-ingredients';
