@@ -1,7 +1,18 @@
-import BASE_URL from "../const";
+import { BASE_URL } from "../const";
 import { refs } from "../refs";
+import axios from "axios";
 
 const { cocktailsList } = refs;
+// ----------------------------------GETRANDOMCOCKTAIL--------------------------------- //
+export async function getRandomCocktail() {
+    try {
+        const response = await axios.get(`${BASE_URL}/random.php`);
+        console.log(response.data);
+        renderCocktails(getCocktailMarkup(response.data.drinks));
+    } catch (error) {
+        console.log(error);
+    }
+};
 // ----------------------------------renderCocktails--------------------------------- //
 function renderCocktails(markup) {
     cocktailsList.insertAdjacentHTML('beforeend', markup);
@@ -20,13 +31,4 @@ function getCocktailMarkup([{ strDrinkThumb, strDrink }]) {
             </div>
         </li>
     `;
-};
-// ----------------------------------GETRANDOMCOCKTAIL--------------------------------- //
-export async function getRandomCocktail() {
-    try {
-        const response = await axios.get(`${BASE_URL}/random.php`);
-        renderCocktails(getCocktailMarkup(response.data.drinks));
-    } catch (error) {
-        console.log(error);
-    }
 };
