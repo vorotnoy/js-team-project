@@ -1,5 +1,5 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-.Container {
+.container {
   margin-left: auto;
   margin-right: auto;
   min-width: 320px;
@@ -7,28 +7,28 @@
   text-align: center;
 }
 
-.CocktailsTitle {
+.cocktails-title {
   margin-top: 0;
   margin-bottom: 60px;
 }
 
-.CocktailsList {
+.cocktails-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.List {
+.list {
   list-style: none;
   padding: 0;
 }
 
-.CocktailLink {
+.cocktail-link {
   display: block;
   text-decoration: none;
 }
 
-.CocktailCard {
+.cocktail-card {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -40,13 +40,13 @@
   border-radius: 4px;
 }
 
-.CocktailPicture {
+.cocktail-picture {
   display: block;
   width: 100%;
   border-radius: 4px 4px 0px 0px;
 }
 
-.CocktailLabel {
+.cocktail-label {
   overflow: hidden;
   height: 42px;
   margin-top: 48px;
@@ -59,7 +59,7 @@
   line-height: 1.62;
 }
 
-.LearnMore {
+.learnMore {
   cursor: pointer;
   margin-bottom: 24px;
   margin-right: 19px;
@@ -76,7 +76,7 @@
   line-height: 24px;
 }
 
-.AddTo {
+.addTo {
   cursor: pointer;
   margin-bottom: 24px;
   padding: 0;

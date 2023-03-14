@@ -19,14 +19,14 @@ function renderCocktails(markup) {
 // ----------------------------------GETCOCKTAILMARKUP--------------------------------- //
 function getCocktailMarkup([{ strDrinkThumb, strDrink }]) {
     return `
-        <li class="CocktailItem">
-            <div class="CocktailCard">
-                <a class="CocktailLink" href="#">
-                    <img class="CocktailPicture" src="${strDrinkThumb}" alt="${strDrink}">
+        <li class="cocktail-item">
+            <div class="cocktail-card">
+                <a class="cocktail-link" href="#">
+                    <img class="cocktail-picture" src="${strDrinkThumb}" alt="${strDrink}">
                 </a>
-                    <p class="CocktailLabel">${strDrink}</p>
-                    <button class="LearnMore">Learn more</button>
-                    <button class="AddTo">Add to</button>
+                    <p class="cocktail-label">${strDrink}</p>
+                    <button class="learnMore">Learn more</button>
+                    <button class="addTo">Add to</button>
             </div>
         </li>
     `;
