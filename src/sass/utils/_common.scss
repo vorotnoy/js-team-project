@@ -1,1 +1,16 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+body{
+  background-color: $main-color3;
+  color : $main-color2;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 320px;
+  max-width: 480px;
+  text-align: center;
+}
