@@ -1,0 +1,121 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
+
+
+    &-list{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+
+    }
+    &-arrow{
+        width: 28px;
+        height: 28px;
+
+        @include tabletPlus {
+            width: 60px;
+            height: 40px;
+
+            border:1px solid  #EAEBEA;
+        }
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        border-radius: 4px;
+        border-color: transparent;
+
+        color: #D7D7D7;
+        background-color: transparent;
+
+        &:hover,
+        &:focus{
+            color: #FE7031;
+        }
+    }
+    &-icon {
+        fill: currentColor;
+    }
+    &-number {
+        width: 28px;
+        height: 28px;
+    
+        @include tabletPlus {
+            width: 40px;
+            height: 40px;
+        }
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        background-color: transparent;
+        color: #FE7031;
+        border: 1px solid #EAEBEA;
+        border-radius: 4px;
+        &:hover,
+        &:focus{
+            background-color: #FE7031;
+            color: #FDFDFD;;
+        }
+    }
+    &-item{
+        &:nth-last-child(n + 2){
+            margin-right: 4px;
+        }
+        @include tabletPlus{
+            &:nth-last-child(n + 2) {
+                margin-right: 14px;
+            }
+        }
+    }
+}
+
+.active {
+    background-color: #FE7031;
+    color: #202025;
+}
+
+.dot-item {
+    width: 28px;
+    height: 28px;
+
+    @include tabletPlus {
+        width: 40px;
+        height: 40px;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+    color: #FE7031;
+    border: 1px solid #EAEBEA;
+    border-radius: 4px;
+}
+
+.prew-button{
+    @include tablet {
+        margin-right: 108px;
+    }
+    @include desktop {
+        margin-right: 198px;
+    }
+}
+
+.next-button{
+    @include tablet {
+        margin-left: 108px;
+    }
+    @include desktop {
+        margin-left: 198px;
+    }
+}
