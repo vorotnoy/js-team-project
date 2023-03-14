@@ -7,7 +7,6 @@ const { cocktailsList } = refs;
 export async function getRandomCocktail() {
     try {
         const response = await axios.get(`${BASE_URL}/random.php`);
-        console.log(response.data);
         renderCocktails(getCocktailMarkup(response.data.drinks));
     } catch (error) {
         console.log(error);
