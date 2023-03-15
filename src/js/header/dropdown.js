@@ -1,18 +1,18 @@
-const dropDownBtn = document.querySelector('.dropbtn')
-const dropDownItems = document.querySelector('.dropdown-menu')
-const bodyOn = document.querySelector('body')
+import {refs} from "../refs"
+const {bodyOn,dropDownBtn, dropDownItems } = refs
 
 function onClickDropdownOff(evt){
-    if (evt.target.className !== "js-change-color"
-    && dropDownItems.classList.contains("show")
-    ){
-        dropDownItems.classList.remove("show")
+    if (evt.target.closest('.dropbtn')){
+        return
+    }
+    dropDownItems.classList.remove("show")
+    bodyOn.removeEventListener('click', onClickDropdownOff)
    }
-}
 
 function onClickDropdownOn (){
-    dropDownItems.classList.toggle("show")
+    dropDownItems.classList.toggle("show");    
+    bodyOn.addEventListener('click', onClickDropdownOff)
 }
 
 dropDownBtn.addEventListener('click', onClickDropdownOn)
-bodyOn.addEventListener('click', onClickDropdownOff)
+

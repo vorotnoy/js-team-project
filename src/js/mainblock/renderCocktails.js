@@ -1,33 +1,43 @@
-import { BASE_URL } from "../const";
-import { refs } from "../refs";
-import axios from "axios";
+import * as icons from '../../images/svg/symbol-defs.svg';
+import { BASE_URL } from '../const';
+import { refs } from '../refs';
+import axios from 'axios';
 
 const { cocktailsList } = refs;
 // ----------------------------------GETRANDOMCOCKTAIL--------------------------------- //
 export function getRandomCocktail() {
-    return new Promise (resolve => {
-        // обробити помилку у разі помилки запиту. читати документацію по axios
-        const randomCocktail = axios.get(`${BASE_URL}/random.php`);
-        resolve(randomCocktail);
-    });
-};
+  return new Promise(resolve => {
+    // обробити помилку у разі помилки запиту. читати документацію по axios
+    const randomCocktail = axios.get(`${BASE_URL}/random.php`);
+    resolve(randomCocktail);
+  });
+}
 // ----------------------------------renderCocktails--------------------------------- //
 export function renderCocktails(markup) {
-    cocktailsList.insertAdjacentHTML('beforeend', markup);
-};
+  cocktailsList.insertAdjacentHTML('beforeend', markup);
+}
 // ----------------------------------GETCOCKTAILMARKUP--------------------------------- //
 
-export function getCocktailMarkup({data}) {
-    return `
+export function getCocktailMarkup({ data }) {
+  return `
         <li class="cocktail-item">
             <div class="cocktail-card">
                 <a class="cocktail-link" href="#">
                     <img class="cocktail-picture" src="${data.drinks[0].strDrinkThumb}" alt="${data.drinks[0].strDrink}">
                 </a>
-                    <p class="cocktail-label">${data.drinks[0].strDrink}</p>
-                    <button class="learnMore">Learn more</button>
-                    <button class="addTo">Add to</button>
+
+                <p class="cocktail-label" data-cocktail="${data.drinks[0].strDrink}">${data.drinks[0].strDrink}</p>
+                <div class="cocktail-card-btn-wrapper">
+
+                    <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
+                    <button class="addTo">Add to
+                    <svg class="icon-heart">
+                      <use href="${icons}#heart"></use>
+                    </svg>
+                    </button>
             </div>
         </li>
     `;
-};
+}
+
+// <p class="cocktail-label">${data.drinks[0].strDrink}</p>
