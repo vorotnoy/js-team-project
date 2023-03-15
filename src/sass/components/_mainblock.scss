@@ -1,14 +1,20 @@
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    min-width: 320px;
-    max-width: 1280px;
-    text-align: center;
-}
-
 .cocktails-title {
     margin-top: 0;
     margin-bottom: 60px;
+
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 42px;
+    @media screen and (min-width: 768px) {
+        font-weight: 700;
+        font-size: 32px;
+    }
+    @media screen and (min-width: 1280px) {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 72px;
+    }
 }
 
 .cocktails-list {
@@ -32,14 +38,23 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: inherit;
+    
     width: 280px;
     max-height: 449px;
-
+    
+    background-color: inherit;
     text-align: center;
 
     border: 1px solid $accent;
     border-radius: 4px;
+    @media screen and (min-width: 768px) {
+        width: 335px;
+        max-height: 541px;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 395px;
+        max-height: 556px;
+    }
 }
 
 .cocktail-picture {
@@ -60,9 +75,28 @@
     text-align: center;
     color: #202025;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
     font-weight: 900;
     font-size: 26px;
     line-height: 1.62;
+    @media screen and (min-width: 768px) {
+        height: 33px;
+
+        margin-top: 20px;
+        margin-bottom: 23px;
+
+        font-size: 28px;
+        line-height: 33px;
+    }
+    @media screen and (min-width: 1280px) {
+        height: 38px;
+
+        margin-top: 20px;
+        margin-bottom: 27px;
+
+        font-size: 32px;
+        line-height: 38px;
+    }
 }
 
 .cocktail-card-btn-wrapper {
@@ -70,6 +104,12 @@
     justify-content: center;
     gap: 19px;
     margin-bottom: 24px;
+    @media screen and (min-width: 768px) {
+        margin-bottom: 22px;
+    }
+    @media screen and (min-width: 1280px) {
+        margin-bottom: 28px;
+    }
 }
 
 .learnMore {
@@ -86,6 +126,18 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
+    @media screen and (min-width: 768px) {
+        width: 160px;
+        height: 48px;
+
+        font-size: 20px;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 182px;
+        height: 48px;
+
+        font-size: 20px;
+    }
 }
 
 .addTo {
@@ -106,6 +158,18 @@
     line-height: 1.71;
     letter-spacing: 0.02em;
     color: $accent;
+    @media screen and (min-width: 768px) {
+        width: 123px;
+        height: 48px;  
+
+        font-size: 20px;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 141px;
+        height: 48px;
+
+        font-size: 20px;
+    }
 }
 
 .removeFrom {
@@ -126,17 +190,37 @@
     line-height: 1.71;
     letter-spacing: 0.02em;
     color: $accent;
+    @media screen and (min-width: 768px) {
+        width: 123px;
+        height: 48px;    
+        
+        font-size: 20px;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 141px;
+        height: 48px;
+
+        font-size: 20px;
+    }
 }
 
 .icon-heart {
-    width: 15px;
-    height: 15px;
+    width: 19px;
+    height: 17px;
     --color1: #fd5103;
     // transition: --color1 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and (min-width: 768px) {
+        width: 21px;
+        height: 19px;
+    }
 }
 .icon-heart-selected {
     width: 15px;
     height: 15px;
     --color1: #fd5103;
     --color2: #fd5103;
+    @media screen and (min-width: 768px) {
+        width: 21px;
+        height: 19px;
+    }
 }
