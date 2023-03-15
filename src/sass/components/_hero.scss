@@ -19,7 +19,7 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 1.9;
-  color: #fd5103;
+  color: $accent;
   margin-bottom: 60px;
 }
 
@@ -49,8 +49,8 @@
   justify-content: space-between;
   width: 93px;
   height: 34px;
-  color: #fd5103;
-  border: 1px solid #fd5103;
+  color: $accent;
+  border: 1px solid $accent;
   border-radius: 4px;
   padding-top: 5px;
   padding-right: 8px;
@@ -59,17 +59,17 @@
   font-family: Poppins;
   font-weight: 700;
   font-size: 16px;
-  line-height: 1, 38;
+  line-height: 1.38;
 }
 
 .select__icon {
-  fill: #fd5103;
+  fill: $accent;
 }
 
 .select__button:hover,
 .select__button:focus {
   color: #fcfcfc;
-  background-color: #fd5103;
+  background-color: $accent;
 }
 
 .select__button:hover .select__icon,
@@ -81,7 +81,7 @@
   font-family: Poppins;
   font-weight: 700;
   font-size: 16px;
-  line-height: 13.5;
+  line-height: 1.35;
 }
 
 .select__list {
@@ -93,7 +93,7 @@
   padding-left: 0;
   width: 93px;
   height: 84px;
-  border: 1px solid #fd5103;
+  border: 1px solid $accent;
   border-radius: 4px;
 }
 
@@ -139,7 +139,7 @@
 
 .alphabet__button:hover,
 .alphabet__button:focus {
-  color: #fd5103;
+  color: $accent;
   scale: 1.2;
   text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
   -webkit-text-stroke-width: 1px;
@@ -150,7 +150,7 @@
   display: block;
   margin-bottom: 40px;
   margin-top: 0;
-  color: #202025;
+  color: $main-color2;
   opacity: 0.8;
   font-family: Poppins;
   font-weight: 500;
@@ -223,10 +223,10 @@
 
   .hero__text {
     width: 688px;
+    margin-bottom: 40px;
     font-size: 52px;
     line-height: 1.54;
-
-    margin-bottom: 40px;
+    
   }
 
   .alphabet__text {
