@@ -1,5 +1,6 @@
 import { getRandomCocktail, renderCocktails, getCocktailMarkup } from "./renderCocktails";
 import { VIEWPORT_SIZES } from "../const";
+import { attachEvents } from "../modalingredients/modal-learn-more";
 
 function viewportWidthCheck({ tablet, desktop }) {
     const currentVpWidth = window.innerWidth;
@@ -17,7 +18,7 @@ function accumulateCocktails(setSize) {
 };
 
 function pourCocktails(cocktailSetSize) {
-    Promise.all(cocktailSetSize).then(data => renderCocktails(data.map(getCocktailMarkup).join("")));
+    Promise.all(cocktailSetSize).then(data => renderCocktails(data.map(getCocktailMarkup).join(""))).then(attachEvents);
 };
 
 export async function returnCocktails() {

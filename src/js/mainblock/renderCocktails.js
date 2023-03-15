@@ -27,7 +27,7 @@ export function getCocktailMarkup({data}) {
                 </a>
                 <p class="cocktail-label" data-cocktail="${data.drinks[0].strDrink}">${data.drinks[0].strDrink}</p>
                 <div class="cocktail-card-btn-wrapper">
-                    <button class="learnMore">Learn more</button>
+                    <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
                     <button class="addTo">Add to
                         <svg class="icon-heart">
                             <use href="${icons}#heart"></use>
