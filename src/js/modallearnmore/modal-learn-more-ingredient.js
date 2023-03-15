@@ -43,6 +43,14 @@ async function onIngredient(event) {
         const returnedData = await fetchData(event.target.dataset.name);
         displayMoreInfo(returnedData.ingredients);
         let ingredient = returnedData.ingredients[0];
+        function checkType(ingredient) {
+            let type = '';
+            if (ingredient.strType != null) {
+                type +=`<h3 class="modal-sub-header ingredient-sub-header">${ingredient.strType}</h3>`
+            }
+            return type;
+        }
+        contentEl.querySelector('.ingredient-header').insertAdjacentHTML('afterend', checkType(ingredient));
         function ingredientDescription(ingredient) {
             let description = "";
             if (ingredient.strDescription != null) {
@@ -79,7 +87,6 @@ export function displayMoreInfo(data) {
     }
     const result = data.map(ingredient =>
         `<h2 class="modal-header ingredient-header">${ingredient.strIngredient}</h2>
-        <h3 class="modal-sub-header ingredient-sub-header">${ingredient.strType}</h3>
         <ul class="ingredients-list modal-ingredients-list"></ul>
         <button type="submit" class="add-item-btn${exists ? " is-hidden" : ""}" data-name="${ingredient.strIngredient}" data-type="${ingredient.strType}">Add to favorite</button>
         <button type="submit" class="remove-item-btn${!exists ? " is-hidden" : ""}" data-name="${ingredient.strIngredient}" data-type="${ingredient.strType}">Remove from favorite</button>

@@ -1,9 +1,9 @@
 body.modal-open {
     overflow: hidden;
 }
-
 ul {
     padding: 0;
+    display: block;
 }
 
 .backdrop {
@@ -26,25 +26,31 @@ ul {
 }
 
 .modal-learn-more-container,
-.modal-ingredient {
+.modal-ingredients-container {
     max-width: 320px;
     height: auto;
     background-color: $main-color3;
     display: block;
     padding-top: 40px;
     padding-bottom: 40px;
+    position: relative;
 
     @include tablet {
         max-width: 822px;
     }
 }
-
-.modal-close {
+.modal-learn-more-container.modal-open {
+    overflow: hidden;
+}
+.modal-close,
+.modal-ingredient-close {
     position: absolute;
+    background: transparent;
+    border: none;
     top: 16px;
     right: 16px;
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -56,6 +62,8 @@ ul {
 }
 
 .modal-layout-box {
+    display: block;
+
     @include tablet {
         display: flex;
         justify-content: flex-start;
@@ -170,7 +178,7 @@ ul {
 }
 
 .modal-ingredients-list {
-    margin-bottom: 32px;
+    margin-bottom: 80px;
     margin-left: 12px;
 }
 
@@ -206,8 +214,8 @@ ul {
 
 .modal-learn-more-item .modal-learn-more-data,
 .ingredient-list-item .ingredient-list-data {
-    position: relative;
-    right: -8px;
+    //position: relative;
+    //right: -8px;
 }
 
 .ingredient-link {
@@ -241,10 +249,18 @@ ul {
     letter-spacing: 0.02em;
     color: $main-color3;
     cursor: pointer;
+    position: absolute;
+    bottom: 40px;
 
     @include tablet {
         float: right;
     }
+}
+.add-item-btn:hover,
+.remove-item-btn:hover {
+    color: $accent;
+    background-color: #F5F5F5;
+    border: 1px solid #F5F5F5;;
 }
 
 .is-hidden {
