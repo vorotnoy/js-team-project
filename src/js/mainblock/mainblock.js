@@ -12,10 +12,15 @@ export function viewportWidthCheck({ tablet, desktop }) {
   // export function viewportWidthCheck({ tablet, desktop }) {
   //     const currentVpWidth = window.innerWidth;
 
+//function pourCocktails(cocktailSetSize) {
+    Promise.all(cocktailSetSize).then(data => renderCocktails(data.map(getCocktailMarkup).join(""))).then(attachEvents);
+};
+
   if (currentVpWidth < tablet) return 3;
   if (currentVpWidth >= tablet && currentVpWidth < desktop) return 6;
   if (currentVpWidth >= desktop) return 9;
 }
+
 
 export function accumulateCocktails(setSize) {
   const cocktailsSet = [];
