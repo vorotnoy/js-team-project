@@ -15,20 +15,32 @@ ul {
     width: 100%;
     height: 100%;
     top: 0;
-    background-color: #D9D9D9;
-    opacity: 1;
+    background-color: $main-color2;
+    opacity: 0, 5;
     z-index: 10;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
         visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow: scroll;
     padding-top: 16px;
+
+
+    // @include tablet {
+    //     background-color: $main-color2;
+    // }
 }
 
-.modal-container {
-    width: 100%;
-    height: 100%;
-    //background-color: #D9D9D9;
-    //z-index: 2;
+.modal-learn-more-container,
+.modal-ingredient {
+    max-width: 320px;
+    height: auto;
+    background-color: $main-color3;
+    display: block;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include tablet {
+        max-width: 822px;
+    }
 }
 
 .modal-close {
@@ -43,16 +55,43 @@ ul {
     align-items: center;
 }
 
-.modal-close::before {
-    content: '';
-    //background-image: url(../../images/svg/symbol-defs.svg#close-modal);
-    position: absolute;
-    fill: #202025; //$main-color2
-    width: 18px;
-    height: 18px;
-    background-repeat: no-repeat;
-    background-position: center;
+.close-icon {
+    fill: #000917;
 }
+
+.modal-layout-box {
+    @include tablet {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: 32px;
+    }
+}
+
+.modal-layout-flex {
+    @include tablet {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 35px;
+
+    }
+}
+
+// .modal-instraction-box {
+//     @include tablet {
+//         position: relative;
+//     }
+// }
+// .modal-close::before {
+//     content: '';
+//     //background-image: url(../../images/svg/symbol-defs.svg#close-modal);
+//     position: absolute;
+//     fill: #202025; //$main-color2
+//     width: 18px;
+//     height: 18px;
+//     background-repeat: no-repeat;
+//     background-position: center;
+// }
 
 .modal-header {
     font-family: inherit;
@@ -60,9 +99,19 @@ ul {
     font-weight: 900;
     font-size: 32px;
     line-height: 1.19;
-    color: #202025;
+    color: $main-color2;
     margin-bottom: 20px;
     text-align: left;
+
+    @include tablet {
+        text-align: center;
+    }
+}
+
+.modal-header.ingredient-header {
+    @include tablet {
+        text-align: left;
+    }
 }
 
 .modal-sub-header {
@@ -72,7 +121,7 @@ ul {
     font-size: 16px;
     line-height: 1.62;
     text-transform: uppercase;
-    color: #202025;
+    color: $main-color2;
     margin-bottom: 20px;
     text-align: left;
 }
@@ -92,6 +141,13 @@ ul {
     width: 280px;
     height: 280px;
     margin-bottom: 22px;
+    display: block;
+
+    // @include tablet {
+    //     position: absolute;
+    //     top: -56px;
+    //     left: -33px;
+    // }
 }
 
 .modal-ingr-desk {
@@ -112,7 +168,7 @@ ul {
     font-weight: 300;
     font-size: 14px;
     line-height: 1.5;
-    color: #202025;
+    color: $main-color2;
     text-align: left;
     margin-bottom: 8px;
 }
@@ -122,13 +178,15 @@ ul {
     margin-left: 12px;
 }
 
-.modal-ingredients-item {
+.modal-learn-more-item,
+.ingredient-list-item {
     list-style-type: "✶";
     color: #000917;
     text-align: left;
 }
 
-.modal-ingredients-data {
+.modal-learn-more-data,
+.ingredient-list-data {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.62;
@@ -136,12 +194,27 @@ ul {
     padding-bottom: 8px;
 }
 
-.modal-ingredients-item .modal-ingredients-data {
+// .modal-header,
+// .modal-sub-header,
+// .modal-desc,
+// .modal-ingr-desk,
+// .modal-per-glass,
+// .modal-learn-more-list,
+// .modal-learn-more-item,
+// .ingredient-list-item,
+// .modal-learn-more-data,
+// .ingredient-list-data {
+//     color: #FCFCFC;
+//     background-color: $main-color2;
+// }
+
+.modal-learn-more-item .modal-learn-more-data,
+.ingredient-list-item .ingredient-list-data {
     position: relative;
     right: -8px;
 }
 
-.ingredient {
+.ingredient-link {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -150,11 +223,11 @@ ul {
     color: inherit;
 }
 
-.modal-ingredients-item:hover,
-.modal-ingredients-item:focus,
-.modal-ingredients-data:hover,
-.modal-ingredients-data:focus {
-    color: #FE7031;
+.modal-learn-more-item:hover,
+.modal-learn-more-item:focus,
+.modal-learn-more-data:hover,
+.modal-learn-more-data:focus {
+    color: $main-button;
 }
 
 .add-item-btn,
@@ -162,15 +235,20 @@ ul {
     text-align: center;
     padding: 12px 24px;
     float: left;
-    background: #FD5103;
-    border: 1px solid #FD5103;
+    background: $accent;
+    border: 1px solid $accent;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 1.20;
     letter-spacing: 0.02em;
-    color: #FCFCFC;
+    color: $main-color3;
+    cursor: pointer;
+
+    @include tablet {
+        float: right;
+    }
 }
 
 .is-hidden {
