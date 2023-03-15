@@ -1,3 +1,4 @@
+import * as icons from "../../images/svg/symbol-defs.svg";
 import { BASE_URL } from "../const";
 import { refs } from "../refs";
 import axios from "axios";
@@ -24,10 +25,22 @@ export function getCocktailMarkup({data}) {
                 <a class="cocktail-link" href="#">
                     <img class="cocktail-picture" src="${data.drinks[0].strDrinkThumb}" alt="${data.drinks[0].strDrink}">
                 </a>
+<<<<<<< HEAD
                     <p class="cocktail-label">${data.drinks[0].strDrink}</p>
                     <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
 
                     <button class="addTo">Add to</button>
+=======
+                <p class="cocktail-label" data-cocktail="${data.drinks[0].strDrink}">${data.drinks[0].strDrink}</p>
+                <div class="cocktail-card-btn-wrapper">
+                    <button class="learnMore">Learn more</button>
+                    <button class="addTo">Add to
+                        <svg class="icon-heart">
+                            <use href="${icons}#heart"></use>
+                        </svg>
+                    </button>
+                </div>
+>>>>>>> 8b2a9d5c8a82689f249c7b5e2ad8975a5aed95aa
             </div>
         </li>
     `;
