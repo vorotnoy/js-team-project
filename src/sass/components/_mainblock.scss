@@ -1,101 +1,134 @@
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    min-width: 320px;
-    max-width: 1280px;
-    text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 320px;
+  max-width: 1280px;
+  text-align: center;
 }
 
 .cocktails-title {
-    margin-top: 0;
-    margin-bottom: 60px;
+  margin-top: 0;
+  margin-bottom: 60px;
 }
 
 .cocktails-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .list {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .cocktail-link {
-    display: block;
-    text-decoration: none;
+  display: block;
+  text-decoration: none;
 }
 
 .cocktail-card {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: inherit;
-    width: 280px;
-    max-height: 449px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: inherit;
+  width: 280px;
+  max-height: 449px;
 
-    text-align: center;
+  text-align: center;
 
-    border: 1px solid $accent;
-    border-radius: 4px;
+  border: 1px solid $accent;
+  border-radius: 4px;
 }
 
 .cocktail-picture {
-    display: block;
-    width: 100%;
-    border-radius: 4px 4px 0px 0px;
+  display: block;
+  width: 100%;
+  border-radius: 4px 4px 0px 0px;
 }
 
 .cocktail-label {
-    overflow: hidden;
-    height: 42px;
-    max-width: 238px;
-    margin-top: 48px;
-    margin-bottom: 16px;
-    margin-left: auto;
-    margin-right: auto;
+  overflow: hidden;
+  height: 42px;
+  max-width: 238px;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
 
-    text-align: center;
-    color: #202025;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-weight: 900;
-    font-size: 26px;
-    line-height: 1.62;
+  text-align: center;
+  color: #202025;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.62;
 }
 
 .learnMore {
-    cursor: pointer;
-    margin-bottom: 24px;
-    margin-right: 19px;
-    padding: 0;
-    width: 108px;
-    height: 39px;
-    background: $accent;
-    border: none;
-    border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  margin-right: 19px;
+  padding: 0;
+  width: 108px;
+  height: 39px;
+  background: $accent;
+  border: none;
+  border-radius: 4px;
 
-    letter-spacing: 0.02em;
-    color: #FFFFFF;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .addTo {
-    cursor: pointer;
-    margin-bottom: 24px;
-    padding: 0;
-    width: 110px;
-    height: 39px;
-    border: 1px solid $accent;
-    border-radius: 4px;
-    background-color: inherit;
+  cursor: pointer;
+  margin-bottom: 24px;
+  padding: 0;
+  width: 110px;
+  height: 39px;
+  border: 1px solid $accent;
+  border-radius: 4px;
+  background-color: inherit;
 
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.71;
-    letter-spacing: 0.02em;
-    color: $accent;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.02em;
+  color: $accent;
+}
+
+.no-cocktails__wrapper {
+  display: flex;
+  gap: 60px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-cocktails__text {
+width: 280px;
+
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+
+  @include tablet {
+    width: 331px;
+    font-family: Roboto;
+    font-size: 32px;
+    line-height: 1.31;
+  }
+
+  @include tabletPlus {
+    font-weight: 700;
+  }
+
+  @include desktop {
+    width: 493px;
+    font-size: 48px;
+    line-height: 1.5;
+  }
 }

@@ -1,7 +1,7 @@
 import { getRandomCocktail, renderCocktails, getCocktailMarkup } from "./renderCocktails";
 
 export function viewportWidthCheck({ tablet, desktop }) {
-    const currentVpWidth = window.innerWidth;
+    const currentVpWidth = document.body.clientWidth;
     if (currentVpWidth < tablet) return 3;
     if (currentVpWidth >= tablet && currentVpWidth < desktop) return 6;
     if (currentVpWidth >= desktop) return 9;
