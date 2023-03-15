@@ -1,6 +1,7 @@
-import { pourCocktails } from "./js/mainblock/mainblock";
-import { viewportWidthCheck } from "./js/mainblock/mainblock";
-import { accumulateCocktails } from "./js/mainblock/mainblock";
-import { VIEWPORT_SIZES } from "./js/const";
+import { returnCocktails } from "./js/mainblock/mainblock";
+import { refs } from "./js/refs";
+import { addToFavorites } from "./js/mainblock/addTo";
 
-pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
+
+returnCocktails();
+refs.cocktailsList.addEventListener('click', addToFavorites);

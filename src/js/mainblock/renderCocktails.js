@@ -26,7 +26,7 @@ export function getCocktailMarkup({data}) {
                 </a>
                     <p class="cocktail-label">${data.drinks[0].strDrink}</p>
                     <button class="learnMore">Learn more</button>
-                    <button class="addTo">Add to</button>
+                    <button class="addTo" data-cocktail="${data.drinks[0].strDrink}">Add to</button>
             </div>
         </li>
     `;
