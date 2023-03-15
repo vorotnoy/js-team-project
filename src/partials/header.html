@@ -10,13 +10,13 @@
     <nav class="nav-menu">
       <ul class="nav-menu__items list menu-dropdown">
         <li class="nav-menu__item">
-          <a class="js-change-color" href="/">Home</a>
+          <a class="nav-menu__link  js-change-color" href="/">Home</a>
         </li>
         <li class="nav-menu__item dropbtn">
-          <a class="js-change-color">Favorite</a>
+          <a class="nav-menu__link js-change-color">Favorite</a>
         </li>
       </ul>
-      <ul class="dropdown-menu list">
+      <ul class="dropdown-menu list js-dropdown-menu">
         <li class="dropdown-menu__item">
           <a class="dropdown-menu__link" href="#">Favorite cocktails</a>
         </li>
@@ -32,11 +32,12 @@
         class="form__input"
         type="text"
       />
-      <button class="" type="submit">
-        <svg class="" width="18px" height="18px">
-          <use href="#"></use>
-        </svg>
-      </button>
+      <svg class="svg-icon__search" width="18px" height="18px">
+        <use href="./images/svg/symbol-defs.svg#search"></use>
+      </svg>
+      <!-- <button class="" type="submit">
+        
+      </button> -->
     </form>
     <div class="change-color__block">
       <span class="header__light">Light</span>

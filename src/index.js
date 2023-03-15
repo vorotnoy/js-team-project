@@ -11,8 +11,8 @@ import { VIEWPORT_SIZES } from "./js/const";
 
 pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
 
-import {checkBtn} from './js/header/checkbox'
-import {onClickDropdownOn} from './js/header/dropdown'
+import { checkBtn } from './js/header/checkbox'
+import { onClickDropdownOn } from './js/header/dropdown'
 
 const { selectBtn, alphabet } = refs;
 

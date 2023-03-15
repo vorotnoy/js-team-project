@@ -25,9 +25,12 @@ export function getCocktailMarkup({data}) {
                     <img class="cocktail-picture" src="${data.drinks[0].strDrinkThumb}" alt="${data.drinks[0].strDrink}">
                 </a>
                     <p class="cocktail-label">${data.drinks[0].strDrink}</p>
-                    <button class="learnMore">Learn more</button>
+                    <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
+
                     <button class="addTo">Add to</button>
             </div>
         </li>
     `;
 };
+
+                    // <button class="learnMore" >Learn more</button>

@@ -1,12 +1,12 @@
-const checkboxOn = document.querySelector('#js-checkbox')
-const bodystyle = document.querySelector('body')
-
+import {refs} from '../refs'
+const {checkboxOn, bodyOn} =refs
+/** change theme */
 function checkBtn (){
     if (checkboxOn.checked){
-        bodystyle.style.backgroundColor = "black";
+        bodyOn.style.backgroundColor = "black";
     }
     else{
-        bodystyle.style.backgroundColor = "white"
+        bodyOn.style.backgroundColor = "white"
     }
 }
 
