@@ -1,50 +1,51 @@
 <header class="section__header">
   <div class="container header__container">
-    <a class="header__logo" href="#">
-      <img src="./images/img/logo-1x-min.png" alt="cocktails logo" class="logo__image" />
+    <a class="header__logo" href="/">
+      <img
+        src="./images/img/logo-1x-min.png"
+        alt="cocktails logo"
+        class="logo__image"
+      />
     </a>
-    <nav class="">
-      <a class="" href="#">Home</a>
-      <a class="">Favorite</a>
-      <ul class="is-hidden">
-        <li class="">
-          <a href="#">Favorite cocktails</a>
+    <nav class="nav-menu">
+      <ul class="nav-menu__items list menu-dropdown">
+        <li class="nav-menu__item">
+          <a class="nav-menu__link  js-change-color" href="/">Home</a>
         </li>
-        <li class="">
-          <a href="#">Favorite ingredients</a>
+        <li class="nav-menu__item dropbtn">
+          <a class="nav-menu__link js-change-color">Favorite</a>
+        </li>
+      </ul>
+      <ul class="dropdown-menu list js-dropdown-menu">
+        <li class="dropdown-menu__item">
+          <a class="dropdown-menu__link" href="#">Favorite cocktails</a>
+        </li>
+        <li class="dropdown-menu__item ">
+          <a class="dropdown-menu__link" href="#">Favorite ingredients</a>
         </li>
       </ul>
     </nav>
-    <form class="">
+    <form class="search-form">
       <input
         placeholder="Search"
         name="input"
         class="form__input"
         type="text"
       />
-      <button class="" type="submit">
-        <svg class="" width="18px" height="18px">
-          <use href="#"></use>
-        </svg>
-      </button>
-    </form>
-    <button type="button" class="">
-      <svg class="" width="47px" height="39px">
-        <use href="#"></use>
+      <svg class="svg-icon__search" width="18px" height="18px">
+        <use href="./images/svg/symbol-defs.svg#search"></use>
       </svg>
-    </button>
-    <button
-      class=""
-      type="button"
-    >
-    </button>
-    <div class="">
+      <!-- <button class="" type="submit">
+        
+      </button> -->
+    </form>
+    <div class="change-color__block">
       <span class="header__light">Light</span>
       <label class="switch">
-        <input data-switcher-desktop type="checkbox" />
-        <span class="slider round"></span>
+        <input class="switch__input" id="js-checkbox" type="checkbox" />
+        <span class="slider__round"></span>
       </label>
-      <span class="header__dark">Dark</span>
+      <span class="header__dark changeColorWh">Dark</span>
     </div>
   </div>
 </header>
