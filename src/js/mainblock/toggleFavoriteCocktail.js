@@ -1,4 +1,5 @@
 import * as icons from "../../images/svg/symbol-defs.svg";
+
 export function toggleFavorites(evt) {
     const favoriteCocktails = [];
     try {
