@@ -1,11 +1,12 @@
 const checkboxOn = document.querySelector('#js-checkbox')
+const bodystyle = document.querySelector('body')
 
 function checkBtn (){
     if (checkboxOn.checked){
-        console.log('checked')
+        bodystyle.style.backgroundColor = "black";
     }
     else{
-        console.log('not')
+        bodystyle.style.backgroundColor = "white"
     }
 }
 

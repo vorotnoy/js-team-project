@@ -19,7 +19,7 @@
   border: none;
   cursor: pointer;
 }
-.menu-dropdown:hover + .is-hidden {
+.menu-dropdown:hover + .dropdown-menu{
 }
 .dropdown-menu__item {
   width: 210px;
@@ -38,7 +38,7 @@
   color: #ffffff;
 }
 
-.is-hidden {
+.dropdown-menu {
   display: none;
   position: absolute;
   border: 1px solid #fd5103;
