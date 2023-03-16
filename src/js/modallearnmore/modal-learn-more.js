@@ -53,7 +53,7 @@ async function onLearnMore(event) {
                     list += `<li class="modal-learn-more-item">
                     <span class="modal-learn-more-data">
                     ${(drink[measureProperty] != null ? drink[measureProperty] : "")}` + ' ' + `
-                    <a href="#" class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
+                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
                     ${drink[ingredientProperty]}
                     </a>
                     </span>
