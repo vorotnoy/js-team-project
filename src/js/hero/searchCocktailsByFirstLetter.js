@@ -5,6 +5,8 @@ import { refs } from '../refs';
 import { VIEWPORT_SIZES } from '../const';
 import { createCocktailsMarkupByViewportSize } from './createCocktailsMarkupByViewportSize';
 import { viewportWidthCheck } from '../mainblock/mainblock';
+import { attachEvents } from '../modallearnmore/modal-learn-more';
+import { attachFavouriteClickEvents } from '../favourites';
 
 const { cocktailsList, cocktailsTitle, noCocktails } = refs;
 
@@ -28,6 +30,9 @@ export async function searchCocktailsByFirstLetter(letter) {
       viewportWidthCheck(VIEWPORT_SIZES),
       response
     );
+
+    attachEvents();
+    attachFavouriteClickEvents();
   } catch (error) {
     console.log(error);
   }

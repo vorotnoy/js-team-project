@@ -1,6 +1,7 @@
 import '../../sass/index.css';
 import axios from 'axios';
 import {attachIngredientEvents} from './modal-learn-more-ingredient'
+import {addDrink, removeDrink, getDrink} from '../favourites'
 
 const galleryEl = document.querySelector(`.gallery`);
 
@@ -73,14 +74,8 @@ async function onLearnMore(event) {
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
-    let favourites = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-    let exists = false;
-    for (let drink of favourites) {
-        if (drink.name == data[0].strDrink) {
-            exists = true;
-            break;
-        }
-    }
+    let exists = getDrink(data[0].strDrink);
+    
     const result = data.map(drink =>
         `<h2 class="modal-header">${drink.strDrink}</h2>
         <div class="modal-layout-flex">
@@ -114,19 +109,7 @@ export function displayMoreInfo(data) {
 // ---------Add to favorite кнопка додае картинку та назву коктелю до Local storage-------
     function onAddBtn(event) {
         try {
-            let favourites = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-            let exists = false;
-            for (let drink of favourites) {
-                if (drink.name == event.target.dataset.name) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) { 
-                let favouriteDrink = { 'name': event.target.dataset.name, 'img': event.target.dataset.img };
-                favourites.push(favouriteDrink);
-                localStorage.setItem('favorite-cocktail', JSON.stringify(favourites));
-            }
+            addDrink(event.target.dataset.name, event.target.dataset.img);
             addBtnEl.classList.add(`is-hidden`);
             removeBtnEl.classList.remove(`is-hidden`);
         } catch (error) {
@@ -137,15 +120,7 @@ export function displayMoreInfo(data) {
 //------Remove from favorite кнопка видаляе елемент з Local storage-------
     function onRemoveBtn(event) {
         try {
-            let favourites = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-            let updatedFavourites = [];
-            for (let i = 0; i < favourites.length; i++) {
-                let drink = favourites[i];
-                if (drink.name != event.target.dataset.name && drink.img != event.target.dataset.img) { 
-                    updatedFavourites.push(drink);
-                } 
-            }
-            localStorage.setItem('favorite-cocktail', JSON.stringify(updatedFavourites));
+            removeDrink(event.target.dataset.name, event.target.dataset.img);
             removeBtnEl.classList.add(`is-hidden`);
             addBtnEl.classList.remove(`is-hidden`);
         } catch (error) {

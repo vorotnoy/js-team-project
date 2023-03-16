@@ -1,4 +1,5 @@
 import '../../sass/index.css';
+import {addIngredient, removeIngredient, getIngredient} from '../favourites'
 import axios from 'axios';
 
 const contentEl = document.querySelector(`.content`);
@@ -77,14 +78,8 @@ async function onIngredient(event) {
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
-    let favourites = JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
-    let exists = false;
-    for (let ingredient of favourites) {
-        if (ingredient.name == data[0].strIngredient) {
-            exists = true;
-            break;
-        }
-    }
+    let exists = getIngredient(data[0].strIngredient);
+    
     const result = data.map(ingredient =>
         `<h2 class="modal-header ingredient-header">${ingredient.strIngredient}</h2>
         <ul class="ingredients-list modal-ingredients-list"></ul>
@@ -103,19 +98,7 @@ export function displayMoreInfo(data) {
 // ---------Add to favorite кнопка додае назву та тип інгрідіенту коктелю до Local storage-------
     function onAddBtn(event) {
         try {
-            let favourites = JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
-            let exists = false;
-            for (let ingredient of favourites) {
-                if (ingredient.name == event.target.dataset.name) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                let favouriteIngredient = { 'name': event.target.dataset.name, 'type': event.target.dataset.type };
-                favourites.push(favouriteIngredient);
-                localStorage.setItem('favorite-ingredient', JSON.stringify(favourites));
-            }
+            addIngredient(event.target.dataset.name, event.target.dataset.type);
             addBtnEl.classList.add(`is-hidden`);
             removeBtnEl.classList.remove(`is-hidden`);
         } catch (error) {
@@ -126,15 +109,7 @@ export function displayMoreInfo(data) {
 //------Remove from favorite кнопка видаляе елемент з Local storage-------
     function onRemoveBtn(event) {
         try {
-            let favourites = JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
-            let updatedFavourites = [];
-            for (let i = 0; i < favourites.length; i++) {
-                let ingredient = favourites[i];
-                if (ingredient.name != event.target.dataset.name && ingredient.type != event.target.dataset.type) { 
-                    updatedFavourites.push(ingredient);
-                } 
-            }
-            localStorage.setItem('favorite-ingredient', JSON.stringify(updatedFavourites));
+            removeIngredient(event.target.dataset.name, event.target.dataset.type);
             removeBtnEl.classList.add(`is-hidden`);
             addBtnEl.classList.remove(`is-hidden`);
         } catch (error) {
