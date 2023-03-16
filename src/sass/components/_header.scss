@@ -16,12 +16,11 @@
 .nav-menu__link{
   
 font-family: 'Poppins';
-font-style: normal;
 font-weight: 400;
 font-size: 18px;
 line-height: 1.33;
 letter-spacing: 0.02em;
-color: #202025;
+color: $main-color2;
 }
 
 .dropbtn {
@@ -40,17 +39,17 @@ color: #202025;
   display: block;
 }
 .dropdown-menu__item:hover {
-  background-color: #fd5103;
+  background-color: $main-color;
 }
 .dropdown-menu__item:hover .dropdown-menu__link {
-  color: #ffffff;
+  color: $main-color3;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
-  border: 1px solid #fd5103;
-  background-color: #ffffff;
+  border: 1px solid $main-color;
+  background-color: $main-color3;
   border-radius: 4px;
   min-width: 160px;
   overflow: auto;
@@ -82,7 +81,7 @@ color: #202025;
   position: relative;
   width: 288px;
   height: 40px;
-  border: 1px solid #fd5103;
+  border: 1px solid $main-color;
   border-radius: 4px;
   padding: 8px 0 8px 48px;
   outline: none;
@@ -94,19 +93,19 @@ color: #202025;
     top: 5px;
     width: 20px;
     height: 10px;
-    background-color: #fd5103;
+    background-color: $main-color;
   }
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1.71;
     letter-spacing: 0.02em;
-    color: #5f6775;
+    color: $input_plholder;
     opacity: 0.4;
     // padding-left: 48px;
   }
   &:focus-visible{
-    border: 1px solid #fd5103;
+    border: 1px solid $main-color;
   }
 }
 .change-color__block {
@@ -141,7 +140,7 @@ color: #202025;
 
   border-radius: 20px;
   /* Grapefruit */
-  border: 0.604701px solid #fd5103;
+  border: 0.604701px solid $main-color;
 }
 .slider__round::before {
   content: '';
@@ -155,17 +154,17 @@ color: #202025;
   height: 16px;
   border-radius: 50%;
 
-  background-color: #fd5103;
+  background-color: $main-color;
 }
 .switch__input:checked + .slider__round {
-  background: #fd5103;
+  background: $main-color;
   border-radius: 20px;
   /* Grapefruit */
-  border: 0.604701px solid #ffffff;
+  border: 0.604701px solid $main-color3;
 }
 
 .switch__input:checked + .slider__round::before {
-  background-color: #ffffff;
+  background-color: $main-color3;
   transform: translateX(20px);
 }
 .search-form {
@@ -175,10 +174,10 @@ color: #202025;
   position: absolute;
   top: 13px;
   left: 8px;
-  fill: #FD5103;
+  fill: $main-color;
 }
 .header__light{
-  color: #FD5103;
+  color: $main-color;
 }
 // .container-header {
 //   display: flex;
