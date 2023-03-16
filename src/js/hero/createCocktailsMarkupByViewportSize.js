@@ -1,5 +1,4 @@
-import * as icons from '../../images/svg/symbol-defs.svg';
-import {renderAddRemoveDrinkButton} from '../favourites'
+import { renderAddRemoveDrinkButton } from '../favourites';
 
 export function createCocktailsMarkupByViewportSize(setSize, { data }) {
   let cocktailsMarkup = '';
@@ -11,19 +10,18 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
         <li class="cocktail-item">
             <div class="cocktail-card">
                 <a class="cocktail-link" href="#">
-                    <img class="cocktail-picture" src="${data.strDrinkThumb}" alt="${data.strDrink}">
+                    <img class="cocktail-picture" src="${
+                      data.strDrinkThumb
+                    }" alt="${data.strDrink}">
                 </a>
                     <p class="cocktail-label">${data.strDrink}</p>
+                     <div class="cocktail-card-btn-wrapper">
                     <button class="learnMore">Learn more</button>
-
-                    //<button class="addTo">Add to
-                    //<svg class="icon-heart">
-                    //  <use href="${icons}#heart"></use>
-                    //</svg>
-                   // </button>
-
-                    ${renderAddRemoveDrinkButton(data.strDrink, data.strDrinkThumb)}
-
+                   ${renderAddRemoveDrinkButton(
+                     data.strDrink,
+                     data.strDrinkThumb
+                   )}
+            </div>
             </div>
         </li>
     `)
@@ -37,19 +35,26 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
         <li class="cocktail-item">
             <div class="cocktail-card">
                 <a class="cocktail-link" href="#">
-                    <img class="cocktail-picture" src="${data.drinks[i].strDrinkThumb}" alt="${data.drinks[i].strDrink}">
+                    <img class="cocktail-picture" src="${
+                      data.drinks[i].strDrinkThumb
+                    }" alt="${data.drinks[i].strDrink}">
                 </a>
                     <p class="cocktail-label">${data.drinks[i].strDrink}</p>
-                    <button class="learnMore" data-id="${data.drinks[i].idDrink}" data-modal-open>Learn more</button>
-                    ${renderAddRemoveDrinkButton(data.drinks[i].strDrink, data.drinks[i].strDrinkThumb)}
+
+                    <div class="cocktail-card-btn-wrapper">
+                    <button class="learnMore" data-id="${
+                      data.drinks[i].idDrink
+                    }" data-modal-open>Learn more</button>
+                    ${renderAddRemoveDrinkButton(
+                      data.drinks[i].strDrink,
+                      data.drinks[i].strDrinkThumb
+                    )}
+            </div>
+
             </div>
         </li>
     `;
   }
 
   return cocktailsMarkup;
-}
-{
-  /* <button class="learnMore" >Learn more</button>
-<button class="addTo">Add to</button> */
 }
