@@ -15,4 +15,5 @@ export const refs = {
   clror: document.querySelectorAll('.js-changeclror'),
   clrgr: document.querySelectorAll('.js-changeclrgr'),
   bgclr: document.querySelector('.js-changebgrclr'),
+  inputForm: document.querySelector('.search-form'),
 };
