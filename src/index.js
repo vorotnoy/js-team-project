@@ -26,6 +26,10 @@ import { initializeFavourites } from "./js/favorite-cocktails/favorite"
 
 const debounce = require('lodash.debounce');
 
+
+// openMenuBtn.addEventListener('click', toggleMenu);
+// closeMenuBtn.addEventListener('click', toggleMenu);
+
 if (window.location.pathname === "/") {
     returnCocktails();
     const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn  } = refs;
@@ -39,8 +43,6 @@ if (window.location.pathname === "/") {
     window.addEventListener("resize", debounce(initializeFavourites, 300));
 
 
-openMenuBtn.addEventListener('click', toggleMenu);
-closeMenuBtn.addEventListener('click', toggleMenu);
 
     initializeFavourites();
 }
