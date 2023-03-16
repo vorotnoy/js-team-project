@@ -1,228 +1,227 @@
 body.modal-open {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .backdrop {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background-color: rgba($color: $main-color2, $alpha: 0.5);
-    opacity: 1;
-    z-index: 10;
-    overflow: scroll;
-    padding-top: 16px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba($color: $main-color2, $alpha: 0.5);
+  opacity: 1;
+  z-index: 10;
+  overflow: scroll;
+  padding-top: 16px;
 }
 hr {
-    display: none;
-    @include tabletPlus {
-        display: block;
-        border: 1px solid $accent;
-    }
+  display: none;
+  @include tabletPlus {
+    display: block;
+    border: 1px solid $accent;
+  }
 }
 
 .modal-learn-more-container,
 .modal-ingredients-container {
-    max-width: 320px;
-    height: auto;
-    background-color: $main-color3;
-    display: block;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    position: relative;
-    opacity: 1;
-    z-index: 20;
+  max-width: 320px;
+  height: auto;
+  background-color: $main-color3;
+  display: block;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+  opacity: 1;
+  z-index: 20;
 
-    @include tabletPlus {
-        max-width: 822px;
-    }
+  @include tabletPlus {
+    max-width: 822px;
+  }
 }
 
 .modal-learn-more-container.modal-open {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .modal-close,
 .modal-ingredient-close {
-    position: absolute;
-    background: transparent;
-    border: none;
-    top: 16px;
-    right: 16px;
-    width: 42px;
-    height: 42px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  background: transparent;
+  border: none;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .close-icon {
-    fill: #000917;
+  fill: #000917;
 }
 
 .modal-layout-box {
-    display: block;
+  display: block;
 
-    @include tabletPlus {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-        gap: 32px;
-    }
+  @include tabletPlus {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 32px;
+  }
 }
 
 .modal-layout-flex {
-    @include tabletPlus {
-        display: flex;
-        flex-direction: column-reverse;
-        gap: 35px;
-
-    }
+  @include tabletPlus {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 35px;
+  }
 }
 
 .modal-header {
-    font-family: inherit;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 1.19;
-    color: $main-color2;
-    margin-bottom: 20px;
-    text-align: left;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.19;
+  color: $main-color2;
+  margin-bottom: 20px;
+  text-align: left;
 
-    @include tabletPlus {
-        position: absolute;
-        top: 40px;
-        left: 312px;
-    }
+  @include tabletPlus {
+    position: absolute;
+    top: 40px;
+    left: 312px;
+  }
 }
 
 .modal-header.ingredient-header {
-    @include tabletPlus {
-        position: static;
-        text-align: center;
-    }
+  @include tabletPlus {
+    position: static;
+    text-align: center;
+  }
 }
 
 .modal-sub-header {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.62;
-    text-transform: uppercase;
-    color: $main-color2;
-    margin-bottom: 20px;
-    text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.62;
+  text-transform: uppercase;
+  color: $main-color2;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .modal-sub-header.ingredient-sub-header {
-    @include tabletPlus {
-        display: block;
-    }
+  @include tabletPlus {
+    display: block;
+  }
 }
 
 .modal-sub-header.ingredient-sub-header {
-    @include tablet {
-        content: "";
-        border-bottom: 1px solid black;
-        height: 0.5em;
-        }
+  @include tablet {
+    content: '';
+    border-bottom: 1px solid black;
+    height: 0.5em;
+  }
 }
 
 .modal-desc {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.75;
-    color: #5F6775;
-    margin-bottom: 80px;
-    text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #5f6775;
+  margin-bottom: 80px;
+  text-align: left;
 }
 
 .modal-image {
-    width: 280px;
-    height: 280px;
-    margin-bottom: 22px;
-    display: block;
+  width: 280px;
+  height: 280px;
+  margin-bottom: 22px;
+  display: block;
 
-    @include tabletPlus {
-        max-width: 288px;
-        //max-height: 320px;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-    }
+  @include tabletPlus {
+    max-width: 288px;
+    //max-height: 320px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
 }
 
 .modal-ingr-box {
-    @include tabletPlus {
-        position: absolute;
-        top: 105px;
-        left: 320px;
-    }
+  @include tabletPlus {
+    position: absolute;
+    top: 105px;
+    left: 320px;
+  }
 }
 
 .modal-instraction-box {
-    @include tabletPlus {
-        position: relative;
-        margin-top: 282px;
-    }
+  @include tabletPlus {
+    position: relative;
+    margin-top: 282px;
+  }
 }
 
 .modal-ingr-desk {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #000917;
-    text-transform: uppercase;
-    text-align: left;
-    margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000917;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 8px;
 }
 
 .modal-per-glass {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 1.5;
-    color: $main-color2;
-    text-align: left;
-    margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $main-color2;
+  text-align: left;
+  margin-bottom: 8px;
 }
 
 .modal-ingredients-list {
-    padding: 0;
-    display: block;
-    margin-bottom: 80px;
-    margin-left: 12px;
+  padding: 0;
+  display: block;
+  margin-bottom: 80px;
+  margin-left: 12px;
 }
 
 .ingredients-list.modal-ingredients-list,
 .modal-desc.ingredient-desc {
-    @include tabletPlus {
-        display: block;
-    }
+  @include tabletPlus {
+    display: block;
+  }
 }
 
 .modal-learn-more-item,
 .ingredient-list-item {
-    list-style-type: "✶";
-    color: #000917;
-    text-align: left;
+  list-style-type: '✶';
+  color: #000917;
+  text-align: left;
 }
 
 .modal-learn-more-data,
 .ingredient-list-data {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.62;
-    color: #5F6775;
-    padding-bottom: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+  color: #5f6775;
+  padding-bottom: 8px;
 }
 
 // .modal-header,
@@ -240,56 +239,56 @@ hr {
 // }
 
 .ingredient-link {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.62;
-    color: inherit;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+  color: inherit;
 }
 
 .modal-learn-more-item:hover,
 .modal-learn-more-item:focus,
 .modal-learn-more-data:hover,
 .modal-learn-more-data:focus {
-    color: $main-button;
+  color: $main-button;
 }
 
 .add-item-btn,
 .remove-item-btn {
-    text-align: center;
-    padding: 12px 24px;
-    float: left;
-    background: $accent;
-    border: 1px solid $accent;
-    border-radius: 4px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.20;
-    letter-spacing: 0.02em;
-    color: $main-color3;
-    cursor: pointer;
-    position: absolute;
-    bottom: 40px;
+  text-align: center;
+  padding: 12px 24px;
+  float: left;
+  background: $accent;
+  border: 1px solid $accent;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: $main-color3;
+  cursor: pointer;
+  position: absolute;
+  bottom: 40px;
 
-    @include tabletPlus {
-        position: absolute;
-        bottom: 28px;
-        right: 28px;
-    }
+  @include tabletPlus {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+  }
 }
 
 .add-item-btn:hover,
 .remove-item-btn:hover {
-    color: $accent;
-    background-color: #F5F5F5;
-    border: 1px solid #F5F5F5;;
+  color: $accent;
+  background-color: #f5f5f5;
+  border: 1px solid #f5f5f5;
 }
 
 .is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: none;
 }

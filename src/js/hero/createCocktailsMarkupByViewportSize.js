@@ -18,7 +18,7 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
                      <div class="cocktail-card-btn-wrapper">
                     <button class="learnMore">Learn more</button>
                    ${renderAddRemoveDrinkButton(
-                      data.idDrink,
+                     data.idDrink,
                      data.strDrink,
                      data.strDrinkThumb
                    )}
@@ -44,7 +44,6 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
 
                     <div class="cocktail-card-btn-wrapper">
                     <button class="learnMore" data-id="${
-    
                       data.drinks[i].idDrink
                     }" data-modal-open>Learn more</button>
                     ${renderAddRemoveDrinkButton(

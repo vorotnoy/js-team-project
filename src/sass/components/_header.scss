@@ -18,13 +18,13 @@
   position: relative;
   display: inline-block;
 }
-.nav-menu__link{  
-font-family: 'Poppins';
-font-weight: 400;
-font-size: 18px;
-line-height: 1.33;
-letter-spacing: 0.02em;
-color: $main-color2;
+.nav-menu__link {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  color: $main-color2;
 }
 
 .dropbtn {
@@ -107,9 +107,9 @@ color: $main-color2;
     opacity: 0.4;
     // padding-left: 48px;
   }
-  &:focus-visible{
+  &:focus-visible {
     border: 1px solid $main-color;
-}
+  }
 }
 .change-color__block {
   display: flex;

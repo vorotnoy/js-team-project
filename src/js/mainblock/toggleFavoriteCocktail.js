@@ -1,33 +1,33 @@
-import * as icons from "../../images/svg/symbol-defs.svg";
+import * as icons from '../../images/svg/symbol-defs.svg';
 
 export function toggleFavorites(evt) {
-    const favoriteCocktails = [];
+  const favoriteCocktails = [];
+  try {
     try {
-        try {
-            toggle(evt.target.closest('button.addTo'));   
-        } catch {
-            toggle(evt.target.closest('button.removeFrom'));
-        };
+      toggle(evt.target.closest('button.addTo'));
     } catch {
-        console.log('hello i am Return');
-        return;
-    };
-};
+      toggle(evt.target.closest('button.removeFrom'));
+    }
+  } catch {
+    console.log('hello i am Return');
+    return;
+  }
+}
 
 function toggle(button) {
-    if (button.classList.contains('removeFrom')) {
-        console.log('hello i am Remove');
-        const addTo = `
+  if (button.classList.contains('removeFrom')) {
+    console.log('hello i am Remove');
+    const addTo = `
             <button class="addTo">Add to
                 <svg class="icon-heart">
                     <use href="${icons}#heart"></use>
                 </svg>
             </button>
         `;
-        button.insertAdjacentHTML("beforebegin", addTo);
-        button.remove();
-        return;
-    } else {
+    button.insertAdjacentHTML('beforebegin', addTo);
+    button.remove();
+    return;
+  } else {
     console.log('hello i am Add to');
     const removeFrom = `
         <button class="removeFrom">Remove
@@ -36,7 +36,7 @@ function toggle(button) {
             </svg>
         </button>
     `;
-    button.insertAdjacentHTML("beforebegin", removeFrom);
+    button.insertAdjacentHTML('beforebegin', removeFrom);
     button.remove();
-};
-};
+  }
+}

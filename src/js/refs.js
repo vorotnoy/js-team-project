@@ -29,5 +29,4 @@ export const refs = {
   modal: document.querySelector('[data-modal]'),
 
   galleryEl: document.querySelector(`.gallery`),
-
 };

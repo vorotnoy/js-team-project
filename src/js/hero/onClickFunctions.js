@@ -22,6 +22,7 @@ export function onAlphabetBtnClick(event) {
   searchCocktailsByFirstLetter(event.target.textContent);
 }
 
-if (selectBtn !==null){
-selectBtn.addEventListener('click', onSelectBtnClick);
-alphabet.addEventListener('click', onAlphabetBtnClick);}
+if (selectBtn !== null) {
+  selectBtn.addEventListener('click', onSelectBtnClick);
+  alphabet.addEventListener('click', onAlphabetBtnClick);
+}
