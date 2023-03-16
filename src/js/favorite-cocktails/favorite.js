@@ -1,5 +1,10 @@
 'use strict'
+export default function updateSize();
+import BASE_URL from "../const"
+import axios from "axios";
+import attachEvents from "../modallearnmore/modal-lern-more"
 const debounce = require('lodash.debounce');
+
 
 const favoritesList = document.querySelector('.fav-cocktails__list');
 const loadCocktailsBtn = document.querySelector('.loadCocktails');
@@ -10,10 +15,10 @@ favoritesList.addEventListener('click', getCocktailId);
 
 //unfinished
 //function should get element ID and fetch data for modal window
-//currently shows clicked element id
+//currently shows clicked element id and fetch element data
 async function getCocktailId(event){
     const id = event.target.attributes.drinkid.value;
-    let data = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
+    let data = await fetch(`${BASE_URL}/lookup.php?i=${id}`)
     .then(response => {
         // console.log(response)
         return response.json();
@@ -22,24 +27,26 @@ async function getCocktailId(event){
         console.log(error);
     });
 
-    console.log(id);
-    console.log("data variable: ", data);
+    // console.log(id);
+    // console.log("data variable: ", data);
 }
 
 //function watch viewport size and load limited for current viewport amount of elements 
-window.addEventListener("resize", debounce(updateSize, 300));
+window.addEventListener("resize", updateSize);
 
 function updateSize(){
     let windowWidth = window.innerWidth;
-    if(windowWidth < 767){
-        console.log('300px - 768px');
+    console.log(localStorage);
+    console.log('button clicked');
+    if(windowWidth < 768){
+        // console.log('300px - 768px');
         favoritesMarkup(0, 3);
     } else if(windowWidth < 1280){
-        console.log('768px - 1023px');
+        // console.log('768px - 1023px');
         favoritesMarkup(0, 6);
     } else {
-        console.log('1280px');
-        favoritesMarkup(0, 7);
+        // console.log('1280px');
+        favoritesMarkup(0, 9);
     }
 }
 

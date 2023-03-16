@@ -2,6 +2,7 @@ import * as icons from '../../images/svg/symbol-defs.svg';
 import { BASE_URL } from '../const';
 import { refs } from '../refs';
 import axios from 'axios';
+import { renderAddRemoveDrinkButton } from '../favourites';
 
 const { cocktailsList } = refs;
 // ----------------------------------GETRANDOMCOCKTAIL--------------------------------- //
@@ -30,11 +31,7 @@ export function getCocktailMarkup({ data }) {
                 <div class="cocktail-card-btn-wrapper">
 
                     <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
-                    <button class="addTo">Add to
-                    <svg class="icon-heart">
-                      <use href="${icons}#heart"></use>
-                    </svg>
-                    </button>
+                    ${renderAddRemoveDrinkButton(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb)}
             </div>
         </li>
     `;
