@@ -10,4 +10,8 @@ export const refs = {
   dropDownItems: document.querySelector('.js-dropdown-menu'),
   cocktailsTitle: document.querySelector('.cocktails-title'),
   noCocktails: document.querySelector('.no-cocktails__wrapper'),
+  mobileMenu: document.querySelector('.js-menu-container'),
+  openMenuBtn: document.querySelector('.js-open-menu'),
+  closeMenuBtn: document.querySelector('.js-close-menu'),
+
 };

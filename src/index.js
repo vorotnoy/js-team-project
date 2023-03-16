@@ -8,13 +8,18 @@ import { returnCocktails, viewportWidthCheck, accumulateCocktails,  pourCocktail
 import { favouritesClickEvent } from "./js/favourites";
 import { getRandomCocktail } from "./js/mainblock/renderCocktails";
 
-import { onSelectBtnClick, onAlphabetBtnClick } from   "./js/hero/onClickFunctions";
+import { onSelectBtnClick, onAlphabetBtnClick } from "./js/hero/onClickFunctions";
+
+import { toggleMenu } from "./js/hero/header/mobile-menu";
 
 returnCocktails();
-const { cocktailsList, selectBtn, alphabet } = refs;
+const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn  } = refs;
 
 //cocktailsList.addEventListener('click', favouritesClickEvent);
 
 selectBtn.addEventListener('click', onSelectBtnClick);
 alphabet.addEventListener('click', onAlphabetBtnClick);
 
+
+openMenuBtn.addEventListener('click', toggleMenu);
+closeMenuBtn.addEventListener('click', toggleMenu);

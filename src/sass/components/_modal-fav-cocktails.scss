@@ -1,28 +1,28 @@
-body{
-    margin: 0;
-    box-sizing: border-box;
-}
+// body{
+//     margin: 0;
+//     box-sizing: border-box;
+// }
 
-ul{
-    padding: 0;
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-@media screen and (max-width: 767px){
-    img{
-        width: 280px;
-    }
-}
+// ul{
+//     padding: 0;
+//     list-style: none;
+//     display: flex;
+//     gap: 20px;
+// }
+// img {
+//     display: block;
+//     max-width: 100%;
+//     height: auto;
+// }
+// @media screen and (max-width: 767px){
+//     img{
+//         width: 280px;
+//     }
+// }
 
-button{
-    border-radius: 4px;
-}
+// button{
+//     border-radius: 4px;
+// }
 
 .fav-cocktails{
     text-align: center;
