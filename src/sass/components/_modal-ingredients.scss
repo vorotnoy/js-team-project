@@ -14,11 +14,6 @@ body.modal-open {
         visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow: scroll;
     padding-top: 16px;
-
-
-    // @include tablet {
-    //     background-color: $main-color2;
-    // }
 }
 
 .modal-learn-more-container,
@@ -35,9 +30,11 @@ body.modal-open {
         max-width: 822px;
     }
 }
+
 .modal-learn-more-container.modal-open {
     overflow: hidden;
 }
+
 .modal-close,
 .modal-ingredient-close {
     position: absolute;
@@ -60,7 +57,7 @@ body.modal-open {
 .modal-layout-box {
     display: block;
 
-    @include tablet {
+    @include tabletPlus {
         display: flex;
         justify-content: flex-start;
         align-items: flex-end;
@@ -69,29 +66,13 @@ body.modal-open {
 }
 
 .modal-layout-flex {
-    @include tablet {
+    @include tabletPlus {
         display: flex;
         flex-direction: column-reverse;
         gap: 35px;
 
     }
 }
-
-// .modal-instraction-box {
-//     @include tablet {
-//         position: relative;
-//     }
-// }
-// .modal-close::before {
-//     content: '';
-//     //background-image: url(../../images/svg/symbol-defs.svg#close-modal);
-//     position: absolute;
-//     fill: #202025; //$main-color2
-//     width: 18px;
-//     height: 18px;
-//     background-repeat: no-repeat;
-//     background-position: center;
-// }
 
 .modal-header {
     font-family: inherit;
@@ -103,14 +84,17 @@ body.modal-open {
     margin-bottom: 20px;
     text-align: left;
 
-    @include tablet {
-        text-align: center;
+    @include tabletPlus {
+        position: absolute;
+        top: 40px;
+        left: 312px;
     }
 }
 
 .modal-header.ingredient-header {
-    @include tablet {
-        text-align: left;
+    @include tabletPlus {
+        position: static;
+        text-align: center;
     }
 }
 
@@ -126,6 +110,20 @@ body.modal-open {
     text-align: left;
 }
 
+.modal-sub-header.ingredient-sub-header {
+    @include tabletPlus {
+        display: block;
+    }
+}
+
+.modal-sub-header.ingredient-sub-header {
+    @include tablet {
+        content: "";
+        border-bottom: 1px solid black;
+        height: 0.5em;
+        }
+}
+
 .modal-desc {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
@@ -133,7 +131,7 @@ body.modal-open {
     font-size: 16px;
     line-height: 1.75;
     color: #5F6775;
-    margin-bottom: 32px;
+    margin-bottom: 80px;
     text-align: left;
 }
 
@@ -143,11 +141,28 @@ body.modal-open {
     margin-bottom: 22px;
     display: block;
 
-    // @include tablet {
-    //     position: absolute;
-    //     top: -56px;
-    //     left: -33px;
-    // }
+    @include tabletPlus {
+        max-width: 288px;
+        //max-height: 320px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+}
+
+.modal-ingr-box {
+    @include tabletPlus {
+        position: absolute;
+        top: 105px;
+        left: 320px;
+    }
+}
+
+.modal-instraction-box {
+    @include tabletPlus {
+        position: relative;
+        margin-top: 282px;
+    }
 }
 
 .modal-ingr-desk {
@@ -180,6 +195,13 @@ body.modal-open {
     margin-left: 12px;
 }
 
+.ingredients-list.modal-ingredients-list,
+.modal-desc.ingredient-desc {
+    @include tabletPlus {
+        display: block;
+    }
+}
+
 .modal-learn-more-item,
 .ingredient-list-item {
     list-style-type: "✶";
@@ -209,12 +231,6 @@ body.modal-open {
 //     color: #FCFCFC;
 //     background-color: $main-color2;
 // }
-
-.modal-learn-more-item .modal-learn-more-data,
-.ingredient-list-item .ingredient-list-data {
-    //position: relative;
-    //right: -8px;
-}
 
 .ingredient-link {
     font-family: 'Poppins', sans-serif;
@@ -250,10 +266,13 @@ body.modal-open {
     position: absolute;
     bottom: 40px;
 
-    @include tablet {
-        float: right;
+    @include tabletPlus {
+        position: absolute;
+        bottom: 28px;
+        right: 28px;
     }
 }
+
 .add-item-btn:hover,
 .remove-item-btn:hover {
     color: $accent;
