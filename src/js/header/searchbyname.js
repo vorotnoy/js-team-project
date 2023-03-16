@@ -7,16 +7,13 @@ import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
 import { createCocktailsMarkupByViewportSize} from '../hero/createCocktailsMarkupByViewportSize'
 
-
-const inputForm = document.querySelector('.search-form')
+const { cocktailsList, cocktailsTitle, noCocktails, inputForm } = refs;
 
 inputForm.addEventListener('submit', searchCoctailByName)
-const { cocktailsList, cocktailsTitle, noCocktails } = refs;
-
-
 function searchCoctailByName(evt){
     evt.preventDefault()
     searchByName(evt.currentTarget.elements.searchQuery.value)
+    inputForm.reset()
 }
 
 async function searchByName(name) {
