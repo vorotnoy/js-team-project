@@ -1,51 +1,19 @@
 'use strict'
 // export default updateSize;
-import BASE_URL from "../const"
+import BASE_URL from "../const";
 import axios from "axios";
 import {attachEvents} from "../modallearnmore/modal-learn-more";
-import {renderAddRemoveDrinkButton} from '../favourites';
-import {refs} from '../refs' 
+import {renderAddRemoveDrinkButton, attachFavouriteClickEvents} from '../favourites';
+import {refs} from '../refs'; 
 
-const {favoritesList , loadCocktailsBtn } =refs
-
-if (favoritesList===null || loadCocktailsBtn===null){
-    return
+const refs = {
+    favoritesList: document.querySelector('.fav-cocktails__list')
 }
-const debounce = require('lodash.debounce');
- 
-// export function favCocktailsEvents(){
-//     const refs = {
-//         favoritesList: document.querySelector('.fav-cocktails__list'),
-//         loadCocktailsBtn: document.querySelector('.loadCocktails')
-//     }
-//     refs.favoritesList.addEventListener('click', getCocktailId);
-//     refs.loadCocktailsBtn.addEventListener('click', updateSize)
-// }
-// const favoritesList = document.querySelector('.fav-cocktails__list');
-// const loadCocktailsBtn = document.querySelector('.loadCocktails');
-
-// loadCocktailsBtn added to demonstrate render by click for header menu
-loadCocktailsBtn.addEventListener('click', updateSize);
-favoritesList.addEventListener('click', getCocktailId);
-
-//unfinished
-//function should get element ID and fetch data for modal window
-//currently shows clicked element id
-async function getCocktailId(event){
-    let id;
-    if(event.target.className === 'fav-cocktails__learn-more-btn'){
-        id = event.target.attributes.drinkid.value;
-        console.log('id: ', id);
-        attachEvents();
-    }
-}
-
-//function watch viewport size and load limited for current viewport amount of elements 
-window.addEventListener("resize", debounce(updateSize, 300));
 
 //use function updateSize to render elements on click
-export function updateSize(){
+export function initializeFavourites(){
     let windowWidth = window.innerWidth;
+    console.log(JSON.parse(localStorage.getItem('favorite-cocktail')))
     if(localStorage.length === 0){
         console.log('localStorage is empty');
         return;
@@ -66,18 +34,20 @@ export function updateSize(){
 //markup adds "drinkId" attribute with element id for modal window fetch
 //"start", "end" arguments for pagination
 function favoritesMarkup(start, end){
-    const cocktailsTest = JSON.parse(localStorage.getItem('favorite-cocktail'));
-    let arr = cocktailsTest.slice(start, end);
-    console.log(cocktailsTest);
+    const cocktailsArr = JSON.parse(localStorage.getItem('favorite-cocktail'));
+    let arr = cocktailsArr.slice(start, end);
 
-    favoritesList.innerHTML = arr.map(e=>{
-        return `<li class="fav-cocktails__item">
-                    <img src="${e.img}" class="fav-cocktails__img" alt=${e.name} cocktail>
-                    <h3 class="fav-cocktails__item-title">${e.name}</h3>
-                    <div class="fav-cocktails__buttons">
-                        <button type="button" class="fav-cocktails__learn-more-btn" drinkId=${e.id}>Learn more</button>
-                        ${renderAddRemoveDrinkButton(e.name, e.img)}
-                    </div>
-                </li>`;
-    }).join(''); 
+    refs.favoritesList.innerHTML = arr.map(e => 
+        `<li class="fav-cocktails__item">
+            <img src="${e.img}" class="fav-cocktails__img" alt=${e.name} cocktail>
+            <h3 class="fav-cocktails__item-title">${e.name}</h3>
+            <div class="fav-cocktails__buttons">
+                <button type="button" class="learnMore" data-id="${e.id}" data-modal-open>Learn more</button>
+                ${renderAddRemoveDrinkButton(e.id, e.name, e.img)}
+            </div>
+        </li>`
+    ).join(''); 
+
+    attachFavouriteClickEvents();
+    attachEvents();
 }
