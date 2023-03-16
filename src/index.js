@@ -18,4 +18,21 @@ import {getCocktailId, updateSize} from './js/favorite-cocktails/favorite'
 
 import{searchCoctailByName} from './js/header/searchbyname'
 
-returnCocktails();
+import { initializeFavourites } from "./js/favorite-cocktails/favorite"
+
+const debounce = require('lodash.debounce');
+
+if (window.location.pathname === "/") {
+    returnCocktails();
+    const { cocktailsList, selectBtn, alphabet } = refs;
+
+    //cocktailsList.addEventListener('click', favouritesClickEvent);
+
+    selectBtn.addEventListener('click', onSelectBtnClick);
+    alphabet.addEventListener('click', onAlphabetBtnClick);
+} else if (window.location.pathname === "/cocktails.html") {
+    //function watch viewport size and load limited for current viewport amount of elements 
+    window.addEventListener("resize", debounce(initializeFavourites, 300));
+
+    initializeFavourites();
+}
