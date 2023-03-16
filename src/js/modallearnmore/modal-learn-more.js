@@ -1,4 +1,3 @@
-import '../../sass/index.css';
 import axios from 'axios';
 import {attachIngredientEvents} from './modal-learn-more-ingredient'
 import {addDrink, removeDrink, getDrink} from '../favourites'
