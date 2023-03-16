@@ -1,23 +1,23 @@
-
-import { getRandomCocktail } from "./js/mainblock/renderCocktails";
-import { onSelectBtnClick } from   "./js/hero/onClickFunctions";
-import { onAlphabetBtnClick } from "./js/hero/onClickFunctions";
 import { refs } from "./js/refs";
-import { pourCocktails } from "./js/mainblock/mainblock";
-import { viewportWidthCheck } from "./js/mainblock/mainblock";
-import { accumulateCocktails } from "./js/mainblock/mainblock";
+import { onClickDropdownOn } from './js/header/dropdown';
+import {checkBtn} from './js/header/checkbox';
 import { VIEWPORT_SIZES } from "./js/const";
 
+import { returnCocktails, viewportWidthCheck, accumulateCocktails,  pourCocktails} from "./js/mainblock/mainblock";
 
-pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
+import { toggleFavorites } from "./js/mainblock/toggleFavoriteCocktail";
+import { getRandomCocktail } from "./js/mainblock/renderCocktails";
 
-import {checkBtn} from './js/header/checkbox'
-import {onClickDropdownOn} from './js/header/dropdown'
+import { onSelectBtnClick, onAlphabetBtnClick } from   "./js/hero/onClickFunctions";
 
-const { selectBtn, alphabet } = refs;
+returnCocktails();
+const { cocktailsList, selectBtn, alphabet } = refs;
+
+cocktailsList.addEventListener('click', toggleFavorites);
+
+// pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
+
 
 selectBtn.addEventListener('click', onSelectBtnClick);
 alphabet.addEventListener('click', onAlphabetBtnClick);
-
-
 

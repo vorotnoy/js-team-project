@@ -10,7 +10,7 @@ export function attachEvents() {
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
     };
-    for (button of refs.openModalBtn) {
+    for (let button of refs.openModalBtn) {
         button.addEventListener('click', toggleModal);
     }
     refs.closeModalBtn.addEventListener('click', toggleModal);
@@ -19,7 +19,7 @@ export function attachEvents() {
         refs.modal.classList.toggle('is-hidden');
     }
     let learnMoreEL = document.querySelectorAll(`.learnMore`);
-    for (button of learnMoreEL) {
+    for (let button of learnMoreEL) {
         button.addEventListener(`click`, onLearnMore);
     } 
 };
