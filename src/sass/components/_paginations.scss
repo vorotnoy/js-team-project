@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 60px;
     padding-top: 24px;
 
     @include tabletPlus{
@@ -72,7 +71,7 @@
         &:hover,
         &:focus{
             background-color: $main-button;
-            color: #FDFDFD;;
+            color: #FDFDFD;
         }
     }
 }
@@ -117,4 +116,13 @@
     @include desktop {
         margin-left: 198px;
     }
+}
+
+.is-hiden{
+    display: none;
+}
+
+.active{
+    background-color: $main-button;
+    color: #FDFDFD;
 }
