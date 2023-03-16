@@ -7,13 +7,18 @@ body.modal-open {
     width: 100%;
     height: 100%;
     top: 0;
-    background-color: $main-color2;
-    opacity: 0, 5;
+    background-color: rgba($color: $main-color2, $alpha: 0.5);
+    opacity: 1;
     z-index: 10;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-        visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow: scroll;
     padding-top: 16px;
+}
+hr {
+    display: none;
+    @include tabletPlus {
+        display: block;
+        border: 1px solid $accent;
+    }
 }
 
 .modal-learn-more-container,
@@ -25,6 +30,8 @@ body.modal-open {
     padding-top: 40px;
     padding-bottom: 40px;
     position: relative;
+    opacity: 1;
+    z-index: 20;
 
     @include tabletPlus {
         max-width: 822px;
