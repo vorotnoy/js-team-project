@@ -31,7 +31,7 @@ export function getCocktailMarkup({ data }) {
                 <div class="cocktail-card-btn-wrapper">
 
                     <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
-                    ${renderAddRemoveDrinkButton(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb)}
+                    ${renderAddRemoveDrinkButton(data.drinks[0].idDrink, data.drinks[0].strDrink, data.drinks[0].strDrinkThumb)}
             </div>
         </li>
     `;

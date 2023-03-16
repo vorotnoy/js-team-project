@@ -22,7 +22,7 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
                     //</svg>
                    // </button>
 
-                    ${renderAddRemoveDrinkButton(data.strDrink, data.strDrinkThumb)}
+                    ${renderAddRemoveDrinkButton(data.idDrink, data.strDrink, data.strDrinkThumb)}
 
             </div>
         </li>
@@ -41,7 +41,7 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
                 </a>
                     <p class="cocktail-label">${data.drinks[i].strDrink}</p>
                     <button class="learnMore" data-id="${data.drinks[i].idDrink}" data-modal-open>Learn more</button>
-                    ${renderAddRemoveDrinkButton(data.drinks[i].strDrink, data.drinks[i].strDrinkThumb)}
+                    ${renderAddRemoveDrinkButton(data.drinks[i].idDrink, data.drinks[i].strDrink, data.drinks[i].strDrinkThumb)}
             </div>
         </li>
     `;
