@@ -1,5 +1,5 @@
 <header class="section__header">
-  <div class="container header__container">
+  <div class="header__container">
     <a class="header__logo" href="./index.html">
       <img
         src="./images/img/logo-1x-min.png"
@@ -7,7 +7,7 @@
         class="logo__image"
       />
     </a>
-    <nav class="nav-menu">
+    <nav class="nav-menu desc">
       <ul class="nav-menu__items list menu-dropdown">
         <li class="nav-menu__item">
           <a class="nav-menu__link js-changeclrwh" href="./index.html">Home</a>
@@ -29,27 +29,97 @@
         </li>
       </ul>
     </nav>
-    <form class="search-form">
+    <form class="search__form desc">
       <input
         placeholder="Search"
         name="searchQuery"
         class="form__input js-changebgrclr"
         type="text"
       />
-      <svg class="svg-icon__search" width="18px" height="18px">
-        <use href="./images/svg/symbol-defs.svg#search"></use>
-      </svg>
-      <!-- <button class="" type="submit">
-        
-      </button> -->
+      <button class="search__btn" type="submit">
+        <svg class="svg-icon__search" width="18px" height="18px">
+          <use href="./images/svg/symbol-defs.svg#search"></use>
+        </svg>
+      </button>
     </form>
-    <div class="change-color__block">
+    <div class="change-color__block desc">
       <span class="header__light js-changeclrwh">Light</span>
       <label class="switch">
         <input class="switch__input" id="js-checkbox" type="checkbox" />
         <span class="slider__round"></span>
       </label>
       <span class="header__dark js-changeclror">Dark</span>
+    </div>
+    <button
+      class="menu-mobile js-open-menu"
+      type="button"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <svg class="burger__img" width="30" height="16">
+        <use href="./images/svg/symbol-defs.svg#burger-menu"></use>
+      </svg>
+    </button>
+
+    <div class="mob-menu__container js-menu-container" id="mobile-menu">
+      <div class="buttons__wrapper">
+        <button class="menu-mobile js-close-menu" type="button">
+          <svg class="burger__img" width="32" height="32">
+            <use href="./images/svg/symbol-defs.svg#close-modal"></use>
+          </svg>
+        </button>
+        <div class="change-color__block">
+          <span class="header__light">Light</span>
+          <label class="switch">
+            <input class="switch__input" id="js-checkbox" type="checkbox" />
+            <span class="slider__round"></span>
+          </label>
+          <span class="header__dark changeColorWh">Dark</span>
+        </div>
+        <a class="header__logo-tab" href="#">
+          <img
+            src="./images/img/logo-1x-min.png"
+            alt="cocktails logo"
+            class="logo__image"
+          />
+        </a>
+      </div>
+      <form class="search__form mob">
+        <input
+          placeholder="Search"
+          name="input"
+          class="form__input"
+          type="text"
+        />
+
+        <button class="search__btn" type="submit">
+          <svg class="svg-icon__search" width="18px" height="18px">
+            <use href="./images/svg/symbol-defs.svg#search"></use>
+          </svg>
+        </button>
+      </form>
+      <nav class="nav-menu">
+        <ul class="nav-menu__items list menu-dropdown">
+          <li class="nav-menu__item">
+            <a class="nav-menu__link js-change-color" href="/">Home</a>
+          </li>
+          <li class="nav-menu__item dropbtn">
+            <a class="nav-menu__link js-change-color">Favorite</a>
+          </li>
+        </ul>
+        <ul class="dropdown-menu list js-dropdown-menu">
+          <li class="dropdown-menu__item">
+            <a class="dropdown-menu__link" href="./cocktails.html"
+              >Favorite cocktails</a
+            >
+          </li>
+          <li class="dropdown-menu__item">
+            <a class="dropdown-menu__link" href="./ingredients.html"
+              >Favorite ingredients</a
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>

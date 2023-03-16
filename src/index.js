@@ -5,10 +5,14 @@ import { VIEWPORT_SIZES } from "./js/const";
 import { returnCocktails, viewportWidthCheck, accumulateCocktails,  pourCocktails} from "./js/mainblock/mainblock";
 import { favouritesClickEvent } from "./js/favourites";
 import { getRandomCocktail } from "./js/mainblock/renderCocktails";
+
+import { toggleMenu } from "./js/hero/header/mobile-menu";
+
 import { onSelectBtnClick, onAlphabetBtnClick } from   "./js/hero/onClickFunctions";
 import {searchCocktail} from './js/header/searchbyname'
 
 import {getCocktailId, updateSize} from './js/favorite-cocktails/favorite'
+
 
 //import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
 // const { cocktailsList, selectBtn, alphabet, inputForm } = refs;
@@ -24,7 +28,7 @@ const debounce = require('lodash.debounce');
 
 if (window.location.pathname === "/") {
     returnCocktails();
-    const { cocktailsList, selectBtn, alphabet } = refs;
+    const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn  } = refs;
 
     //cocktailsList.addEventListener('click', favouritesClickEvent);
 
@@ -34,5 +38,10 @@ if (window.location.pathname === "/") {
     //function watch viewport size and load limited for current viewport amount of elements 
     window.addEventListener("resize", debounce(initializeFavourites, 300));
 
+
+openMenuBtn.addEventListener('click', toggleMenu);
+closeMenuBtn.addEventListener('click', toggleMenu);
+
     initializeFavourites();
 }
+
