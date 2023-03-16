@@ -3,7 +3,7 @@
 import BASE_URL from "../const"
 import axios from "axios";
 import {attachEvents} from "../modallearnmore/modal-learn-more";
-import {renderAddRemoveDrinkButton} from '../favourites';
+import {renderAddRemoveDrinkButton, removeDrink} from '../favourites';
 const debounce = require('lodash.debounce');
  
 export function favCocktailsEvents(){
@@ -27,10 +27,16 @@ favoritesList.addEventListener('click', getCocktailId);
 //currently shows clicked element id
 async function getCocktailId(event){
     let id;
-    if(event.target.className === 'fav-cocktails__learn-more-btn'){
-        id = event.target.attributes.drinkid.value;
-        console.log('id: ', id);
+    if(event.target.className === 'learnMore fav-cocktails__learn-more-btn'){
+        id = event.target.dataset.id;
+        console.log(id); 
+        // console.log(event); 
+        // console.log(id); 
         attachEvents();
+    } 
+    if(event.target.className === "favourite removeFrom"){
+        console.log('removeDrink invoked');
+        removeDrink(id);
     }
 }
 
@@ -69,8 +75,8 @@ function favoritesMarkup(start, end){
                     <img src="${e.img}" class="fav-cocktails__img" alt=${e.name} cocktail>
                     <h3 class="fav-cocktails__item-title">${e.name}</h3>
                     <div class="fav-cocktails__buttons">
-                        <button type="button" class="fav-cocktails__learn-more-btn" drinkId=${e.id}>Learn more</button>
-                        ${renderAddRemoveDrinkButton(e.name, e.img)}
+                        <button type="button" class="learnMore fav-cocktails__learn-more-btn" data-modal-open data-id=${e.id}>Learn more</button>
+                        ${renderAddRemoveDrinkButton(e.id, e.name, e.img)}
                     </div>
                 </li>`;
     }).join(''); 
