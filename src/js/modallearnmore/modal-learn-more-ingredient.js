@@ -14,7 +14,7 @@ export function attachIngredientEvents() {
     for (button of refs.openModalBtn) {
         button.addEventListener('click', toggleModal);
     }
-    refs.closeModalBtn.addEventListener('click', toggleModal);
+    refs.closeModalBtn.onclick = toggleModal;
     function toggleModal() {
         document.body.classList.toggle('modal-open');
         refs.modal.classList.toggle('is-hidden');
