@@ -16,4 +16,13 @@ export const refs = {
   clrgr: document.querySelectorAll('.js-changeclrgr'),
   bgclr: document.querySelector('.js-changebgrclr'),
   inputForm: document.querySelector('.search-form'),
+
+  favoritesList: document.querySelector('.fav-cocktails__list'),
+  loadCocktailsBtn: document.querySelector('.loadCocktails'),
+
+  openModalBtn: document.querySelectorAll('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal]'),
+
+  galleryEl: document.querySelector(`.gallery`),
 };
