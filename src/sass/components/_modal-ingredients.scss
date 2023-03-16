@@ -31,7 +31,7 @@ body.modal-open {
     padding-bottom: 40px;
     position: relative;
 
-    @include tablet {
+    @include tabletPlus {
         max-width: 822px;
     }
 }

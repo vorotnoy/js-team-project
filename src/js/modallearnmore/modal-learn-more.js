@@ -73,7 +73,6 @@ async function onLearnMore(event) {
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
-    debugger;
     let exists = getDrink(data[0].idDrink);
     
     const result = data.map(drink =>
