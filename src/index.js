@@ -8,6 +8,8 @@ import { getRandomCocktail } from "./js/mainblock/renderCocktails";
 import { onSelectBtnClick, onAlphabetBtnClick } from   "./js/hero/onClickFunctions";
 import {searchCocktail} from './js/header/searchbyname'
 
+import {getCocktailId, updateSize} from './js/favorite-cocktails/favorite'
+
 //import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
 // const { cocktailsList, selectBtn, alphabet, inputForm } = refs;
 //cocktailsList.addEventListener('click', favouritesClickEvent);
