@@ -79,7 +79,7 @@ export function displayMoreInfo(data) {
         `<h2 class="modal-header">${drink.strDrink}</h2>
         <div class="modal-layout-flex">
             <div class="modal-instraction-box">
-                <h3 class="modal-sub-header">Instractions: </h3>
+                <h3 class="modal-sub-header">Instructions: </h3>
                 <p class="modal-desc">${drink.strInstructions}</p>
             </div>
             <div class="modal-layout-box">
