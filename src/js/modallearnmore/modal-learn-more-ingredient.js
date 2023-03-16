@@ -1,4 +1,3 @@
-import '../../sass/index.css';
 import {addIngredient, removeIngredient, getIngredient} from '../favourites'
 import axios from 'axios';
 
