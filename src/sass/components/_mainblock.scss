@@ -157,7 +157,8 @@
 .learnMore:hover,
 .learnMore:focus {
   // opacity: 0.5;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .addTo {
@@ -198,94 +199,94 @@
   transform: scale(1.03);
 }
 
-  .no-cocktails__wrapper {
-    display: flex;
-    gap: 60px;
-    flex-direction: column;
-    align-items: center;
+.no-cocktails__wrapper {
+  display: flex;
+  gap: 60px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-cocktails__text {
+  width: 280px;
+  text-align: center;
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+
+  @include tablet {
+    width: 331px;
+    font-family: Roboto;
+    font-size: 32px;
+    line-height: 1.31;
   }
 
-  .no-cocktails__text {
-    width: 280px;
-    text-align: center;
-    font-family: Poppins;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 1.91;
-
-    @include tablet {
-      width: 331px;
-      font-family: Roboto;
-      font-size: 32px;
-      line-height: 1.31;
-    }
-
-    @include tabletPlus {
-      font-weight: 700;
-    }
-
-    @include desktop {
-      width: 493px;
-      font-size: 48px;
-      line-height: 1.5;
-    }
+  @include tabletPlus {
+    font-weight: 700;
   }
 
-  .removeFrom {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0;
-    width: 110px;
-    height: 39px;
-    border: 1px solid $accent;
-    border-radius: 4px;
-    background-color: inherit;
-
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.71;
-    letter-spacing: 0.02em;
-    color: $accent;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    @media screen and (min-width: 768px) {
-      width: 123px;
-      height: 48px;
-
-      font-size: 20px;
-    }
-    @media screen and (min-width: 1280px) {
-      width: 141px;
-      height: 48px;
-
-      font-size: 20px;
-    }
+  @include desktop {
+    width: 493px;
+    font-size: 48px;
+    line-height: 1.5;
   }
+}
+
+.removeFrom {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  width: 110px;
+  height: 39px;
+  border: 1px solid $accent;
+  border-radius: 4px;
+  background-color: inherit;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.02em;
+  color: $accent;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (min-width: 768px) {
+    width: 123px;
+    height: 48px;
+
+    font-size: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 141px;
+    height: 48px;
+
+    font-size: 20px;
+  }
+}
 
 .removeFrom:hover,
 .removeFrom:focus {
   transform: scale(1.03);
 }
 
-  .icon-heart {
-    width: 19px;
-    height: 17px;
-    --color1: #fd5103;
-    @media screen and (min-width: 768px) {
-      width: 21px;
-      height: 19px;
-    }
+.icon-heart {
+  width: 19px;
+  height: 17px;
+  --color1: #fd5103;
+  @media screen and (min-width: 768px) {
+    width: 21px;
+    height: 19px;
   }
-  .icon-heart-selected {
-    width: 15px;
-    height: 15px;
-    --color1: #fd5103;
-    --color2: #fd5103;
+}
+.icon-heart-selected {
+  width: 15px;
+  height: 15px;
+  --color1: #fd5103;
+  --color2: #fd5103;
 
-    @media screen and (min-width: 768px) {
-      width: 21px;
-      height: 19px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 21px;
+    height: 19px;
   }
+}

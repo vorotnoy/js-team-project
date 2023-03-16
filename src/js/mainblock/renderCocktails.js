@@ -16,8 +16,8 @@ export function getRandomCocktail() {
 }
 // ----------------------------------renderCocktails--------------------------------- //
 export function renderCocktails(markup) {
-  if (!cocktailsList){
-    return
+  if (!cocktailsList) {
+    return;
   }
   cocktailsList.insertAdjacentHTML('beforeend', markup);
 }
@@ -28,14 +28,24 @@ export function getCocktailMarkup({ data }) {
         <li class="cocktail-item">
             <div class="cocktail-card">
                 <a class="cocktail-link" href="#">
-                    <img class="cocktail-picture" src="${data.drinks[0].strDrinkThumb}" alt="${data.drinks[0].strDrink}">
+                    <img class="cocktail-picture" src="${
+                      data.drinks[0].strDrinkThumb
+                    }" alt="${data.drinks[0].strDrink}">
                 </a>
 
-                <p class="cocktail-label js-changeclrwh" data-cocktail="${data.drinks[0].strDrink}">${data.drinks[0].strDrink}</p>
+                <p class="cocktail-label js-changeclrwh" data-cocktail="${
+                  data.drinks[0].strDrink
+                }">${data.drinks[0].strDrink}</p>
                 <div class="cocktail-card-btn-wrapper">
 
-                    <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
-                    ${renderAddRemoveDrinkButton(data.drinks[0].idDrink, data.drinks[0].strDrink, data.drinks[0].strDrinkThumb)}
+                    <button class="learnMore" data-id="${
+                      data.drinks[0].idDrink
+                    }" data-modal-open>Learn more</button>
+                    ${renderAddRemoveDrinkButton(
+                      data.drinks[0].idDrink,
+                      data.drinks[0].strDrink,
+                      data.drinks[0].strDrinkThumb
+                    )}
             </div>
         </li>
     `;
