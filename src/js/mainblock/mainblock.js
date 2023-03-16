@@ -3,7 +3,7 @@ import {
   renderCocktails,
   getCocktailMarkup,
 } from './renderCocktails';
-import { attachEvents } from '../modallearnmore/modal-lern-more';
+import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { VIEWPORT_SIZES } from '../const';
 
 export function viewportWidthCheck({ tablet, desktop }) {
