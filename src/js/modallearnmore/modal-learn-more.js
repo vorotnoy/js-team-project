@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {attachIngredientEvents} from './modal-learn-more-ingredient'
+import {attachIngredientEvents, onBackdrop} from './modal-learn-more-ingredient'
 import {addDrink, removeDrink, getDrink} from '../favourites'
 
 const galleryEl = document.querySelector(`.gallery`);
@@ -10,18 +10,27 @@ export function attachEvents() {
     openModalBtn: document.querySelectorAll('[data-modal-open]'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
+    modalContainer: document.querySelector('[data-modal] .container')
     };
     for (let button of refs.openModalBtn) {
         button.addEventListener('click', toggleModal);
     }
     refs.closeModalBtn.onclick = toggleModal;
-    function toggleModal() {
+    refs.modal.onclick = toggleModal;
+    
+    function toggleModal(event) {
+        event.stopPropagation();
+        if (refs.modalContainer.contains(event.target) && !refs.closeModalBtn.contains(event.target))
+        {
+            return;
+        }
+        
         document.body.classList.toggle('modal-open');
         refs.modal.classList.toggle('is-hidden');
     }
     let learnMoreEL = document.querySelectorAll(`.learnMore`);
     for (let button of learnMoreEL) {
-        button.addEventListener(`click`, onLearnMore);
+        button.addEventListener('click', onLearnMore);
     } 
 };
 
