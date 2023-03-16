@@ -40,6 +40,7 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
                     }" alt="${data.drinks[i].strDrink}">
                 </a>
                     <p class="cocktail-label">${data.drinks[i].strDrink}</p>
+
                     <div class="cocktail-card-btn-wrapper">
                     <button class="learnMore" data-id="${
                       data.drinks[i].idDrink
@@ -49,6 +50,7 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
                       data.drinks[i].strDrinkThumb
                     )}
             </div>
+
             </div>
         </li>
     `;

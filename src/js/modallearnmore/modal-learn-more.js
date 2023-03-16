@@ -1,4 +1,3 @@
-import '../../sass/index.css';
 import axios from 'axios';
 import {attachIngredientEvents} from './modal-learn-more-ingredient'
 import {addDrink, removeDrink, getDrink} from '../favourites'
@@ -74,7 +73,8 @@ async function onLearnMore(event) {
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
-    let exists = getDrink(data[0].strDrink);
+    debugger;
+    let exists = getDrink(data[0].idDrink);
     
     const result = data.map(drink =>
         `<h2 class="modal-header">${drink.strDrink}</h2>
@@ -93,8 +93,8 @@ export function displayMoreInfo(data) {
                 </div>
             </div>
         </div>
-        <button type="submit" class="add-item-btn${exists ? " is-hidden" : ""}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Add to favorite</button>
-        <button type="submit" class="remove-item-btn${!exists ? " is-hidden" : ""}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Remove from favorite</button>
+        <button type="submit" class="add-item-btn${exists ? " is-hidden" : ""}" data-id="${drink.idDrink}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Add to favorite</button>
+        <button type="submit" class="remove-item-btn${!exists ? " is-hidden" : ""}" data-id="${drink.idDrink}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Remove from favorite</button>
         `
     ).join('');
 
@@ -109,7 +109,7 @@ export function displayMoreInfo(data) {
 // ---------Add to favorite кнопка додае картинку та назву коктелю до Local storage-------
     function onAddBtn(event) {
         try {
-            addDrink(event.target.dataset.name, event.target.dataset.img);
+            addDrink(event.target.dataset.id, event.target.dataset.name, event.target.dataset.img);
             addBtnEl.classList.add(`is-hidden`);
             removeBtnEl.classList.remove(`is-hidden`);
         } catch (error) {
@@ -120,7 +120,7 @@ export function displayMoreInfo(data) {
 //------Remove from favorite кнопка видаляе елемент з Local storage-------
     function onRemoveBtn(event) {
         try {
-            removeDrink(event.target.dataset.name, event.target.dataset.img);
+            removeDrink(event.target.dataset.id);
             removeBtnEl.classList.add(`is-hidden`);
             addBtnEl.classList.remove(`is-hidden`);
         } catch (error) {
