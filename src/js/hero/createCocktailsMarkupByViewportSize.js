@@ -58,7 +58,3 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
 
   return cocktailsMarkup;
 }
-{
-  /* <button class="learnMore" >Learn more</button>
-<button class="addTo">Add to</button> */
-}
