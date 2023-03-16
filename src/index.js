@@ -10,7 +10,7 @@ import { getRandomCocktail } from "./js/mainblock/renderCocktails";
 
 import { onSelectBtnClick, onAlphabetBtnClick } from   "./js/hero/onClickFunctions";
 
-import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
+//import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
 
 returnCocktails();
 const { cocktailsList, selectBtn, alphabet } = refs;
