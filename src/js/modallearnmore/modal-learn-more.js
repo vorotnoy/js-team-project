@@ -40,6 +40,7 @@ async function fetchData(id) {
 async function onLearnMore(event) {
     event.preventDefault();
     galleryEl.innerHTML = '';
+    
     try {
         const returnedData = await fetchData(event.target.dataset.id);
         displayMoreInfo(returnedData.drinks);
