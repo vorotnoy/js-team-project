@@ -4,19 +4,25 @@ import BASE_URL from "../const"
 import axios from "axios";
 import {attachEvents} from "../modallearnmore/modal-learn-more";
 import {renderAddRemoveDrinkButton} from '../favourites';
+import {refs} from '../refs' 
+
+const {favoritesList , loadCocktailsBtn } =refs
+
+if (favoritesList===null || loadCocktailsBtn===null){
+    return
+}
 const debounce = require('lodash.debounce');
  
-export function favCocktailsEvents(){
-    const refs = {
-        favoritesList: document.querySelector('.fav-cocktails__list'),
-        loadCocktailsBtn: document.querySelector('.loadCocktails')
-    }
-    refs.favoritesList.addEventListener('click', getCocktailId);
-    refs.loadCocktailsBtn.addEventListener('click', updateSize)
-}
-
-const favoritesList = document.querySelector('.fav-cocktails__list');
-const loadCocktailsBtn = document.querySelector('.loadCocktails');
+// export function favCocktailsEvents(){
+//     const refs = {
+//         favoritesList: document.querySelector('.fav-cocktails__list'),
+//         loadCocktailsBtn: document.querySelector('.loadCocktails')
+//     }
+//     refs.favoritesList.addEventListener('click', getCocktailId);
+//     refs.loadCocktailsBtn.addEventListener('click', updateSize)
+// }
+// const favoritesList = document.querySelector('.fav-cocktails__list');
+// const loadCocktailsBtn = document.querySelector('.loadCocktails');
 
 // loadCocktailsBtn added to demonstrate render by click for header menu
 loadCocktailsBtn.addEventListener('click', updateSize);

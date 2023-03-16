@@ -5,6 +5,7 @@ import axios from 'axios';
 import { renderAddRemoveDrinkButton } from '../favourites';
 
 const { cocktailsList } = refs;
+
 // ----------------------------------GETRANDOMCOCKTAIL--------------------------------- //
 export function getRandomCocktail() {
   return new Promise(resolve => {
@@ -15,6 +16,9 @@ export function getRandomCocktail() {
 }
 // ----------------------------------renderCocktails--------------------------------- //
 export function renderCocktails(markup) {
+  if (!cocktailsList){
+    return
+  }
   cocktailsList.insertAdjacentHTML('beforeend', markup);
 }
 // ----------------------------------GETCOCKTAILMARKUP--------------------------------- //
