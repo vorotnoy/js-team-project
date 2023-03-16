@@ -2,7 +2,8 @@
 // export default updateSize;
 import BASE_URL from "../const"
 import axios from "axios";
-// import attachEvents from "../modallearnmore/modal-lern-more"
+import {attachEvents} from "../modallearnmore/modal-learn-more";
+import {renderAddRemoveDrinkButton} from '../favourites';
 const debounce = require('lodash.debounce');
  
 export function favCocktailsEvents(){
@@ -29,6 +30,7 @@ async function getCocktailId(event){
     if(event.target.className === 'fav-cocktails__learn-more-btn'){
         id = event.target.attributes.drinkid.value;
         console.log('id: ', id);
+        attachEvents();
     }
 }
 
@@ -68,7 +70,7 @@ function favoritesMarkup(start, end){
                     <h3 class="fav-cocktails__item-title">${e.name}</h3>
                     <div class="fav-cocktails__buttons">
                         <button type="button" class="fav-cocktails__learn-more-btn" drinkId=${e.id}>Learn more</button>
-                        <button type="button" class="fav-cocktails__remove-btn">Remove</button>
+                        ${renderAddRemoveDrinkButton(e.name, e.img)}
                     </div>
                 </li>`;
     }).join(''); 
