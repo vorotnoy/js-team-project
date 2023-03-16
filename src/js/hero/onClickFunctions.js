@@ -1,7 +1,7 @@
 import { refs } from '../refs';
 import { searchCocktailsByFirstLetter } from './searchCocktailsByFirstLetter';
 
-const { selectBtn, selectMenu } = refs;
+const { selectBtn, selectMenu, alphabet } = refs;
 
 export function onSelectBtnClick() {
   selectMenu.classList.add('select__list-open');
@@ -11,7 +11,7 @@ export function onSelectBtnClick() {
 function onSelectDropdownMenuClick(event) {
   selectBtn.firstElementChild.textContent = event.target.textContent;
 
-   selectMenu.classList.remove('select__list-open');
+  selectMenu.classList.remove('select__list-open');
   selectBtn.classList.add('active');
   selectBtn.lastElementChild.classList.add('active');
 
@@ -21,3 +21,7 @@ function onSelectDropdownMenuClick(event) {
 export function onAlphabetBtnClick(event) {
   searchCocktailsByFirstLetter(event.target.textContent);
 }
+
+if (selectBtn !==null){
+selectBtn.addEventListener('click', onSelectBtnClick);
+alphabet.addEventListener('click', onAlphabetBtnClick);}

@@ -6,15 +6,24 @@ const contentEl = document.querySelector(`.content`);
 // -----Відкриття та закриття модалки-------
 export function attachIngredientEvents() {
     const refs = {
-    openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
-    closeModalBtn: document.querySelector('[data-modal-close-2]'),
-    modal: document.querySelector('[data-modal-2]'),
+        openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
+        closeModalBtn: document.querySelector('[data-modal-close-2]'),
+        modal: document.querySelector('[data-modal-2]'),
+        modalContainer: document.querySelector('[data-modal-2] .container')
     };
     for (button of refs.openModalBtn) {
         button.addEventListener('click', toggleModal);
     }
     refs.closeModalBtn.onclick = toggleModal;
-    function toggleModal() {
+    refs.modal.onclick = toggleModal;
+    
+    function toggleModal(event) {
+        event.stopPropagation();
+        if (refs.modalContainer.contains(event.target) && !refs.closeModalBtn.contains(event.target))
+        {
+            return;
+        }
+        
         document.body.classList.toggle('modal-open');
         refs.modal.classList.toggle('is-hidden');
     }
@@ -46,7 +55,7 @@ async function onIngredient(event) {
         function checkType(ingredient) {
             let type = '';
             if (ingredient.strType != null) {
-                type +=`<h3 class="modal-sub-header ingredient-sub-header">${ingredient.strType}</h3>`
+                type += `<h3 class="modal-sub-header ingredient-sub-header">${ingredient.strType}<hr /></h3>`
             }
             return type;
         }
@@ -116,3 +125,4 @@ export function displayMoreInfo(data) {
         };
     };
 };
+

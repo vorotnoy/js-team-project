@@ -5,6 +5,7 @@ import axios from 'axios';
 import { renderAddRemoveDrinkButton } from '../favourites';
 
 const { cocktailsList } = refs;
+
 // ----------------------------------GETRANDOMCOCKTAIL--------------------------------- //
 export function getRandomCocktail() {
   return new Promise(resolve => {
@@ -15,6 +16,9 @@ export function getRandomCocktail() {
 }
 // ----------------------------------renderCocktails--------------------------------- //
 export function renderCocktails(markup) {
+  if (!cocktailsList){
+    return
+  }
   cocktailsList.insertAdjacentHTML('beforeend', markup);
 }
 // ----------------------------------GETCOCKTAILMARKUP--------------------------------- //
@@ -27,11 +31,11 @@ export function getCocktailMarkup({ data }) {
                     <img class="cocktail-picture" src="${data.drinks[0].strDrinkThumb}" alt="${data.drinks[0].strDrink}">
                 </a>
 
-                <p class="cocktail-label" data-cocktail="${data.drinks[0].strDrink}">${data.drinks[0].strDrink}</p>
+                <p class="cocktail-label js-changeclrwh" data-cocktail="${data.drinks[0].strDrink}">${data.drinks[0].strDrink}</p>
                 <div class="cocktail-card-btn-wrapper">
 
                     <button class="learnMore" data-id="${data.drinks[0].idDrink}" data-modal-open>Learn more</button>
-                    ${renderAddRemoveDrinkButton(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb)}
+                    ${renderAddRemoveDrinkButton(data.drinks[0].idDrink, data.drinks[0].strDrink, data.drinks[0].strDrinkThumb)}
             </div>
         </li>
     `;

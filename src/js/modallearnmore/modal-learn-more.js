@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {attachIngredientEvents} from './modal-learn-more-ingredient'
+import {attachIngredientEvents, onBackdrop} from './modal-learn-more-ingredient'
 import {addDrink, removeDrink, getDrink} from '../favourites'
 
 const galleryEl = document.querySelector(`.gallery`);
@@ -10,18 +10,27 @@ export function attachEvents() {
     openModalBtn: document.querySelectorAll('[data-modal-open]'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
+    modalContainer: document.querySelector('[data-modal] .container')
     };
     for (let button of refs.openModalBtn) {
         button.addEventListener('click', toggleModal);
     }
     refs.closeModalBtn.onclick = toggleModal;
-    function toggleModal() {
+    refs.modal.onclick = toggleModal;
+    
+    function toggleModal(event) {
+        event.stopPropagation();
+        if (refs.modalContainer.contains(event.target) && !refs.closeModalBtn.contains(event.target))
+        {
+            return;
+        }
+        
         document.body.classList.toggle('modal-open');
         refs.modal.classList.toggle('is-hidden');
     }
     let learnMoreEL = document.querySelectorAll(`.learnMore`);
     for (let button of learnMoreEL) {
-        button.addEventListener(`click`, onLearnMore);
+        button.addEventListener('click', onLearnMore);
     } 
 };
 
@@ -53,7 +62,7 @@ async function onLearnMore(event) {
                     list += `<li class="modal-learn-more-item">
                     <span class="modal-learn-more-data">
                     ${(drink[measureProperty] != null ? drink[measureProperty] : "")}` + ' ' + `
-                    <a href="#" class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
+                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
                     ${drink[ingredientProperty]}
                     </a>
                     </span>
@@ -73,13 +82,13 @@ async function onLearnMore(event) {
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
-    let exists = getDrink(data[0].strDrink);
+    let exists = getDrink(data[0].idDrink);
     
     const result = data.map(drink =>
         `<h2 class="modal-header">${drink.strDrink}</h2>
         <div class="modal-layout-flex">
             <div class="modal-instraction-box">
-                <h3 class="modal-sub-header">Instractions: </h3>
+                <h3 class="modal-sub-header">Instructions: </h3>
                 <p class="modal-desc">${drink.strInstructions}</p>
             </div>
             <div class="modal-layout-box">
@@ -92,8 +101,8 @@ export function displayMoreInfo(data) {
                 </div>
             </div>
         </div>
-        <button type="submit" class="add-item-btn${exists ? " is-hidden" : ""}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Add to favorite</button>
-        <button type="submit" class="remove-item-btn${!exists ? " is-hidden" : ""}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Remove from favorite</button>
+        <button type="submit" class="add-item-btn${exists ? " is-hidden" : ""}" data-id="${drink.idDrink}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Add to favorite</button>
+        <button type="submit" class="remove-item-btn${!exists ? " is-hidden" : ""}" data-id="${drink.idDrink}" data-name="${drink.strDrink}" data-img="${drink.strDrinkThumb}">Remove from favorite</button>
         `
     ).join('');
 
@@ -108,7 +117,7 @@ export function displayMoreInfo(data) {
 // ---------Add to favorite кнопка додае картинку та назву коктелю до Local storage-------
     function onAddBtn(event) {
         try {
-            addDrink(event.target.dataset.name, event.target.dataset.img);
+            addDrink(event.target.dataset.id, event.target.dataset.name, event.target.dataset.img);
             addBtnEl.classList.add(`is-hidden`);
             removeBtnEl.classList.remove(`is-hidden`);
         } catch (error) {
@@ -119,7 +128,7 @@ export function displayMoreInfo(data) {
 //------Remove from favorite кнопка видаляе елемент з Local storage-------
     function onRemoveBtn(event) {
         try {
-            removeDrink(event.target.dataset.name, event.target.dataset.img);
+            removeDrink(event.target.dataset.id);
             removeBtnEl.classList.add(`is-hidden`);
             addBtnEl.classList.remove(`is-hidden`);
         } catch (error) {

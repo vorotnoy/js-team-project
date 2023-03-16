@@ -8,45 +8,45 @@ function setFavouriteDrinks(favourites) {
     localStorage.setItem('favorite-cocktail', JSON.stringify(favourites));
 }
 
-export function addDrink(name, image) {
-    if (!getDrink(name)) { 
-        let favouriteDrink = { 'name': name, 'img': image };
+export function addDrink(id, name, image) {
+    if (!getDrink(id)) { 
+        let favouriteDrink = { 'id': id, 'name': name, 'img': image };
         let favourites = getFavouriteDrinks();
         favourites.push(favouriteDrink);
         setFavouriteDrinks(favourites);
     }
 }
 
-export function removeDrink(name, image) {
+export function removeDrink(id) {
     let favourites = getFavouriteDrinks();
     let updatedFavourites = [];
     for (let i = 0; i < favourites.length; i++) {
         let drink = favourites[i];
-        if (drink.name != name && drink.img != image) { 
+        if (drink.id != id) { 
             updatedFavourites.push(drink);
         } 
     }
     setFavouriteDrinks(updatedFavourites);
 }
 
-export function getDrink(name) {
+export function getDrink(id) {
     for (let drink of getFavouriteDrinks()) {
-        if (drink.name == name) {
+        if (drink.id == id) {
             return drink;
         }
     }
 }
 
-export function renderAddRemoveDrinkButton(name, image) {
-    if (getDrink(name)) {
-        return `<button class="favourite removeFrom" data-name="${name}" data-image="${image}">Remove
+export function renderAddRemoveDrinkButton(id, name, image) {
+    if (getDrink(id)) {
+        return `<button class="favourite removeFrom" data-id="${id}" data-name="${name}" data-image="${image}">Remove
         <svg class="icon-heart-selected">
             <use href="${icons}#heart"></use>
         </svg>
       </button>`;
       }
     
-      return `<button class="favourite addTo" data-name="${name}" data-image="${image}">Add to
+      return `<button class="favourite addTo" data-id="${id}" data-name="${name}" data-image="${image}">Add to
       <svg class="icon-heart">
         <use href="${icons}#heart"></use>
       </svg>
@@ -121,11 +121,11 @@ export function favouritesClickEvent(event) {
         button.insertAdjacentHTML("beforebegin", renderAddRemoveIngredientButton(button.dataset.name, button.dataset.type));
     } else {
         if (button.className && button.className.indexOf("addTo") > 0) {
-            addDrink(button.dataset.name, button.dataset.image);
+            addDrink(button.dataset.id, button.dataset.name, button.dataset.image);
         } else {
-            removeDrink(button.dataset.name, button.dataset.image);
+            removeDrink(button.dataset.id);
         }
-        button.insertAdjacentHTML("beforebegin", renderAddRemoveDrinkButton(button.dataset.name, button.dataset.image));
+        button.insertAdjacentHTML("beforebegin", renderAddRemoveDrinkButton(button.dataset.id, button.dataset.name, button.dataset.image));
     }
 
     button.remove();

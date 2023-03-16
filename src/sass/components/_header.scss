@@ -181,7 +181,6 @@
 }
 .svg-icon__search {
   float: left;
-
   fill: #fd5103;
 }
 
@@ -332,3 +331,62 @@
     gap: 60px;
   }
 }
+
+//  top: 13px;
+//  left: 8px;
+//  fill: #FD5103;
+//}
+//.header__light{
+//  color: #FD5103;
+//}
+// .container-header {
+//   display: flex;
+//   position: relative;
+//   justify-content: space-between;
+// }
+
+// .navigation-section {
+//   display: flex;
+// }
+
+// .current-page {
+//   font-weight: 500;
+//   text-decoration: underline;
+//   color: #7eb101;
+// }
+
+// .button--header {
+//   display: none;
+
+//   @include tablet {
+//     display: flex;
+//     height: 32px;
+//     padding: 6px 18px 6px 18px;
+//   }
+// }
+
+// .menu-mobile {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   width: 28px;
+//   height: 28px;
+//   border: none;
+
+//   background-color: transparent;
+
+//   @include tablet {
+//     display: none;
+//   }
+// }
+
+// .menu-mobile__svg {
+//   fill: #7eb101;
+//   width: 28px;
+//   height: 28px;
+// }
+
+// .mobile-container {
+//   min-width: 130px;
+// }
