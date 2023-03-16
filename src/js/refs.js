@@ -9,6 +9,10 @@ export const refs = {
   cocktailsTitle: document.querySelector('.cocktails-title'),
   noCocktails: document.querySelector('.no-cocktails__wrapper'),
 
+  mobileMenu: document.querySelector('.js-menu-container'),
+  openMenuBtn: document.querySelector('.js-open-menu'),
+  closeMenuBtn: document.querySelector('.js-close-menu'),
+
   checkboxOn: document.querySelector('#js-checkbox'),
   bodyOn: document.querySelector('body'),
   clrwh: document.querySelectorAll('.js-changeclrwh'),
@@ -25,4 +29,5 @@ export const refs = {
   modal: document.querySelector('[data-modal]'),
 
   galleryEl: document.querySelector(`.gallery`),
+
 };
