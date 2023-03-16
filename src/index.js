@@ -42,8 +42,5 @@ if (window.location.pathname === "/") {
     //function watch viewport size and load limited for current viewport amount of elements 
     window.addEventListener("resize", debounce(initializeFavourites, 300));
 
-
-
     initializeFavourites();
 }
-
