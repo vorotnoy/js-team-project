@@ -5,7 +5,7 @@ import { VIEWPORT_SIZES } from "./js/const";
 
 import { returnCocktails, viewportWidthCheck, accumulateCocktails,  pourCocktails} from "./js/mainblock/mainblock";
 
-import { toggleFavorites } from "./js/mainblock/toggleFavoriteCocktail";
+import { favouritesClickEvent } from "./js/favourites";
 import { getRandomCocktail } from "./js/mainblock/renderCocktails";
 
 import { onSelectBtnClick, onAlphabetBtnClick } from   "./js/hero/onClickFunctions";
@@ -13,10 +13,7 @@ import { onSelectBtnClick, onAlphabetBtnClick } from   "./js/hero/onClickFunctio
 returnCocktails();
 const { cocktailsList, selectBtn, alphabet } = refs;
 
-cocktailsList.addEventListener('click', toggleFavorites);
-
-// pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
-
+//cocktailsList.addEventListener('click', favouritesClickEvent);
 
 selectBtn.addEventListener('click', onSelectBtnClick);
 alphabet.addEventListener('click', onAlphabetBtnClick);

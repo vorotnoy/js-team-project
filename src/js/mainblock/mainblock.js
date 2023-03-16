@@ -5,6 +5,7 @@ import {
 } from './renderCocktails';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { VIEWPORT_SIZES } from '../const';
+import { attachFavouriteClickEvents } from '../favourites';
 
 export function viewportWidthCheck({ tablet, desktop }) {
   const currentVpWidth = document.body.clientWidth;
@@ -33,6 +34,7 @@ export function accumulateCocktails(setSize) {
 export function pourCocktails(cocktailSetSize) {
   Promise.all(cocktailSetSize)
     .then(data => renderCocktails(data.map(getCocktailMarkup).join('')))
+    .then(attachFavouriteClickEvents)
     .then(attachEvents);
 }
 
