@@ -19,7 +19,7 @@ export const refs = {
   clror: document.querySelectorAll('.js-changeclror'),
   clrgr: document.querySelectorAll('.js-changeclrgr'),
   bgclr: document.querySelector('.js-changebgrclr'),
-  inputForm: document.querySelector('.search-form'),
+  inputForm: document.querySelector('.search__form'),
 
   favoritesList: document.querySelector('.fav-cocktails__list'),
   loadCocktailsBtn: document.querySelector('.loadCocktails'),
