@@ -1,10 +1,6 @@
 body.modal-open {
     overflow: hidden;
 }
-ul {
-    padding: 0;
-    display: block;
-}
 
 .backdrop {
     position: fixed;
@@ -178,6 +174,8 @@ ul {
 }
 
 .modal-ingredients-list {
+    padding: 0;
+    display: block;
     margin-bottom: 80px;
     margin-left: 12px;
 }
