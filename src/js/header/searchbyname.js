@@ -9,12 +9,16 @@ import { createCocktailsMarkupByViewportSize} from '../hero/createCocktailsMarku
 
 const { cocktailsList, cocktailsTitle, noCocktails, inputForm } = refs;
 
+
 inputForm.addEventListener('submit', searchCoctailByName)
-function searchCoctailByName(evt){
+
+
+export function searchCoctailByName(evt){
     evt.preventDefault()
     searchByName(evt.currentTarget.elements.searchQuery.value)
     inputForm.reset()
 }
+
 
 async function searchByName(name) {
     cocktailsTitle.classList.remove('is-hidden');
