@@ -9,9 +9,7 @@ import {
 } from '../favourites';
 import { refs } from '../refs';
 
-const refs = {
-  favoritesList: document.querySelector('.fav-cocktails__list'),
-};
+const refs = {favoritesList: document.querySelector('.fav-cocktails__list')};
 
 //use function updateSize to render elements on click
 export function initializeFavourites() {
