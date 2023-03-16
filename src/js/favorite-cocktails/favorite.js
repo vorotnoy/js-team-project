@@ -30,7 +30,6 @@ async function getCocktailId(event){
         id = event.target.attributes.drinkid.value;
         console.log('id: ', id);
     }
-    
 }
 
 //function watch viewport size and load limited for current viewport amount of elements 
@@ -39,8 +38,10 @@ window.addEventListener("resize", debounce(updateSize, 300));
 //use function updateSize to render elements on click
 export function updateSize(){
     let windowWidth = window.innerWidth;
-    console.log(JSON.parse(localStorage.getItem('favorite-cocktail')));
-    console.log('button clicked');
+    if(localStorage.length === 0){
+        console.log('localStorage is empty');
+        return;
+    }
     if(windowWidth < 768){
         // console.log('300px - 768px');
         favoritesMarkup(0, 3);
