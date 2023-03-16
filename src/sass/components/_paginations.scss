@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 60px;
+    padding-top: 24px;
+
+    @include tabletPlus{
+        padding-top: 32px;
+    }
 
 
     &-list{
@@ -13,6 +18,10 @@
         justify-content: center;
         align-items: center;
 
+        gap: 4px;
+        @include tabletPlus{
+            gap: 14px;
+        }
     }
     &-arrow{
         width: 28px;
@@ -37,7 +46,7 @@
 
         &:hover,
         &:focus{
-            color: #FE7031;
+            color: $main-button;
         }
     }
     &-icon {
@@ -57,30 +66,20 @@
         align-items: center;
     
         background-color: transparent;
-        color: #FE7031;
+        color: $main-button;
         border: 1px solid #EAEBEA;
         border-radius: 4px;
         &:hover,
         &:focus{
-            background-color: #FE7031;
+            background-color: $main-button;
             color: #FDFDFD;;
-        }
-    }
-    &-item{
-        &:nth-last-child(n + 2){
-            margin-right: 4px;
-        }
-        @include tabletPlus{
-            &:nth-last-child(n + 2) {
-                margin-right: 14px;
-            }
         }
     }
 }
 
 .active {
-    background-color: #FE7031;
-    color: #202025;
+    background-color: $main-button;
+    color: $main-color2;
 }
 
 .dot-item {
@@ -97,7 +96,7 @@
     align-items: center;
 
     background-color: transparent;
-    color: #FE7031;
+    color: $main-button;
     border: 1px solid #EAEBEA;
     border-radius: 4px;
 }

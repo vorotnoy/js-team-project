@@ -1,6 +1,6 @@
-const ulTag = document.querySelector('.pagination-list');
+export const ulTag = document.querySelector('.pagination-list');
 
-function pagination(totalPages, page) {
+export function pagination(totalPages, page) {
     let liTag = '';
     let thirdPagesAnd = totalPages - 2;
     let thirdPages = page - 2;
