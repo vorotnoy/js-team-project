@@ -11,6 +11,10 @@ export function onSelectBtnClick() {
 function onSelectDropdownMenuClick(event) {
   selectBtn.firstElementChild.textContent = event.target.textContent;
 
+   selectMenu.classList.remove('select__list-open');
+  selectBtn.classList.add('active');
+  selectBtn.lastElementChild.classList.add('active');
+
   searchCocktailsByFirstLetter(event.target.textContent);
 }
 
