@@ -206,7 +206,14 @@
   float: left;
   fill: $main-color;
 }
-
+.svg-icon__line{
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+.form__input:not(:placeholder-shown)+.svg-icon__line{
+  display: none;
+}
 .search__btn {
   position: absolute;
   top: 0;
