@@ -2,12 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 24px;
-
-    @include tabletPlus{
-        padding-top: 32px;
-    }
-
 
     &-list{
         margin: 0;
@@ -125,4 +119,12 @@
 .active{
     background-color: $main-button;
     color: $border-color2;
+}
+
+.pading{
+    padding-top: 24px;
+    
+    @include tabletPlus {
+        padding-top: 32px;
+    }
 }
