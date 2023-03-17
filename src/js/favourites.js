@@ -106,6 +106,16 @@ export function renderAddRemoveIngredientButton(name, type) {
       </button>`;
 }
 
+export function refreshFavouriteButtons(id) {
+    let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
+    let favourite = getDrink(id);
+
+    if (favourite && favouriteButton.classList.contains("addTo") || (!favourite && favouriteButton.classList.contains("removeFrom"))) {
+        let e = { target: favouriteButton };
+        favouritesClickEvent(e);
+    }
+}
+
 export function favouritesClickEvent(event) {
   let button = event.target;
 

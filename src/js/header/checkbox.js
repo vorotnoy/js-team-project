@@ -7,6 +7,9 @@ function checkBtn() {
     burgerOn.classList.toggle('js-bgcblack')
     bodyOn.classList.toggle('js-bgcblack');
     bgclr.classList.toggle('js-bgcblack');
+    // bgclr.forEach(item => {
+    //   item.classList.toggle('js-bgcblack');
+    // });
     clrwh.forEach(item => {
       item.classList.toggle('js-colorwhite');
     });
@@ -20,6 +23,9 @@ function checkBtn() {
     burgerOn.classList.toggle('js-bgcblack')
     bodyOn.classList.toggle('js-bgcblack');
     bgclr.classList.toggle('js-bgcblack');
+    // bgclr.forEach(item => {
+    //   item.classList.toggle('js-bgcblack');
+    // });
     clrwh.forEach(item => {
       item.classList.toggle('js-colorwhite');
     });
@@ -30,7 +36,16 @@ function checkBtn() {
       item.classList.toggle('js-colorgray');
     });
   }
+  localStorage.setItem('darkTheme', JSON.stringify(checkboxOn.checked));
 }
 
-checkboxOn.addEventListener('click', checkBtn);
+//checkboxOn.addEventListener('click', checkBtn);
+
 checkboxBurgerOn.addEventListener('click', checkBtn);
+
+
+let useDarkTheme = JSON.parse(localStorage.getItem('darkTheme')) ?? false;
+if (useDarkTheme) {
+  checkboxOn.checked = true;
+  checkBtn();
+}

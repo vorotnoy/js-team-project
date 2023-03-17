@@ -11,7 +11,7 @@ export function attachIngredientEvents() {
     modal: document.querySelector('[data-modal-2]'),
     modalContainer: document.querySelector('[data-modal-2] .container'),
   };
-  for (button of refs.openModalBtn) {
+  for (let button of refs.openModalBtn) {
     button.addEventListener('click', toggleModal);
   }
   refs.closeModalBtn.onclick = toggleModal;
@@ -30,10 +30,10 @@ export function attachIngredientEvents() {
     refs.modal.classList.toggle('is-hidden');
   }
   let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);
-  for (link of ingredientLinkEL) {
+  for (let link of ingredientLinkEL) {
     link.addEventListener(`click`, onIngredient);
   }
-}
+};
 
 //-------Дістаемо імя з елемента лінка на який натиснули-------
 async function fetchData(name) {
@@ -46,7 +46,7 @@ async function fetchData(name) {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 //------Перевірити чи є атрибют в API та додати ------
 async function onIngredient(event) {
@@ -92,7 +92,7 @@ async function onIngredient(event) {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
@@ -135,7 +135,7 @@ export function displayMoreInfo(data) {
     } catch (error) {
       console.error(error.message);
     }
-  }
+    };
 
   //------Remove from favorite кнопка видаляе елемент з Local storage-------
   function onRemoveBtn(event) {
@@ -147,4 +147,4 @@ export function displayMoreInfo(data) {
       console.error(error.message);
     }
   }
-}
+};

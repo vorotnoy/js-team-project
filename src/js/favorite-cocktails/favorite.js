@@ -11,14 +11,21 @@ import {
 
 const refs = {
   favoritesList: document.querySelector('.fav-cocktails__list'),
+  favoritesTitle: document.querySelector('.fav-cocktails__title')
 };
+
 
 //use function updateSize to render elements on click
 export function initializeFavourites() {
   let windowWidth = window.innerWidth;
-  console.log(JSON.parse(localStorage.getItem('favorite-cocktail')));
-  if (localStorage.length === 0) {
-    console.log('localStorage is empty');
+  const localStorageLength = JSON.parse(localStorage.getItem('favorite-cocktail')).length;
+  const pathname = window.location.pathname;
+  
+//   console.log(JSON.parse(localStorage.getItem('favorite-cocktail')));
+  console.log(pathname);
+
+  if (localStorageLength === 0) {
+    refs.favoritesTitle.textContent = 'You didn\'t choose any cocktail.'
     return;
   }
   if (windowWidth < 768) {
@@ -29,7 +36,11 @@ export function initializeFavourites() {
     favoritesMarkup(0, 6);
   } else {
     // console.log('1280px');
-    favoritesMarkup(0, 9);
+    if(pathname === '/cocktails.html'){
+        favoritesMarkup(0, 9);
+    } else if(pathname === '/ingredients.html'){
+        console.log('fav',pathname)
+    }
   }
 }
 

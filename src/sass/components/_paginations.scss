@@ -1,0 +1,130 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-list{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+
+        gap: 4px;
+        @include tabletPlus{
+            gap: 14px;
+        }
+    }
+    &-arrow{
+        width: 28px;
+        height: 28px;
+
+        @include tabletPlus {
+            width: 60px;
+            height: 40px;
+
+            border:1px solid  $border-color;
+        }
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        border-radius: 4px;
+        border-color: transparent;
+
+        color: $border-color1;
+        background-color: transparent;
+
+        &:hover,
+        &:focus{
+            color: $main-button;
+        }
+    }
+    &-icon {
+        fill: currentColor;
+    }
+    &-number {
+        width: 28px;
+        height: 28px;
+    
+        @include tabletPlus {
+            width: 40px;
+            height: 40px;
+        }
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        background-color: transparent;
+        color: $main-button;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        &:hover,
+        &:focus{
+            background-color: $main-button;
+            color: $border-color2;
+        }
+    }
+}
+
+.active {
+    background-color: $main-button;
+    color: $main-color2;
+}
+
+.dot-item {
+    width: 28px;
+    height: 28px;
+
+    @include tabletPlus {
+        width: 40px;
+        height: 40px;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+    color: $main-button;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+}
+
+.prew-button{
+    @include tablet {
+        margin-right: 108px;
+    }
+    @include desktop {
+        margin-right: 198px;
+    }
+}
+
+.next-button{
+    @include tablet {
+        margin-left: 108px;
+    }
+    @include desktop {
+        margin-left: 198px;
+    }
+}
+
+.is-hiden{
+    display: none;
+}
+
+.active{
+    background-color: $main-button;
+    color: $border-color2;
+}
+
+.pading{
+    padding-top: 24px;
+    
+    @include tabletPlus {
+        padding-top: 32px;
+    }
+}

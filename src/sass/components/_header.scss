@@ -15,7 +15,6 @@
   margin-right: auto;
 }
 .nav-menu {
-  // float: right;
   position: relative;
   display: inline-block;
 }
@@ -42,6 +41,7 @@
   padding: 12px 35px 12px 12px;
   display: block;
 }
+
 .dropdown-menu__item:hover {
   background-color: $main-color;
 }
@@ -74,7 +74,7 @@
   line-height: 0.86;
   letter-spacing: 0.02em;
   padding: 0;
-  color: #000000;
+  color: $main-color2;
 }
 
 .header-section__box {
@@ -90,7 +90,7 @@
   border-radius: 4px;
   padding: 8px 0 8px 48px;
   outline: none;
-  // margin-bottom: 40px;
+ background-color: var(--main-color2);
 
   &::before {
     content: '';
@@ -108,7 +108,6 @@
     letter-spacing: 0.02em;
     color: $input_plholder;
     opacity: 0.4;
-    // padding-left: 48px;
   }
   &:focus-visible {
     border: 1px solid $main-color;
@@ -117,7 +116,6 @@
 .change-color__block {
   display: flex;
   position: relative;
-  // margin-right: 80px;
 }
 
 .switch {
@@ -125,9 +123,7 @@
   position: relative;
   width: 40px;
   height: 20px;
-  /* Inside auto layout */
   flex: none;
-  // order: 1;
   flex-grow: 0;
   margin-left: 12px;
   margin-right: 12px;
@@ -176,17 +172,43 @@
 }
 .search__form {
   position: relative;
+  display: block;
   width: 280px;
   text-align: center;
   margin-left: auto;
   margin-right: 40px;
 }
 .svg-icon__search {
+  position: absolute;
+  top: 9px;
+  left: 10px;
   float: left;
-  fill: #fd5103;
+  fill: $main-color;
 }
+.search__form::before {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background-color: $main-color;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 40px;
+}
+// .search__form:placeholder-shown::after{
+//   content: '';
+//   display: block;
+//   position: absolute;
+//   width: 20px;
+//   height: 0px;
+//   left: 90px;
+//   top: 19px;
+//   border: 1px solid #5f6775;
+//   transform: rotate(90deg);
+// }
 
 .search__btn {
+
   position: absolute;
   top: 0;
   right: 240px;
@@ -200,7 +222,7 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border: inherit;
-  border-right: 1px solid #fd5103;
+  border-right: 1px solid $main-color;
 }
 
 .menu-mobile {
@@ -237,7 +259,7 @@
   height: 100%;
   padding: 20px 22px;
   z-index: 3;
-  background-color: #fff;
+  background-color: $main-color3;
   transform: translateX(100%);
   transition: 250ms;
 }

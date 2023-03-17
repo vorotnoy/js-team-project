@@ -3,7 +3,7 @@ import {
   attachIngredientEvents,
   onBackdrop,
 } from './modal-learn-more-ingredient';
-import { addDrink, removeDrink, getDrink } from '../favourites';
+import { addDrink, removeDrink, getDrink, refreshFavouriteButtons } from '../favourites';
 
 const galleryEl = document.querySelector(`.gallery`);
 
@@ -70,15 +70,14 @@ async function onLearnMore(event) {
           list +=
             `<li class="modal-learn-more-item">
                     <span class="modal-learn-more-data">
+                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
                     ${
                       drink[measureProperty] != null
                         ? drink[measureProperty]
                         : ''
                     }` +
             ' ' +
-            `
-                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
-                    ${drink[ingredientProperty]}
+                    `${drink[ingredientProperty]}
                     </a>
                     </span>
                     </li>`;
@@ -152,6 +151,7 @@ export function displayMoreInfo(data) {
         event.target.dataset.name,
         event.target.dataset.img
       );
+      refreshFavouriteButtons(event.target.dataset.id);
       addBtnEl.classList.add(`is-hidden`);
       removeBtnEl.classList.remove(`is-hidden`);
     } catch (error) {
@@ -163,10 +163,11 @@ export function displayMoreInfo(data) {
   function onRemoveBtn(event) {
     try {
       removeDrink(event.target.dataset.id);
+      refreshFavouriteButtons(event.target.dataset.id);
       removeBtnEl.classList.add(`is-hidden`);
       addBtnEl.classList.remove(`is-hidden`);
     } catch (error) {
       console.error(error.message);
     }
   }
-}
+};

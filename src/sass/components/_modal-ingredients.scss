@@ -10,9 +10,10 @@ body.modal-open {
   background-color: rgba($color: $main-color2, $alpha: 0.5);
   opacity: 1;
   z-index: 10;
-  overflow: scroll;
   padding-top: 16px;
+  overflow: auto;
 }
+
 hr {
   display: none;
   @include tabletPlus {
@@ -38,10 +39,6 @@ hr {
   }
 }
 
-.modal-learn-more-container.modal-open {
-  overflow: hidden;
-}
-
 .modal-close,
 .modal-ingredient-close {
   position: absolute;
@@ -58,7 +55,10 @@ hr {
 }
 
 .close-icon {
-  fill: #000917;
+  fill: $fill-color;
+  &:hover {
+    fill: $accent;
+  }
 }
 
 .modal-layout-box {
@@ -122,21 +122,13 @@ hr {
   }
 }
 
-.modal-sub-header.ingredient-sub-header {
-  @include tablet {
-    content: '';
-    border-bottom: 1px solid black;
-    height: 0.5em;
-  }
-}
-
 .modal-desc {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.75;
-  color: #5f6775;
+  color: $input_plholder;
   margin-bottom: 80px;
   text-align: left;
 }
@@ -149,7 +141,6 @@ hr {
 
   @include tabletPlus {
     max-width: 288px;
-    //max-height: 320px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -177,7 +168,7 @@ hr {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: #000917;
+  color: $fill-color;
   text-transform: uppercase;
   text-align: left;
   margin-bottom: 8px;
@@ -211,7 +202,7 @@ hr {
 .modal-learn-more-item,
 .ingredient-list-item {
   list-style-type: '✶';
-  color: #000917;
+  color: $fill-color;
   text-align: left;
 }
 
@@ -220,23 +211,9 @@ hr {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.62;
-  color: #5f6775;
+  color: $input_plholder;
   padding-bottom: 8px;
 }
-
-// .modal-header,
-// .modal-sub-header,
-// .modal-desc,
-// .modal-ingr-desk,
-// .modal-per-glass,
-// .modal-learn-more-list,
-// .modal-learn-more-item,
-// .ingredient-list-item,
-// .modal-learn-more-data,
-// .ingredient-list-data {
-//     color: #FCFCFC;
-//     background-color: $main-color2;
-// }
 
 .ingredient-link {
   font-family: 'Poppins', sans-serif;
@@ -245,12 +222,11 @@ hr {
   font-size: 16px;
   line-height: 1.62;
   color: inherit;
+  cursor: pointer;
 }
 
 .modal-learn-more-item:hover,
-.modal-learn-more-item:focus,
-.modal-learn-more-data:hover,
-.modal-learn-more-data:focus {
+.modal-learn-more-data:hover {
   color: $main-button;
 }
 
@@ -272,6 +248,12 @@ hr {
   position: absolute;
   bottom: 40px;
 
+  &:hover {
+    color: $accent;
+    background-color: $bgr-color;
+    border: 1px solid $accent;
+  }
+
   @include tabletPlus {
     position: absolute;
     bottom: 28px;
@@ -279,16 +261,56 @@ hr {
   }
 }
 
-.add-item-btn:hover,
-.remove-item-btn:hover {
-  color: $accent;
-  background-color: #f5f5f5;
-  border: 1px solid #f5f5f5;
-}
-
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   display: none;
+}
+
+body.js-bgcblack .modal-learn-more-container,
+body.js-bgcblack .modal-ingredients-container {
+  background-color: $main-color2;
+}
+
+body.js-bgcblack .modal-header,
+body.js-bgcblack .modal-sub-header,
+body.js-bgcblack .modal-desc,
+body.js-bgcblack .modal-ingr-desk,
+body.js-bgcblack .modal-per-glass,
+body.js-bgcblack .modal-ingredients-list,
+body.js-bgcblack .modal-learn-more-data,
+body.js-bgcblack .modal-learn-more-item {
+  color: $main-color3;
+}
+
+body.js-bgcblack .modal-learn-more-data:hover,
+body.js-bgcblack .modal-learn-more-item:hover {
+  color: $accent;
+}
+
+body.js-bgcblack .modal-desc,
+body.js-bgcblack .modal-ingredients-list,
+body.js-bgcblack .modal-learn-more-data,
+body.js-bgcblack .modal-learn-more-item {
+  @include tabletPlus {
+    color: $modal-color;
+  }
+}
+
+body.js-bgcblack .modal-learn-more-item,
+body.js-bgcblack .ingredient-list-item {
+  color: $main-color3;
+}
+
+body.js-bgcblack .close-icon {
+  fill: $main-color3;
+  &:hover {
+    fill: $accent;
+  }
+}
+
+body.js-bgcblack .add-item-btn:hover,
+body.js-bgcblack .remove-item-btn:hover {
+  background-color: $main-color2;
 }

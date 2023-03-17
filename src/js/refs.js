@@ -24,11 +24,15 @@ export const refs = {
   inputForm: document.querySelector('.search__form'),
 
   favoritesList: document.querySelector('.fav-cocktails__list'),
-  loadCocktailsBtn: document.querySelector('.loadCocktails'),
+  favoritesTitle: document.querySelector('.fav-cocktails__title'),
 
   openModalBtn: document.querySelectorAll('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
 
   galleryEl: document.querySelector(`.gallery`),
+  prewButton: document.querySelector('.prew-button'),
+  nextButton: document.querySelector('.next-button'),
+  ulTag: document.querySelector('.pagination-list'),
+  pagContainer: document.querySelector('.pagination'),
 };
