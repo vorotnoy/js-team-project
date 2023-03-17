@@ -27,12 +27,6 @@ async function searchByName(name) {
   try {
     const response = await axios.get(`${BASE_URL}//search.php?s=${name}`);
     console.log(response.data.drinks);
-    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
-
-    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
-      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
-      getValue.push(myChunk);
-    }
 
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
@@ -41,6 +35,13 @@ async function searchByName(name) {
       noCocktails.classList.remove('is-hidden');
 
       return;
+    }
+    
+    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
+
+    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
+      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
+      getValue.push(myChunk);
     }
 
     cocktailsList.innerHTML = createCocktailsMarkupByViewportSize(

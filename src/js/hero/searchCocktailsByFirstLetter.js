@@ -20,12 +20,6 @@ export async function searchCocktailsByFirstLetter(letter) {
   try {
     const response = await axios.get(`${BASE_URL}/search.php?f=${letter}`);
     console.log(response);
-    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
-
-    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
-      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
-      getValue.push(myChunk);
-    }
 
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
@@ -34,6 +28,13 @@ export async function searchCocktailsByFirstLetter(letter) {
       noCocktails.classList.remove('is-hidden');
 
       return;
+    }
+
+    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
+
+    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
+      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
+      getValue.push(myChunk);
     }
 
     cocktailsList.innerHTML = createCocktailsMarkupByViewportSize(
