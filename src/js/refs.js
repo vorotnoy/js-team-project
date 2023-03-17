@@ -32,4 +32,5 @@ export const refs = {
   prewButton: document.querySelector('.prew-button'),
   nextButton: document.querySelector('.next-button'),
   ulTag: document.querySelector('.pagination-list'),
+  pagContainer: document.querySelector('.pagination'),
 };

@@ -10,7 +10,7 @@ import { attachFavouriteClickEvents } from '../favourites';
 import { getValue } from '../header/searchbyname';
 import { pagination} from '../pagination';
 
-const { cocktailsList, cocktailsTitle, noCocktails, prewButton, nextButton } = refs;
+const { cocktailsList, cocktailsTitle, noCocktails, prewButton, nextButton, pagContainer } = refs;
 
 export async function searchCocktailsByFirstLetter(letter) {
   cocktailsTitle.classList.remove('is-hidden');
@@ -47,13 +47,15 @@ export async function searchCocktailsByFirstLetter(letter) {
     );
 
     if (totalPage > 1) {
-    prewButton.classList.remove('is-hiden');
-    nextButton.classList.remove('is-hiden');
-    nextButton.removeAttribute('disabled');
-    pagination(totalPage, 1);
+      prewButton.classList.remove('is-hiden');
+      nextButton.classList.remove('is-hiden');
+      nextButton.removeAttribute('disabled');
+      pagContainer.classList.add('pading');
+      pagination(totalPage, 1);
     } else {
       prewButton.classList.add('is-hiden');
       nextButton.classList.add('is-hiden');
+      pagContainer.classList.add('pading');
       pagination(0, 1);
     }
 
