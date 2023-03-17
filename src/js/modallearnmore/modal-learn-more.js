@@ -37,6 +37,12 @@ export function attachEvents() {
   for (let button of learnMoreEL) {
     button.addEventListener('click', onLearnMore);
   }
+  // add the same for cocktail links (added by Illia)
+  let cocktailLink = document.querySelectorAll('.cocktail-link');
+  for (let link of cocktailLink) {
+    link.addEventListener('click', onLearnMore);
+  };
+  // add the same for cocktail links (added by Illia)
 }
 
 //-------Дістаемо ID з елемента на якому натиснули learn more-------
