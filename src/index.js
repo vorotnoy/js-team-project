@@ -11,7 +11,7 @@ import {
 import { favouritesClickEvent } from './js/favourites';
 import { getRandomCocktail } from './js/mainblock/renderCocktails';
 
-import { toggleMenu } from './js/hero/header/mobile-menu';
+import { toggleMenu } from './js/header/mobile-menu';
 
 import {
   onSelectBtnClick,
@@ -32,11 +32,11 @@ import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ing
 const debounce = require('lodash.debounce');
 const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
 refs;
-
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
 const pathname = window.location.pathname;
 const location = pathname.split('/').pop();
+
 
 if (location === '') {
   returnCocktails();
