@@ -45,8 +45,8 @@ export async function searchCocktailsByFirstLetter(letter) {
     prewButton.classList.remove('is-hiden');
     nextButton.classList.remove('is-hiden');
     nextButton.removeAttribute('disabled');
-    }
     pagination(totalPage, 1);
+    }
 
     attachEvents();
     attachFavouriteClickEvents();
