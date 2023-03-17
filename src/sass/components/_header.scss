@@ -14,7 +14,6 @@
   margin-right: auto;
 }
 .nav-menu {
-  // float: right;
   position: relative;
   display: inline-block;
 }
@@ -32,8 +31,7 @@
   border: none;
   cursor: pointer;
 }
-.menu-dropdown:hover + .dropdown-menu {
-}
+
 .dropdown-menu__item {
   width: 210px;
 }
@@ -42,6 +40,7 @@
   padding: 12px 35px 12px 12px;
   display: block;
 }
+
 .dropdown-menu__item:hover {
   background-color: $main-color;
 }
@@ -87,7 +86,7 @@
   border-radius: 4px;
   padding: 8px 0 8px 48px;
   outline: none;
-  // margin-bottom: 40px;
+ background-color: var(--main-color2);
 
   &::before {
     content: '';
@@ -105,7 +104,6 @@
     letter-spacing: 0.02em;
     color: $input_plholder;
     opacity: 0.4;
-    // padding-left: 48px;
   }
   &:focus-visible {
     border: 1px solid $main-color;
@@ -114,7 +112,6 @@
 .change-color__block {
   display: flex;
   position: relative;
-  // margin-right: 80px;
 }
 
 .switch {
@@ -122,9 +119,7 @@
   position: relative;
   width: 40px;
   height: 20px;
-  /* Inside auto layout */
   flex: none;
-  // order: 1;
   flex-grow: 0;
   margin-left: 12px;
   margin-right: 12px;
@@ -209,25 +204,23 @@
 // }
 
 .search__btn {
-  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  position: absolute;
   top: 13px;
-  left: 8px;
   fill: $main-color;
   top: 0;
   right: 240px;
   width: 40px;
   height: 40px;
   background-color: inherit;
-  padding: 10px;
   border: inherit;
   border-right: 1px solid $main-color;
 }
 
 .menu-mobile {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   border: none;
   background-color: transparent;
   width: 32px;
