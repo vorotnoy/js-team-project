@@ -27,6 +27,7 @@ import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
 import { searchCoctailByName } from './js/header/searchbyname';
 
 import { initializeFavourites } from './js/favorite-cocktails/favorite';
+import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
 const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
@@ -53,4 +54,12 @@ if (location === '') {
     window.addEventListener("resize", debounce(initializeFavourites, 300));
 
     initializeFavourites();
+
+} else if (pathname === '/ingredients.html'){
+  //watch viewport size and load limited for current viewport amount of elements 
+  window.addEventListener("resize", debounce(initializeFavouritesIng, 300));
+  
+  initializeFavouritesIng();
+}
+
 }

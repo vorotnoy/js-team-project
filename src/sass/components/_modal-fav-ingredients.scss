@@ -1,0 +1,227 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  @media screen and (max-width: 767px) {
+    img {
+      width: 280px;
+    }
+  }
+  
+  button {
+    border-radius: 4px;
+  }
+  
+  .fav-ingr {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .fav-ingr__title {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: calc(42 / 22);
+  }
+  
+  @media screen and (min-width: 768px) {
+    .fav-ingr__title {
+      margin-top: 70px;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: calc(42 / 32);
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    .fav-ingr__title {
+      font-size: 48px;
+      line-height: calc(72 / 48);
+    }
+  }
+  
+  .fav-ingr__list {
+    margin: 0;
+    display: flex;
+  }
+  
+  @media screen and (min-width: 200px) {
+    .fav-ingr__list {
+      margin-bottom: 20px;
+      width: 280px;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .fav-ingr__list {
+      margin-bottom: 60px;
+      width: 702px;
+      flex-direction: unset;
+      flex-wrap: wrap;
+      gap: 28.5px;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .fav-ingr__list {
+      width: 1250px;
+    }
+  }
+  
+  .fav-ingr__item {
+    width: 280px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    border: 1px solid #fd5103;
+    border-radius: 4px;
+  }
+  @media screen and (min-width: 768px) {
+    .fav-ingr__item {
+      width: 335px;
+      flex-wrap: wrap;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .fav-ingr__item {
+      width: 395px;
+    }
+  }
+  
+  .fav-ingr__item-title {
+    margin: 0;
+    margin-bottom: 16px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: calc(42 / 26);
+  }
+  
+  @media screen and (min-width: 768px) {
+    .fav-ingr__item-title {
+      margin-bottom: 25px;
+      font-size: 28px;
+      line-height: calc(33 / 28);
+    }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .fav-ingr__item-title {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: calc(42 / 32);
+    }
+  }
+  
+  .fav-ingr__img {
+    margin-bottom: 48px;
+    border-radius: 3px 3px 0px 0px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .fav-ingr__img {
+      margin-bottom: 20px;
+    }
+  }
+  
+  .fav-ingr__buttons {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+  
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .fav-ingr__buttons {
+      margin-bottom: 28px;
+    }
+  }
+  
+  .fav-ingr__learn-more-btn {
+    width: 108px;
+    height: 39px;
+    background: #fe7031;
+    border: none;
+    color: #ffffff;
+  
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: calc(24 / 14);
+  }
+  
+  @media screen and (min-width: 768px) {
+    .fav-ingr__learn-more-btn {
+      width: 160px;
+      height: 48px;
+  
+      font-size: 20px;
+      line-height: calc(24 / 20);
+  
+      letter-spacing: 0.02em;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .fav-ingr__learn-more-btn {
+      width: 182px;
+    }
+  }
+  .fav-ingr__remove-btn {
+    width: 108px;
+    height: 39px;
+    background-color: #ffffff;
+    border: 1px solid #fe7031;
+    color: #fd5103;
+  
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: calc(24 / 14);
+  }
+  
+  @media screen and (min-width: 768px) {
+    .fav-ingr__remove-btn {
+      width: 123px;
+      height: 48px;
+  
+      font-size: 20px;
+      line-height: calc(24 / 20);
+  
+      letter-spacing: 0.02em;
+    }
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .fav-ingr__remove-btn {
+      width: 141px;
+    }
+  }
+  
