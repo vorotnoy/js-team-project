@@ -55,9 +55,11 @@ function favoritesMarkup(start, end) {
     .map(
       e =>
         `<li class="fav-cocktails__item">
-            <img src="${e.img}" class="fav-cocktails__img" alt=${
-          e.name
-        } cocktail>
+            <a class="cocktail-link" href="#" data-modal-open>
+              <img src="${e.img}" class="fav-cocktails__img" alt=${
+              e.name
+              } cocktail" data-id="${e.id}">
+            </a>
             <h3 class="fav-cocktails__item-title">${e.name}</h3>
             <div class="fav-cocktails__buttons">
                 <button type="button" class="learnMore" data-id="${
