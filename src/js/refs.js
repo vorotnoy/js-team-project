@@ -29,4 +29,7 @@ export const refs = {
   modal: document.querySelector('[data-modal]'),
 
   galleryEl: document.querySelector(`.gallery`),
+  prewButton: document.querySelector('.prew-button'),
+  nextButton: document.querySelector('.next-button'),
+  ulTag: document.querySelector('.pagination-list'),
 };

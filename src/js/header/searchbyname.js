@@ -6,8 +6,10 @@ import { viewportWidthCheck } from '../mainblock/mainblock';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
 import { createCocktailsMarkupByViewportSize } from '../hero/createCocktailsMarkupByViewportSize';
+import { pagination } from '../pagination';
 
-const { cocktailsList, cocktailsTitle, noCocktails, inputForm } = refs;
+const { cocktailsList, cocktailsTitle, noCocktails, inputForm, prewButton, nextButton } = refs;
+export let getValue = [];
 
 inputForm.addEventListener('submit', searchCoctailByName);
 
@@ -20,10 +22,17 @@ export function searchCoctailByName(evt) {
 async function searchByName(name) {
   cocktailsTitle.classList.remove('is-hidden');
   noCocktails.classList.add('is-hidden');
+  getValue.length=0;
 
   try {
     const response = await axios.get(`${BASE_URL}//search.php?s=${name}`);
     console.log(response.data.drinks);
+    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
+
+    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
+      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
+      getValue.push(myChunk);
+    }
 
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
@@ -39,9 +48,17 @@ async function searchByName(name) {
       response
     );
 
+    if (totalPage > 1) {
+      prewButton.classList.remove('is-hiden');
+      nextButton.classList.remove('is-hiden');
+      nextButton.removeAttribute('disabled');
+    }
+    
+    pagination(totalPage, 1);
+
     attachEvents();
     attachFavouriteClickEvents();
   } catch (error) {
     console.log(error);
   }
-}
+}  
