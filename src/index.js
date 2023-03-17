@@ -38,7 +38,7 @@ const pathname = window.location.pathname;
 const location = pathname.split('/').pop();
 
 
-if (location === ''||location === '/index.html') {
+if (location === ''|| location === 'index.html') {
   returnCocktails();
   //cocktailsList.addEventListener('click', favouritesClickEvent);
 
@@ -49,13 +49,7 @@ if (location === ''||location === '/index.html') {
   window.addEventListener('resize', debounce(initializeFavourites, 300));
   initializeFavourites();
 
-} else if (window.location.pathname === "/cocktails.html") {
-    //function watch viewport size and load limited for current viewport amount of elements 
-    window.addEventListener("resize", debounce(initializeFavourites, 300));
-
-    initializeFavourites();
-
-} else if (pathname === '/ingredients.html'){
+} else if (location === 'ingredients.html'){
   //watch viewport size and load limited for current viewport amount of elements 
   window.addEventListener("resize", debounce(initializeFavouritesIng, 300));
   
