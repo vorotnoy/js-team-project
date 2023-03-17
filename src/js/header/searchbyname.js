@@ -8,7 +8,7 @@ import { attachFavouriteClickEvents } from '../favourites';
 import { createCocktailsMarkupByViewportSize } from '../hero/createCocktailsMarkupByViewportSize';
 import { pagination } from '../pagination';
 
-const { cocktailsList, cocktailsTitle, noCocktails, inputForm, prewButton, nextButton } = refs;
+const { cocktailsList, cocktailsTitle, noCocktails, inputForm, prewButton, nextButton, pagContainer } = refs;
 export let getValue = [];
 
 inputForm.addEventListener('submit', searchCoctailByName);
@@ -58,8 +58,10 @@ async function searchByName(name) {
       prewButton.classList.remove('is-hiden');
       nextButton.classList.remove('is-hiden');
       nextButton.removeAttribute('disabled');
+      pagContainer.classList.add('pading');
       pagination(totalPage, 1);
     } else {
+      pagContainer.classList.add('pading');
       prewButton.classList.add('is-hiden');
       nextButton.classList.add('is-hiden');
       pagination(0, 1);
