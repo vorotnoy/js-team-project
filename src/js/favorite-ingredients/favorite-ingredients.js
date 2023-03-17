@@ -1,6 +1,5 @@
 import {attachEvents} from "../modallearnmore/modal-learn-more";
 import {renderAddRemoveDrinkButton, attachFavouriteClickEvents} from '../favourites';
-import {refs} from '../refs'; 
 import {initializeFavourites} from '../favorite-cocktails/favorite';
 
 // const pathname = window.location.pathname;
