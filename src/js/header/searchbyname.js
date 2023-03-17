@@ -34,9 +34,13 @@ async function searchByName(name) {
       cocktailsTitle.classList.add('is-hidden');
       noCocktails.classList.remove('is-hidden');
 
+      prewButton.classList.add('is-hiden');
+      nextButton.classList.add('is-hiden');
+      pagination(0, 1);
+
       return;
     }
-    
+
     let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
 
     for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
@@ -48,7 +52,7 @@ async function searchByName(name) {
       viewportWidthCheck(VIEWPORT_SIZES),
       response
     );
-
+    
     if (totalPage > 1) {
       prewButton.classList.remove('is-hiden');
       nextButton.classList.remove('is-hiden');

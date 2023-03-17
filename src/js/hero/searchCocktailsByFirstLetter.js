@@ -27,6 +27,10 @@ export async function searchCocktailsByFirstLetter(letter) {
       cocktailsTitle.classList.add('is-hidden');
       noCocktails.classList.remove('is-hidden');
 
+      prewButton.classList.add('is-hiden');
+      nextButton.classList.add('is-hiden');
+      pagination(0, 1);
+
       return;
     }
 
