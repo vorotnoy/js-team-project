@@ -47,7 +47,7 @@ function favIngredientsMarkup(start, end){
             <p class="fav-ingr__type">${drinkCheck(e.type)}</p>
             <div class="fav-ingr__buttons">
                 <button type="button" class="learnMore" data-name="${e.name}" data-modal-open>Learn more</button>
-                ${renderAddRemoveDrinkButton(e.name, e.img)}
+                ${renderAddRemoveDrinkButton(e.id, e.name, e.img)}
             </div>
         </li>`
     ).join('');
