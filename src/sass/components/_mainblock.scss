@@ -86,7 +86,7 @@
   margin-right: auto;
 
   text-align: center;
-  color: #202025;
+  color: $main-color2;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   font-weight: 900;
@@ -135,7 +135,7 @@
   border-radius: 4px;
 
   letter-spacing: 0.02em;
-  color: #ffffff;
+  color: $main-color3;
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
@@ -157,8 +157,8 @@
 .learnMore:hover,
 .learnMore:focus {
   // opacity: 0.5;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: $shadow-color1 0px 30px 60px -12px inset,
+  $shadow-color2 0px 18px 36px -18px inset;
 }
 
 .addTo {
@@ -273,7 +273,7 @@
 .icon-heart {
   width: 19px;
   height: 17px;
-  --color1: #fd5103;
+  --color1: $main-color;
   @media screen and (min-width: 768px) {
     width: 21px;
     height: 19px;
@@ -282,8 +282,8 @@
 .icon-heart-selected {
   width: 15px;
   height: 15px;
-  --color1: #fd5103;
-  --color2: #fd5103;
+  --color1: $main-color;
+  --color2: $main-color;
 
   @media screen and (min-width: 768px) {
     width: 21px;
