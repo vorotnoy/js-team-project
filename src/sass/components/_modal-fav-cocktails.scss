@@ -224,3 +224,8 @@ button {
     width: 141px;
   }
 }
+
+body.js-bgcblack .fav-cocktails__title,
+body.js-bgcblack .fav-cocktails__item-title {
+  color: $main-color3;
+}

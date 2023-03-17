@@ -19,12 +19,14 @@
   display: inline-block;
 }
 .nav-menu__link {
-  font-family: 'Poppins';
+  display: flex;
+  font-family: Poppins;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
   letter-spacing: 0.02em;
   color: $main-color2;
+  text-align: center;
 }
 
 .dropbtn {
@@ -102,7 +104,9 @@
   border-radius: 4px;
   padding: 8px 0 8px 48px;
   outline: none;
- background-color: var(--main-color2);
+  background-color: inherit;
+  // margin-bottom: 40px;
+
 
   &::before {
     content: '';
@@ -220,16 +224,16 @@
 // }
 
 .search__btn {
-
   position: absolute;
   top: 0;
   right: 240px;
   cursor: pointer;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   fill: $main-color;
-
   width: 40px;
   height: 40px;
-  background-color: inherit;
+  background-color: transparent;
   padding: 10px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -363,7 +367,7 @@
   }
 
   .change-color__block {
-    margin-right: 40px;
+    margin-right: 60px;
   }
 }
 @include desktop {
@@ -382,4 +386,8 @@
     margin-left: 43px;
     margin-top: 15px;
   }
+}
+
+body.js-bgcblack .form__input {
+  color: $main-color3;
 }
