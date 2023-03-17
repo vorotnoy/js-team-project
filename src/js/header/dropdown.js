@@ -1,5 +1,5 @@
 import { refs } from '../refs';
-const { bodyOn, dropDownBtn, dropDownItems } = refs;
+const { bodyOn, dropDownBtn, dropDownItems,dropDownItemsM,  dropDownBtnM} = refs;
 
 function onClickDropdownOff(evt) {
   if (evt.target.closest('.dropbtn')) {
@@ -10,9 +10,14 @@ function onClickDropdownOff(evt) {
 }
 
 function onClickDropdownOn() {
-  console.log('1')
   dropDownItems.classList.toggle('show');
+  bodyOn.addEventListener('click', onClickDropdownOff);
+}
+function onClickDropdownOnM() {
+  console.log('1')
+  dropDownItemsM.classList.toggle('show');
   bodyOn.addEventListener('click', onClickDropdownOff);
 }
 
 dropDownBtn.addEventListener('click', onClickDropdownOn);
+dropDownBtnM.addEventListener('click', onClickDropdownOnM);

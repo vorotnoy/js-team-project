@@ -33,7 +33,7 @@ export function attachIngredientEvents() {
   for (let link of ingredientLinkEL) {
     link.addEventListener(`click`, onIngredient);
   }
-}
+};
 
 //-------Дістаемо імя з елемента лінка на який натиснули-------
 async function fetchData(name) {
@@ -46,7 +46,7 @@ async function fetchData(name) {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 //------Перевірити чи є атрибют в API та додати ------
 async function onIngredient(event) {
@@ -92,7 +92,7 @@ async function onIngredient(event) {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
@@ -135,7 +135,7 @@ export function displayMoreInfo(data) {
     } catch (error) {
       console.error(error.message);
     }
-  }
+    };
 
   //------Remove from favorite кнопка видаляе елемент з Local storage-------
   function onRemoveBtn(event) {
@@ -147,4 +147,4 @@ export function displayMoreInfo(data) {
       console.error(error.message);
     }
   }
-}
+};

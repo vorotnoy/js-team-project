@@ -5,7 +5,10 @@ export const refs = {
   selectBtn: document.querySelector('#select__btn'),
   alphabet: document.querySelector('#alphabet'),
   dropDownBtn: document.querySelector('.dropbtn'),
+  dropDownBtnM: document.querySelector('.dropbtn_mob'),
+
   dropDownItems: document.querySelector('.js-dropdown-menu'),
+  dropDownItemsM: document.querySelector('.js-dropdown-menu-m'),
   cocktailsTitle: document.querySelector('.cocktails-title'),
   noCocktails: document.querySelector('.no-cocktails__wrapper'),
 
@@ -13,8 +16,10 @@ export const refs = {
   openMenuBtn: document.querySelector('.js-open-menu'),
   closeMenuBtn: document.querySelector('.js-close-menu'),
 
-  checkboxOn: document.querySelector('#js-checkbox'),
+  checkboxBurgerOn: document.querySelector('#js-checkbox-burger'),
+  checkboxOn: document.querySelector('.switch__input'),
   bodyOn: document.querySelector('body'),
+  burgerOn: document.querySelector('.js-menu-container'),
   clrwh: document.querySelectorAll('.js-changeclrwh'),
   clror: document.querySelectorAll('.js-changeclror'),
   clrgr: document.querySelectorAll('.js-changeclrgr'),
@@ -22,7 +27,7 @@ export const refs = {
   inputForm: document.querySelector('.search__form'),
 
   favoritesList: document.querySelector('.fav-cocktails__list'),
-  loadCocktailsBtn: document.querySelector('.loadCocktails'),
+  favoritesTitle: document.querySelector('.fav-cocktails__title'),
 
   openModalBtn: document.querySelectorAll('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
@@ -32,4 +37,5 @@ export const refs = {
   prewButton: document.querySelector('.prew-button'),
   nextButton: document.querySelector('.next-button'),
   ulTag: document.querySelector('.pagination-list'),
+  pagContainer: document.querySelector('.pagination'),
 };

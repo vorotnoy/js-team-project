@@ -40,11 +40,14 @@
         class="form__input js-changebgrclr"
         type="text"
       />
-      <button class="search__btn" type="submit">
-        <svg class="svg-icon__search" width="24px" height="24px">
+      <svg class="svg-icon__search" width="24px" height="24px">
+        <use href="./images/svg/symbol-defs.svg#search"></use>
+      </svg>
+      <!-- <button class="search__btn" type="submit"> -->
+        <!-- <svg class="svg-icon__search" width="24px" height="24px">
           <use href="./images/svg/symbol-defs.svg#search"></use>
-        </svg>
-      </button>
+        </svg> -->
+      <!-- </button> -->
     </form>
     <div class="change-color__block desc">
       <span class="header__light js-changeclrwh">Light</span>
@@ -74,7 +77,11 @@
         <div class="change-color__block">
           <span class="header__light">Light</span>
           <label class="switch">
-            <input class="switch__input" id="js-checkbox" type="checkbox" />
+            <input
+              class="switch__input"
+              id="js-checkbox-burger"
+              type="checkbox"
+            />
             <span class="slider__round"></span>
           </label>
           <span class="header__dark changeColorWh">Dark</span>
@@ -105,6 +112,7 @@
           <li class="nav-menu__item">
             <a class="nav-menu__link js-change-color" href="/">Home</a>
           </li>
+
           <li class="nav-menu__item dropbtn">
             <a class="nav-menu__link js-change-color"
               >Favorite
@@ -112,9 +120,10 @@
                 <use href="./images/svg/symbol-defs.svg#down-arrow"></use>
               </svg>
             </a>
+
           </li>
         </ul>
-        <ul class="dropdown-menu list js-dropdown-menu">
+        <ul class="dropdown-menu mobil list js-dropdown-menu-m">
           <li class="dropdown-menu__item">
             <a class="dropdown-menu__link" href="./cocktails.html"
               >Favorite cocktails</a
