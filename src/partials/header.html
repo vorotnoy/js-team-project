@@ -40,14 +40,14 @@
         class="form__input js-changebgrclr"
         type="text"
       />
-      <svg class="svg-icon__search" width="24px" height="24px">
+      <!-- <svg class="svg-icon__search" width="24px" height="24px">
         <use href="./images/svg/symbol-defs.svg#search"></use>
-      </svg>
-      <!-- <button class="search__btn" type="submit"> -->
-        <!-- <svg class="svg-icon__search" width="24px" height="24px">
+      </svg> -->
+      <button class="search__btn" type="submit">
+        <svg class="svg-icon__search" width="24px" height="24px">
           <use href="./images/svg/symbol-defs.svg#search"></use>
-        </svg> -->
-      <!-- </button> -->
+        </svg>
+      </button>
     </form>
     <div class="change-color__block desc">
       <span class="header__light js-changeclrwh">Light</span>
@@ -58,7 +58,7 @@
       <span class="header__dark js-changeclror">Dark</span>
     </div>
     <button
-      class="menu-mobile js-open-menu"
+      class="menu-mobile js-open-menu js-changeclrwh"
       type="button"
       aria-controls="mobile-menu"
       aria-expanded="false"
@@ -69,13 +69,13 @@
     </button>
     <div class="mob-menu__container js-menu-container" id="mobile-menu">
       <div class="buttons__wrapper">
-        <button class="menu-mobile js-close-menu" type="button">
+        <button class="menu-mobile js-close-menu js-changeclrwh" type="button">
           <svg class="burger__img" width="32" height="32">
             <use href="./images/svg/symbol-defs.svg#close-modal"></use>
           </svg>
         </button>
         <div class="change-color__block">
-          <span class="header__light">Light</span>
+          <span class="header__light js-changeclrwh">Light</span>
           <label class="switch">
             <input
               class="switch__input"
@@ -84,7 +84,7 @@
             />
             <span class="slider__round"></span>
           </label>
-          <span class="header__dark changeColorWh">Dark</span>
+          <span class="header__dark js-changeclror">Dark</span>
         </div>
         <a class="header__logo-tab" href="#">
           <img
@@ -110,27 +110,30 @@
       <nav class="nav-menu">
         <ul class="nav-menu__items list menu-dropdown">
           <li class="nav-menu__item">
-            <a class="nav-menu__link js-change-color" href="/">Home</a>
+            <a class="nav-menu__link js-changeclrwh" href="/">Home</a>
           </li>
 
           <li class="nav-menu__item dropbtn">
-            <a class="nav-menu__link js-change-color"
+            <a class="nav-menu__link js-changeclrwh"
               >Favorite
-              <svg class="fav-icon" width="24" height="24">
+              <svg class="fav-icon js-changeclrwh" width="24" height="24">
                 <use href="./images/svg/symbol-defs.svg#down-arrow"></use>
               </svg>
             </a>
-
           </li>
         </ul>
-        <ul class="dropdown-menu mobil list js-dropdown-menu-m">
+        <ul class="dropdown-menu mobil js-changeclrwh list js-dropdown-menu-m">
           <li class="dropdown-menu__item">
-            <a class="dropdown-menu__link" href="./cocktails.html"
+            <a
+              class="dropdown-menu__link js-changeclrwh"
+              href="./cocktails.html"
               >Favorite cocktails</a
             >
           </li>
           <li class="dropdown-menu__item">
-            <a class="dropdown-menu__link" href="./ingredients.html"
+            <a
+              class="dropdown-menu__link js-changeclrwh"
+              href="./ingredients.html"
               >Favorite ingredients</a
             >
           </li>
