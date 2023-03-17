@@ -245,6 +245,7 @@ hr {
   font-size: 16px;
   line-height: 1.62;
   color: inherit;
+  cursor: pointer;
 }
 
 .modal-learn-more-item:hover,
@@ -283,7 +284,7 @@ hr {
 .remove-item-btn:hover {
   color: $accent;
   background-color: #f5f5f5;
-  border: 1px solid #f5f5f5;
+  border: 1px solid $accent;
 }
 
 .is-hidden {

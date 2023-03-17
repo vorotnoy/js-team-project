@@ -35,8 +35,10 @@ const debounce = require('lodash.debounce');
 
 // openMenuBtn.addEventListener('click', toggleMenu);
 // closeMenuBtn.addEventListener('click', toggleMenu);
+const pathname = window.location.pathname;
+const location = pathname.split('/').pop();
 
-if (window.location.pathname === '/') {
+if (location === '') {
   returnCocktails();
   const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
     refs;
@@ -45,7 +47,7 @@ if (window.location.pathname === '/') {
 
   selectBtn.addEventListener('click', onSelectBtnClick);
   alphabet.addEventListener('click', onAlphabetBtnClick);
-} else if (window.location.pathname === '/cocktails.html') {
+} else if (location === 'cocktails.html') {
   //function watch viewport size and load limited for current viewport amount of elements
   window.addEventListener('resize', debounce(initializeFavourites, 300));
   initializeFavourites();
