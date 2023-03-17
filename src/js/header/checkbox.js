@@ -28,6 +28,13 @@ function checkBtn() {
       item.classList.toggle('js-colorgray');
     });
   }
+  localStorage.setItem('darkTheme', JSON.stringify(checkboxOn.checked));
 }
 
 checkboxOn.addEventListener('click', checkBtn);
+
+let useDarkTheme = JSON.parse(localStorage.getItem('darkTheme')) ?? false;
+if (useDarkTheme) {
+  checkboxOn.checked = true;
+  checkBtn();
+}

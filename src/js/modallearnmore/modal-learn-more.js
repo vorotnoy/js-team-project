@@ -3,7 +3,7 @@ import {
   attachIngredientEvents,
   onBackdrop,
 } from './modal-learn-more-ingredient';
-import { addDrink, removeDrink, getDrink } from '../favourites';
+import { addDrink, removeDrink, getDrink, refreshFavouriteButtons } from '../favourites';
 
 const galleryEl = document.querySelector(`.gallery`);
 
@@ -152,6 +152,7 @@ export function displayMoreInfo(data) {
         event.target.dataset.name,
         event.target.dataset.img
       );
+      refreshFavouriteButtons(event.target.dataset.id);
       addBtnEl.classList.add(`is-hidden`);
       removeBtnEl.classList.remove(`is-hidden`);
     } catch (error) {
@@ -163,6 +164,7 @@ export function displayMoreInfo(data) {
   function onRemoveBtn(event) {
     try {
       removeDrink(event.target.dataset.id);
+      refreshFavouriteButtons(event.target.dataset.id);
       removeBtnEl.classList.add(`is-hidden`);
       addBtnEl.classList.remove(`is-hidden`);
     } catch (error) {

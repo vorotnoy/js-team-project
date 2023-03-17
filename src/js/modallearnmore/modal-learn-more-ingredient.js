@@ -11,7 +11,7 @@ export function attachIngredientEvents() {
     modal: document.querySelector('[data-modal-2]'),
     modalContainer: document.querySelector('[data-modal-2] .container'),
   };
-  for (button of refs.openModalBtn) {
+  for (let button of refs.openModalBtn) {
     button.addEventListener('click', toggleModal);
   }
   refs.closeModalBtn.onclick = toggleModal;
@@ -30,7 +30,7 @@ export function attachIngredientEvents() {
     refs.modal.classList.toggle('is-hidden');
   }
   let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);
-  for (link of ingredientLinkEL) {
+  for (let link of ingredientLinkEL) {
     link.addEventListener(`click`, onIngredient);
   }
 }
