@@ -62,7 +62,7 @@ function setFavouriteIngredients(favourites) {
 }
 
 export function addIngredient(name, type) {
-  if (getIngredient(name)) {
+  if (!getIngredient(name)) {
     let favouriteIngredient = { name: name, type: type };
     let favourites = getFavouriteIngredients();
     favourites.push(favouriteIngredient);
