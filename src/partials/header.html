@@ -16,14 +16,18 @@
           <a class="nav-menu__link js-changeclrwh loadCocktails">Favorite</a>
         </li>
       </ul>
-      <ul class="dropdown-menu js-changeclrwh list js-dropdown-menu js-changebgrclr">
+      <ul
+        class="dropdown-menu js-changeclrwh list js-dropdown-menu js-changebgrclr"
+      >
         <li class="dropdown-menu__item">
           <a class="dropdown-menu__link js-changeclrwh" href="./cocktails.html"
             >Favorite cocktails</a
           >
         </li>
         <li class="dropdown-menu__item">
-          <a class="dropdown-menu__link js-changeclrwh" href="./ingredients.html"
+          <a
+            class="dropdown-menu__link js-changeclrwh"
+            href="./ingredients.html"
             >Favorite ingredients</a
           >
         </li>
@@ -63,7 +67,6 @@
         <use href="./images/svg/symbol-defs.svg#burger-menu"></use>
       </svg>
     </button>
-
     <div class="mob-menu__container js-menu-container" id="mobile-menu">
       <div class="buttons__wrapper">
         <button class="menu-mobile js-close-menu" type="button">
@@ -98,7 +101,6 @@
           class="form__input"
           type="text"
         />
-
         <button class="search__btn" type="submit">
           <svg class="svg-icon__search" width="18px" height="18px">
             <use href="./images/svg/symbol-defs.svg#search"></use>
@@ -110,8 +112,15 @@
           <li class="nav-menu__item">
             <a class="nav-menu__link js-change-color" href="/">Home</a>
           </li>
-          <li class="nav-menu__item dropbtn_mob">
-            <a class="nav-menu__link js-change-color">Favorite</a>
+
+          <li class="nav-menu__item dropbtn">
+            <a class="nav-menu__link js-change-color"
+              >Favorite
+              <svg class="fav-icon" width="24" height="24">
+                <use href="./images/svg/symbol-defs.svg#down-arrow"></use>
+              </svg>
+            </a>
+
           </li>
         </ul>
         <ul class="dropdown-menu mobil list js-dropdown-menu-m">
