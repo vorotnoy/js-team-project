@@ -20,12 +20,6 @@ export async function searchCocktailsByFirstLetter(letter) {
   try {
     const response = await axios.get(`${BASE_URL}/search.php?f=${letter}`);
     console.log(response);
-    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
-
-    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
-      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
-      getValue.push(myChunk);
-    }
 
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
@@ -33,7 +27,18 @@ export async function searchCocktailsByFirstLetter(letter) {
       cocktailsTitle.classList.add('is-hidden');
       noCocktails.classList.remove('is-hidden');
 
+      prewButton.classList.add('is-hiden');
+      nextButton.classList.add('is-hiden');
+      pagination(0, 1);
+
       return;
+    }
+
+    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
+
+    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
+      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
+      getValue.push(myChunk);
     }
 
     cocktailsList.innerHTML = createCocktailsMarkupByViewportSize(
@@ -45,8 +50,12 @@ export async function searchCocktailsByFirstLetter(letter) {
     prewButton.classList.remove('is-hiden');
     nextButton.classList.remove('is-hiden');
     nextButton.removeAttribute('disabled');
-    }
     pagination(totalPage, 1);
+    } else {
+      prewButton.classList.add('is-hiden');
+      nextButton.classList.add('is-hiden');
+      pagination(0, 1);
+    }
 
     attachEvents();
     attachFavouriteClickEvents();
