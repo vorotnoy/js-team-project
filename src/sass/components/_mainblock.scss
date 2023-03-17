@@ -152,14 +152,14 @@
 
 .learnMore:hover,
 .learnMore:focus {
-  background-color: #F5F5F5;
+  background-color: $bgr-color;
   // $bgr-color
-  color: #fe7031;
+  color: $main-button;
   // $main-button
 }
 
 .learnMore:active {
-  background-color: #FD5103;
+  background-color: $main-color;
   filter: none;
 }
 
@@ -275,14 +275,18 @@
 .icon-heart {
   width: 19px;
   height: 17px;
-  --color1: #fd5103;
-  // $main-color
+  --color1: $main-color;
   fill: $main-color3;
   @media screen and (min-width: 768px) {
     width: 21px;
     height: 19px;
   }
 }
+
+.js-bgcblack .icon-heart {
+  fill: $main-color2
+}
+
 .icon-heart-selected {
   width: 15px;
   height: 15px;
