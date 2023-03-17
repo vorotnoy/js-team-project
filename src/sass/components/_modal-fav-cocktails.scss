@@ -58,7 +58,7 @@ button {
 }
 
 .fav-cocktails__list {
-  margin: 0;
+  margin: auto;
   display: flex;
 }
 
@@ -73,6 +73,7 @@ button {
 
 @media screen and (min-width: 768px) {
   .fav-cocktails__list {
+    margin: 0;
     margin-bottom: 60px;
     width: 702px;
     flex-direction: unset;
@@ -112,12 +113,14 @@ button {
 }
 
 .fav-cocktails__item-title {
+  max-height: 38px;
   margin: 0;
   margin-bottom: 16px;
   font-style: normal;
   font-weight: 900;
   font-size: 26px;
   line-height: calc(42 / 26);
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
