@@ -58,7 +58,7 @@ hr {
 }
 
 .close-icon {
-  fill: #000917;
+  fill: $fill-color;
 }
 
 .modal-layout-box {
@@ -136,7 +136,7 @@ hr {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.75;
-  color: #5f6775;
+  color: $input_plholder;
   margin-bottom: 80px;
   text-align: left;
 }
@@ -177,7 +177,7 @@ hr {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: #000917;
+  color: $fill-color;
   text-transform: uppercase;
   text-align: left;
   margin-bottom: 8px;
@@ -211,7 +211,7 @@ hr {
 .modal-learn-more-item,
 .ingredient-list-item {
   list-style-type: '✶';
-  color: #000917;
+  color: $fill-color;
   text-align: left;
 }
 
@@ -220,7 +220,7 @@ hr {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.62;
-  color: #5f6775;
+  color: $input_plholder;
   padding-bottom: 8px;
 }
 
@@ -283,7 +283,7 @@ hr {
 .add-item-btn:hover,
 .remove-item-btn:hover {
   color: $accent;
-  background-color: #f5f5f5;
+  background-color: $bgr-color;
   border: 1px solid $accent;
 }
 

@@ -6,6 +6,9 @@ function checkBtn() {
   if (checkboxOn.checked) {
     bodyOn.classList.toggle('js-bgcblack');
     bgclr.classList.toggle('js-bgcblack');
+    // bgclr.forEach(item => {
+    //   item.classList.toggle('js-bgcblack');
+    // });
     clrwh.forEach(item => {
       item.classList.toggle('js-colorwhite');
     });
@@ -18,6 +21,9 @@ function checkBtn() {
   } else {
     bodyOn.classList.toggle('js-bgcblack');
     bgclr.classList.toggle('js-bgcblack');
+    // bgclr.forEach(item => {
+    //   item.classList.toggle('js-bgcblack');
+    // });
     clrwh.forEach(item => {
       item.classList.toggle('js-colorwhite');
     });

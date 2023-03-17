@@ -15,6 +15,7 @@ inputForm.addEventListener('submit', searchCoctailByName);
 
 export function searchCoctailByName(evt) {
   evt.preventDefault();
+  console.log(evt.currentTarget.elements.searchQuery.value)
   searchByName(evt.currentTarget.elements.searchQuery.value);
   inputForm.reset();
 }

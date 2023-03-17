@@ -38,7 +38,7 @@
   font-size: 14px;
   line-height: 2;
   letter-spacing: 0.02em;
-  color: #000000;
+  color: $main-color2;
   opacity: 0.8;
 }
 
@@ -68,13 +68,13 @@
 
 .select__button:hover,
 .select__button:focus {
-  color: #fcfcfc;
+  color: $main-color3;
   background-color: $accent;
 }
 
 .select__button:hover .select__icon,
 .select__button:focus .select__icon {
-  fill: #fcfcfc;
+  fill: $main-color3;
 }
 
 .select__letter {
@@ -111,7 +111,7 @@
   line-height: 2;
   letter-spacing: 0.02em;
 
-  color: #5f6775;
+  color: $input_plholder;
 }
 
 .select__list-open {
@@ -130,7 +130,7 @@
   font-size: 14px;
   line-height: 1.5;
 
-  color: #5f6775;
+  color: $input_plholder;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     scale 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -141,9 +141,9 @@
 .alphabet__button:focus {
   color: $accent;
   scale: 1.2;
-  text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
+  text-shadow: 0px 4px 4px $shadow-color;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #5f6775;
+  -webkit-text-stroke-color: $input_plholder;
 }
 
 .alphabet__text {
@@ -251,7 +251,7 @@
 }
 
 .active {
-  color: #fcfcfc;
+  color: $main-color3;
   background-color: $accent;
-  fill: #fcfcfc;
+  fill: $main-color3;
 }

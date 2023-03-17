@@ -30,7 +30,7 @@
             width: 60px;
             height: 40px;
 
-            border:1px solid  #EAEBEA;
+            border:1px solid  $border-color;
         }
     
         display: flex;
@@ -40,7 +40,7 @@
         border-radius: 4px;
         border-color: transparent;
 
-        color: #D7D7D7;
+        color: $border-color1;
         background-color: transparent;
 
         &:hover,
@@ -66,12 +66,12 @@
     
         background-color: transparent;
         color: $main-button;
-        border: 1px solid #EAEBEA;
+        border: 1px solid $border-color;
         border-radius: 4px;
         &:hover,
         &:focus{
             background-color: $main-button;
-            color: #FDFDFD;
+            color: $border-color2;
         }
     }
 }
@@ -96,7 +96,7 @@
 
     background-color: transparent;
     color: $main-button;
-    border: 1px solid #EAEBEA;
+    border: 1px solid $border-color;
     border-radius: 4px;
 }
 
@@ -124,5 +124,5 @@
 
 .active{
     background-color: $main-button;
-    color: #FDFDFD;
+    color: $border-color2;
 }
