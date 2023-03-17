@@ -53,7 +53,7 @@ export function renderAddRemoveDrinkButton(id, name, image) {
       </button>`;
 }
 
-function getFavouriteIngredients() {
+export function getFavouriteIngredients() {
   return JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
 }
 
