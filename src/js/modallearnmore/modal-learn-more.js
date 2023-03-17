@@ -70,15 +70,14 @@ async function onLearnMore(event) {
           list +=
             `<li class="modal-learn-more-item">
                     <span class="modal-learn-more-data">
+                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
                     ${
                       drink[measureProperty] != null
                         ? drink[measureProperty]
                         : ''
                     }` +
             ' ' +
-            `
-                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
-                    ${drink[ingredientProperty]}
+                    `${drink[ingredientProperty]}
                     </a>
                     </span>
                     </li>`;
@@ -104,7 +103,7 @@ export function displayMoreInfo(data) {
   const result = data
     .map(
       drink =>
-        `<h2 class="modal-header js-changeclrwh">${drink.strDrink}</h2>
+        `<h2 class="modal-header">${drink.strDrink}</h2>
         <div class="modal-layout-flex">
             <div class="modal-instraction-box">
                 <h3 class="modal-sub-header">Instructions: </h3>
@@ -171,4 +170,4 @@ export function displayMoreInfo(data) {
       console.error(error.message);
     }
   }
-}
+};
