@@ -6,6 +6,7 @@ function onClickDropdownOff(evt) {
     return;
   }
   dropDownItems.classList.remove('show');
+  // dropDownItemsM.classList.toggle('show');
   bodyOn.removeEventListener('click', onClickDropdownOff);
 }
 
@@ -14,9 +15,7 @@ function onClickDropdownOn() {
   bodyOn.addEventListener('click', onClickDropdownOff);
 }
 function onClickDropdownOnM() {
-  console.log('1')
   dropDownItemsM.classList.toggle('show');
-  bodyOn.addEventListener('click', onClickDropdownOff);
 }
 
 dropDownBtn.addEventListener('click', onClickDropdownOn);

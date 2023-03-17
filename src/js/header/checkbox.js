@@ -23,9 +23,9 @@ function checkBtn() {
     burgerOn.classList.toggle('js-bgcblack')
     bodyOn.classList.toggle('js-bgcblack');
     bgclr.classList.toggle('js-bgcblack');
-    // bgclr.forEach(item => {
-    //   item.classList.toggle('js-bgcblack');
-    // });
+    bgclr.forEach(item => {
+      item.classList.toggle('js-bgcblack');
+    });
     clrwh.forEach(item => {
       item.classList.toggle('js-colorwhite');
     });

@@ -65,10 +65,13 @@
   z-index: 1;
 }
 .dropdown-menu.mobil {
-
   left: 0px;
   top: 90px;
   z-index: 1;
+  @include tablet{
+    left: 458px;
+    top: 90px;
+  }
 }
 .show {
   display: block;
