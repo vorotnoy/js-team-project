@@ -38,7 +38,7 @@ const pathname = window.location.pathname;
 const location = pathname.split('/').pop();
 
 
-if (location === '') {
+if (location === ''||location === 'index.html') {
   returnCocktails();
   //cocktailsList.addEventListener('click', favouritesClickEvent);
 
