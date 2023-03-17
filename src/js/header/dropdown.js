@@ -10,6 +10,7 @@ function onClickDropdownOff(evt) {
 }
 
 function onClickDropdownOn() {
+  console.log('1')
   dropDownItems.classList.toggle('show');
   bodyOn.addEventListener('click', onClickDropdownOff);
 }
