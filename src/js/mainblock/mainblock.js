@@ -6,7 +6,10 @@ import {
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { VIEWPORT_SIZES } from '../const';
 import { attachFavouriteClickEvents } from '../favourites';
+import { refs} from '../refs'
 
+
+const { title } = refs
 export function viewportWidthCheck({ tablet, desktop }) {
   const currentVpWidth = document.body.clientWidth;
 
@@ -38,5 +41,6 @@ export function pourCocktails(cocktailSetSize) {
 }
 
 export function returnCocktails() {
+  title.textContent = 'Cocktails'
   pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
 }

@@ -8,13 +8,14 @@ import { attachFavouriteClickEvents } from '../favourites';
 import { createCocktailsMarkupByViewportSize } from '../hero/createCocktailsMarkupByViewportSize';
 import { pagination } from '../pagination';
 
-const { cocktailsList, cocktailsTitle, noCocktails, inputForm, prewButton, nextButton, pagContainer } = refs;
+const { title, cocktailsList, cocktailsTitle, noCocktails, inputForm, prewButton, nextButton, pagContainer } = refs;
 export let getValue = [];
 
 inputForm.addEventListener('submit', searchCoctailByName);
 
 export function searchCoctailByName(evt) {
   evt.preventDefault();
+  title.textContent = 'Searching results'
   console.log(evt.currentTarget.elements.searchQuery.value)
   searchByName(evt.currentTarget.elements.searchQuery.value);
   inputForm.reset();
