@@ -95,7 +95,7 @@ button {
   justify-content: center;
   align-items: center;
 
-  border: 1px solid #fd5103;
+  border: 1px solid $main-color;
   border-radius: 4px;
 }
 @media screen and (min-width: 768px) {
@@ -167,9 +167,9 @@ button {
 .fav-cocktails__learn-more-btn {
   width: 108px;
   height: 39px;
-  background: #fe7031;
+  background: $main-button;
   border: none;
-  color: #ffffff;
+  color: $main-color3;
 
   font-style: normal;
   font-weight: 400;
@@ -197,9 +197,9 @@ button {
 .fav-cocktails__remove-btn {
   width: 108px;
   height: 39px;
-  background-color: #ffffff;
-  border: 1px solid #fe7031;
-  color: #fd5103;
+  background-color: $main-color3;
+  border: 1px solid $main-button;
+  color: $main-color;
 
   font-style: normal;
   font-weight: 400;

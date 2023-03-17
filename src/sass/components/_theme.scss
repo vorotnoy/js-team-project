@@ -1,12 +1,14 @@
 .js-colorwhite {
-  color: white;
+  color: $main-color3;
+  border-color: $main-color3;
+
 }
 .js-colororange {
-  color: #fd5103;
+  color: $main-color;
 }
 .js-colorgray {
-  color: gray;
+  color: $input_plholder;
 }
 .js-bgcblack {
-  background-color: black;
+  background-color: $main-color2;
 }

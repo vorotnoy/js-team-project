@@ -23,9 +23,6 @@ import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
 
 //import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
 // const { cocktailsList, selectBtn, alphabet, inputForm } = refs;
-//cocktailsList.addEventListener('click', favouritesClickEvent);
-// selectBtn.addEventListener('click', onSelectBtnClick);
-// alphabet.addEventListener('click', onAlphabetBtnClick);
 
 import { searchCoctailByName } from './js/header/searchbyname';
 
@@ -33,17 +30,16 @@ import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
+const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
+refs;
 
-// openMenuBtn.addEventListener('click', toggleMenu);
-// closeMenuBtn.addEventListener('click', toggleMenu);
+openMenuBtn.addEventListener('click', toggleMenu);
+closeMenuBtn.addEventListener('click', toggleMenu);
 const pathname = window.location.pathname;
 const location = pathname.split('/').pop();
 
 if (location === '') {
   returnCocktails();
-  const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
-    refs;
-
   //cocktailsList.addEventListener('click', favouritesClickEvent);
 
   selectBtn.addEventListener('click', onSelectBtnClick);
@@ -58,9 +54,12 @@ if (location === '') {
     window.addEventListener("resize", debounce(initializeFavourites, 300));
 
     initializeFavourites();
+
 } else if (pathname === '/ingredients.html'){
   //watch viewport size and load limited for current viewport amount of elements 
   window.addEventListener("resize", debounce(initializeFavouritesIng, 300));
   
   initializeFavouritesIng();
+}
+
 }

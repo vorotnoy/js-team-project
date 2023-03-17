@@ -1,6 +1,6 @@
 <header class="section__header">
   <div class="header__container">
-    <a class="header__logo" href="/">
+    <a class="header__logo" href="./index.html">
       <img
         src="./images/img/logo-1x-min.png"
         alt="cocktails logo"
@@ -10,20 +10,20 @@
     <nav class="nav-menu desc">
       <ul class="nav-menu__items list menu-dropdown">
         <li class="nav-menu__item">
-          <a class="nav-menu__link js-changeclrwh" href="/">Home</a>
+          <a class="nav-menu__link js-changeclrwh" href="./index.html">Home</a>
         </li>
         <li class="nav-menu__item dropbtn">
           <a class="nav-menu__link js-changeclrwh loadCocktails">Favorite</a>
         </li>
       </ul>
-      <ul class="dropdown-menu list js-dropdown-menu">
+      <ul class="dropdown-menu js-changeclrwh list js-dropdown-menu js-changebgrclr">
         <li class="dropdown-menu__item">
-          <a class="dropdown-menu__link" href="./cocktails.html"
+          <a class="dropdown-menu__link js-changeclrwh" href="./cocktails.html"
             >Favorite cocktails</a
           >
         </li>
         <li class="dropdown-menu__item">
-          <a class="dropdown-menu__link" href="./ingredients.html"
+          <a class="dropdown-menu__link js-changeclrwh" href="./ingredients.html"
             >Favorite ingredients</a
           >
         </li>
@@ -36,11 +36,14 @@
         class="form__input js-changebgrclr"
         type="text"
       />
-      <button class="search__btn" type="submit">
-        <svg class="svg-icon__search" width="24px" height="24px">
+      <svg class="svg-icon__search" width="24px" height="24px">
+        <use href="./images/svg/symbol-defs.svg#search"></use>
+      </svg>
+      <!-- <button class="search__btn" type="submit"> -->
+        <!-- <svg class="svg-icon__search" width="24px" height="24px">
           <use href="./images/svg/symbol-defs.svg#search"></use>
-        </svg>
-      </button>
+        </svg> -->
+      <!-- </button> -->
     </form>
     <div class="change-color__block desc">
       <span class="header__light js-changeclrwh">Light</span>
