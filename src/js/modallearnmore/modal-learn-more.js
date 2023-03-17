@@ -104,7 +104,7 @@ export function displayMoreInfo(data) {
   const result = data
     .map(
       drink =>
-        `<h2 class="modal-header">${drink.strDrink}</h2>
+        `<h2 class="modal-header js-changeclrwh">${drink.strDrink}</h2>
         <div class="modal-layout-flex">
             <div class="modal-instraction-box">
                 <h3 class="modal-sub-header">Instructions: </h3>
