@@ -48,6 +48,9 @@
 .dropdown-menu__item:hover .dropdown-menu__link {
   color: $main-color3;
 }
+.nav-menu__items{
+  position: relative;
+}
 
 .dropdown-menu {
   display: none;
@@ -59,6 +62,12 @@
   overflow: auto;
   left: 156px;
   top: 47px;
+  z-index: 1;
+}
+.dropdown-menu.mobil {
+
+  left: 0px;
+  top: 90px;
   z-index: 1;
 }
 .show {

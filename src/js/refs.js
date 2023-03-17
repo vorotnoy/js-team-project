@@ -5,7 +5,10 @@ export const refs = {
   selectBtn: document.querySelector('#select__btn'),
   alphabet: document.querySelector('#alphabet'),
   dropDownBtn: document.querySelector('.dropbtn'),
+  dropDownBtnM: document.querySelector('.dropbtn_mob'),
+
   dropDownItems: document.querySelector('.js-dropdown-menu'),
+  dropDownItemsM: document.querySelector('.js-dropdown-menu-m'),
   cocktailsTitle: document.querySelector('.cocktails-title'),
   noCocktails: document.querySelector('.no-cocktails__wrapper'),
 

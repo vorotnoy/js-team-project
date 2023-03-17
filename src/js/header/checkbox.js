@@ -39,7 +39,7 @@ function checkBtn() {
   localStorage.setItem('darkTheme', JSON.stringify(checkboxOn.checked));
 }
 
-//checkboxOn.addEventListener('click', checkBtn);
+checkboxOn.addEventListener('click', checkBtn);
 
 checkboxBurgerOn.addEventListener('click', checkBtn);
 
