@@ -38,4 +38,5 @@ export const refs = {
   nextButton: document.querySelector('.next-button'),
   ulTag: document.querySelector('.pagination-list'),
   pagContainer: document.querySelector('.pagination'),
+  title: document.querySelector('.cocktails-title'),
 };

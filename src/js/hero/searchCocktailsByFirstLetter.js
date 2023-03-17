@@ -10,7 +10,7 @@ import { attachFavouriteClickEvents } from '../favourites';
 import { getValue } from '../header/searchbyname';
 import { pagination} from '../pagination';
 
-const { cocktailsList, cocktailsTitle, noCocktails, prewButton, nextButton, pagContainer } = refs;
+const { title, cocktailsList, cocktailsTitle, noCocktails, prewButton, nextButton, pagContainer } = refs;
 
 export async function searchCocktailsByFirstLetter(letter) {
   cocktailsTitle.classList.remove('is-hidden');
@@ -40,7 +40,7 @@ export async function searchCocktailsByFirstLetter(letter) {
       let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
       getValue.push(myChunk);
     }
-
+    title.textContent = 'Searching results'
     cocktailsList.innerHTML = createCocktailsMarkupByViewportSize(
       viewportWidthCheck(VIEWPORT_SIZES),
       response
