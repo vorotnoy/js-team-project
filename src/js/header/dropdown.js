@@ -1,22 +1,23 @@
 import { refs } from '../refs';
-const { bodyOn, dropDownBtn, dropDownItems,dropDownItemsM,  dropDownBtnM} = refs;
+const { dropDownBtnMob, bodyOn, dropDownBtn, dropDownItems,dropDownItemsMob,  dropDownBtnM} = refs;
 
 function onClickDropdownOff(evt) {
   if (evt.target.closest('.dropbtn')) {
     return;
+  } else if
+    (evt.target.closest('.dropbtn-mob')){
+    return
   }
   dropDownItems.classList.remove('show');
-  // dropDownItemsM.classList.toggle('show');
+  dropDownItemsMob.classList.remove('show');
   bodyOn.removeEventListener('click', onClickDropdownOff);
 }
 
 function onClickDropdownOn() {
   dropDownItems.classList.toggle('show');
+   dropDownItemsMob.classList.toggle('show');
   bodyOn.addEventListener('click', onClickDropdownOff);
-}
-function onClickDropdownOnM() {
-  dropDownItemsM.classList.toggle('show');
 }
 
 dropDownBtn.addEventListener('click', onClickDropdownOn);
-// dropDownBtnM.addEventListener('click', onClickDropdownOnM);
+dropDownBtnMob.addEventListener('click', onClickDropdownOn);
