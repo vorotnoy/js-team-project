@@ -13,8 +13,10 @@ export const refs = {
   openMenuBtn: document.querySelector('.js-open-menu'),
   closeMenuBtn: document.querySelector('.js-close-menu'),
 
-  checkboxOn: document.querySelector('#js-checkbox'),
+  checkboxBurgerOn: document.querySelector('#js-checkbox-burger'),
+  checkboxOn: document.querySelector('.switch__input'),
   bodyOn: document.querySelector('body'),
+  burgerOn: document.querySelector('.js-menu-container'),
   clrwh: document.querySelectorAll('.js-changeclrwh'),
   clror: document.querySelectorAll('.js-changeclror'),
   clrgr: document.querySelectorAll('.js-changeclrgr'),
