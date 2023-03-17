@@ -53,6 +53,10 @@ async function searchByName(name) {
       nextButton.classList.remove('is-hiden');
       nextButton.removeAttribute('disabled');
       pagination(totalPage, 1);
+    } else {
+      prewButton.classList.add('is-hiden');
+      nextButton.classList.add('is-hiden');
+      pagination(0, 1);
     }
 
     attachEvents();
