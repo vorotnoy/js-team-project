@@ -125,7 +125,8 @@
   padding: 0;
   width: 108px;
   height: 39px;
-  background: $accent;
+  background: $main-button;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border: none;
   border-radius: 4px;
 
@@ -134,7 +135,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 768px) {
     width: 160px;
     height: 48px;
@@ -151,9 +152,15 @@
 
 .learnMore:hover,
 .learnMore:focus {
-  // opacity: 0.5;
-  box-shadow: $shadow-color1 0px 30px 60px -12px inset,
-  $shadow-color2 0px 18px 36px -18px inset;
+  background-color: #F5F5F5;
+  // $bgr-color
+  color: #fe7031;
+  // $main-button
+}
+
+.learnMore:active {
+  background-color: #FD5103;
+  filter: none;
 }
 
 .addTo {
@@ -268,7 +275,9 @@
 .icon-heart {
   width: 19px;
   height: 17px;
-  --color1: $main-color;
+  --color1: #fd5103;
+  // $main-color
+  fill: $main-color3;
   @media screen and (min-width: 768px) {
     width: 21px;
     height: 19px;
@@ -278,7 +287,7 @@
   width: 15px;
   height: 15px;
   --color1: $main-color;
-  --color2: $main-color;
+  fill: $main-color;
 
   @media screen and (min-width: 768px) {
     width: 21px;
