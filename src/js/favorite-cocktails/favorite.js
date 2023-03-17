@@ -18,29 +18,20 @@ const refs = {
 //use function updateSize to render elements on click
 export function initializeFavourites() {
   let windowWidth = window.innerWidth;
-  const localStorageLength = JSON.parse(localStorage.getItem('favorite-cocktail')).length;
-  const pathname = window.location.pathname;
+  const localStorageLength = JSON.parse(localStorage.getItem('favorite-cocktail'));
   
 //   console.log(JSON.parse(localStorage.getItem('favorite-cocktail')));
-  console.log(pathname);
 
-  if (localStorageLength === 0) {
+  if (localStorageLength === null || localStorageLength.length === 0) {
     refs.favoritesTitle.textContent = 'You didn\'t choose any cocktail.'
     return;
   }
   if (windowWidth < 768) {
-    // console.log('300px - 768px');
     favoritesMarkup(0, 3);
   } else if (windowWidth < 1280) {
-    // console.log('768px - 1023px');
     favoritesMarkup(0, 6);
   } else {
-    // console.log('1280px');
-    if(pathname === '/cocktails.html'){
-        favoritesMarkup(0, 9);
-    } else if(pathname === '/ingredients.html'){
-        console.log('fav',pathname)
-    }
+    favoritesMarkup(0, 9);
   }
 }
 
