@@ -130,8 +130,13 @@
   display: flex;
   position: relative;
 }
-.header__light {
-  color: $accent;
+.header__light,
+.header__dark {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.13;
 }
 .switch {
   display: inline-block;
@@ -192,6 +197,7 @@
   text-align: center;
   margin-left: auto;
   margin-right: 40px;
+  margin-right: 172px;
 }
 .svg-icon__search {
   position: absolute;
@@ -269,7 +275,15 @@
     max-width: 768px;
   }
 }
-
+.form__input:placeholder-shown::after {
+  content: ' ';
+  width: 10px;
+  height: 10px;
+  display: block;
+  background-color: black;
+  position: absolute;
+  top: 50px;
+}
 @media screen and (max-width: 1279px) {
   .change-color__block.desc {
     display: none;
