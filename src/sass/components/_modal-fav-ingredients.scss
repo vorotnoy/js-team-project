@@ -243,3 +243,7 @@ body {
       width: 141px;
     }
   }
+body.js-bgcblack .fav-ingr__item-title,
+body.js-bgcblack .fav-ingr__type {
+  color: $main-color3;
+}
