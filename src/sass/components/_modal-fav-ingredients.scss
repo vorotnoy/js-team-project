@@ -136,6 +136,7 @@ body {
     font-weight: 600;
     font-size: 14px;
     line-height: calc(21 / 14);
+    color: $input_plholder;
 
     text-transform: uppercase;
   }
@@ -243,7 +244,10 @@ body {
       width: 141px;
     }
   }
-body.js-bgcblack .fav-ingr__item-title,
-body.js-bgcblack .fav-ingr__type {
+body.js-bgcblack .fav-ingr__item-title {
   color: $main-color3;
+}
+
+body.js-bgcblack .fav-ingr__type {
+  color: $input_plholder;
 }
