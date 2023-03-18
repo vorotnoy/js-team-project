@@ -1,4 +1,4 @@
-body {
+  body {
     margin: 0;
     box-sizing: border-box;
   }
@@ -49,7 +49,12 @@ body {
   
   .fav-ingr__list {
     margin: auto;
+    padding: 0;
     display: flex;
+    gap: 20px;
+
+    list-style: none;
+
   }
   
   @media screen and (min-width: 200px) {
@@ -87,6 +92,12 @@ body {
   
     border: 1px solid #fd5103;
     border-radius: 4px;
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  }
+  .fav-ingr__item:hover{
+    transform: scale(1.05, 1.05);
   }
   @media screen and (min-width: 768px) {
     .fav-ingr__item {
@@ -103,11 +114,13 @@ body {
   
   .fav-ingr__item-title {
     margin: 20px 0px 20px 20px;
+    max-height: 38px;
     align-self: flex-start;
     font-style: normal;
     font-weight: 900;
     font-size: 26px;
     line-height: calc(42 / 26);
+    overflow: hidden;
   }
   
   @media screen and (min-width: 768px) {
@@ -156,17 +169,6 @@ body {
     }
   }
   
-  .fav-ingr__img {
-    margin-bottom: 48px;
-    border-radius: 3px 3px 0px 0px;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .fav-ingr__img {
-      margin-bottom: 20px;
-    }
-  }
-  
   .fav-ingr__buttons {
     margin-bottom: 20px;
     display: flex;
@@ -183,67 +185,7 @@ body {
       margin-bottom: 28px;
     }
   }
-  
-  .fav-ingr__learn-more-btn {
-    width: 108px;
-    height: 39px;
-    background: #fe7031;
-    border: none;
-    color: #ffffff;
-  
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: calc(24 / 14);
-  }
-  
-  @media screen and (min-width: 768px) {
-    .fav-ingr__learn-more-btn {
-      width: 160px;
-      height: 48px;
-  
-      font-size: 20px;
-      line-height: calc(24 / 20);
-  
-      letter-spacing: 0.02em;
-    }
-  }
-  
-  @media screen and (min-width: 1280px) {
-    .fav-ingr__learn-more-btn {
-      width: 182px;
-    }
-  }
-  .fav-ingr__remove-btn {
-    width: 108px;
-    height: 39px;
-    background-color: #ffffff;
-    border: 1px solid #fe7031;
-    color: #fd5103;
-  
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: calc(24 / 14);
-  }
-  
-  @media screen and (min-width: 768px) {
-    .fav-ingr__remove-btn {
-      width: 123px;
-      height: 48px;
-  
-      font-size: 20px;
-      line-height: calc(24 / 20);
-  
-      letter-spacing: 0.02em;
-    }
-  }
-  
-  @media screen and (min-width: 1280px) {
-    .fav-ingr__remove-btn {
-      width: 141px;
-    }
-  }
+
 body.js-bgcblack .fav-ingr__item-title {
   color: $main-color3;
 }

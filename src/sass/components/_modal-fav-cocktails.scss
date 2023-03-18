@@ -3,12 +3,6 @@ body {
   box-sizing: border-box;
 }
 
-ul {
-  padding: 0;
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
 img {
   display: block;
   max-width: 100%;
@@ -18,10 +12,6 @@ img {
   img {
     width: 280px;
   }
-}
-
-button {
-  border-radius: 4px;
 }
 
 .fav-cocktails {
@@ -58,8 +48,11 @@ button {
 }
 
 .fav-cocktails__list {
+  padding: 0;
   margin: auto;
   display: flex;
+  list-style: none;
+  gap: 20px;
 }
 
 @media screen and (min-width: 200px) {
@@ -78,7 +71,7 @@ button {
     width: 702px;
     flex-direction: unset;
     flex-wrap: wrap;
-    gap: 28.5px;
+    gap: 32px;
   }
 }
 
@@ -98,6 +91,14 @@ button {
 
   border: 1px solid $main-color;
   border-radius: 4px;
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.fav-cocktails__item:hover{
+  transform: scale(1.05, 1.05);
 }
 @media screen and (min-width: 768px) {
   .fav-cocktails__item {
@@ -164,67 +165,6 @@ button {
 @media screen and (min-width: 1280px) {
   .fav-cocktails__buttons {
     margin-bottom: 28px;
-  }
-}
-
-.fav-cocktails__learn-more-btn {
-  width: 108px;
-  height: 39px;
-  background: $main-button;
-  border: none;
-  color: $main-color3;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: calc(24 / 14);
-}
-
-@media screen and (min-width: 768px) {
-  .fav-cocktails__learn-more-btn {
-    width: 160px;
-    height: 48px;
-
-    font-size: 20px;
-    line-height: calc(24 / 20);
-
-    letter-spacing: 0.02em;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .fav-cocktails__learn-more-btn {
-    width: 182px;
-  }
-}
-.fav-cocktails__remove-btn {
-  width: 108px;
-  height: 39px;
-  background-color: $main-color3;
-  border: 1px solid $main-button;
-  color: $main-color;
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: calc(24 / 14);
-}
-
-@media screen and (min-width: 768px) {
-  .fav-cocktails__remove-btn {
-    width: 123px;
-    height: 48px;
-
-    font-size: 20px;
-    line-height: calc(24 / 20);
-
-    letter-spacing: 0.02em;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .fav-cocktails__remove-btn {
-    width: 141px;
   }
 }
 
