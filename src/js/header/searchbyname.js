@@ -16,7 +16,6 @@ inputForm.addEventListener('submit', searchCoctailByName);
 export function searchCoctailByName(evt) {
   evt.preventDefault();
   title.textContent = 'Searching results'
-  console.log(evt.currentTarget.elements.searchQuery.value)
   searchByName(evt.currentTarget.elements.searchQuery.value);
   inputForm.reset();
 }
@@ -28,8 +27,6 @@ async function searchByName(name) {
 
   try {
     const response = await axios.get(`${BASE_URL}//search.php?s=${name}`);
-    console.log(response.data.drinks);
-
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
 

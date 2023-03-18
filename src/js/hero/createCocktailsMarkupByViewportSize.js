@@ -9,14 +9,16 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
         (cocktailsMarkup += `
         <li class="cocktail-item">
             <div class="cocktail-card">
-                <a class="cocktail-link" href="#">
+                <a class="cocktail-link" href="#" data-modal-open>
                     <img class="cocktail-picture" src="${
                       data.strDrinkThumb
-                    }" alt="${data.strDrink}">
+                    }" alt="${data.strDrink}"  data-id="${data.idDrink}">
                 </a>
                     <p class="cocktail-label">${data.strDrink}</p>
                      <div class="cocktail-card-btn-wrapper">
-                    <button class="learnMore">Learn more</button>
+                    <button class="learnMore" data-id="${
+                      data.idDrink
+                    }" data-modal-open >Learn more</button>
                    ${renderAddRemoveDrinkButton(
                      data.idDrink,
                      data.strDrink,
@@ -35,10 +37,10 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
     cocktailsMarkup += `
         <li class="cocktail-item">
             <div class="cocktail-card">
-                <a class="cocktail-link" href="#">
+                <a class="cocktail-link" href="#" data-modal-open>
                     <img class="cocktail-picture" src="${
                       data.drinks[i].strDrinkThumb
-                    }" alt="${data.drinks[i].strDrink}">
+                    }" alt="${data.drinks[i].strDrink}" data-id="${data.drinks[i].idDrink}">
                 </a>
                     <p class="cocktail-label">${data.drinks[i].strDrink}</p>
 
