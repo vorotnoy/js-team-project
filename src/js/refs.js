@@ -26,6 +26,8 @@ export const refs = {
   bgclr: document.querySelector('.js-changebgrclr'),
   inputForm: document.querySelector('.search__form'),
   inputFormBurger: document.querySelector('.search__form.mob'),
+  btnSearchForm: document.querySelector('.search__btn'),
+  btnSearchFormBurger: document.querySelector('.search__btn.burger'),
 
   favoritesList: document.querySelector('.fav-cocktails__list'),
   favoritesTitle: document.querySelector('.fav-cocktails__title'),

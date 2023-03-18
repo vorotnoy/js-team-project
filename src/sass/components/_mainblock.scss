@@ -208,6 +208,9 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 1.91;
+  // add by Vlad
+  margin-left: auto;
+  margin-right: auto;
 
   @include tablet {
     width: 331px;
