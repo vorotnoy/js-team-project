@@ -8,14 +8,40 @@ import { attachFavouriteClickEvents } from '../favourites';
 import { createCocktailsMarkupByViewportSize } from '../hero/createCocktailsMarkupByViewportSize';
 import { pagination } from '../pagination';
 
-const { title, cocktailsList, cocktailsTitle, noCocktails, inputForm, prewButton, nextButton, pagContainer } = refs;
+const {
+  mobileMenu,
+  inputFormBurger,
+  title,
+  cocktailsList,
+  cocktailsTitle,
+  noCocktails,
+  inputForm,
+  prewButton,
+  nextButton,
+  pagContainer,
+} = refs;
 export let getValue = [];
 
 inputForm.addEventListener('submit', searchCoctailByName);
+inputFormBurger.addEventListener('submit', searchCoctailByName);
 
 export function searchCoctailByName(evt) {
   evt.preventDefault();
-  title.textContent = 'Searching results'
+
+  if (evt.currentTarget === inputFormBurger) {
+    mobileMenu.classList.toggle('is-open');
+  }
+
+  if (!evt.currentTarget.elements.searchQuery.value) {
+    cocktailsList.innerHTML = '';
+
+    cocktailsTitle.classList.add('is-hidden');
+    noCocktails.classList.remove('is-hidden');
+
+    return;
+  }
+
+  title.textContent = 'Searching results';
   searchByName(evt.currentTarget.elements.searchQuery.value);
   inputForm.reset();
 }
@@ -23,7 +49,7 @@ export function searchCoctailByName(evt) {
 async function searchByName(name) {
   cocktailsTitle.classList.remove('is-hidden');
   noCocktails.classList.add('is-hidden');
-  getValue.length=0;
+  getValue.length = 0;
 
   try {
     const response = await axios.get(`${BASE_URL}//search.php?s=${name}`);
@@ -40,10 +66,19 @@ async function searchByName(name) {
       return;
     }
 
-    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
+    let totalPage = Math.ceil(
+      response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES)
+    );
 
-    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
-      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
+    for (
+      let i = 0;
+      i < response.data.drinks.length;
+      i += viewportWidthCheck(VIEWPORT_SIZES)
+    ) {
+      let myChunk = response.data.drinks.slice(
+        i,
+        i + viewportWidthCheck(VIEWPORT_SIZES)
+      );
       getValue.push(myChunk);
     }
 
@@ -51,7 +86,7 @@ async function searchByName(name) {
       viewportWidthCheck(VIEWPORT_SIZES),
       response
     );
-    
+
     if (totalPage > 1) {
       prewButton.classList.remove('is-hiden');
       nextButton.classList.remove('is-hiden');
@@ -65,9 +100,9 @@ async function searchByName(name) {
       pagination(0, 1);
     }
 
-    // attachEvents();
-    // attachFavouriteClickEvents();
+    attachEvents();
+    attachFavouriteClickEvents();
   } catch (error) {
     console.log(error);
   }
-}  
+}
