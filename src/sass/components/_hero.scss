@@ -85,7 +85,21 @@
   border: 1px solid $accent;
   border-radius: 4px;
 }
+.select__list::-webkit-scrollbar {
+  width: 3px;
+}
 
+.select__list::-webkit-scrollbar-track {
+  border: 34px solid transparent;
+  background-clip: content-box;
+}
+
+.select__list::-webkit-scrollbar-thumb {
+  background: $main-button;
+  border: transparent;
+  height: 44px;
+  border-radius: 5px;
+}
 .select__item {
   font-family: Poppins;
   font-weight: 700;
