@@ -102,32 +102,31 @@ nextButton.addEventListener('click', nextList);
 
 function createListItem(data) {
     let cocktailsMarkup = '';
-    data.map(
-      dat =>
-        (cocktailsMarkup += `
+    for (let i = 0; i < data.length; i++) {
+    cocktailsMarkup += `
         <li class="cocktail-item">
             <div class="cocktail-card">
                 <a class="cocktail-link" href="#" data-modal-open>
                     <img class="cocktail-picture" src="${
-                      dat.strDrinkThumb
-                    }" alt="${dat.strDrink}" data-id="${dat.idDrink}">
+                      data[i].strDrinkThumb
+                    }" alt="${data[i].strDrink}" data-id="${data[i].idDrink}">
                 </a>
-                    <p class="cocktail-label">${dat.strDrink}</p>
-                     <div class="cocktail-card-btn-wrapper">
+                    <p class="cocktail-label">${data[i].strDrink}</p>
+
+                    <div class="cocktail-card-btn-wrapper">
                     <button class="learnMore" data-id="${
-                        dat.idDrink
-                      }" data-modal-open>Learn more</button>
-                   ${renderAddRemoveDrinkButton(
-                      dat.idDrink,
-                     dat.strDrink,
-                     dat.strDrinkThumb
-                   )}
+                      data[i].idDrink
+                    }" data-modal-open>Learn more</button>
+                    ${renderAddRemoveDrinkButton(
+                      data[i].idDrink,
+                      data[i].strDrink,
+                      data[i].strDrinkThumb
+                    )}
             </div>
+
             </div>
         </li>
-    `)
-    );
-
+    `;
+    }
   return cocktailsMarkup;
 }
-
