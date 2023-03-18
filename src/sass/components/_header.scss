@@ -132,11 +132,14 @@
 }
 .header__light,
 .header__dark {
-  font-family: 'Poppins';
+  font-family: Poppins;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.13;
+}
+.header__light{
+color: $accent;
 }
 .switch {
   display: inline-block;
