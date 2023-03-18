@@ -9,6 +9,8 @@ import { createCocktailsMarkupByViewportSize } from '../hero/createCocktailsMark
 import { pagination } from '../pagination';
 
 const {
+  btnSearchForm,
+  btnSearchFormBurger,
   mobileMenu,
   inputFormBurger,
   title,
@@ -35,15 +37,16 @@ export function searchCoctailByName(evt) {
   if (!evt.currentTarget.elements.searchQuery.value) {
     cocktailsList.innerHTML = '';
 
-    cocktailsTitle.classList.add('is-hidden');
+    title.textContent = `Sorry, we didn't find any cocktail for you`;
     noCocktails.classList.remove('is-hidden');
 
     return;
   }
-
+  window.location.href = '#results';
   title.textContent = 'Searching results';
   searchByName(evt.currentTarget.elements.searchQuery.value);
   inputForm.reset();
+  inputFormBurger.reset();
 }
 
 async function searchByName(name) {
@@ -56,7 +59,8 @@ async function searchByName(name) {
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
 
-      cocktailsTitle.classList.add('is-hidden');
+      // cocktailsTitle.classList.add('is-hidden');
+      title.textContent = `Sorry, we didn't find any cocktail for you`;
       noCocktails.classList.remove('is-hidden');
 
       prewButton.classList.add('is-hiden');
@@ -106,3 +110,12 @@ async function searchByName(name) {
     console.log(error);
   }
 }
+
+btnSearchFormBurger.addEventListener(
+  'click',
+  () => (window.location.href = '#results')
+);
+btnSearchForm.addEventListener(
+  'click',
+  () => (window.location.href = '#results')
+);

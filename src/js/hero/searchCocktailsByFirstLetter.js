@@ -23,7 +23,7 @@ export async function searchCocktailsByFirstLetter(letter) {
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
 
-      cocktailsTitle.classList.add('is-hidden');
+       title.textContent = `Sorry, we didn't find any cocktail for you`;
       noCocktails.classList.remove('is-hidden');
 
       prewButton.classList.add('is-hiden');
@@ -57,7 +57,7 @@ export async function searchCocktailsByFirstLetter(letter) {
       pagContainer.classList.add('pading');
       pagination(0, 1);
     }
-
+  window.location.href = '#results';
     // attachEvents();
     // attachFavouriteClickEvents();
   } catch (error) {
