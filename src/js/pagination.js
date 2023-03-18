@@ -1,16 +1,21 @@
 import { refs } from './refs';
 import { getValue} from './header/searchbyname';
 import { renderAddRemoveDrinkButton } from './favourites';
+import { attachEvents } from '../js/modallearnmore/modal-learn-more'
+import { attachFavouriteClickEvents } from './favourites';
+
 
 const { prewButton, nextButton, ulTag, cocktailsList } = refs;
 let page = 1;
 
 export function pagination(totalPages, page) {
+
     let liTag = '';
     let thirdPagesAnd = totalPages - 2;
     let thirdPages = page - 2;
     let curentPage = page;
-
+    attachEvents()
+    attachFavouriteClickEvents()
     if (totalPages > 6) {
         if (page < 3) {
             thirdPages = 1;
@@ -102,14 +107,16 @@ function createListItem(data) {
         (cocktailsMarkup += `
         <li class="cocktail-item">
             <div class="cocktail-card">
-                <a class="cocktail-link" href="#">
+                <a class="cocktail-link" href="#" data-modal-open>
                     <img class="cocktail-picture" src="${
                       dat.strDrinkThumb
-                    }" alt="${dat.strDrink}">
+                    }" alt="${dat.strDrink}" data-id="${dat.idDrink}">
                 </a>
                     <p class="cocktail-label">${dat.strDrink}</p>
                      <div class="cocktail-card-btn-wrapper">
-                    <button class="learnMore">Learn more</button>
+                    <button class="learnMore" data-id="${
+                        dat.idDrink
+                      }" data-modal-open>Learn more</button>
                    ${renderAddRemoveDrinkButton(
                       dat.idDrink,
                      dat.strDrink,
@@ -123,3 +130,4 @@ function createListItem(data) {
 
   return cocktailsMarkup;
 }
+

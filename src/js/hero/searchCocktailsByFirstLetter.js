@@ -19,7 +19,6 @@ export async function searchCocktailsByFirstLetter(letter) {
 
   try {
     const response = await axios.get(`${BASE_URL}/search.php?f=${letter}`);
-    console.log(response);
 
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
@@ -59,8 +58,8 @@ export async function searchCocktailsByFirstLetter(letter) {
       pagination(0, 1);
     }
 
-    attachEvents();
-    attachFavouriteClickEvents();
+    // attachEvents();
+    // attachFavouriteClickEvents();
   } catch (error) {
     console.log(error);
   }

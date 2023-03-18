@@ -65,8 +65,8 @@ async function searchByName(name) {
       pagination(0, 1);
     }
 
-    attachEvents();
-    attachFavouriteClickEvents();
+    // attachEvents();
+    // attachFavouriteClickEvents();
   } catch (error) {
     console.log(error);
   }
