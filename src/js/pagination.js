@@ -75,11 +75,11 @@ async function loadMor(event) {
     page = Number(event.target.textContent);
     array = getValue.length === 0 ? getValueC : getValue;
     console.log(window.location)
-    if (window.location.pathname.includes('cocktails.html') {
-      favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-    } else{
+    if (window.location.pathname.includes('cocktails.html')) {
+      favoritesList.innerHTML = makeFaviritelist(array[page - 1])
+    } else {
       cocktailsList.innerHTML = createListItem(array[page - 1]);
-    }
+    };
     reloadButton(array.length, page);
     pagination(array.length, page);
   } else {
