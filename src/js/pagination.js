@@ -76,7 +76,7 @@ async function loadMor(event) {
     array = getValue.length === 0 ? getValueC : getValue;
     if (window.location.pathname === '/cocktails.html') {
       favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-    } else {
+    } else if (window.location.pathname === '/'|| window.location.pathname === '/index.html') {
       cocktailsList.innerHTML = createListItem(array[page - 1]);
     }
     reloadButton(array.length, page);
