@@ -1,7 +1,7 @@
 import {attachIngredientEvents} from "../modallearnmore/modal-learn-more-ingredient";
 import { getFavouriteIngredients, renderAddRemoveIngredientButton } from '../favourites';
 import {refs} from '../refs'
-
+import { attachFavouriteClickEvents} from '../favourites'
 const favIngredientsList = document.querySelector('.fav-ingr__list');
 const favIngredientsTitle = document.querySelector('.fav-ingr__title');
 const {favNoingr} = refs
@@ -34,7 +34,7 @@ function drinkCheck(ingr){
 function favIngredientsMarkup(start, end){
     const cocktailsArr = getFavouriteIngredients();
     let arr = cocktailsArr.slice(start, end);
-    
+
     favIngredientsList.innerHTML = arr.map(e => 
         `<li class="fav-ingr__item">
             <h3 class="fav-ingr__item-title">${e.name}</h3>
@@ -46,4 +46,5 @@ function favIngredientsMarkup(start, end){
         </li>`
     ).join('');
     attachIngredientEvents();
+    attachFavouriteClickEvents();
 }
