@@ -6,7 +6,7 @@ const favIngredientsTitle = document.querySelector('.fav-ingr__title');
 
 export function initializeFavouritesIng() {
     let windowWidth = window.innerWidth;
-    const localStorageLength = JSON.parse(localStorage.getItem('favorite-cocktail'));
+    const localStorageLength = JSON.parse(localStorage.getItem('favorite-ingredient'));
     
     // console.log(JSON.parse(localStorage.getItem('favorite-ingredient')));
     if (localStorageLength === null || localStorageLength.length === 0) {
