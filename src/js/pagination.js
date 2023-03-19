@@ -91,7 +91,7 @@ async function prewList(event) {
   page -= 1;
   array = getValue.length === 0 ? getValueC : getValue;
   console.log(window.location.pathname)
-  if (window.location.pathname.includes('cocktails.html'){
+  if (window.location.pathname.includes('cocktails.html')){
     favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   } else {
     cocktailsList.innerHTML = createListItem(array[page - 1]);
@@ -105,7 +105,7 @@ export async function nextList(event) {
   page += 1;
   array = getValue.length === 0 ? getValueC : getValue;
   console.log(window.location.pathname)
-  if (window.location.pathname.includes('cocktails.html') {
+  if (window.location.pathname.includes('cocktails.html')) {
     favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   } else {
     cocktailsList.innerHTML = createListItem(array[page - 1]);
