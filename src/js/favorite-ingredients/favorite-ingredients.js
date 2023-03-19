@@ -1,15 +1,16 @@
-import {attachIngredientEvents} from "../modallearnmore/modal-learn-more-ingredient";
-import { getFavouriteIngredients, renderAddRemoveIngredientButton } from '../favourites';
+import {attachIngredientEvents, getFavouriteIngredients} from "../modallearnmore/modal-learn-more-ingredient";
+import { getFavouriteIngredients, renderAddRemoveIngredientButton, attachFavouritesRemoveClickEvents } from '../favourites';
 import {refs} from '../refs'
 import { attachFavouriteClickEvents} from '../favourites'
 const favIngredientsList = document.querySelector('.fav-ingr__list');
 const favIngredientsTitle = document.querySelector('.fav-ingr__title');
 const {favNoingr} = refs
 export function initializeFavouritesIng() {
+    favIngredientsList.innerHTML = '';
     let windowWidth = window.innerWidth;
-    const localStorageLength = JSON.parse(localStorage.getItem('favorite-ingredient'));
-    // console.log(JSON.parse(localStorage.getItem('favorite-ingredient')));
-    if (localStorageLength === null || localStorageLength.length === 0) {
+    const localStorage = getFavouriteIngredients();
+    
+    if (localStorage === null || localStorage.length === 0) {
         favNoingr.textContent = "You haven't added any favorite ingridients yet"
       return;
     }
@@ -36,7 +37,7 @@ function favIngredientsMarkup(start, end){
     let arr = cocktailsArr.slice(start, end);
 
     favIngredientsList.innerHTML = arr.map(e => 
-        `<li class="fav-ingr__item">
+        `<li id="favourite_${e.name.replace(" ", "").toLowerCase()}" class="fav-ingr__item">
             <h3 class="fav-ingr__item-title">${e.name}</h3>
             <p class="fav-ingr__type">${drinkCheck(e.type)}</p>
             <div class="fav-ingr__buttons">
@@ -46,5 +47,5 @@ function favIngredientsMarkup(start, end){
         </li>`
     ).join('');
     attachIngredientEvents();
-    attachFavouriteClickEvents();
+    attachFavouritesRemoveClickEvents();
 }
