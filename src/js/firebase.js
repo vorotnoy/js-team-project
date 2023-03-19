@@ -1,9 +1,10 @@
+import * as icons from '../images/svg/user.svg';
 import { refs } from './refs';
 
-const { authorization } = refs;
+const { authorization, linkToSignOut } = refs;
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database";
+import { getDatabase, ref, set, get, child, update, remove } from "firebase/database";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -31,7 +32,27 @@ const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-export let currentUser = null;
+onAuthStateChanged(auth, user => {
+  if (user) {
+    const uid = user.uid;
+    authorization.style.backgroundImage = `url("${user.photoURL}")`;
+    linkToSignOut.classList.remove('invisible');
+    linkToSignOut.classList.add('sign-out');
+    linkToSignOut.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      auth.signOut();
+      linkToSignOut.classList.add('invisible');
+      linkToSignOut.classList.remove('sign-out');
+      authorization.style.backgroundImage = `url("${icons}")`;
+    });
+    const currentUser = auth.currentUser.uid;
+    console.log(currentUser);
+  } else {
+    const currentUser = null;
+    console.log(currentUser);
+  }
+});
+
 export function authorize() {
   signInWithPopup(auth, provider)
   .then((result) => {
@@ -40,17 +61,7 @@ export function authorize() {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    currentUser = result.user.uid;
     console.log(user.uid, user.displayName, user.email);
-    authorization.style.backgroundImage = `url("${user.photoURL}")`;
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        uidUser = user.uid;
-        console.log(user);
-      } else {
-        console.log('нема авторизації');
-      }
-    });
     // set(ref(db, 'users/' + user.uid), {
     //   username: user.displayName,
     //   email: user.email

@@ -1,6 +1,7 @@
 /** add your listiener here */
 export const refs = {
   authorization: document.querySelector('#googleAuthBtn'),
+  linkToSignOut: document.querySelector('#js-sign-out'),
 
   cocktailsList: document.querySelector('ul.cocktails-list'),
   selectMenu: document.querySelector('#select__menu'),
