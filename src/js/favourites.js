@@ -1,10 +1,13 @@
 import * as icons from '../images/svg/symbol-defs.svg';
-import { currentUser } from './firebase';
+import { currentUserId } from './firebase';
 import { readFavoriteDrinks, writeFavoriteDrinks, deleteFavoriteDrink } from './firebase';
 
 function getFavouriteDrinks() {
-  console.log(`hello i am get fav drink for ${currentUser}`);
-  readFavoriteDrinks(currentUser);
+  console.log(currentUserId);
+  if (currentUserId) {
+    console.log(`hello i am readFavoriteDrinks for ${currentUserId}`);
+    return readFavoriteDrinks(currentUserId);
+  }
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
 }
 
@@ -18,8 +21,11 @@ export function addDrink(id, name, image) {
     let favourites = getFavouriteDrinks();
     favourites.push(favouriteDrink);
     setFavouriteDrinks(favourites);
-    console.log(`hello i am add fav drink for ${currentUser}`);
-    writeFavoriteDrinks(currentUser, favourites);
+    console.log(currentUserId);
+    if (currentUserId) {
+      console.log(`hello i am writeFavoriteDrinks for ${currentUserId}`);
+      writeFavoriteDrinks(currentUserId, favourites);
+    };
   }
 }
 
@@ -33,8 +39,11 @@ export function removeDrink(id) {
     }
   }
   setFavouriteDrinks(updatedFavourites);
-  console.log('hello, i am removeDrink');
-  deleteFavoriteDrink(currentUser, id);
+  console.log(currentUserId);
+  if (currentUserId) {
+    console.log(`hello i am deleteFavoriteDrink fav drink for ${currentUserId}`);
+    deleteFavoriteDrink(currentUserId, id);
+  };
 }
 
 export function getDrink(id) {

@@ -31,7 +31,7 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 const database = getDatabase(app);
-export let currentUserId = null;
+let currentUserId = null;
 
 onAuthStateChanged(auth, user => {
   if (user) {
@@ -49,10 +49,12 @@ onAuthStateChanged(auth, user => {
     currentUser = auth.currentUser.uid;
     console.log(currentUser);
   } else {
-    currentUser = null;
+    currentUser = 'none';
     console.log(currentUser);
   }
 });
+
+export { currentUserId };
 
 
 
