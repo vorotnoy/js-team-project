@@ -1,8 +1,5 @@
 import axios from 'axios';
-import {
-  attachIngredientEvents,
-  onBackdrop,
-} from './modal-learn-more-ingredient';
+import { attachIngredientEvents } from './modal-learn-more-ingredient';
 import { addDrink, removeDrink, getDrink, refreshFavouriteButtons } from '../favourites';
 
 const galleryEl = document.querySelector(`.gallery`);
@@ -122,7 +119,7 @@ export function displayMoreInfo(data) {
                 <div class="modal-ingr-box">
                     <h3 class="modal-ingr-desk">Ingredients</h3>
                     <p class="modal-per-glass">Per cocktail</p>
-                    <ul class="modal-ingredients-list"></ul>
+                    <ul class="modal-ingredients-list list-scroll"></ul>
                 </div>
                 </div>
             </div>
