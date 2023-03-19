@@ -77,7 +77,7 @@ async function loadMor(event) {
     console.log(window.location)
     if (window.location.pathname.includes('cocktails.html') {
       favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-    } else {
+    } else{
       cocktailsList.innerHTML = createListItem(array[page - 1]);
     }
     reloadButton(array.length, page);
