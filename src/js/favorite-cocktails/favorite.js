@@ -1,37 +1,75 @@
 'use strict';
 // export default updateSize;
-import BASE_URL from '../const';
-import axios from 'axios';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
   renderAddRemoveDrinkButton,
   attachFavouriteClickEvents,
 } from '../favourites';
+import { refs } from '../refs';
+import { VIEWPORT_SIZES } from '../const';
+import { viewportWidthCheck } from '../mainblock/mainblock';
+import { pagination } from '../pagination';
+export let getValueC = [];
 
-
-const refs = {
-  favoritesList: document.querySelector('.fav-cocktails__list'),
-  favoritesTitle: document.querySelector('.fav-cocktails__title')
-};
-
+const {
+  favoritesList,
+  favoritesTitle,
+  favoriteSearchItem,
+  prewButton,
+  nextButton,
+  pagContainer,
+} = refs;
 
 //use function updateSize to render elements on click
 export function initializeFavourites() {
+  favoriteSearchItem.classList.add('is-hidden');
   let windowWidth = window.innerWidth;
-  const localStorageLength = JSON.parse(localStorage.getItem('favorite-cocktail'));
-  
-//   console.log(JSON.parse(localStorage.getItem('favorite-cocktail')));
-
+  const localStorageLength = JSON.parse(
+    localStorage.getItem('favorite-cocktail')
+  );
+  getValueC.length = 0;
   if (localStorageLength === null || localStorageLength.length === 0) {
-    refs.favoritesTitle.textContent = 'You didn\'t choose any cocktail.'
+    favoritesTitle.textContent = "You didn't choose any cocktail.";
+
+    prewButton.classList.add('is-hiden');
+    nextButton.classList.add('is-hiden');
+    pagination(0, 1);
     return;
   }
+  let totalPage = Math.ceil(
+    localStorageLength.length / viewportWidthCheck(VIEWPORT_SIZES)
+  );
+
+  for (
+    let i = 0;
+    i < localStorageLength.length;
+    i += viewportWidthCheck(VIEWPORT_SIZES)
+  ) {
+    let myChunk = localStorageLength.slice(
+      i,
+      i + viewportWidthCheck(VIEWPORT_SIZES)
+    );
+    getValueC.push(myChunk);
+  }
+
   if (windowWidth < 768) {
     favoritesMarkup(0, 3);
   } else if (windowWidth < 1280) {
     favoritesMarkup(0, 6);
   } else {
     favoritesMarkup(0, 9);
+  }
+  if (totalPage > 1) {
+    prewButton.classList.remove('is-hiden');
+    nextButton.classList.remove('is-hiden');
+    nextButton.removeAttribute('disabled');
+    pagContainer.classList.add('pading');
+    pagination(totalPage, 1);
+  } else {
+    pagContainer.classList.add('pading');
+    prewButton.classList.add('is-hiden');
+    nextButton.classList.add('is-hiden');
+    pagination(0, 1);
   }
 }
 
@@ -41,15 +79,16 @@ export function initializeFavourites() {
 function favoritesMarkup(start, end) {
   const cocktailsArr = JSON.parse(localStorage.getItem('favorite-cocktail'));
   let arr = cocktailsArr.slice(start, end);
-
-  refs.favoritesList.innerHTML = arr
+  attachFavouriteClickEvents();
+  attachEvents();
+  favoritesList.innerHTML = arr
     .map(
       e =>
         `<li class="fav-cocktails__item">
             <a class="cocktail-link" href="#" data-modal-open>
               <img src="${e.img}" class="fav-cocktails__img" alt=${
-              e.name
-              } cocktail" data-id="${e.id}">
+          e.name
+        } cocktail" data-id="${e.id}">
             </a>
             <h3 class="fav-cocktails__item-title">${e.name}</h3>
             <div class="fav-cocktails__buttons">
@@ -61,7 +100,4 @@ function favoritesMarkup(start, end) {
         </li>`
     )
     .join('');
-
-  attachFavouriteClickEvents();
-  attachEvents();
 }

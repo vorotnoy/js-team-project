@@ -7,6 +7,7 @@ import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
 import { createCocktailsMarkupByViewportSize } from '../hero/createCocktailsMarkupByViewportSize';
 import { pagination } from '../pagination';
+import { searchInFavCocktails } from './searchByFavCocktails';
 
 const {
   btnSearchForm,
@@ -29,22 +30,27 @@ inputFormBurger.addEventListener('submit', searchCoctailByName);
 
 export function searchCoctailByName(evt) {
   evt.preventDefault();
-
+  const inputData = evt.currentTarget.elements.searchQuery.value.trim();
   if (evt.currentTarget === inputFormBurger) {
     mobileMenu.classList.toggle('is-open');
   }
 
-  if (!evt.currentTarget.elements.searchQuery.value) {
+  if (!inputData) {
     cocktailsList.innerHTML = '';
 
     title.textContent = `Sorry, we didn't find any cocktail for you`;
     noCocktails.classList.remove('is-hidden');
-
     return;
   }
+
+  if (window.location.pathname === '/cocktails.html') {
+    searchInFavCocktails(inputData);
+    return;
+  }
+
   window.location.href = '#results';
   title.textContent = 'Searching results';
-  searchByName(evt.currentTarget.elements.searchQuery.value);
+  searchByName(inputData);
   inputForm.reset();
   inputFormBurger.reset();
 }
@@ -55,7 +61,7 @@ async function searchByName(name) {
   getValue.length = 0;
 
   try {
-    const response = await axios.get(`${BASE_URL}//search.php?s=${name}`);
+    const response = await axios.get(`${BASE_URL}/search.php?s=${name}`);
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
 
@@ -103,9 +109,6 @@ async function searchByName(name) {
       nextButton.classList.add('is-hiden');
       pagination(0, 1);
     }
-
-    //attachEvents();
-    //attachFavouriteClickEvents();
   } catch (error) {
     console.log(error);
   }

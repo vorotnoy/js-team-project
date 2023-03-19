@@ -167,7 +167,10 @@ img {
     margin-bottom: 28px;
   }
 }
-
+.fav-cocktails__item{
+  margin-left: auto;
+  margin-right: auto;
+}
 body.js-bgcblack .fav-cocktails__title,
 body.js-bgcblack .fav-cocktails__item-title {
   color: $main-color3;
