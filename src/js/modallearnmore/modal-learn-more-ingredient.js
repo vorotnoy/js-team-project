@@ -24,9 +24,8 @@ export function attachIngredientEvents() {
     ) {
       return;
     }
-    debugger;
     if (!refs.modal.classList.contains('is-hidden')) {
-      document.body.classList.toggle('modal-open');
+      document.body.classList.toggle('modal-open-2');
       refs.modal.classList.toggle('is-hidden');
     }
   }
@@ -74,9 +73,15 @@ async function onIngredient(event) {
       }
       return description;
     }
-    contentEl
-      .querySelector('.ingredient-sub-header')
-      .insertAdjacentHTML('afterend', ingredientDescription(ingredient));
+
+    if (contentEl.querySelector('.ingredient-sub-header')) {
+      contentEl
+        .querySelector('.ingredient-sub-header')
+        .insertAdjacentHTML('afterend', ingredientDescription(ingredient));
+    } else {
+      contentEl.insertAdjacentHTML('afterend', ingredientDescription(ingredient));
+    }
+      
     function listInIngredient(ingredient) {
       let list = '';
       if (ingredient.strAlcohol != null) {
@@ -90,7 +95,7 @@ async function onIngredient(event) {
     contentEl
       .querySelector('.ingredients-list')
       .insertAdjacentHTML('beforeend', listInIngredient(ingredient));
-    document.body.classList.toggle('modal-open');
+    document.body.classList.toggle('modal-open-2');
     refs.modal.classList.toggle('is-hidden');
   } catch (error) {
     console.log(error.message);

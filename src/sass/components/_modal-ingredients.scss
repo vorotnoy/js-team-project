@@ -197,13 +197,18 @@ hr {
   margin-bottom: 80px;
   margin-left: 12px;
   @include tabletPlus {
-      margin-bottom: 0;
+      margin: 0;
       padding-left: 12px;
+  }
+}
+.ingredients-list {
+  @include tabletPlus {
+    margin-bottom: 80px;
   }
 }
 .list-scroll {
   @include tabletPlus {
-    height: 110px;
+    height: 111px;
     width: 400px;
     overflow: auto;
   }
@@ -329,7 +334,16 @@ body.js-bgcblack .modal-learn-more-data:hover,
 body.js-bgcblack .modal-learn-more-item:hover {
   color: $accent;
 }
+body.js-bgcblack .modal-learn-more-item:hover .ingredient-link {
+  color: $accent;
+}
+body.js-bgcblack .backdrop .ingredient-link {
+  color: $main-color3;
 
+  @include tabletPlus {
+    color: $modal-color;
+  }
+}
 body.js-bgcblack .modal-desc,
 body.js-bgcblack .modal-ingredients-list,
 body.js-bgcblack .modal-learn-more-data,
@@ -354,16 +368,6 @@ body.js-bgcblack .close-icon {
 body.js-bgcblack .add-item-btn:hover,
 body.js-bgcblack .remove-item-btn:hover {
   background-color: $main-color2;
-}
-
-body.js-bgcblack .backdrop .ingredient-link {
-  color: $main-color3;
-  &:hover {
-    color: $accent;
-  }
-  @include tabletPlus {
-    color: $modal-color;
-  }
 }
 
 ::-webkit-scrollbar {
