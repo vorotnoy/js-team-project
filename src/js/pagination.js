@@ -74,7 +74,7 @@ async function loadMor(event) {
   ) {
     page = Number(event.target.textContent);
     array = getValue.length === 0 ? getValueC : getValue;
-    console.log(window.location)
+    console.log('1',window.location)
     if (window.location.pathname.includes('cocktails.html')) {
       favoritesList.innerHTML = makeFaviritelist(array[page - 1])
     } else {
@@ -90,7 +90,7 @@ async function loadMor(event) {
 async function prewList(event) {
   page -= 1;
   array = getValue.length === 0 ? getValueC : getValue;
-  console.log(window.location.pathname)
+  console.log('2', window.location.pathname)
   if (window.location.pathname.includes('cocktails.html')){
     favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   } else {
@@ -104,7 +104,7 @@ async function prewList(event) {
 export async function nextList(event) {
   page += 1;
   array = getValue.length === 0 ? getValueC : getValue;
-  console.log(window.location.pathname)
+  console.log('3', window.location.pathname)
   if (window.location.pathname.includes('cocktails.html')) {
     favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   } else {
