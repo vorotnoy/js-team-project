@@ -3,7 +3,7 @@
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
   renderAddRemoveDrinkButton,
-  attachFavouriteClickEvents,
+  attachFavouritesRemoveClickEvents,
 } from '../favourites';
 import { refs } from '../refs';
 import { VIEWPORT_SIZES } from '../const';
@@ -23,6 +23,7 @@ const {
 
 //use function updateSize to render elements on click
 export function initializeFavourites() {
+  favoritesList.innerHTML = '';
   favoriteSearchItem.classList.add('is-hidden');
   let windowWidth = window.innerWidth;
   const localStorageLength = JSON.parse(
@@ -81,8 +82,7 @@ export function initializeFavourites() {
 function favoritesMarkup(start, end) {
   const cocktailsArr = JSON.parse(localStorage.getItem('favorite-cocktail'));
   let arr = cocktailsArr.slice(start, end);
-  attachFavouriteClickEvents();
-  attachEvents();
+
   favoritesList.innerHTML = arr
     .map(
       e =>
@@ -102,4 +102,7 @@ function favoritesMarkup(start, end) {
         </li>`
     )
     .join('');
+
+    //attachFavouritesRemoveClickEvents();
+    //attachEvents();
 }
