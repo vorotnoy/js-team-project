@@ -43,7 +43,7 @@ export function searchCoctailByName(evt) {
     return;
   }
 
-  if (window.location.pathname === '/cocktails.html') {
+  if (window.location.pathname.includes('cocktails.html')) {
     searchInFavCocktails(inputData);
     return;
   }
