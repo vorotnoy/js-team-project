@@ -1,6 +1,8 @@
 import * as icons from '../images/svg/symbol-defs.svg';
+import { initializeFavourites } from './favorite-cocktails/favorite';
+import { initializeFavouritesIng } from './favorite-ingredients/favorite-ingredients'
 
-function getFavouriteDrinks() {
+export function getFavouriteDrinks() {
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
 }
 
@@ -152,9 +154,38 @@ export function favouritesClickEvent(event) {
   attachFavouriteClickEvents();
 }
 
+export function favouritesRemoveClickEvent(event) {
+  let button = event.target;
+
+  if (!button || !button.className || typeof button.className != 'string')
+    return;
+
+  if (button.dataset.type) {
+    removeIngredient(button.dataset.name, button.dataset.type);
+  } else {
+    removeDrink(button.dataset.id);
+  }
+
+  let location = window.location.pathname.split('/').pop();
+
+  if (location === 'cocktails.html') {
+    initializeFavourites();
+  } else if (location === 'ingredients.html'){
+    initializeFavouritesIng();
+  }  
+}
+
 export function attachFavouriteClickEvents() {
   let buttons = document.querySelectorAll('.favourite');
   for (let button of buttons) {
     button.onclick = favouritesClickEvent;
+  }
+}
+
+export function attachFavouritesRemoveClickEvents() {
+  let buttons = document.querySelectorAll('.favourite');
+
+  for (let button of buttons) {
+    button.onclick = favouritesRemoveClickEvent;
   }
 }

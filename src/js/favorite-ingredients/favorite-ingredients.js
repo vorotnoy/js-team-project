@@ -1,18 +1,20 @@
-import {attachIngredientEvents} from "../modallearnmore/modal-learn-more-ingredient";
-import { getFavouriteIngredients, renderAddRemoveIngredientButton } from '../favourites';
-
+import {attachIngredientEvents, getFavouriteIngredients} from "../modallearnmore/modal-learn-more-ingredient";
+import { getFavouriteIngredients, renderAddRemoveIngredientButton, attachFavouritesRemoveClickEvents } from '../favourites';
+import {refs} from '../refs'
+import { attachFavouriteClickEvents} from '../favourites'
 const favIngredientsList = document.querySelector('.fav-ingr__list');
 const favIngredientsTitle = document.querySelector('.fav-ingr__title');
-
+const {favNoingr} = refs
 export function initializeFavouritesIng() {
+    favIngredientsList.innerHTML = '';
     let windowWidth = window.innerWidth;
-    const localStorageLength = JSON.parse(localStorage.getItem('favorite-cocktail'));
+    const localStorage = getFavouriteIngredients();
     
-    // console.log(JSON.parse(localStorage.getItem('favorite-ingredient')));
-    if (localStorageLength === null || localStorageLength.length === 0) {
-        favIngredientsTitle.textContent = 'You didn\'t choose any cocktail.'
+    if (localStorage === null || localStorage.length === 0) {
+        favNoingr.textContent = "You haven't added any favorite ingridients yet"
       return;
     }
+    favNoingr.classList.add('is-hidden')
     if (windowWidth < 768) {
         favIngredientsMarkup(0, 3);
     } else if (windowWidth < 1280) {
@@ -33,9 +35,9 @@ function drinkCheck(ingr){
 function favIngredientsMarkup(start, end){
     const cocktailsArr = getFavouriteIngredients();
     let arr = cocktailsArr.slice(start, end);
-    
+
     favIngredientsList.innerHTML = arr.map(e => 
-        `<li class="fav-ingr__item">
+        `<li id="favourite_${e.name.replace(" ", "").toLowerCase()}" class="fav-ingr__item">
             <h3 class="fav-ingr__item-title">${e.name}</h3>
             <p class="fav-ingr__type">${drinkCheck(e.type)}</p>
             <div class="fav-ingr__buttons">
@@ -45,4 +47,5 @@ function favIngredientsMarkup(start, end){
         </li>`
     ).join('');
     attachIngredientEvents();
+    attachFavouritesRemoveClickEvents();
 }
