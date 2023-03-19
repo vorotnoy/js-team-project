@@ -376,3 +376,16 @@ color: $accent;
 body.js-bgcblack .form__input {
   color: $main-color3;
 }
+
+.auth-btn {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: inherit;
+  background-image: url('../images/svg/user.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}

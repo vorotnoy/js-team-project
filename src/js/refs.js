@@ -1,5 +1,7 @@
 /** add your listiener here */
 export const refs = {
+  authorization: document.querySelector('#googleAuthBtn'),
+
   cocktailsList: document.querySelector('ul.cocktails-list'),
   selectMenu: document.querySelector('#select__menu'),
   selectBtn: document.querySelector('#select__btn'),

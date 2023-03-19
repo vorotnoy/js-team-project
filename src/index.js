@@ -1,4 +1,5 @@
 import { refs } from './js/refs';
+import { authorize } from './js/firebase';
 import { onClickDropdownOn } from './js/header/dropdown';
 import { checkBtn } from './js/header/checkbox';
 import { VIEWPORT_SIZES } from './js/const';
@@ -30,13 +31,15 @@ import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
-const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
+const { authorization, cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
 refs;
+
+authorization.addEventListener('click', authorize);
+
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
 const pathname = window.location.pathname;
 const location = pathname.split('/').pop();
-
 
 if (location === ''|| location === 'index.html') {
   returnCocktails();
