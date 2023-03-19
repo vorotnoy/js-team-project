@@ -1,6 +1,10 @@
 import * as icons from '../images/svg/symbol-defs.svg';
+import { currentUser } from './firebase';
+import { readFavoriteDrinks, writeFavoriteDrinks, deleteFavoriteDrink } from './firebase';
 
 function getFavouriteDrinks() {
+  console.log(`hello i am get fav drink for ${currentUser}`);
+  readFavoriteDrinks(currentUser);
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
 }
 
@@ -14,6 +18,8 @@ export function addDrink(id, name, image) {
     let favourites = getFavouriteDrinks();
     favourites.push(favouriteDrink);
     setFavouriteDrinks(favourites);
+    console.log(`hello i am add fav drink for ${currentUser}`);
+    writeFavoriteDrinks(currentUser, favourites);
   }
 }
 
@@ -27,6 +33,8 @@ export function removeDrink(id) {
     }
   }
   setFavouriteDrinks(updatedFavourites);
+  console.log('hello, i am removeDrink');
+  deleteFavoriteDrink(currentUser, id);
 }
 
 export function getDrink(id) {

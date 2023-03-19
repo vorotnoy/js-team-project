@@ -3,12 +3,13 @@ import { refs } from './refs';
 const { authorization } = refs;
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,7 +22,7 @@ const firebaseConfig = {
   storageBucket: 'goit-js.appspot.com',
   messagingSenderId: '393564713998',
   appId: '1:393564713998:web:635571a7cde75de092385f',
-  databaseURL: 'https://goit-js-default-rtdb.firebaseio.com',
+  databaseURL: 'https://goit-js-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
 // Initialize Firebase
@@ -30,6 +31,7 @@ const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
+export let currentUser = null;
 export function authorize() {
   signInWithPopup(auth, provider)
   .then((result) => {
@@ -38,8 +40,17 @@ export function authorize() {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    currentUser = result.user.uid;
     console.log(user.uid, user.displayName, user.email);
     authorization.style.backgroundImage = `url("${user.photoURL}")`;
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        uidUser = user.uid;
+        console.log(user);
+      } else {
+        console.log('нема авторизації');
+      }
+    });
     // set(ref(db, 'users/' + user.uid), {
     //   username: user.displayName,
     //   email: user.email
@@ -56,11 +67,48 @@ export function authorize() {
   });
 };
 
-export function writeFavoriteDrinks(drinkId, drinkName, drinkImage) {
+export function writeFavoriteDrinks(userId, favoriteDrinks) {
+  // const { drinkId, drinkName, drinkImage } = favourites;
   const db = getDatabase();
-  set(ref(db, 'users/' + userId), {
-    drinkId,
-    drinkName,
-    drinkImage
+  // set(ref(db, 'users/' + userId + favoriteDrinks), {
+  //   drinkId,
+  //   drinkName,
+  //   drinkImage
+  // });
+  // Write a message to the database
+  
+  set(ref(db, `users/${userId}`), { favoriteDrinks })
+  .then(() => alert('data stored successfully'))
+  .catch((error) => alert('unsuccessful, error' + error));
+};
+
+export function readFavoriteDrinks(userId) {
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `users/${userId}/favoriteDrinks`))
+  .then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val())
+      return snapshot.val();
+    } else {
+      // alert('No favorite drinks found');
+    };
+  })
+  .catch((error) => {
+    alert('unseccessful, error' + error);
   });
+};
+
+// export function updateFavoriteDrinks(userId) {
+//   const db = getDatabase();
+//   const localStorageDrinks = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
+//   update(ref(db, `users/${userId}/favoriteDrinks`), { localStorageDrinks })
+//   .then(() => alert('data updated successfully'))
+//   .catch((error) => alert('unsuccessful, error' + error));
+// };
+
+export function deleteFavoriteDrink(userId, drinkId) {
+  const db = getDatabase();
+  remove(ref(db, `users/${userId}/favoriteDrinks/` + drinkId))
+  .then(() => alert('data removed successfully'))
+  .catch((error) => alert('unsuccessful, error' + error));
 };
