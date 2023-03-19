@@ -31,6 +31,7 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 const database = getDatabase(app);
+export let currentUserId = null;
 
 onAuthStateChanged(auth, user => {
   if (user) {
@@ -45,13 +46,15 @@ onAuthStateChanged(auth, user => {
       linkToSignOut.classList.remove('sign-out');
       authorization.style.backgroundImage = `url("${icons}")`;
     });
-    const currentUser = auth.currentUser.uid;
+    currentUser = auth.currentUser.uid;
     console.log(currentUser);
   } else {
-    const currentUser = null;
+    currentUser = null;
     console.log(currentUser);
   }
 });
+
+
 
 export function authorize() {
   signInWithPopup(auth, provider)
