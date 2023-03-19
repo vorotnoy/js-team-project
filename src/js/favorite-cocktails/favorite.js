@@ -23,22 +23,23 @@ const {
 
 //use function updateSize to render elements on click
 export function initializeFavourites() {
-  favoritesList.innerHTML = '';
   favoriteSearchItem.classList.add('is-hidden');
   let windowWidth = window.innerWidth;
   const localStorageLength = JSON.parse(
     localStorage.getItem('favorite-cocktail')
   );
   getValueC.length = 0;
+  
   if (localStorageLength === null || localStorageLength.length === 0) {
-    // favoritesTitle.textContent = "You didn't choose any cocktail.";
+    favoritesList.innerHTML = '';
     favNococktails.textContent = "You haven't added any favorite cocktails yet";
+  favNococktails.classList.remove('is-hidden');
     prewButton.classList.add('is-hiden');
     nextButton.classList.add('is-hiden');
     pagination(0, 1);
     return;
   }
-  favNococktails.classList.add('is-hidden')
+  favNococktails.classList.add('is-hidden');
   let totalPage = Math.ceil(
     localStorageLength.length / viewportWidthCheck(VIEWPORT_SIZES)
   );

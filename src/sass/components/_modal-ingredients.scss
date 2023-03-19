@@ -33,10 +33,16 @@ hr {
   position: relative;
   opacity: 1;
   z-index: 20;
+
 box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
+
 
   @include tabletPlus {
     max-width: 822px;
+      //position: fixed;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
   }
 }
 
@@ -139,6 +145,7 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   height: 280px;
   margin-bottom: 22px;
   display: block;
+  border-radius: 4px;
 
   @include tabletPlus {
     max-width: 288px;
@@ -151,8 +158,8 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
 .modal-ingr-box {
   @include tabletPlus {
     position: absolute;
-    top: 105px;
-    left: 320px;
+    top: 126px;
+    left: 312px;
   }
 }
 
@@ -191,6 +198,17 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   display: block;
   margin-bottom: 80px;
   margin-left: 12px;
+  @include tabletPlus {
+      margin-bottom: 0;
+      padding-left: 12px;
+  }
+}
+.list-scroll {
+  @include tabletPlus {
+    height: 110px;
+    width: 400px;
+    overflow: auto;
+  }
 }
 
 .ingredients-list.modal-ingredients-list,
@@ -206,6 +224,9 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   color: $fill-color;
   text-align: left;
   padding-left: 5px;
+    // @include tabletPlus {
+    //     display: block;
+    //   }
 }
 
 .modal-learn-more-data,
@@ -246,6 +267,10 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
 .modal-learn-more-data:hover {
   color: $main-button;
 }
+
+.modal-learn-more-item:hover .ingredient-link {
+   color: $main-button;
+ }
 
 .add-item-btn,
 .remove-item-btn {
@@ -288,6 +313,7 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
 body.js-bgcblack .modal-learn-more-container,
 body.js-bgcblack .modal-ingredients-container {
   background-color: $main-color2;
+  box-shadow: 6px 6px 30px 6px $accent;
 }
 
 body.js-bgcblack .modal-header,
