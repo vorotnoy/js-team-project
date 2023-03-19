@@ -2,15 +2,14 @@ import { addIngredient, removeIngredient, getIngredient } from '../favourites';
 import axios from 'axios';
 
 const contentEl = document.querySelector(`.content`);
-
-// -----Відкриття та закриття модалки-------
-export function attachIngredientEvents() {
-  const refs = {
+const refs = {
     openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
     closeModalBtn: document.querySelector('[data-modal-close-2]'),
     modal: document.querySelector('[data-modal-2]'),
     modalContainer: document.querySelector('[data-modal-2] .container'),
   };
+// -----Відкриття та закриття модалки-------
+export function attachIngredientEvents() {
   for (let button of refs.openModalBtn) {
     button.addEventListener('click', toggleModal);
   }
@@ -25,9 +24,11 @@ export function attachIngredientEvents() {
     ) {
       return;
     }
-
-    document.body.classList.toggle('modal-open');
-    refs.modal.classList.toggle('is-hidden');
+    debugger;
+    if (!refs.modal.classList.contains('is-hidden')) {
+      document.body.classList.toggle('modal-open');
+      refs.modal.classList.toggle('is-hidden');
+    }
   }
   let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);
   for (let link of ingredientLinkEL) {
@@ -89,6 +90,8 @@ async function onIngredient(event) {
     contentEl
       .querySelector('.ingredients-list')
       .insertAdjacentHTML('beforeend', listInIngredient(ingredient));
+    document.body.classList.toggle('modal-open');
+    refs.modal.classList.toggle('is-hidden');
   } catch (error) {
     console.log(error.message);
   }

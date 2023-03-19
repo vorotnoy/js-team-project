@@ -3,15 +3,15 @@ import { attachIngredientEvents } from './modal-learn-more-ingredient';
 import { addDrink, removeDrink, getDrink, refreshFavouriteButtons } from '../favourites';
 
 const galleryEl = document.querySelector(`.gallery`);
-
-// -----Відкриття та закриття модалки-------
-export function attachEvents() {
-  const refs = {
+const refs = {
     openModalBtn: document.querySelectorAll('[data-modal-open]'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
     modalContainer: document.querySelector('[data-modal] .container'),
-  };
+};
+  
+// -----Відкриття та закриття модалки-------
+export function attachEvents() {
   for (let button of refs.openModalBtn) {
     button.addEventListener('click', toggleModal);
   }
@@ -27,8 +27,10 @@ export function attachEvents() {
       return;
     }
 
-    document.body.classList.toggle('modal-open');
-    refs.modal.classList.toggle('is-hidden');
+    if (!refs.modal.classList.contains('is-hidden')) {
+      document.body.classList.toggle('modal-open');
+      refs.modal.classList.toggle('is-hidden');
+    }
   }
   let learnMoreEL = document.querySelectorAll(`.learnMore`);
   for (let button of learnMoreEL) {
@@ -94,6 +96,9 @@ async function onLearnMore(event) {
       .querySelector('.modal-ingredients-list')
       .insertAdjacentHTML('beforeend', listIngredients(drink));
     attachIngredientEvents();
+    
+    document.body.classList.toggle('modal-open');
+    refs.modal.classList.toggle('is-hidden');
   } catch (error) {
     console.log(error.message);
   }
