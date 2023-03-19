@@ -6,15 +6,16 @@ const favIngredientsList = document.querySelector('.fav-ingr__list');
 const favIngredientsTitle = document.querySelector('.fav-ingr__title');
 const {favNoingr} = refs
 export function initializeFavouritesIng() {
-    favIngredientsList.innerHTML = '';
     let windowWidth = window.innerWidth;
     const localStorage = getFavouriteIngredients();
     
     if (localStorage === null || localStorage.length === 0) {
-        favNoingr.textContent = "You haven't added any favorite ingridients yet"
+        favIngredientsList.innerHTML = '';
+        favNoingr.textContent = "You haven't added any favorite ingridients yet";
+    favNoingr.classList.remove('is-hidden');
       return;
     }
-    favNoingr.classList.add('is-hidden')
+    favNoingr.classList.add('is-hidden');
     if (windowWidth < 768) {
         favIngredientsMarkup(0, 3);
     } else if (windowWidth < 1280) {
