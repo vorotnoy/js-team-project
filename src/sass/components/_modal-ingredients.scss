@@ -197,7 +197,7 @@ hr {
   margin-bottom: 80px;
   margin-left: 12px;
   @include tabletPlus {
-      margin-bottom: 0;
+      margin: 0;
       padding-left: 12px;
   }
 }
