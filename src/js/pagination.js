@@ -74,7 +74,8 @@ async function loadMor(event) {
   ) {
     page = Number(event.target.textContent);
     array = getValue.length === 0 ? getValueC : getValue;
-    if (window.location.pathname === '/cocktails.html') {
+    if (window.location.pathname.includes('cocktails.html')) {
+      console.log('5')
       favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
     } else {
       cocktailsList.innerHTML = createListItem(array[page - 1]);

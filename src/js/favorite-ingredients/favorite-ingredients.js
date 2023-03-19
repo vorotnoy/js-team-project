@@ -1,18 +1,19 @@
 import {attachIngredientEvents} from "../modallearnmore/modal-learn-more-ingredient";
 import { getFavouriteIngredients, renderAddRemoveIngredientButton } from '../favourites';
+import {refs} from '../refs'
 
 const favIngredientsList = document.querySelector('.fav-ingr__list');
 const favIngredientsTitle = document.querySelector('.fav-ingr__title');
-
+const {favNoingr} = refs
 export function initializeFavouritesIng() {
     let windowWidth = window.innerWidth;
-    const localStorageLength = JSON.parse(localStorage.getItem('favorite-cocktail'));
-    
+    const localStorageLength = JSON.parse(localStorage.getItem('favorite-ingredient'));
     // console.log(JSON.parse(localStorage.getItem('favorite-ingredient')));
     if (localStorageLength === null || localStorageLength.length === 0) {
-        favIngredientsTitle.textContent = 'You didn\'t choose any cocktail.'
+        favNoingr.textContent = "You haven't added any favorite ingridients yet"
       return;
     }
+    favNoingr.classList.add('is-hidden')
     if (windowWidth < 768) {
         favIngredientsMarkup(0, 3);
     } else if (windowWidth < 1280) {

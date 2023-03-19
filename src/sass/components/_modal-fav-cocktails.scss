@@ -94,10 +94,10 @@ img {
 
   transition-property: transform;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.fav-cocktails__item:hover{
+.fav-cocktails__item:hover {
   transform: scale(1.05, 1.05);
 }
 @media screen and (min-width: 768px) {
@@ -167,10 +167,40 @@ img {
     margin-bottom: 28px;
   }
 }
-.fav-cocktails__item{
+.fav-cocktails__item {
   margin-left: auto;
   margin-right: auto;
 }
+.fav-nofav__cock,
+.fav-nofav__ingr {
+  @include mobileMax {
+    width: 239px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;    
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 3;
+    text-align: center;}
+@include tablet{
+    width: 296px;
+    height: 120px;
+    font-size: 24px;
+    line-height: 2.5;
+    margin-left: auto;
+    margin-right: auto;   
+  }
+  @include desktop{
+  width: 385px;
+  height: 144px;
+  font-size: 32px;
+  line-height: 2.25;
+  margin-left: auto;
+  margin-right: auto;   
+  }
+}
+
 body.js-bgcblack .fav-cocktails__title,
 body.js-bgcblack .fav-cocktails__item-title {
   color: $main-color3;
