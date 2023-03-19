@@ -67,7 +67,6 @@ img {
 @media screen and (min-width: 768px) {
   .fav-cocktails__list {
     margin: 0;
-    margin-bottom: 60px;
     width: 702px;
     flex-direction: unset;
     flex-wrap: wrap;
@@ -167,10 +166,7 @@ img {
     margin-bottom: 28px;
   }
 }
-.fav-cocktails__item {
-  margin-left: auto;
-  margin-right: auto;
-}
+
 .fav-nofav__cock,
 .fav-nofav__ingr {
   @include mobileMax {

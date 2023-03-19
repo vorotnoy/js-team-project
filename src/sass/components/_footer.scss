@@ -1,5 +1,9 @@
+.cocktails-body-content{
+  min-height: calc(100vh - 170px);
+}
 footer {
   height: 110px;
+  width: 100%;
   background-color: $accent;
-  margin-top: 60px
+  margin-top: 60px;
 }
