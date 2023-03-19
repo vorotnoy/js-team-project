@@ -10,7 +10,7 @@ export function initializeFavouritesIng() {
     
     // console.log(JSON.parse(localStorage.getItem('favorite-ingredient')));
     if (localStorageLength === null || localStorageLength.length === 0) {
-        favIngredientsTitle.textContent = 'You didn\'t choose any cocktail.'
+        favIngredientsTitle.textContent = 'You didn\'t choose any ingredient.'
       return;
     }
     if (windowWidth < 768) {
