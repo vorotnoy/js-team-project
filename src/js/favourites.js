@@ -77,7 +77,7 @@ export function removeIngredient(name, type) {
   let updatedFavourites = [];
   for (let i = 0; i < favourites.length; i++) {
     let ingredient = favourites[i];
-    if (ingredient.name != name && ingredient.type != type) {
+    if (ingredient.name !== name && ingredient.type !== type) {
       updatedFavourites.push(ingredient);
     }
   }
