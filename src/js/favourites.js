@@ -80,7 +80,7 @@ export function getDrink(id) {
         for (const key in data) {
           favDrinksArr.push(data[key]);
         }
-        console.log(favDrinksArr);
+        // console.log(favDrinksArr);
         for (let drink of favDrinksArr) {
           if (drink.id == id) {
             return drink;
@@ -93,7 +93,7 @@ export function getDrink(id) {
       // ...
       console.log('hello i am NOT authorized');
       const favDrinksArr = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-      console.log(favDrinksArr);
+      // console.log(favDrinksArr);
       for (let drink of favDrinksArr) {
         if (drink.id == id) {
           return drink;
