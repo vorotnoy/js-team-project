@@ -30,7 +30,9 @@ export function getCocktailMarkup({ data }) {
                 <a class="cocktail-link" href="#" data-modal-open>
                     <img class="cocktail-picture" src="${
                       data.drinks[0].strDrinkThumb
-                    }" alt="${data.drinks[0].strDrink}" data-id="${data.drinks[0].idDrink}">
+                    }" alt="${data.drinks[0].strDrink}" data-id="${
+    data.drinks[0].idDrink
+  }">
                 </a>
 
                 <p class="cocktail-label js-changeclrwh" data-cocktail="${

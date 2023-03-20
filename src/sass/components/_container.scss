@@ -4,15 +4,15 @@
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-  @media screen and (min-width: 480px) {
+  @include mobileMin {
     width: 480px;
   }
-  @media screen and (min-width: 768px) {
+  @include tabletPlus {
     width: 768px;
     padding-left: 33px;
     padding-right: 33px;
   }
-  @media screen and (min-width: 1280px) {
+  @include desktop {
     width: 1280px;
     padding-left: 16px;
     padding-right: 16px;

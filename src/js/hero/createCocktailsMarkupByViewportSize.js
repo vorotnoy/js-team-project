@@ -40,7 +40,9 @@ export function createCocktailsMarkupByViewportSize(setSize, { data }) {
                 <a class="cocktail-link" href="#" data-modal-open>
                     <img class="cocktail-picture" src="${
                       data.drinks[i].strDrinkThumb
-                    }" alt="${data.drinks[i].strDrink}" data-id="${data.drinks[i].idDrink}">
+                    }" alt="${data.drinks[i].strDrink}" data-id="${
+      data.drinks[i].idDrink
+    }">
                 </a>
                     <p class="cocktail-label">${data.drinks[i].strDrink}</p>
 

@@ -157,14 +157,10 @@ img {
   line-height: 24px;
 }
 
-@media screen and (min-width: 1280px) {
+@include desktop {
   .fav-cocktails__buttons {
     margin-bottom: 28px;
   }
-}
-.fav-cocktails__item {
-  margin-left: auto;
-  margin-right: auto;
 }
 .fav-nofav__cock,
 .fav-nofav__ingr {

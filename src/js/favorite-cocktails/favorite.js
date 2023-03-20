@@ -29,11 +29,11 @@ export function initializeFavourites() {
     localStorage.getItem('favorite-cocktail')
   );
   getValueC.length = 0;
-  
+
   if (localStorageLength === null || localStorageLength.length === 0) {
     favoritesList.innerHTML = '';
     favNococktails.textContent = "You haven't added any favorite cocktails yet";
-  favNococktails.classList.remove('is-hidden');
+    favNococktails.classList.remove('is-hidden');
     prewButton.classList.add('is-hiden');
     nextButton.classList.add('is-hiden');
     pagination(0, 1);
@@ -104,6 +104,6 @@ function favoritesMarkup(start, end) {
     )
     .join('');
 
-    //attachFavouritesRemoveClickEvents();
-    //attachEvents();
+  //attachFavouritesRemoveClickEvents();
+  //attachEvents();
 }
