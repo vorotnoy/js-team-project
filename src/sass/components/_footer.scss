@@ -1,4 +1,5 @@
 .footer {
+  position: relative;
   box-sizing: content-box;
   height: 100%;
   width: 100%;
@@ -7,4 +8,46 @@
   margin-top: 60px;
   height: 110px;
   background-color: $accent;
+  display: flex;
+  align-items: center;
+}
+.footer__text {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: $main-color3;
+  font-size: 12px;
+}
+
+.to-top {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: $accent;
+}
+
+.to-top__arrow {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  rotate: 45deg;
+  transform-origin: top left;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background: none;
+  border: 5px solid $accent;
+  border-right: none;
+  border-bottom: none;
+}
+
+.to-top__text {
+  font-weight: 700;
 }

@@ -23,6 +23,8 @@ export async function searchCocktailsByFirstLetter(letter) {
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
 
+      window.location.href = '#results';
+
        title.textContent = `Sorry, we didn't find any cocktail for you`;
       noCocktails.classList.remove('is-hidden');
 
