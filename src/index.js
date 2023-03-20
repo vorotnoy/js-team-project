@@ -30,7 +30,7 @@ import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
-const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
+const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButton } =
 refs;
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
@@ -55,3 +55,20 @@ if (location === ''|| location === 'index.html') {
   
   initializeFavouritesIng();
 }
+
+//scroll
+document.addEventListener("scroll", function () {
+      toTopButton.classList.remove('is-hidden')
+   
+  if (!window.pageYOffset) {
+    toTopButton.classList.add('is-hidden')
+  }
+})
+      
+  toTopButton.addEventListener("click", function () {
+        window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });    
+})
+
