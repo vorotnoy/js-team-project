@@ -97,12 +97,12 @@ export function readFavoriteDrinks(userId) {
   get(child(dbRef, `users/${userId}/favoriteDrinks`))
   .then((snapshot) => {
     if (snapshot.exists()) {
-      const arr = [];
+      const favDrinksArr = [];
       for (const key in snapshot.val()) {
-        arr.push(snapshot.val()[key]);
+        favDrinksArr.push(snapshot.val()[key]);
       }
-      console.log(arr);
-      return arr;
+      // console.log(favDrinksArr);
+      return favDrinksArr;
     } else {
       // alert('No favorite drinks found');
     };

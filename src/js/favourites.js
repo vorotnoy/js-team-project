@@ -11,17 +11,19 @@ const favDrinksArr = [];
 
 function getFavouriteDrinks() {
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     // User is signed in, see docs for a list of available properties
+  //     // https://firebase.google.com/docs/reference/js/firebase.User
+  //     const uid = user.uid;
+  //     // ...
+  //     return readFavoriteDrinks(uid);
+  //   } else {
+  //     // User is signed out
+  //     // ...
+  //     return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
+  //   }
+  // });
 };
 
 function setFavouriteDrinks(favourites) {
