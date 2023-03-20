@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../const';
 import { refs } from '../refs';
 import { VIEWPORT_SIZES } from '../const';
-import { createCocktailsMarkupByViewportSize } from './createCocktailsMarkupByViewportSize';
+import { createCocktailsMarkupByViewportSize } from './createcocktailsmarkupbyviewportsize';
 import { viewportWidthCheck } from '../mainblock/mainblock';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
