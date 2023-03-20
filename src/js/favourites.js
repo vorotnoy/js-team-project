@@ -74,12 +74,7 @@ export function addIngredient(name, type) {
 
 export function removeIngredient(name, type) {
   let favourites = getFavouriteIngredients();
-  favourites.splice(
-    favourites.findIndex(o => {
-      return o.name === name && o.type === type;
-    }),
-    1
-  );
+  favourites.splice(favourites.findIndex((o) => { return o.name === name && o.type === type }), 1);
   setFavouriteIngredients(favourites);
 }
 
