@@ -43,8 +43,6 @@ export const refs = {
   pagContainer: document.querySelector('.pagination'),
   title: document.querySelector('.cocktails-title'),
 
-  favoritesList: document.querySelector('.fav-cocktails__list'),
-  favoritesTitle: document.querySelector('.fav-cocktails__title'),
   favoriteSearchItem: document.querySelector('.fav-cocktails__item'),
   paginationBlock: document.querySelector('.pagination'),
 
