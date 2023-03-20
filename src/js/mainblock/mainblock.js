@@ -2,7 +2,7 @@ import {
   getRandomCocktail,
   renderCocktails,
   getCocktailMarkup,
-} from './renderCocktails';
+} from './rendercocktails';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { VIEWPORT_SIZES } from '../const';
 import { attachFavouriteClickEvents } from '../favourites';
