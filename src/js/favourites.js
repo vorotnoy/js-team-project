@@ -9,6 +9,7 @@ import { getDatabase, ref, set, get, child, update, remove } from "firebase/data
 const auth = getAuth();
 const favDrinksArr = [];
 
+
 function getFavouriteDrinks() {
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
   // onAuthStateChanged(auth, (user) => {
