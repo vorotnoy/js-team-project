@@ -4,7 +4,7 @@ import { refs } from './refs';
 const { authorization, linkToSignOut } = refs;
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, get, child, update, remove } from "firebase/database";
+import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -47,6 +47,7 @@ onAuthStateChanged(auth, user => {
       linkToSignOut.classList.remove('sign-out');
       authorization.style.backgroundImage = `url("${icons}")`;
     });
+    
   } else {
 
   }
