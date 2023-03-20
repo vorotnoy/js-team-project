@@ -1,5 +1,5 @@
 import { refs } from '../refs';
-import { searchCocktailsByFirstLetter } from './searchCocktailsByFirstLetter';
+import { searchCocktailsByFirstLetter } from './searchcocktailsbyfirstletter';
 
 const { selectBtn, selectMenu, alphabet } = refs;
 

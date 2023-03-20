@@ -4,8 +4,8 @@
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-  @include mobileMin {
-    width: 480px;
+  @include mobileMax {
+    max-width: 480px;
   }
   @include tabletPlus {
     width: 768px;

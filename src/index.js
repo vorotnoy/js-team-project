@@ -9,14 +9,14 @@ import {
   pourCocktails,
 } from './js/mainblock/mainblock';
 import { favouritesClickEvent } from './js/favourites';
-import { getRandomCocktail } from './js/mainblock/renderCocktails';
+import { getRandomCocktail } from './js/mainblock/rendercocktails';
 
 import { toggleMenu } from './js/header/mobile-menu';
 
 import {
   onSelectBtnClick,
   onAlphabetBtnClick,
-} from './js/hero/onClickFunctions';
+} from './js/hero/onclickfunctions';
 import { searchCocktail } from './js/header/searchbyname';
 
 import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
