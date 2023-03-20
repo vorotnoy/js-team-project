@@ -8,9 +8,17 @@ import { viewportWidthCheck } from '../mainblock/mainblock';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
 import { getValue } from '../header/searchbyname';
-import { pagination} from '../pagination';
+import { pagination } from '../pagination';
 
-const { title, cocktailsList, cocktailsTitle, noCocktails, prewButton, nextButton, pagContainer } = refs;
+const {
+  title,
+  cocktailsList,
+  cocktailsTitle,
+  noCocktails,
+  prewButton,
+  nextButton,
+  pagContainer,
+} = refs;
 
 export async function searchCocktailsByFirstLetter(letter) {
   cocktailsTitle.classList.remove('is-hidden');
@@ -23,7 +31,7 @@ export async function searchCocktailsByFirstLetter(letter) {
     if (!response.data.drinks) {
       cocktailsList.innerHTML = '';
 
-       title.textContent = `Sorry, we didn't find any cocktail for you`;
+      title.textContent = `Sorry, we didn't find any cocktail for you`;
       noCocktails.classList.remove('is-hidden');
 
       prewButton.classList.add('is-hiden');
@@ -33,13 +41,22 @@ export async function searchCocktailsByFirstLetter(letter) {
       return;
     }
 
-    let totalPage = Math.ceil(response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES));
+    let totalPage = Math.ceil(
+      response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES)
+    );
 
-    for (let i = 0; i < response.data.drinks.length; i+= viewportWidthCheck(VIEWPORT_SIZES)){
-      let myChunk = response.data.drinks.slice(i, i + viewportWidthCheck(VIEWPORT_SIZES));
+    for (
+      let i = 0;
+      i < response.data.drinks.length;
+      i += viewportWidthCheck(VIEWPORT_SIZES)
+    ) {
+      let myChunk = response.data.drinks.slice(
+        i,
+        i + viewportWidthCheck(VIEWPORT_SIZES)
+      );
       getValue.push(myChunk);
     }
-    title.textContent = 'Searching results'
+    title.textContent = 'Searching results';
     cocktailsList.innerHTML = createCocktailsMarkupByViewportSize(
       viewportWidthCheck(VIEWPORT_SIZES),
       response
@@ -57,7 +74,7 @@ export async function searchCocktailsByFirstLetter(letter) {
       pagContainer.classList.add('pading');
       pagination(0, 1);
     }
-  window.location.href = '#results';
+    window.location.href = '#results';
     // attachEvents();
     // attachFavouriteClickEvents();
   } catch (error) {

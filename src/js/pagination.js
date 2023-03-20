@@ -2,7 +2,10 @@ import { refs } from './refs';
 import { getValue } from './header/searchbyname';
 import { renderAddRemoveDrinkButton } from './favourites';
 import { attachEvents } from '../js/modallearnmore/modal-learn-more';
-import { attachFavouriteClickEvents, attachFavouritesRemoveClickEvents } from './favourites';
+import {
+  attachFavouriteClickEvents,
+  attachFavouritesRemoveClickEvents,
+} from './favourites';
 import { getValueC } from './favorite-cocktails/favorite';
 
 const { prewButton, nextButton, ulTag, cocktailsList, favoritesList } = refs;
@@ -14,14 +17,14 @@ export function pagination(totalPages, page) {
   let thirdPages = page - 2;
   let curentPage = page;
   attachEvents();
-  
+
   let location = window.location.pathname.split('/').pop();
 
-  if (location === ''|| location === 'index.html') {
+  if (location === '' || location === 'index.html') {
     attachFavouriteClickEvents();
   } else if (location === 'cocktails.html') {
     attachFavouritesRemoveClickEvents();
-  } else if (location === 'ingredients.html'){
+  } else if (location === 'ingredients.html') {
     attachFavouritesRemoveClickEvents();
   }
 
@@ -84,13 +87,11 @@ async function loadMor(event) {
   ) {
     page = Number(event.target.textContent);
     array = getValue.length === 0 ? getValueC : getValue;
-
-    console.log('1',window.location)
     if (window.location.pathname.includes('cocktails.html')) {
-      favoritesList.innerHTML = makeFaviritelist(array[page - 1])
+      favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
     } else {
       cocktailsList.innerHTML = createListItem(array[page - 1]);
-    };
+    }
     reloadButton(array.length, page);
     pagination(array.length, page);
   } else {
@@ -101,8 +102,7 @@ async function loadMor(event) {
 async function prewList(event) {
   page -= 1;
   array = getValue.length === 0 ? getValueC : getValue;
-  console.log('2', window.location.pathname)
-  if (window.location.pathname.includes('cocktails.html')){
+  if (window.location.pathname.includes('cocktails.html')) {
     favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   } else {
     cocktailsList.innerHTML = createListItem(array[page - 1]);
@@ -115,7 +115,6 @@ async function prewList(event) {
 export async function nextList(event) {
   page += 1;
   array = getValue.length === 0 ? getValueC : getValue;
-  console.log('3', window.location.pathname)
   if (window.location.pathname.includes('cocktails.html')) {
     favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   } else {

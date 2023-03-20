@@ -1,6 +1,6 @@
 import * as icons from '../images/svg/symbol-defs.svg';
 import { initializeFavourites } from './favorite-cocktails/favorite';
-import { initializeFavouritesIng } from './favorite-ingredients/favorite-ingredients'
+import { initializeFavouritesIng } from './favorite-ingredients/favorite-ingredients';
 
 export function getFavouriteDrinks() {
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
@@ -74,7 +74,12 @@ export function addIngredient(name, type) {
 
 export function removeIngredient(name, type) {
   let favourites = getFavouriteIngredients();
-  favourites.splice(favourites.findIndex((o) => { return o.name === name && o.type === type }), 1);
+  favourites.splice(
+    favourites.findIndex(o => {
+      return o.name === name && o.type === type;
+    }),
+    1
+  );
   setFavouriteIngredients(favourites);
 }
 
@@ -103,13 +108,16 @@ export function renderAddRemoveIngredientButton(name, type) {
 }
 
 export function refreshFavouriteButtons(id) {
-    let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
-    let favourite = getDrink(id);
+  let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
+  let favourite = getDrink(id);
 
-    if (favourite && favouriteButton.classList.contains("addTo") || (!favourite && favouriteButton.classList.contains("removeFrom"))) {
-        let e = { target: favouriteButton };
-        favouritesClickEvent(e);
-    }
+  if (
+    (favourite && favouriteButton.classList.contains('addTo')) ||
+    (!favourite && favouriteButton.classList.contains('removeFrom'))
+  ) {
+    let e = { target: favouriteButton };
+    favouritesClickEvent(e);
+  }
 }
 
 export function favouritesClickEvent(event) {
@@ -164,9 +172,9 @@ export function favouritesRemoveClickEvent(event) {
 
   if (location === 'cocktails.html') {
     initializeFavourites();
-  } else if (location === 'ingredients.html'){
+  } else if (location === 'ingredients.html') {
     initializeFavouritesIng();
-  }  
+  }
 }
 
 export function attachFavouriteClickEvents() {

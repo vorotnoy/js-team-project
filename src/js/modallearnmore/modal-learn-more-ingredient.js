@@ -3,11 +3,11 @@ import axios from 'axios';
 
 const contentEl = document.querySelector(`.content`);
 const refs = {
-    openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
-    closeModalBtn: document.querySelector('[data-modal-close-2]'),
-    modal: document.querySelector('[data-modal-2]'),
-    modalContainer: document.querySelector('[data-modal-2] .container'),
-  };
+  openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
+  closeModalBtn: document.querySelector('[data-modal-close-2]'),
+  modal: document.querySelector('[data-modal-2]'),
+  modalContainer: document.querySelector('[data-modal-2] .container'),
+};
 // -----Відкриття та закриття модалки-------
 export function attachIngredientEvents() {
   for (let button of refs.openModalBtn) {
@@ -33,7 +33,7 @@ export function attachIngredientEvents() {
   for (let link of ingredientLinkEL) {
     link.addEventListener(`click`, onIngredient);
   }
-};
+}
 
 //-------Дістаемо імя з елемента лінка на який натиснули-------
 async function fetchData(name) {
@@ -46,7 +46,7 @@ async function fetchData(name) {
   } catch (error) {
     console.log(error.message);
   }
-};
+}
 
 //------Перевірити чи є атрибют в API та додати ------
 async function onIngredient(event) {
@@ -79,9 +79,12 @@ async function onIngredient(event) {
         .querySelector('.ingredient-sub-header')
         .insertAdjacentHTML('afterend', ingredientDescription(ingredient));
     } else {
-      contentEl.insertAdjacentHTML('afterend', ingredientDescription(ingredient));
+      contentEl.insertAdjacentHTML(
+        'afterend',
+        ingredientDescription(ingredient)
+      );
     }
-      
+
     function listInIngredient(ingredient) {
       let list = '';
       if (ingredient.strAlcohol != null) {
@@ -100,7 +103,7 @@ async function onIngredient(event) {
   } catch (error) {
     console.log(error.message);
   }
-};
+}
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
@@ -143,7 +146,7 @@ export function displayMoreInfo(data) {
     } catch (error) {
       console.error(error.message);
     }
-    };
+  }
 
   //------Remove from favorite кнопка видаляе елемент з Local storage-------
   function onRemoveBtn(event) {
@@ -155,4 +158,4 @@ export function displayMoreInfo(data) {
       console.error(error.message);
     }
   }
-};
+}

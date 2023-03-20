@@ -1,15 +1,20 @@
 import axios from 'axios';
 import { attachIngredientEvents } from './modal-learn-more-ingredient';
-import { addDrink, removeDrink, getDrink, refreshFavouriteButtons } from '../favourites';
+import {
+  addDrink,
+  removeDrink,
+  getDrink,
+  refreshFavouriteButtons,
+} from '../favourites';
 
 const galleryEl = document.querySelector(`.gallery`);
 const refs = {
-    openModalBtn: document.querySelectorAll('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-    modalContainer: document.querySelector('[data-modal] .container'),
+  openModalBtn: document.querySelectorAll('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal]'),
+  modalContainer: document.querySelector('[data-modal] .container'),
 };
-  
+
 // -----Відкриття та закриття модалки-------
 export function attachEvents() {
   for (let button of refs.openModalBtn) {
@@ -40,7 +45,7 @@ export function attachEvents() {
   let cocktailLink = document.querySelectorAll('.cocktail-link');
   for (let link of cocktailLink) {
     link.addEventListener('click', onLearnMore);
-  };
+  }
   // add the same for cocktail links (added by Illia)
 }
 
@@ -75,14 +80,16 @@ async function onLearnMore(event) {
           list +=
             `<li class="modal-learn-more-item">
                     <span class="modal-learn-more-data">
-                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
+                    <a class="ingredient-link" data-name="${
+                      drink[ingredientProperty]
+                    }" data-modal-open-2>
                     ${
                       drink[measureProperty] != null
                         ? drink[measureProperty]
                         : ''
                     }` +
             ' ' +
-                    `${drink[ingredientProperty]}
+            `${drink[ingredientProperty]}
                     </a>
                     </span>
                     </li>`;
@@ -96,7 +103,7 @@ async function onLearnMore(event) {
       .querySelector('.modal-ingredients-list')
       .insertAdjacentHTML('beforeend', listIngredients(drink));
     attachIngredientEvents();
-    
+
     document.body.classList.toggle('modal-open');
     refs.modal.classList.toggle('is-hidden');
   } catch (error) {
@@ -178,4 +185,4 @@ export function displayMoreInfo(data) {
       console.error(error.message);
     }
   }
-};
+}

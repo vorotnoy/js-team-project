@@ -1,5 +1,14 @@
 import { refs } from '../refs';
-const { burgerOn, checkboxBurgerOn, checkboxOn, bodyOn, clrwh, clror, clrgr, bgclr } = refs;
+const {
+  burgerOn,
+  checkboxBurgerOn,
+  checkboxOn,
+  bodyOn,
+  clrwh,
+  clror,
+  clrgr,
+  bgclr,
+} = refs;
 
 /** change theme */
 function checkBtn(event) {
@@ -10,13 +19,13 @@ function checkBtn(event) {
       checkboxBurgerOn.checked = event.target.checked;
     } else {
       checkboxOn.checked = event.target.checked;
-    }    
+    }
   }
 
   updateStyle();
 
   localStorage.setItem('darkTheme', JSON.stringify(checkboxOn.checked));
-    
+
   checkboxOn.addEventListener('click', checkBtn);
   checkboxBurgerOn.addEventListener('click', checkBtn);
 }
@@ -32,10 +41,10 @@ if (useDarkTheme) {
 }
 
 function updateStyle() {
-  burgerOn.classList.toggle('js-bgcblack')
+  burgerOn.classList.toggle('js-bgcblack');
   bodyOn.classList.toggle('js-bgcblack');
   bgclr.classList.toggle('js-bgcblack');
-  
+
   clrwh.forEach(item => {
     item.classList.toggle('js-colorwhite');
   });

@@ -40,14 +40,11 @@ const auth = getAuth(app);
 //   }
 // });
 
-
 // export const db = getFirestore(app);
 // export let uidUser = '';
 // const currentUser = auth.currentUser;
 
 // console.log(currentUser);
-
-
 
 // export async function signIn() {
 //   const provider = new GoogleAuthProvider();
@@ -70,3 +67,4 @@ const auth = getAuth(app);
 
 // btnIn.addEventListener('click', signIn);
 // btnOut.addEventListener('click', signOut);
+

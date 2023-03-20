@@ -9,8 +9,8 @@ const { favoritesList, favoritesTitle, favoriteSearchItem, paginationBlock } =
   refs;
 
 export function searchInFavCocktails(name) {
-      attachFavouriteClickEvents();
-    attachEvents();
+  attachFavouriteClickEvents();
+  attachEvents();
   try {
     const response = JSON.parse(localStorage.getItem('favorite-cocktail'));
     for (let item of response) {
@@ -41,7 +41,6 @@ export function searchInFavCocktails(name) {
         favoritesTitle.textContent = `${name} - is not in your favorites cocktails`;
       }
     }
-
   } catch (error) {
     console.log(error);
   }
