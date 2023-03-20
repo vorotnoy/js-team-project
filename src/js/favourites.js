@@ -1,15 +1,28 @@
 import * as icons from '../images/svg/symbol-defs.svg';
-import { currentUserId } from './firebase';
-import { readFavoriteDrinks, writeFavoriteDrinks, deleteFavoriteDrink } from './firebase';
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+import { readFavoriteDrinks, writeFavoriteDrinks, deleteFavoriteDrink, userIdFunc } from './firebase';
+import { update } from 'firebase/database';
+import { getDatabase, ref, set, get, child, update, remove } from "firebase/database";
+
+const auth = getAuth();
+const favDrinksArr = [];
 
 function getFavouriteDrinks() {
-  console.log(currentUserId);
-  if (currentUserId) {
-    console.log(`hello i am readFavoriteDrinks for ${currentUserId}`);
-    return readFavoriteDrinks(currentUserId);
-  }
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-}
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+};
 
 function setFavouriteDrinks(favourites) {
   localStorage.setItem('favorite-cocktail', JSON.stringify(favourites));
@@ -21,11 +34,16 @@ export function addDrink(id, name, image) {
     let favourites = getFavouriteDrinks();
     favourites.push(favouriteDrink);
     setFavouriteDrinks(favourites);
-    console.log(currentUserId);
-    if (currentUserId) {
-      console.log(`hello i am writeFavoriteDrinks for ${currentUserId}`);
-      writeFavoriteDrinks(currentUserId, favourites);
-    };
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+        console.log(`hello i am writeFavoriteDrinks for ${uid}`);
+        writeFavoriteDrinks(uid, favourites);
+      };
+    });
   }
 }
 
@@ -39,11 +57,22 @@ export function removeDrink(id) {
     }
   }
   setFavouriteDrinks(updatedFavourites);
-  console.log(currentUserId);
-  if (currentUserId) {
-    console.log(`hello i am deleteFavoriteDrink fav drink for ${currentUserId}`);
-    deleteFavoriteDrink(currentUserId, id);
-  };
+  // console.log(uid);
+  // if (uid) {
+    // console.log(`hello i am deleteFavoriteDrink fav drink for ${uid}`);
+    // deleteFavoriteDrink(uid, id);
+  // };
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      // ...
+      console.log(`hello i am deleteFavoriteDrink for ${uid}`);
+      console.log(`i delete id: ${id}`)
+      deleteFavoriteDrink(uid, id);
+    };
+  });
 }
 
 export function getDrink(id) {

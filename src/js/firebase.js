@@ -31,7 +31,8 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 const database = getDatabase(app);
-let currentUserId = null;
+
+export { auth, database };
 
 onAuthStateChanged(auth, user => {
   if (user) {
@@ -46,17 +47,10 @@ onAuthStateChanged(auth, user => {
       linkToSignOut.classList.remove('sign-out');
       authorization.style.backgroundImage = `url("${icons}")`;
     });
-    currentUser = auth.currentUser.uid;
-    console.log(currentUser);
   } else {
-    currentUser = 'none';
-    console.log(currentUser);
+
   }
 });
-
-export { currentUserId };
-
-
 
 export function authorize() {
   signInWithPopup(auth, provider)
@@ -84,18 +78,18 @@ export function authorize() {
 };
 
 export function writeFavoriteDrinks(userId, favoriteDrinks) {
-  // const { drinkId, drinkName, drinkImage } = favourites;
   const db = getDatabase();
-  // set(ref(db, 'users/' + userId + favoriteDrinks), {
-  //   drinkId,
-  //   drinkName,
-  //   drinkImage
-  // });
-  // Write a message to the database
-  
-  set(ref(db, `users/${userId}`), { favoriteDrinks })
-  .then(() => alert('data stored successfully'))
-  .catch((error) => alert('unsuccessful, error' + error));
+  favoriteDrinks.forEach(drink => {
+    set(ref(db, `users/${userId}/favoriteDrinks/${drink.id}`), { 
+      id: drink.id,
+      img: drink.img,
+      name: drink.name
+     })
+    .catch((error) => alert('unsuccessful, error' + error));
+  });
+  // set(ref(db, `users/${userId}`), { favoriteDrinks })
+  // .then(() => console.log('data stored successfully'))
+  // .catch((error) => alert('unsuccessful, error' + error));
 };
 
 export function readFavoriteDrinks(userId) {
@@ -103,8 +97,12 @@ export function readFavoriteDrinks(userId) {
   get(child(dbRef, `users/${userId}/favoriteDrinks`))
   .then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val())
-      return snapshot.val();
+      const arr = [];
+      for (const key in snapshot.val()) {
+        arr.push(snapshot.val()[key]);
+      }
+      console.log(arr);
+      return arr;
     } else {
       // alert('No favorite drinks found');
     };
@@ -124,7 +122,7 @@ export function readFavoriteDrinks(userId) {
 
 export function deleteFavoriteDrink(userId, drinkId) {
   const db = getDatabase();
-  remove(ref(db, `users/${userId}/favoriteDrinks/` + drinkId))
-  .then(() => alert('data removed successfully'))
-  .catch((error) => alert('unsuccessful, error' + error));
+  remove(ref(db, `users/${userId}/favoriteDrinks/${drinkId}`));
+  // .then(() => alert('data removed successfully'))
+  // .catch((error) => alert('unsuccessful, error' + error));
 };
