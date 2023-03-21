@@ -5,10 +5,9 @@ import {
   renderAddRemoveDrinkButton,
   attachFavouritesRemoveClickEvents,
 } from '../favourites';
-import { refs } from '../refs';
-import { VIEWPORT_SIZES } from '../const';
-import { viewportWidthCheck } from '../mainblock/mainblock';
-import { pagination } from '../pagination';
+import { refs } from '../global/refs';
+import { viewportWidthCheck } from '../global/viewportsize';
+import { pagination } from '../paginations/pagination';
 export let getValueC = [];
 
 const {
@@ -103,7 +102,4 @@ function favoritesMarkup(start, end) {
         </li>`
     )
     .join('');
-
-  //attachFavouritesRemoveClickEvents();
-  //attachEvents();
 }

@@ -1,21 +1,25 @@
-import { refs } from './refs';
-import { getValue } from './header/searchbyname';
-import { renderAddRemoveDrinkButton } from './favourites';
-import { attachEvents } from '../js/modallearnmore/modal-learn-more';
+import { refs } from '../global/refs';
+import { getValue } from '../header/searchbyname';
+import { renderAddRemoveDrinkButton } from '../favourites';
+import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
   attachFavouriteClickEvents,
   attachFavouritesRemoveClickEvents,
-} from './favourites';
-import { getValueC } from './favorite-cocktails/favorite';
-
+} from '../favourites';
+import { getValueC } from '../favorite-cocktails/favorite';
+import { getValue } from '../createpage/createpage';
+// import {createListOfCocktails} from '../createpage/createpage'
 const { prewButton, nextButton, ulTag, cocktailsList, favoritesList } = refs;
 let page = 1;
 let array = [];
+
+
 export function pagination(totalPages, page) {
   let liTag = '';
   let thirdPagesAnd = totalPages - 2;
   let thirdPages = page - 2;
   let curentPage = page;
+
   attachEvents();
 
   let location = window.location.pathname.split('/').pop();
@@ -66,32 +70,33 @@ export function pagination(totalPages, page) {
   }
   ulTag.innerHTML = liTag;
 }
-
+/***бокові кнопки листання */
 function reloadButton(totalPage, page) {
   if (page === 1) {
-    prewButton.setAttribute('disabled', 'true');
+    prewButton.setAttribute('disabled', 'true');/***!!!!ljдобавить не кликабельность */
   } else {
     prewButton.removeAttribute('disabled');
   }
   if (page === totalPage) {
-    nextButton.setAttribute('disabled', 'true');
+    nextButton.setAttribute('disabled', 'true');/***!!!!ljдобавить не кликабельность */
   } else {
     nextButton.removeAttribute('disabled');
   }
 }
-
+/*** */
 async function loadMor(event) {
   if (
     event.target.classList.contains('pagination-arrow') ||
     event.target.classList.contains('pagination-number')
   ) {
     page = Number(event.target.textContent);
-    array = getValue.length === 0 ? getValueC : getValue;
-    if (window.location.pathname.includes('cocktails.html')) {
-      favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-    } else {
-      cocktailsList.innerHTML = createListItem(array[page - 1]);
-    }
+    array = getValue
+    // array = getValue.length === 0 ? getValueC : getValue;
+    // if (window.location.pathname.includes('cocktails.html')) {
+    //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
+    // } else {
+      cocktailsList.innerHTML = createListOfCocktails(array[page - 1]);
+    // }
     reloadButton(array.length, page);
     pagination(array.length, page);
   } else {
@@ -101,25 +106,26 @@ async function loadMor(event) {
 
 async function prewList(event) {
   page -= 1;
-  array = getValue.length === 0 ? getValueC : getValue;
-  if (window.location.pathname.includes('cocktails.html')) {
-    favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-  } else {
-    cocktailsList.innerHTML = createListItem(array[page - 1]);
-  }
-
+  array = getValue
+  // array = getValue.length === 0 ? getValueC : getValue;
+  // if (window.location.pathname.includes('cocktails.html')) {
+  //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
+  // } else {
+    cocktailsList.innerHTML = createListOfCocktails(array[page - 1]);
+  // }
   reloadButton(array.length, page);
   pagination(array.length, page);
 }
 
 export async function nextList(event) {
   page += 1;
-  array = getValue.length === 0 ? getValueC : getValue;
-  if (window.location.pathname.includes('cocktails.html')) {
-    favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-  } else {
-    cocktailsList.innerHTML = createListItem(array[page - 1]);
-  }
+  array = getValue
+  // array = getValue.length === 0 ? getValueC : getValue;
+  // if (window.location.pathname.includes('cocktails.html')) {
+  //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
+  // } else {
+    cocktailsList.innerHTML = createListOfCocktails(array[page - 1]);
+  // }
 
   reloadButton(array.length, page);
   pagination(array.length, page);
@@ -130,6 +136,7 @@ ulTag.addEventListener('click', loadMor);
 prewButton.addEventListener('click', prewList);
 
 nextButton.addEventListener('click', nextList);
+
 
 function createListItem(data) {
   let cocktailsMarkup = '';
@@ -161,6 +168,8 @@ function createListItem(data) {
   }
   return cocktailsMarkup;
 }
+
+
 
 function makeFaviritelist(data) {
   return data

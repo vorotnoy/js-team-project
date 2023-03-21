@@ -1,28 +1,14 @@
 import {
   getRandomCocktail,
   renderCocktails,
-  getCocktailMarkup,
 } from './rendercocktails';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
-import { VIEWPORT_SIZES } from '../const';
 import { attachFavouriteClickEvents } from '../favourites';
-import { refs } from '../refs';
-
+import {viewportWidthCheck} from '../global/viewportsize';
+import { refs } from '../global/refs';
+import { getCard } from '../createpage/createcard';
 const { title } = refs;
-export function viewportWidthCheck({ tablet, desktop }) {
-  const currentVpWidth = document.body.clientWidth;
 
-  // export function viewportWidthCheck({ tablet, desktop }) {
-  //     const currentVpWidth = window.innerWidth;
-
-  //function pourCocktails(cocktailSetSize) {
-  //     Promise.all(cocktailSetSize).then(data => renderCocktails(data.map(getCocktailMarkup).join(""))).then(attachEvents);
-  // };
-
-  if (currentVpWidth < tablet) return 3;
-  if (currentVpWidth >= tablet && currentVpWidth < desktop) return 6;
-  if (currentVpWidth >= desktop) return 9;
-}
 
 export function accumulateCocktails(setSize) {
   const cocktailsSet = [];
@@ -34,7 +20,7 @@ export function accumulateCocktails(setSize) {
 
 export function pourCocktails(cocktailSetSize) {
   Promise.all(cocktailSetSize)
-    .then(data => renderCocktails(data.map(getCocktailMarkup).join('')))
+    .then(data => renderCocktails(data.map(getCard).join('')))
     .then(attachFavouriteClickEvents)
     .then(attachEvents);
 
@@ -42,5 +28,5 @@ export function pourCocktails(cocktailSetSize) {
 
 export function returnCocktails() {
   title.textContent = 'Cocktails';
-  pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
+  pourCocktails(accumulateCocktails(viewportWidthCheck()));
 }

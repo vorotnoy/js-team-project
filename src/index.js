@@ -1,7 +1,7 @@
-import { refs } from './js/refs';
+import { refs } from './js/global/refs';
 import { onClickDropdownOn } from './js/header/dropdown';
 import { checkBtn } from './js/header/checkbox';
-import { VIEWPORT_SIZES } from './js/const';
+import { VIEWPORT_SIZES } from './js/global/const';
 import {
   returnCocktails,
   viewportWidthCheck,
@@ -24,7 +24,7 @@ import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
 //import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
 // const { cocktailsList, selectBtn, alphabet, inputForm } = refs;
 
-import { searchCoctailByName } from './js/header/searchbyname';
+import { getInputData } from './js/header/searchbyname';
 
 import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';

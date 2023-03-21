@@ -1,16 +1,15 @@
 /** add your listiener here */
 export const refs = {
-  cocktailsList: document.querySelector('ul.cocktails-list'),
+
   selectMenu: document.querySelector('#select__menu'),
   selectBtn: document.querySelector('#select__btn'),
   alphabet: document.querySelector('#alphabet'),
-  dropDownBtn: document.querySelector('.dropbtn'),
-  dropDownBtnMob: document.querySelector('.dropbtn-mob'),
 
+    dropDownBtn: document.querySelector('.dropbtn'),
+  dropDownBtnMob: document.querySelector('.dropbtn-mob'),
   dropDownItems: document.querySelector('.js-dropdown-menu'),
   dropDownItemsMob: document.querySelector('.js-dropdown-menu-mob'),
-  cocktailsTitle: document.querySelector('.cocktails-title'),
-  noCocktails: document.querySelector('.no-cocktails__wrapper'),
+
 
   mobileMenu: document.querySelector('.js-menu-container'),
   openMenuBtn: document.querySelector('.js-open-menu'),
@@ -29,9 +28,6 @@ export const refs = {
   btnSearchForm: document.querySelector('.search__btn'),
   btnSearchFormBurger: document.querySelector('.search__btn.burger'),
 
-  favoritesList: document.querySelector('.fav-cocktails__list'),
-  favoritesTitle: document.querySelector('.fav-cocktails__title'),
-
   openModalBtn: document.querySelectorAll('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
@@ -40,14 +36,16 @@ export const refs = {
   prewButton: document.querySelector('.prew-button'),
   nextButton: document.querySelector('.next-button'),
   ulTag: document.querySelector('.pagination-list'),
-  pagContainer: document.querySelector('.pagination'),
-  title: document.querySelector('.cocktails-title'),
+  pagContainer: document.querySelector('.pagination'),/*** */
+  paginationBlock: document.querySelector('.pagination'),/*** */
 
+  title: document.querySelector('.cocktails-title'),/*** */
+  cocktailsTitle: document.querySelector('.cocktails-title'),/*** */
+  noCocktails: document.querySelector('.no-cocktails__wrapper'),
+  cocktailsList: document.querySelector('ul.cocktails-list'),
   favoritesList: document.querySelector('.fav-cocktails__list'),
   favoritesTitle: document.querySelector('.fav-cocktails__title'),
   favoriteSearchItem: document.querySelector('.fav-cocktails__item'),
-  paginationBlock: document.querySelector('.pagination'),
-
   favNococktails: document.querySelector('.fav-nofav__cock'),
   favNoingr: document.querySelector('.fav-nofav__ingr'),
 

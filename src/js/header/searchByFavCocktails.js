@@ -1,4 +1,4 @@
-import { refs } from '../refs';
+import { refs } from '../global/refs';
 import {
   renderAddRemoveDrinkButton,
   attachFavouriteClickEvents,

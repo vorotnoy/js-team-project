@@ -7,11 +7,14 @@ import {
   renderAddRemoveIngredientButton,
   attachFavouritesRemoveClickEvents,
 } from '../favourites';
-import { refs } from '../refs';
+import { refs } from '../global/refs';
 import { attachFavouriteClickEvents } from '../favourites';
+
 const favIngredientsList = document.querySelector('.fav-ingr__list');
 const favIngredientsTitle = document.querySelector('.fav-ingr__title');
 const { favNoingr } = refs;
+
+
 export function initializeFavouritesIng() {
   let windowWidth = window.innerWidth;
   const localStorage = getFavouriteIngredients();

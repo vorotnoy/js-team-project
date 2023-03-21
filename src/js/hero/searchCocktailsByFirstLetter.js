@@ -1,14 +1,13 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../const';
-import { refs } from '../refs';
-import { VIEWPORT_SIZES } from '../const';
+import { BASE_URL } from '../global/const';
+import { refs } from '../global/refs';
 import { createCocktailsMarkupByViewportSize } from './createCocktailsMarkupByViewportSize';
-import { viewportWidthCheck } from '../mainblock/mainblock';
+import { viewportWidthCheck } from '../global/viewportsize';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
-import { getValue } from '../header/searchbyname';
-import { pagination } from '../pagination';
+import { getValue } from '../createpage/createpage';
+import { pagination } from '../paginations/pagination';
 
 const {
   title,
@@ -44,7 +43,7 @@ export async function searchCocktailsByFirstLetter(letter) {
     }
 
     let totalPage = Math.ceil(
-      response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES)
+      response.data.drinks.length / viewportWidthCheck()
     );
 
     for (

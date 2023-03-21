@@ -1,4 +1,4 @@
-import { refs } from '../refs';
+import { refs } from '../global/refs';
 import { searchCocktailsByFirstLetter } from './searchcocktailsbyfirstletter';
 
 const { selectBtn, selectMenu, alphabet } = refs;
