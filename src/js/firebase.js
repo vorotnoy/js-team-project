@@ -36,20 +36,24 @@ export { auth, database };
 
 onAuthStateChanged(auth, user => {
   if (user) {
-    const uid = user.uid;
     authorization.style.backgroundImage = `url("${user.photoURL}")`;
     linkToSignOut.classList.remove('invisible');
     linkToSignOut.classList.add('sign-out');
-    linkToSignOut.addEventListener('click', (evt) => {
-      evt.preventDefault();
+    linkToSignOut.addEventListener('click', () => {
+      auth.signOut();
+      linkToSignOut.classList.add('invisible');
+      linkToSignOut.classList.remove('sign-out');
+      authorization.style.backgroundImage = `url("${icons}")`;
+      window.location.reload();
+    });
+    
+  } else {
+    linkToSignOut.removeEventListener('click', () => {
       auth.signOut();
       linkToSignOut.classList.add('invisible');
       linkToSignOut.classList.remove('sign-out');
       authorization.style.backgroundImage = `url("${icons}")`;
     });
-    
-  } else {
-
   }
 });
 
@@ -60,8 +64,8 @@ export function authorize() {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     // The signed-in user info.
-    const user = result.user;
-    console.log(user.uid, user.displayName, user.email);
+    // console.log(user.uid, user.displayName, user.email);
+    window.location.reload();
     // set(ref(db, 'users/' + user.uid), {
     //   username: user.displayName,
     //   email: user.email

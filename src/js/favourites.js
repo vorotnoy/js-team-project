@@ -8,50 +8,75 @@ import { getDatabase, ref, set, get, child, update, remove, onValue } from "fire
 
 
 const auth = getAuth();
-const favDrinksArr = [];
 
 function getFavouriteDrinks() {
-  return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
+  return promise = new Promise((resolve, reject) => {
+    const favDrinksArr = [];
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // console.log('hello i am authorized,', uid);
+        const db = getDatabase();
+        const favoriteDrinksRef = ref(db, `users/${uid}/favoriteDrinks`);
+        onValue(favoriteDrinksRef, (snapshot) => {
+          const data = snapshot.val();
+          for (const key in data) {
+            favDrinksArr.push(data[key]);
+          };
+        });
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        console.log('hello i am NOT authorized');
+        const favDrinksLocal = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
+        favDrinksLocal.forEach(favDrink => favDrinksArr.push(favDrink));
+        // console.log(favDrinksArr);
+      }
+    });
+    resolve(favDrinksArr);
+  });
 };
+
+// getFavouriteDrinks().then(drinks => console.log(drinks));
 
 function setFavouriteDrinks(favourites) {
   localStorage.setItem('favorite-cocktail', JSON.stringify(favourites));
 }
 
 export function addDrink(id, name, image) {
-  if (!getDrink(id)) {
-    let favouriteDrink = { id: id, name: name, img: image };
-    let favourites = getFavouriteDrinks();
-    favourites.push(favouriteDrink);
-    setFavouriteDrinks(favourites);
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        // ...
-        console.log(`hello i am writeFavoriteDrinks for ${uid}`);
-        writeFavoriteDrinks(uid, favourites);
-      };
-    });
-  }
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      // ...
+      if (!getDrink(id)) {
+        let favouriteDrink = { id: id, name: name, img: image };
+        getFavouriteDrinks().then(favourites => {
+          favourites.push(favouriteDrink);
+          setFavouriteDrinks(favourites);
+          // console.log(favourites);
+          writeFavoriteDrinks(uid, favourites);
+        });
+      }
+    } else {
+      console.log(`user is signed out`);
+      if (!getDrink(id)) {
+        let favouriteDrink = { id: id, name: name, img: image };
+        getFavouriteDrinks().then(favourites => {
+          favourites.push(favouriteDrink);
+          setFavouriteDrinks(favourites);
+          console.log(favourites);
+        });
+      }
+    };
+  });
 }
 
 export function removeDrink(id) {
-  let favourites = getFavouriteDrinks();
-  let updatedFavourites = [];
-  for (let i = 0; i < favourites.length; i++) {
-    let drink = favourites[i];
-    if (drink.id != id) {
-      updatedFavourites.push(drink);
-    }
-  }
-  setFavouriteDrinks(updatedFavourites);
-  // console.log(uid);
-  // if (uid) {
-    // console.log(`hello i am deleteFavoriteDrink fav drink for ${uid}`);
-    // deleteFavoriteDrink(uid, id);
-  // };
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
@@ -61,49 +86,34 @@ export function removeDrink(id) {
       console.log(`hello i am deleteFavoriteDrink for ${uid}`);
       console.log(`i delete id: ${id}`)
       deleteFavoriteDrink(uid, id);
-    };
-  });
-}
-
-export function getDrink(id) {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      console.log('hello i am authorized,', uid);
-      const db = getDatabase();
-      const favoriteDrinksRef = ref(db, `users/${uid}/favoriteDrinks`);
-      onValue(favoriteDrinksRef, (snapshot) => {
-        const data = snapshot.val();
-        const favDrinksArr = [];
-        for (const key in data) {
-          favDrinksArr.push(data[key]);
-        }
-        // console.log(favDrinksArr);
-        for (let drink of favDrinksArr) {
-          if (drink.id == id) {
-            return drink;
+    } else {
+      getFavouriteDrinks().then(favourites => {
+        let updatedFavourites = [];
+        for (let i = 0; i < favourites.length; i++) {
+          let drink = favourites[i];
+          if (drink.id != id) {
+            updatedFavourites.push(drink);
           }
         }
+        setFavouriteDrinks(updatedFavourites);
       });
-      // ...
-    } else {
-      // User is signed out
-      // ...
-      console.log('hello i am NOT authorized');
-      const favDrinksArr = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-      // console.log(favDrinksArr);
-      for (let drink of favDrinksArr) {
-        if (drink.id == id) {
-          return drink;
-        }
-      }
-    }
+    };
   });
-}
+};
+
+export function getDrink(id) {
+  getFavouriteDrinks().then(favouriteDrinks => {
+    for (let drink of favouriteDrinks) {
+      if (drink.id === id) {
+        console.log(id, drink.id);
+        return drink;
+      };
+    };
+  });
+};
 
 export function renderAddRemoveDrinkButton(id, name, image) {
+  console.log('hello i am renderAddRemoveDrinkButton(id, name, image)');
   if (getDrink(id)) {
     return `<button class="favourite removeFrom" data-id="${id}" data-name="${name}" data-image="${image}">Remove
         <svg class="icon-heart-selected">
