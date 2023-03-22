@@ -1,6 +1,5 @@
 import { refs } from '../global/refs';
-import {searchCocktailsByFirstLetter} from '../search/searchcocktailsbyfirstletter'
-
+import {searchCocktailsByFirstLetter} from '../search/searchbyfirstletter'
 
 const { selectBtn, selectMenu, alphabet } = refs;
 

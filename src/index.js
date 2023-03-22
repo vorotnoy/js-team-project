@@ -29,8 +29,10 @@ import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ing
 const debounce = require('lodash.debounce');
 const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButton } =
 refs;
+
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
+
 const pathname = window.location.pathname;
 const location = pathname.split('/').pop();
 

@@ -12,7 +12,7 @@ function setFavouriteDrinks(favourites) {
 
 export function addDrink(id, name, image) {
   if (!getDrink(id)) {
-    let favouriteDrink = { id: id, name: name, img: image };
+    let favouriteDrink = { idDrink: id, strDrink: name, strDrinkThumb: image };
     let favourites = getFavouriteDrinks();
     favourites.push(favouriteDrink);
     setFavouriteDrinks(favourites);

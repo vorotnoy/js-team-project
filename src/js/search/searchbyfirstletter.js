@@ -1,5 +1,5 @@
 import { PATH_LETTER } from '../global/const';
-import {getDataFromSearch} from '../global/search'
+import {getDataFromSearch} from './search'
 
 
 export function searchCocktailsByFirstLetter(search) {

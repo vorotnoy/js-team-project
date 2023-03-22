@@ -1,19 +1,16 @@
 import { refs } from '../global/refs';
-import { getCoctailsList } from '../cocktailspage/getcocktailslist';
-import { getValue} from '../cocktailspage/getcocktailspage'
 import { renderAddRemoveDrinkButton } from '../favourites';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
   attachFavouriteClickEvents,
   attachFavouritesRemoveClickEvents,
 } from '../favourites';
-import { getValueC } from '../favorite-cocktails/favorite';
-import { getValue } from '../cocktailspage/getcocktailspage';
-// import {createListOfCocktails} from '../createpage/createpage'
-const { prewButton, nextButton, ulTag, cocktailsList, favoritesList } = refs;
-let page = 1;
-let array = [];
+import {getPageArr} from './getbutton'
 
+const {ulTag ,prewButton, nextButton} = refs;
+
+export let page = 1;
+let array = [];
 
 export function pagination(totalPages, page) {
   let liTag = '';
@@ -73,14 +70,20 @@ export function pagination(totalPages, page) {
 }
 
 /***бокові кнопки листання */
-function reloadButton(totalPage, page) {
+export function reloadButton(totalPage, page) {
   if (page === 1) {
-    prewButton.setAttribute('disabled', 'true');/***!!!!ljдобавить не кликабельность */
+    prewButton.setAttribute(
+      'disabled',
+      'true'
+    ); /***!!!!ljдобавить не кликабельность */
   } else {
     prewButton.removeAttribute('disabled');
   }
   if (page === totalPage) {
-    nextButton.setAttribute('disabled', 'true');/***!!!!ljдобавить не кликабельность */
+    nextButton.setAttribute(
+      'disabled',
+      'true'
+    ); /***!!!!ljдобавить не кликабельность */
   } else {
     nextButton.removeAttribute('disabled');
   }
@@ -92,16 +95,7 @@ async function loadMor(event) {
     event.target.classList.contains('pagination-number')
   ) {
     page = Number(event.target.textContent);
-    array = getValue
-    // array = getValue.length === 0 ? getValueC : getValue;
-    // if (window.location.pathname.includes('cocktails.html')) {
-    //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-    // } else {
-      console.log(array[page - 1])
-      cocktailsList.innerHTML = getCoctailsList(array[page - 1]);
-    // }
-    reloadButton(array.length, page);
-    pagination(array.length, page);
+    getPageArr(page);
   } else {
     return;
   }
@@ -109,91 +103,16 @@ async function loadMor(event) {
 
 async function prewList(event) {
   page -= 1;
-  array = getValue
-  // array = getValue.length === 0 ? getValueC : getValue;
-  // if (window.location.pathname.includes('cocktails.html')) {
-  //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-  // } else {
-    console.log(array[page - 1])
-    cocktailsList.innerHTML = getCoctailsList(array[page - 1]);
-  // }
-  reloadButton(array.length, page);
-  pagination(array.length, page);
+  getPageArr(page);
 }
 
 export async function nextList(event) {
   page += 1;
-  array = getValue
-  // array = getValue.length === 0 ? getValueC : getValue;
-  // if (window.location.pathname.includes('cocktails.html')) {
-  //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
-  // } else {
-    console.log(array[page - 1])
-    cocktailsList.innerHTML = getCoctailsList(array[page - 1]);
-  // }
-
-  reloadButton(array.length, page);
-  pagination(array.length, page);
+  getPageArr(page);
 }
-
-ulTag.addEventListener('click', loadMor);
 
 prewButton.addEventListener('click', prewList);
 
 nextButton.addEventListener('click', nextList);
 
-
-function createListItem(data) {
-  let cocktailsMarkup = '';
-  for (let i = 0; i < data.length; i++) {
-    cocktailsMarkup += `
-        <li class="cocktail-item">
-            <div class="cocktail-card">
-                <a class="cocktail-link" href="#" data-modal-open>
-                    <img class="cocktail-picture" src="${
-                      data[i].strDrinkThumb
-                    }" alt="${data[i].strDrink}" data-id="${data[i].idDrink}">
-                </a>
-                    <p class="cocktail-label">${data[i].strDrink}</p>
-
-                    <div class="cocktail-card-btn-wrapper">
-                    <button class="learnMore" data-id="${
-                      data[i].idDrink
-                    }" data-modal-open>Learn more</button>
-                    ${renderAddRemoveDrinkButton(
-                      data[i].idDrink,
-                      data[i].strDrink,
-                      data[i].strDrinkThumb
-                    )}
-            </div>
-
-            </div>
-        </li>
-    `;
-  }
-  return cocktailsMarkup;
-}
-
-
-
-function makeFaviritelist(data) {
-  return data
-    .map(
-      e =>
-        `<li class="fav-cocktails__item">
-            <a class="cocktail-link" href="#" data-modal-open>
-              <img src="${e.img}" class="fav-cocktails__img" alt=${
-          e.name
-        } cocktail" data-id="${e.id}">
-            </a>
-            <h3 class="fav-cocktails__item-title">${e.name}</h3>
-            <div class="fav-cocktails__buttons">
-                <button type="button" class="learnMore" data-id="${
-                  e.id
-                }" data-modal-open>Learn more</button>
-                ${renderAddRemoveDrinkButton(e.id, e.name, e.img)}
-            </div>
-        </li>`
-    )
-    .join('');
-}
+ulTag.addEventListener('click', loadMor);

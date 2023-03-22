@@ -2,6 +2,8 @@ import axios from 'axios';
 import { BASE_URL } from '../global/const';
 import { emptyRequest } from '../global/emptyrequest';
 import { createPage } from '../cocktailspage/getcocktailspage';
+import {refs} from '../global/refs'
+const {cocktailsList, } =refs
 
 
 export async function getDataFromSearch (path, search){
@@ -12,7 +14,8 @@ export async function getDataFromSearch (path, search){
         emptyRequest();
         return;
       }
-      createPage(data);
+      let list = 'cocktailsList'
+      createPage(data, list);
     } catch (error) {
       console.log(error);
     }
