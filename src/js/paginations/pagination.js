@@ -1,5 +1,6 @@
 import { refs } from '../global/refs';
-import { getValue } from '../header/searchbyname';
+import { getCoctailsList } from '../cocktailspage/getcocktailslist';
+import { getValue} from '../cocktailspage/getcocktailspage'
 import { renderAddRemoveDrinkButton } from '../favourites';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
@@ -7,7 +8,7 @@ import {
   attachFavouritesRemoveClickEvents,
 } from '../favourites';
 import { getValueC } from '../favorite-cocktails/favorite';
-import { getValue } from '../createpage/createpage';
+import { getValue } from '../cocktailspage/getcocktailspage';
 // import {createListOfCocktails} from '../createpage/createpage'
 const { prewButton, nextButton, ulTag, cocktailsList, favoritesList } = refs;
 let page = 1;
@@ -70,6 +71,7 @@ export function pagination(totalPages, page) {
   }
   ulTag.innerHTML = liTag;
 }
+
 /***бокові кнопки листання */
 function reloadButton(totalPage, page) {
   if (page === 1) {
@@ -95,7 +97,8 @@ async function loadMor(event) {
     // if (window.location.pathname.includes('cocktails.html')) {
     //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
     // } else {
-      cocktailsList.innerHTML = createListOfCocktails(array[page - 1]);
+      console.log(array[page - 1])
+      cocktailsList.innerHTML = getCoctailsList(array[page - 1]);
     // }
     reloadButton(array.length, page);
     pagination(array.length, page);
@@ -111,7 +114,8 @@ async function prewList(event) {
   // if (window.location.pathname.includes('cocktails.html')) {
   //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   // } else {
-    cocktailsList.innerHTML = createListOfCocktails(array[page - 1]);
+    console.log(array[page - 1])
+    cocktailsList.innerHTML = getCoctailsList(array[page - 1]);
   // }
   reloadButton(array.length, page);
   pagination(array.length, page);
@@ -124,7 +128,8 @@ export async function nextList(event) {
   // if (window.location.pathname.includes('cocktails.html')) {
   //   favoritesList.innerHTML = makeFaviritelist(array[page - 1]);
   // } else {
-    cocktailsList.innerHTML = createListOfCocktails(array[page - 1]);
+    console.log(array[page - 1])
+    cocktailsList.innerHTML = getCoctailsList(array[page - 1]);
   // }
 
   reloadButton(array.length, page);

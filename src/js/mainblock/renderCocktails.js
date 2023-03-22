@@ -1,5 +1,7 @@
-
-
+import axios from "axios"
+import {BASE_URL} from '../global/const'
+import {refs} from '../global/refs'
+const {cocktailsList} =refs
 // ----------------------------------GETRANDOMCOCKTAIL--------------------------------- //
 export function getRandomCocktail() {
   return new Promise(resolve => {
@@ -15,7 +17,3 @@ export function renderCocktails(markup) {
   }
   cocktailsList.insertAdjacentHTML('beforeend', markup);
 }
-// ----------------------------------GETCOCKTAILMARKUP--------------------------------- //
-
-
-

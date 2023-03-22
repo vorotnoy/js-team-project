@@ -9,7 +9,7 @@ import {
   pourCocktails,
 } from './js/mainblock/mainblock';
 import { favouritesClickEvent } from './js/favourites';
-import { getRandomCocktail } from './js/mainblock/renderCocktails';
+import { getRandomCocktail } from './js/mainblock/rendercocktails';
 
 import { toggleMenu } from './js/header/mobile-menu';
 
@@ -17,14 +17,11 @@ import {
   onSelectBtnClick,
   onAlphabetBtnClick,
 } from './js/hero/onClickFunctions';
-import { searchCocktail } from './js/header/searchbyname';
+// import { searchCocktail } from './js/header/searchbyname';
 
 import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
 
-//import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
-// const { cocktailsList, selectBtn, alphabet, inputForm } = refs;
-
-import { getInputData } from './js/header/searchbyname';
+import { getInputData } from './js/search/searchbyname'
 
 import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';

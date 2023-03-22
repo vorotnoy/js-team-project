@@ -6,7 +6,7 @@ import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
 import {viewportWidthCheck} from '../global/viewportsize';
 import { refs } from '../global/refs';
-import { getCard } from '../createpage/createcard';
+import { getCard } from './getcardstart';
 const { title } = refs;
 
 

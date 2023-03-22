@@ -13,7 +13,7 @@ export function getCard({ data }) {
                 </a>
 
                 <p class="cocktail-label js-changeclrwh" data-cocktail="${
-                  data.drinks[0].strDrink
+                  data.drinks[0].strDrinkA
                 }">${data.drinks[0].strDrink}</p>
                 <div class="cocktail-card-btn-wrapper">
 
