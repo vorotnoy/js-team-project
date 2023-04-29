@@ -1,7 +1,7 @@
 import { PATH_SEARCH } from '../global/const';
 import { refs } from '../global/refs';
 import { searchInFavCocktails } from './searchbyfavcocktails';
-import {getDataFromSearch} from '../search/search'
+import {getDataFromSearch, renderPage} from '../search/search'
 
 const {
   btnSearchForm,
@@ -48,7 +48,7 @@ export function getInputData(evt) {
 
 
 function searchByName(name) {
-  getDataFromSearch(PATH_SEARCH, name)
+  renderPage(getDataFromSearch(PATH_SEARCH, name))
 }
 
 btnSearchFormBurger.addEventListener(

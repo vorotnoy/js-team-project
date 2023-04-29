@@ -18,9 +18,12 @@ export function totalPage(lengthOfArr) {
 }
 
 export let getValue = [];
+export let tipeOfList = ''
 
 export function createPage(getData, list) {
   let tempArray = [];
+  tipeOfList = list
+
   if (list === 'cocktailsList') {
     noCocktails.classList.add('is-hidden');
     cocktailsTitle.textContent = 'Searching results';
@@ -52,9 +55,6 @@ export function createPage(getData, list) {
     pagination(0, 1);
   }
 
-  if (list === 'cocktailsList'){
-    cocktailsList.innerHTML= getCoctailsList(getValue[0]);}
-    else{
-      favoritesList.innerHTML= getCoctailsList(getValue[0]);
-    }
+  list === 'cocktailsList'? cocktailsList.innerHTML= getCoctailsList(getValue[0]) :
+      favoritesList.innerHTML= getCoctailsList(getValue[0]);    
 }

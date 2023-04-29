@@ -1,32 +1,28 @@
 import { addIngredient, removeIngredient, getIngredient } from '../favourites';
 import axios from 'axios';
+import {refs} from '../global/refs'
+const {openModalBtn, closeModalBtn, modal, modalContainer, contentEl} = refs
 
-const contentEl = document.querySelector(`.content`);
-const refs = {
-  openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
-  closeModalBtn: document.querySelector('[data-modal-close-2]'),
-  modal: document.querySelector('[data-modal-2]'),
-  modalContainer: document.querySelector('[data-modal-2] .container'),
-};
+
 // -----Відкриття та закриття модалки-------
 export function attachIngredientEvents() {
-  for (let button of refs.openModalBtn) {
+  for (let button of openModalBtn) {
     button.addEventListener('click', toggleModal);
   }
-  refs.closeModalBtn.onclick = toggleModal;
-  refs.modal.onclick = toggleModal;
+ closeModalBtn.onclick = toggleModal;
+  modal.onclick = toggleModal;
 
   function toggleModal(event) {
     event.stopPropagation();
     if (
-      refs.modalContainer.contains(event.target) &&
-      !refs.closeModalBtn.contains(event.target)
+      modalContainer.contains(event.target) &&
+      !closeModalBtn.contains(event.target)
     ) {
       return;
     }
-    if (!refs.modal.classList.contains('is-hidden')) {
+    if (!modal.classList.contains('is-hidden')) {
       document.body.classList.toggle('modal-open-2');
-      refs.modal.classList.toggle('is-hidden');
+      modal.classList.toggle('is-hidden');
     }
   }
   let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);

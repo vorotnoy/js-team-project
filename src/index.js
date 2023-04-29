@@ -1,7 +1,8 @@
 import { refs } from './js/global/refs';
 import { onClickDropdownOn } from './js/header/dropdown';
 import { checkBtn } from './js/header/checkbox';
-import { VIEWPORT_SIZES } from './js/global/const';
+import {defineClick} from './js/cocktailspage/getaction'
+
 import {
   returnCocktails,
   viewportWidthCheck,
@@ -27,8 +28,12 @@ import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
-const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButton } =
+const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButton, openModalBtn } =
 refs;
+
+document.body.addEventListener('click', defineClick);
+
+import {closeModalOnBody} from './js/modallearnmore/closemodal'
 
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);

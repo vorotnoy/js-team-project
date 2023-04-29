@@ -1,14 +1,9 @@
-import {
-  getRandomCocktail,
-  renderCocktails,
-} from './rendercocktails';
-import { attachEvents } from '../modallearnmore/modal-learn-more';
-import { attachFavouriteClickEvents } from '../favourites';
-import {viewportWidthCheck} from '../global/viewportsize';
+import { getRandomCocktail, renderCocktails } from './rendercocktails';
+import { viewportWidthCheck } from '../global/viewportsize';
 import { refs } from '../global/refs';
-import { getCard } from './getcardstart';
+import { getCocktailsCard } from '../cocktailspage/getcard';
+import { renderAddRemoveDrinkButton } from '../cocktailspage/getaddremovebutton';
 const { title } = refs;
-
 
 export function accumulateCocktails(setSize) {
   const cocktailsSet = [];
@@ -19,12 +14,11 @@ export function accumulateCocktails(setSize) {
 }
 
 export function pourCocktails(cocktailSetSize) {
-  Promise.all(cocktailSetSize)
-    .then(data => renderCocktails(data.map(getCard).join('')))
-    .then(attachFavouriteClickEvents)
-    .then(attachEvents);
-
-  }
+  Promise.all(cocktailSetSize).then(data => {
+    renderCocktails(data.map(e => 
+        getCocktailsCard(e.data.drinks[0])).join(''));
+      })
+  };
 
 export function returnCocktails() {
   title.textContent = 'Cocktails';

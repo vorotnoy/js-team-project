@@ -22,9 +22,10 @@ export function addDrink(id, name, image) {
 export function removeDrink(id) {
   let favourites = getFavouriteDrinks();
   let updatedFavourites = [];
+
   for (let i = 0; i < favourites.length; i++) {
     let drink = favourites[i];
-    if (drink.id != id) {
+    if (drink.idDrink != id) {
       updatedFavourites.push(drink);
     }
   }
@@ -33,27 +34,27 @@ export function removeDrink(id) {
 
 export function getDrink(id) {
   for (let drink of getFavouriteDrinks()) {
-    if (drink.id == id) {
+    if (drink.idDrink == id) {
       return drink;
     }
   }
 }
 
-export function renderAddRemoveDrinkButton(id, name, image) {
-  if (getDrink(id)) {
-    return `<button class="favourite removeFrom" data-id="${id}" data-name="${name}" data-image="${image}">Remove
-        <svg class="icon-heart-selected">
-            <use href="${icons}#heart"></use>
-        </svg>
-      </button>`;
-  }
+// export function renderAddRemoveDrinkButton(id, name, image) {
+//  if (getDrink(id))   {
+//     return `<button class="favourite removeFrom" data-id="${id}" data-name="${name}" data-image="${image}">Remove
+//         <svg class="icon-heart-selected">
+//             <use href="${icons}#heart"></use>
+//         </svg>
+//       </button>`;
+//   }
 
-  return `<button class="favourite addTo" data-id="${id}" data-name="${name}" data-image="${image}">Add to
-      <svg class="icon-heart">
-        <use href="${icons}#heart"></use>
-      </svg>
-      </button>`;
-}
+//   return `<button class="favourite addTo" data-id="${id}" data-name="${name}" data-image="${image}">Add to
+//       <svg class="icon-heart">
+//         <use href="${icons}#heart"></use>
+//       </svg>
+//       </button>`;
+// }
 
 export function getFavouriteIngredients() {
   return JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
@@ -74,7 +75,12 @@ export function addIngredient(name, type) {
 
 export function removeIngredient(name, type) {
   let favourites = getFavouriteIngredients();
-  favourites.splice(favourites.findIndex((o) => { return o.name === name && o.type === type }), 1);
+  favourites.splice(
+    favourites.findIndex(o => {
+      return o.name === name && o.type === type;
+    }),
+    1
+  );
   setFavouriteIngredients(favourites);
 }
 

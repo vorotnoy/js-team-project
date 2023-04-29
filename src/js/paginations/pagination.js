@@ -1,6 +1,6 @@
 import { refs } from '../global/refs';
 import { renderAddRemoveDrinkButton } from '../favourites';
-import { attachEvents } from '../modallearnmore/modal-learn-more';
+// import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
   attachFavouriteClickEvents,
   attachFavouritesRemoveClickEvents,
@@ -18,7 +18,7 @@ export function pagination(totalPages, page) {
   let thirdPages = page - 2;
   let curentPage = page;
 
-  attachEvents();
+  // attachEvents();
 
   let location = window.location.pathname.split('/').pop();
 
