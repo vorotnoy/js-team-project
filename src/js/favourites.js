@@ -2,6 +2,7 @@ import * as icons from '../images/svg/symbol-defs.svg';
 import { initializeFavourites } from './favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './favorite-ingredients/favorite-ingredients';
 
+//---------------------------------Вступ до роботи з бекендом-------------------------------------------//
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // import { readFavoriteDrinks, writeFavoriteDrinks, deleteFavoriteDrink, userIdFunc } from './firebase';
@@ -30,6 +31,7 @@ import { initializeFavouritesIng } from './favorite-ingredients/favorite-ingredi
 //           alert('please authorize by click on the user icon');
 //       }
 //     });
+//---------------------------------Вступ до роботи з бекендом-------------------------------------------//
 
 export function getFavouriteDrinks() {
   return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
