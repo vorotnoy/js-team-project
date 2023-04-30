@@ -98,11 +98,13 @@ export function writeFavoriteDrinks(userId, favoriteDrinks) {
 };
 
 export function readFavoriteDrinks(userId) {
-  const dbRef = ref(getDatabase());
+  const favDrinksArr = [];
+  return new Promise((resolve, reject) => {
+    const dbRef = ref(getDatabase());
   get(child(dbRef, `users/${userId}/favoriteDrinks`))
   .then((snapshot) => {
     if (snapshot.exists()) {
-      const favDrinksArr = [];
+      
       for (const key in snapshot.val()) {
         favDrinksArr.push(snapshot.val()[key]);
       }
@@ -113,17 +115,19 @@ export function readFavoriteDrinks(userId) {
     };
   })
   .catch((error) => {
-    alert('unseccessful, error' + error);
+    alert(error);
+  });
+  resolve(favDrinksArr);
   });
 };
 
-// export function updateFavoriteDrinks(userId) {
-//   const db = getDatabase();
-//   const localStorageDrinks = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-//   update(ref(db, `users/${userId}/favoriteDrinks`), { localStorageDrinks })
-//   .then(() => alert('data updated successfully'))
-//   .catch((error) => alert('unsuccessful, error' + error));
-// };
+export function updateFavoriteDrinks(userId) {
+  const db = getDatabase();
+  const localStorageDrinks = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
+  update(ref(db, `users/${userId}/favoriteDrinks`), { localStorageDrinks })
+  .then(() => alert('data updated successfully'))
+  .catch((error) => alert('unsuccessful, error' + error));
+};
 
 export function deleteFavoriteDrink(userId, drinkId) {
   const db = getDatabase();

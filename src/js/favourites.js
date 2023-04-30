@@ -1,119 +1,74 @@
 import * as icons from '../images/svg/symbol-defs.svg';
+import { initializeFavourites } from './favorite-cocktails/favorite';
+import { initializeFavouritesIng } from './favorite-ingredients/favorite-ingredients';
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-import { readFavoriteDrinks, writeFavoriteDrinks, deleteFavoriteDrink, userIdFunc } from './firebase';
-import { update } from 'firebase/database';
-import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database";
+// import { readFavoriteDrinks, writeFavoriteDrinks, deleteFavoriteDrink, userIdFunc } from './firebase';
+// import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database";
 
+// const auth = getAuth();
 
-const auth = getAuth();
+// onAuthStateChanged(auth, async (user) => {
+//       if (user) {
+//         // User is signed in, see docs for a list of available properties
+//         // https://firebase.google.com/docs/reference/js/firebase.User
+//         const uid = user.uid;
+//         // console.log('hello i am authorized,', uid);
+//         const dbRef = ref(getDatabase());
+//         await get(child(dbRef, `users/${uid}/favoriteDrinks`)).then(snapshot => {
+//         if (snapshot.exists()) {
+//             localStorage.setItem('favorite-cocktail', JSON.stringify(Object.values(snapshot.val())));
+//             // window.location.reload();
+//             // window.location.replace('/');
+//             } else {
+//                 console.log("No data available");
+//             }
+//         }).catch(error => console.log(error));
+//         // ...
+//       } else {
+//           alert('please authorize by click on the user icon');
+//       }
+//     });
 
-function getFavouriteDrinks() {
-  return promise = new Promise((resolve, reject) => {
-    const favDrinksArr = [];
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        // console.log('hello i am authorized,', uid);
-        const db = getDatabase();
-        const favoriteDrinksRef = ref(db, `users/${uid}/favoriteDrinks`);
-        onValue(favoriteDrinksRef, (snapshot) => {
-          const data = snapshot.val();
-          for (const key in data) {
-            favDrinksArr.push(data[key]);
-          };
-        });
-        // ...
-      } else {
-        // User is signed out
-        // ...
-        console.log('hello i am NOT authorized');
-        const favDrinksLocal = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-        favDrinksLocal.forEach(favDrink => favDrinksArr.push(favDrink));
-        // console.log(favDrinksArr);
-      }
-    });
-    resolve(favDrinksArr);
-  });
-};
-
-// getFavouriteDrinks().then(drinks => console.log(drinks));
+export function getFavouriteDrinks() {
+  return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
+}
 
 function setFavouriteDrinks(favourites) {
   localStorage.setItem('favorite-cocktail', JSON.stringify(favourites));
 }
 
 export function addDrink(id, name, image) {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
-      if (!getDrink(id)) {
-        let favouriteDrink = { id: id, name: name, img: image };
-        getFavouriteDrinks().then(favourites => {
-          favourites.push(favouriteDrink);
-          setFavouriteDrinks(favourites);
-          // console.log(favourites);
-          writeFavoriteDrinks(uid, favourites);
-        });
-      }
-    } else {
-      console.log(`user is signed out`);
-      if (!getDrink(id)) {
-        let favouriteDrink = { id: id, name: name, img: image };
-        getFavouriteDrinks().then(favourites => {
-          favourites.push(favouriteDrink);
-          setFavouriteDrinks(favourites);
-          console.log(favourites);
-        });
-      }
-    };
-  });
+  if (!getDrink(id)) {
+    let favouriteDrink = { id: id, name: name, img: image };
+    let favourites = getFavouriteDrinks();
+    favourites.push(favouriteDrink);
+    setFavouriteDrinks(favourites);
+  }
 }
 
 export function removeDrink(id) {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
-      console.log(`hello i am deleteFavoriteDrink for ${uid}`);
-      console.log(`i delete id: ${id}`)
-      deleteFavoriteDrink(uid, id);
-    } else {
-      getFavouriteDrinks().then(favourites => {
-        let updatedFavourites = [];
-        for (let i = 0; i < favourites.length; i++) {
-          let drink = favourites[i];
-          if (drink.id != id) {
-            updatedFavourites.push(drink);
-          }
-        }
-        setFavouriteDrinks(updatedFavourites);
-      });
-    };
-  });
-};
+  let favourites = getFavouriteDrinks();
+  let updatedFavourites = [];
+  for (let i = 0; i < favourites.length; i++) {
+    let drink = favourites[i];
+    if (drink.id != id) {
+      updatedFavourites.push(drink);
+    }
+  }
+  setFavouriteDrinks(updatedFavourites);
+}
 
 export function getDrink(id) {
-  getFavouriteDrinks().then(favouriteDrinks => {
-    for (let drink of favouriteDrinks) {
-      if (drink.id === id) {
-        console.log(id, drink.id);
-        return drink;
-      };
-    };
-  });
-};
+  for (let drink of getFavouriteDrinks()) {
+    if (drink.id == id) {
+      return drink;
+    }
+  }
+}
 
 export function renderAddRemoveDrinkButton(id, name, image) {
-  console.log('hello i am renderAddRemoveDrinkButton(id, name, image)');
   if (getDrink(id)) {
     return `<button class="favourite removeFrom" data-id="${id}" data-name="${name}" data-image="${image}">Remove
         <svg class="icon-heart-selected">
@@ -148,14 +103,8 @@ export function addIngredient(name, type) {
 
 export function removeIngredient(name, type) {
   let favourites = getFavouriteIngredients();
-  let updatedFavourites = [];
-  for (let i = 0; i < favourites.length; i++) {
-    let ingredient = favourites[i];
-    if (ingredient.name != name && ingredient.type != type) {
-      updatedFavourites.push(ingredient);
-    }
-  }
-  setFavouriteIngredients(updatedFavourites);
+  favourites.splice(favourites.findIndex((o) => { return o.name === name && o.type === type }), 1);
+  setFavouriteIngredients(favourites);
 }
 
 export function getIngredient(name) {
@@ -183,13 +132,16 @@ export function renderAddRemoveIngredientButton(name, type) {
 }
 
 export function refreshFavouriteButtons(id) {
-    let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
-    let favourite = getDrink(id);
+  let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
+  let favourite = getDrink(id);
 
-    if (favourite && favouriteButton.classList.contains("addTo") || (!favourite && favouriteButton.classList.contains("removeFrom"))) {
-        let e = { target: favouriteButton };
-        favouritesClickEvent(e);
-    }
+  if (
+    (favourite && favouriteButton.classList.contains('addTo')) ||
+    (!favourite && favouriteButton.classList.contains('removeFrom'))
+  ) {
+    let e = { target: favouriteButton };
+    favouritesClickEvent(e);
+  }
 }
 
 export function favouritesClickEvent(event) {
@@ -228,9 +180,38 @@ export function favouritesClickEvent(event) {
   attachFavouriteClickEvents();
 }
 
+export function favouritesRemoveClickEvent(event) {
+  let button = event.target;
+
+  if (!button || !button.className || typeof button.className != 'string')
+    return;
+
+  if (button.dataset.type) {
+    removeIngredient(button.dataset.name, button.dataset.type);
+  } else {
+    removeDrink(button.dataset.id);
+  }
+
+  let location = window.location.pathname.split('/').pop();
+
+  if (location === 'cocktails.html') {
+    initializeFavourites();
+  } else if (location === 'ingredients.html') {
+    initializeFavouritesIng();
+  }
+}
+
 export function attachFavouriteClickEvents() {
   let buttons = document.querySelectorAll('.favourite');
   for (let button of buttons) {
     button.onclick = favouritesClickEvent;
+  }
+}
+
+export function attachFavouritesRemoveClickEvents() {
+  let buttons = document.querySelectorAll('.favourite');
+
+  for (let button of buttons) {
+    button.onclick = favouritesRemoveClickEvent;
   }
 }
