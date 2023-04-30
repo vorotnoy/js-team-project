@@ -4,7 +4,9 @@ import { refs } from './refs';
 const { authorization, linkToSignOut } = refs;
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+
 import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database";
+
 import {
   getAuth,
   GoogleAuthProvider,
@@ -26,8 +28,12 @@ const firebaseConfig = {
   databaseURL: 'https://goit-js-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
+// const btnIn = document.querySelector('#btnAuth');
+// const btnOut = document.querySelector('#btnOut');
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 const provider = new GoogleAuthProvider(app);
 const auth = getAuth(app);
 const database = getDatabase(app);

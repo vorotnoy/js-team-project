@@ -10,14 +10,14 @@ import {
   pourCocktails,
 } from './js/mainblock/mainblock';
 import { favouritesClickEvent } from './js/favourites';
-import { getRandomCocktail } from './js/mainblock/renderCocktails';
+import { getRandomCocktail } from './js/mainblock/rendercocktails';
 
 import { toggleMenu } from './js/header/mobile-menu';
 
 import {
   onSelectBtnClick,
   onAlphabetBtnClick,
-} from './js/hero/onClickFunctions';
+} from './js/hero/onclickfunctions';
 import { searchCocktail } from './js/header/searchbyname';
 
 import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
@@ -31,8 +31,8 @@ import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
-const { authorization, cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn } =
-refs;
+
+const { authorization, cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButton } = refs;
 
 authorization.addEventListener('click', authorize);
 
@@ -58,3 +58,20 @@ if (location === ''|| location === 'index.html') {
   
   initializeFavouritesIng();
 }
+
+//scroll
+document.addEventListener("scroll", function () {
+      toTopButton.classList.remove('is-hidden')
+   
+  if (!window.pageYOffset) {
+    toTopButton.classList.add('is-hidden')
+  }
+})
+      
+  toTopButton.addEventListener("click", function () {
+        window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });    
+})
+

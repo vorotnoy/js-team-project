@@ -5,9 +5,9 @@ import { VIEWPORT_SIZES } from '../const';
 import { viewportWidthCheck } from '../mainblock/mainblock';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { attachFavouriteClickEvents } from '../favourites';
-import { createCocktailsMarkupByViewportSize } from '../hero/createCocktailsMarkupByViewportSize';
+import { createCocktailsMarkupByViewportSize } from '../hero/createcocktailsmarkupbyviewportsize';
 import { pagination } from '../pagination';
-import { searchInFavCocktails } from './searchByFavCocktails';
+import { searchInFavCocktails } from './searchbyfavcocktails';
 
 const {
   btnSearchForm,

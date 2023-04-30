@@ -12,6 +12,8 @@ body.modal-open {
   z-index: 10;
   padding-top: 16px;
   overflow: auto;
+  -webkit-animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 hr {
@@ -34,8 +36,37 @@ hr {
   opacity: 1;
   z-index: 20;
 
+box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   @include tabletPlus {
     max-width: 822px;
+  }
+}
+
+@-webkit-keyframes slide-in-bck-center {
+  0% {
+    -webkit-transform: translateZ(600px);
+    transform: translateZ(600px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bck-center {
+  0% {
+    -webkit-transform: translateZ(600px);
+    transform: translateZ(600px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
   }
 }
 
@@ -138,6 +169,7 @@ hr {
   height: 280px;
   margin-bottom: 22px;
   display: block;
+  border-radius: 4px;
 
   @include tabletPlus {
     max-width: 288px;
@@ -150,8 +182,8 @@ hr {
 .modal-ingr-box {
   @include tabletPlus {
     position: absolute;
-    top: 105px;
-    left: 320px;
+    top: 126px;
+    left: 312px;
   }
 }
 
@@ -190,6 +222,22 @@ hr {
   display: block;
   margin-bottom: 80px;
   margin-left: 12px;
+  @include tabletPlus {
+      margin: 0;
+      padding-left: 12px;
+  }
+}
+.ingredients-list {
+  @include tabletPlus {
+    margin-bottom: 80px;
+  }
+}
+.list-scroll {
+  @include tabletPlus {
+    height: 111px;
+    width: 400px;
+    overflow: auto;
+  }
 }
 
 .ingredients-list.modal-ingredients-list,
@@ -215,6 +263,7 @@ hr {
   color: $input_plholder;
   padding-bottom: 8px;
 }
+
 .backdrop .ingredient-link {
   color: $input_plholder;
   font-family: 'Poppins', sans-serif;
@@ -229,22 +278,14 @@ hr {
   }
 }
 
-// .ingredient-link {
-//   font-family: 'Poppins', sans-serif;
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 16px;
-//   line-height: 1.62;
-//   cursor: pointer;
-//   &:hover {
-//     color: $accent;
-//   }
-// }
-
 .modal-learn-more-item:hover,
 .modal-learn-more-data:hover {
   color: $main-button;
 }
+
+.modal-learn-more-item:hover .ingredient-link {
+   color: $main-button;
+ }
 
 .add-item-btn,
 .remove-item-btn {
@@ -263,6 +304,7 @@ hr {
   cursor: pointer;
   position: absolute;
   bottom: 40px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
   &:hover {
     color: $accent;
@@ -287,6 +329,7 @@ hr {
 body.js-bgcblack .modal-learn-more-container,
 body.js-bgcblack .modal-ingredients-container {
   background-color: $main-color2;
+  box-shadow: 6px 6px 30px 6px $accent;
 }
 
 body.js-bgcblack .modal-header,
@@ -304,7 +347,16 @@ body.js-bgcblack .modal-learn-more-data:hover,
 body.js-bgcblack .modal-learn-more-item:hover {
   color: $accent;
 }
+body.js-bgcblack .modal-learn-more-item:hover .ingredient-link {
+  color: $accent;
+}
+body.js-bgcblack .backdrop .ingredient-link {
+  color: $main-color3;
 
+  @include tabletPlus {
+    color: $modal-color;
+  }
+}
 body.js-bgcblack .modal-desc,
 body.js-bgcblack .modal-ingredients-list,
 body.js-bgcblack .modal-learn-more-data,
@@ -331,23 +383,17 @@ body.js-bgcblack .remove-item-btn:hover {
   background-color: $main-color2;
 }
 
-body.js-bgcblack .backdrop .ingredient-link {
-  color: $main-color3;
-  &:hover {
-    color: $accent;
-  }
-  @include tabletPlus {
-    color: $modal-color;
-  }
-}
-
 ::-webkit-scrollbar {
   width: 10px;
   height: 5px;
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: $accent;
+  background-color: $main-button;
   border-radius: 10px;
   height: 100px;
+}
+.icon-heart,
+.icon-heart-selected {
+  pointer-events: none;
 }

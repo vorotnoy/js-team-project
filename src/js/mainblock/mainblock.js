@@ -2,14 +2,13 @@ import {
   getRandomCocktail,
   renderCocktails,
   getCocktailMarkup,
-} from './renderCocktails';
+} from './rendercocktails';
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import { VIEWPORT_SIZES } from '../const';
 import { attachFavouriteClickEvents } from '../favourites';
-import { refs} from '../refs'
+import { refs } from '../refs';
 
-
-const { title } = refs
+const { title } = refs;
 export function viewportWidthCheck({ tablet, desktop }) {
   const currentVpWidth = document.body.clientWidth;
 
@@ -38,9 +37,10 @@ export function pourCocktails(cocktailSetSize) {
     .then(data => renderCocktails(data.map(getCocktailMarkup).join('')))
     .then(attachFavouriteClickEvents)
     .then(attachEvents);
-}
+
+  }
 
 export function returnCocktails() {
-  title.textContent = 'Cocktails'
+  title.textContent = 'Cocktails';
   pourCocktails(accumulateCocktails(viewportWidthCheck(VIEWPORT_SIZES)));
 }

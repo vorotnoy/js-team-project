@@ -1,20 +1,22 @@
 import axios from 'axios';
+import { attachIngredientEvents } from './modal-learn-more-ingredient';
 import {
-  attachIngredientEvents,
-  onBackdrop,
-} from './modal-learn-more-ingredient';
-import { addDrink, removeDrink, getDrink, refreshFavouriteButtons } from '../favourites';
+  addDrink,
+  removeDrink,
+  getDrink,
+  refreshFavouriteButtons,
+} from '../favourites';
 
 const galleryEl = document.querySelector(`.gallery`);
+const refs = {
+  openModalBtn: document.querySelectorAll('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal]'),
+  modalContainer: document.querySelector('[data-modal] .container'),
+};
 
 // -----Відкриття та закриття модалки-------
 export function attachEvents() {
-  const refs = {
-    openModalBtn: document.querySelectorAll('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-    modalContainer: document.querySelector('[data-modal] .container'),
-  };
   for (let button of refs.openModalBtn) {
     button.addEventListener('click', toggleModal);
   }
@@ -30,8 +32,10 @@ export function attachEvents() {
       return;
     }
 
-    document.body.classList.toggle('modal-open');
-    refs.modal.classList.toggle('is-hidden');
+    if (!refs.modal.classList.contains('is-hidden')) {
+      document.body.classList.toggle('modal-open');
+      refs.modal.classList.toggle('is-hidden');
+    }
   }
   let learnMoreEL = document.querySelectorAll(`.learnMore`);
   for (let button of learnMoreEL) {
@@ -41,7 +45,7 @@ export function attachEvents() {
   let cocktailLink = document.querySelectorAll('.cocktail-link');
   for (let link of cocktailLink) {
     link.addEventListener('click', onLearnMore);
-  };
+  }
   // add the same for cocktail links (added by Illia)
 }
 
@@ -76,14 +80,16 @@ async function onLearnMore(event) {
           list +=
             `<li class="modal-learn-more-item">
                     <span class="modal-learn-more-data">
-                    <a class="ingredient-link" data-name="${drink[ingredientProperty]}" data-modal-open-2>
+                    <a class="ingredient-link" data-name="${
+                      drink[ingredientProperty]
+                    }" data-modal-open-2>
                     ${
                       drink[measureProperty] != null
                         ? drink[measureProperty]
                         : ''
                     }` +
             ' ' +
-                    `${drink[ingredientProperty]}
+            `${drink[ingredientProperty]}
                     </a>
                     </span>
                     </li>`;
@@ -97,6 +103,9 @@ async function onLearnMore(event) {
       .querySelector('.modal-ingredients-list')
       .insertAdjacentHTML('beforeend', listIngredients(drink));
     attachIngredientEvents();
+
+    document.body.classList.toggle('modal-open');
+    refs.modal.classList.toggle('is-hidden');
   } catch (error) {
     console.log(error.message);
   }
@@ -122,7 +131,7 @@ export function displayMoreInfo(data) {
                 <div class="modal-ingr-box">
                     <h3 class="modal-ingr-desk">Ingredients</h3>
                     <p class="modal-per-glass">Per cocktail</p>
-                    <ul class="modal-ingredients-list"></ul>
+                    <ul class="modal-ingredients-list list-scroll"></ul>
                 </div>
                 </div>
             </div>
@@ -176,4 +185,4 @@ export function displayMoreInfo(data) {
       console.error(error.message);
     }
   }
-};
+}

@@ -3,7 +3,7 @@
 import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
   renderAddRemoveDrinkButton,
-  attachFavouriteClickEvents,
+  attachFavouritesRemoveClickEvents,
 } from '../favourites';
 import { refs } from '../refs';
 import { VIEWPORT_SIZES } from '../const';
@@ -18,6 +18,7 @@ const {
   prewButton,
   nextButton,
   pagContainer,
+  favNococktails,
 } = refs;
 
 //use function updateSize to render elements on click
@@ -28,14 +29,17 @@ export function initializeFavourites() {
     localStorage.getItem('favorite-cocktail')
   );
   getValueC.length = 0;
-  if (localStorageLength === null || localStorageLength.length === 0) {
-    favoritesTitle.textContent = "You didn't choose any cocktail.";
 
+  if (localStorageLength === null || localStorageLength.length === 0) {
+    favoritesList.innerHTML = '';
+    favNococktails.textContent = "You haven't added any favorite cocktails yet";
+    favNococktails.classList.remove('is-hidden');
     prewButton.classList.add('is-hiden');
     nextButton.classList.add('is-hiden');
     pagination(0, 1);
     return;
   }
+  favNococktails.classList.add('is-hidden');
   let totalPage = Math.ceil(
     localStorageLength.length / viewportWidthCheck(VIEWPORT_SIZES)
   );
@@ -79,8 +83,7 @@ export function initializeFavourites() {
 function favoritesMarkup(start, end) {
   const cocktailsArr = JSON.parse(localStorage.getItem('favorite-cocktail'));
   let arr = cocktailsArr.slice(start, end);
-  attachFavouriteClickEvents();
-  attachEvents();
+
   favoritesList.innerHTML = arr
     .map(
       e =>
@@ -100,4 +103,7 @@ function favoritesMarkup(start, end) {
         </li>`
     )
     .join('');
+
+  //attachFavouritesRemoveClickEvents();
+  //attachEvents();
 }

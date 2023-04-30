@@ -2,15 +2,14 @@ import { addIngredient, removeIngredient, getIngredient } from '../favourites';
 import axios from 'axios';
 
 const contentEl = document.querySelector(`.content`);
-
+const refs = {
+  openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
+  closeModalBtn: document.querySelector('[data-modal-close-2]'),
+  modal: document.querySelector('[data-modal-2]'),
+  modalContainer: document.querySelector('[data-modal-2] .container'),
+};
 // -----Відкриття та закриття модалки-------
 export function attachIngredientEvents() {
-  const refs = {
-    openModalBtn: document.querySelectorAll('[data-modal-open-2]'),
-    closeModalBtn: document.querySelector('[data-modal-close-2]'),
-    modal: document.querySelector('[data-modal-2]'),
-    modalContainer: document.querySelector('[data-modal-2] .container'),
-  };
   for (let button of refs.openModalBtn) {
     button.addEventListener('click', toggleModal);
   }
@@ -25,15 +24,16 @@ export function attachIngredientEvents() {
     ) {
       return;
     }
-
-    document.body.classList.toggle('modal-open');
-    refs.modal.classList.toggle('is-hidden');
+    if (!refs.modal.classList.contains('is-hidden')) {
+      document.body.classList.toggle('modal-open-2');
+      refs.modal.classList.toggle('is-hidden');
+    }
   }
   let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);
   for (let link of ingredientLinkEL) {
     link.addEventListener(`click`, onIngredient);
   }
-};
+}
 
 //-------Дістаемо імя з елемента лінка на який натиснули-------
 async function fetchData(name) {
@@ -46,7 +46,7 @@ async function fetchData(name) {
   } catch (error) {
     console.log(error.message);
   }
-};
+}
 
 //------Перевірити чи є атрибют в API та додати ------
 async function onIngredient(event) {
@@ -55,48 +55,41 @@ async function onIngredient(event) {
   try {
     const returnedData = await fetchData(event.target.dataset.name);
     displayMoreInfo(returnedData.ingredients);
-    let ingredient = returnedData.ingredients[0];
-    function checkType(ingredient) {
-      let type = '';
-      if (ingredient.strType != null) {
-        type += `<h3 class="modal-sub-header ingredient-sub-header">${ingredient.strType}<hr /></h3>`;
-      }
-      return type;
-    }
-    contentEl
-      .querySelector('.ingredient-header')
-      .insertAdjacentHTML('afterend', checkType(ingredient));
-    function ingredientDescription(ingredient) {
-      let description = '';
-      if (ingredient.strDescription != null) {
-        description += `<p class="modal-desc ingredient-desc">${ingredient.strDescription}</p>`;
-      }
-      return description;
-    }
-    contentEl
-      .querySelector('.ingredient-sub-header')
-      .insertAdjacentHTML('afterend', ingredientDescription(ingredient));
-    function listInIngredient(ingredient) {
-      let list = '';
-      if (ingredient.strAlcohol != null) {
-        list += `<li class="ingredient-list-item"><span class="ingredient-list-data">Alcohol: ${ingredient.strAlcohol} </span></li>`;
-      }
-      if (ingredient.strABV != null) {
-        list += `<li class="ingredient-list-item"><span class="ingredient-list-data">Alcohol by volume: ${ingredient.strABV} % </span></li>`;
-      }
-      return list;
-    }
-    contentEl
-      .querySelector('.ingredients-list')
-      .insertAdjacentHTML('beforeend', listInIngredient(ingredient));
+    document.body.classList.toggle('modal-open-2');
+    refs.modal.classList.toggle('is-hidden');
   } catch (error) {
     console.log(error.message);
   }
-};
+}
 
 //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
   let exists = getIngredient(data[0].strIngredient);
+
+  function checkType(ingredient) {
+    let type = '';
+    if (ingredient.strType != null) {
+      type += `<h3 class="modal-sub-header ingredient-sub-header">${ingredient.strType}</h3>`;
+    }
+    return type;
+  }
+  function ingredientDescription(ingredient) {
+    let description = '';
+    if (ingredient.strDescription != null) {
+      description += `<p class="modal-desc ingredient-desc">${ingredient.strDescription}</p>`;
+    }
+    return description;
+  }
+  function listInIngredient(ingredient) {
+    let list = '';
+    if (ingredient.strAlcohol != null) {
+      list += `<li class="ingredient-list-item"><span class="ingredient-list-data">Alcohol: ${ingredient.strAlcohol} </span></li>`;
+    }
+    if (ingredient.strABV != null) {
+      list += `<li class="ingredient-list-item"><span class="ingredient-list-data">Alcohol by volume: ${ingredient.strABV} % </span></li>`;
+    }
+    return list;
+  }
 
   const result = data
     .map(
@@ -104,17 +97,22 @@ export function displayMoreInfo(data) {
         `<h2 class="modal-header ingredient-header">${
           ingredient.strIngredient
         }</h2>
-        <ul class="ingredients-list modal-ingredients-list"></ul>
-        <button type="submit" class="add-item-btn${
-          exists ? ' is-hidden' : ''
-        }" data-name="${ingredient.strIngredient}" data-type="${
-          ingredient.strType
-        }">Add to favorite</button>
-        <button type="submit" class="remove-item-btn${
-          !exists ? ' is-hidden' : ''
-        }" data-name="${ingredient.strIngredient}" data-type="${
-          ingredient.strType
-        }">Remove from favorite</button>
+        ${checkType(ingredient)}
+        <hr />
+        ${ingredientDescription(ingredient)}
+        <ul class="ingredients-list modal-ingredients-list">${listInIngredient(ingredient)}</ul>
+        <button type="submit" 
+            class="add-item-btn${exists ? ' is-hidden' : ''}" 
+            data-name="${ingredient.strIngredient}" 
+            data-type="${ingredient.strType}">
+          Add to favorite
+        </button>
+        <button type="submit" 
+            class="remove-item-btn${!exists ? ' is-hidden' : ''}" 
+            data-name="${ingredient.strIngredient}" 
+            data-type="${ingredient.strType}">
+          Remove from favorite
+        </button>
         `
     )
     .join('');
@@ -135,7 +133,7 @@ export function displayMoreInfo(data) {
     } catch (error) {
       console.error(error.message);
     }
-    };
+  }
 
   //------Remove from favorite кнопка видаляе елемент з Local storage-------
   function onRemoveBtn(event) {
@@ -147,4 +145,4 @@ export function displayMoreInfo(data) {
       console.error(error.message);
     }
   }
-};
+}
