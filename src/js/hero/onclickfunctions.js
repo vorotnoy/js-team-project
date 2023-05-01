@@ -16,13 +16,15 @@ function onSelectDropdownMenuClick(event) {
   selectBtn.lastElementChild.classList.add('active');
 
   searchCocktailsByFirstLetter(event.target.textContent);
+
+  selectMenu.removeEventListener('click', onSelectDropdownMenuClick);
 }
 
 export function onAlphabetBtnClick(event) {
   searchCocktailsByFirstLetter(event.target.textContent);
 }
 
-if (selectBtn !== null) {
+if (selectBtn) {
   selectBtn.addEventListener('click', onSelectBtnClick);
   alphabet.addEventListener('click', onAlphabetBtnClick);
 }

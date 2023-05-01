@@ -26,14 +26,15 @@ export async function searchCocktailsByFirstLetter(letter) {
   getValue.length = 0;
 
   try {
-    const response = await axios.get(`${BASE_URL}/search.php?f=${letter}`);
-
-    if (!response.data.drinks) {
+    const dataCocktails = await axios.get(`${BASE_URL}/search.php?f=${letter}`);
+    const cocktailsArr = dataCocktails.data.drinks;
+    
+    if (!cocktailsArr) {
       cocktailsList.innerHTML = '';
 
       window.location.href = '#results';
       title.textContent = `Sorry, we didn't find any cocktail for you`;
-      
+
       noCocktails.classList.remove('is-hidden');
 
       prewButton.classList.add('is-hiden');
@@ -44,15 +45,15 @@ export async function searchCocktailsByFirstLetter(letter) {
     }
 
     let totalPage = Math.ceil(
-      response.data.drinks.length / viewportWidthCheck(VIEWPORT_SIZES)
+      cocktailsArr.length / viewportWidthCheck(VIEWPORT_SIZES)
     );
 
     for (
       let i = 0;
-      i < response.data.drinks.length;
+      i < cocktailsArr.length;
       i += viewportWidthCheck(VIEWPORT_SIZES)
     ) {
-      let myChunk = response.data.drinks.slice(
+      let myChunk = cocktailsArr.slice(
         i,
         i + viewportWidthCheck(VIEWPORT_SIZES)
       );
@@ -60,8 +61,7 @@ export async function searchCocktailsByFirstLetter(letter) {
     }
     title.textContent = 'Searching results';
     cocktailsList.innerHTML = createCocktailsMarkupByViewportSize(
-      viewportWidthCheck(VIEWPORT_SIZES),
-      response
+      viewportWidthCheck(VIEWPORT_SIZES), cocktailsArr
     );
 
     if (totalPage > 1) {
