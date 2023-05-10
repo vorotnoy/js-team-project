@@ -18,19 +18,18 @@ export function totalPage(lengthOfArr) {
 }
 
 export let getValue = [];
-export let tipeOfList = ''
+export let typeOfList = '';
 
 export function createPage(getData, list) {
   let tempArray = [];
-  tipeOfList = list
+  typeOfList = list;
 
   if (list === 'cocktailsList') {
     noCocktails.classList.add('is-hidden');
     cocktailsTitle.textContent = 'Searching results';
     cocktailsTitle.classList.remove('is-hidden');
     tempArray = getData.data.drinks;
-  }
-  else if (list === 'favoritesList') {
+  } else if (list === 'favoritesList') {
     tempArray = getData;
   }
 
@@ -55,6 +54,7 @@ export function createPage(getData, list) {
     pagination(0, 1);
   }
 
-  list === 'cocktailsList'? cocktailsList.innerHTML= getCoctailsList(getValue[0]) :
-      favoritesList.innerHTML= getCoctailsList(getValue[0]);    
+  list === 'cocktailsList'
+    ? (cocktailsList.innerHTML = getCoctailsList(getValue[0]))
+    : (favoritesList.innerHTML = getCoctailsList(getValue[0]));
 }

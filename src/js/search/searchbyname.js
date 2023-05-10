@@ -1,7 +1,7 @@
 import { PATH_SEARCH } from '../global/const';
 import { refs } from '../global/refs';
 import { searchInFavCocktails } from './searchbyfavcocktails';
-import {getDataFromSearch, renderPage} from '../search/search'
+import { getDataFromSearch, renderPage } from '../search/search';
 
 const {
   btnSearchForm,
@@ -39,16 +39,15 @@ export function getInputData(evt) {
   }
 
   window.location.href = '#results';
-  
+
   searchByName(inputData);
 
   inputForm.reset();
   inputFormBurger.reset();
 }
 
-
 function searchByName(name) {
-  renderPage(getDataFromSearch(PATH_SEARCH, name))
+  renderPage(getDataFromSearch(PATH_SEARCH, name));
 }
 
 btnSearchFormBurger.addEventListener(

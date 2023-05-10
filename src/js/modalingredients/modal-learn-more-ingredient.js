@@ -1,35 +1,41 @@
-import { addIngredient, removeIngredient, getIngredient } from '../favourites';
+import { getIngredient, addButtonListener} from './localstorage';
 import axios from 'axios';
-import {refs} from '../global/refs'
-const {openModalBtn, closeModalBtn, modal, modalContainer, contentEl} = refs
+import { refs } from '../global/refs';
+const {
+  openModalBtn,
+  closeModalBtn,
+  modal,
+  modalContainer,
+  contentEl,
+  modal_ingredients,
+} = refs;
 
+// // -----Відкриття та закриття модалки-------
+// export function attachIngredientEvents() {
+//   for (let button of openModalBtn) {
+//     button.addEventListener('click', toggleModal);
+//   }
+//   closeModalBtn.onclick = toggleModal;
+//   modal.onclick = toggleModal;
 
-// -----Відкриття та закриття модалки-------
-export function attachIngredientEvents() {
-  for (let button of openModalBtn) {
-    button.addEventListener('click', toggleModal);
-  }
- closeModalBtn.onclick = toggleModal;
-  modal.onclick = toggleModal;
-
-  function toggleModal(event) {
-    event.stopPropagation();
-    if (
-      modalContainer.contains(event.target) &&
-      !closeModalBtn.contains(event.target)
-    ) {
-      return;
-    }
-    if (!modal.classList.contains('is-hidden')) {
-      document.body.classList.toggle('modal-open-2');
-      modal.classList.toggle('is-hidden');
-    }
-  }
-  let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);
-  for (let link of ingredientLinkEL) {
-    link.addEventListener(`click`, onIngredient);
-  }
-}
+//   function toggleModal(event) {
+//     event.stopPropagation();
+//     if (
+//       modalContainer.contains(event.target) &&
+//       !closeModalBtn.contains(event.target)
+//     ) {
+//       return;
+//     }
+//     if (!modal.classList.contains('is-hidden')) {
+//       document.body.classList.toggle('data-modal-ingredients');
+//       modal.classList.toggle('is-hidden');
+//     }
+//   }
+//   let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);
+//   for (let link of ingredientLinkEL) {
+//     link.addEventListener(`click`, onIngredient);
+//   }
+// }
 
 //-------Дістаемо імя з елемента лінка на який натиснули-------
 async function fetchData(name) {
@@ -44,8 +50,10 @@ async function fetchData(name) {
   }
 }
 
-//------Перевірити чи є атрибют в API та додати ------
-async function onIngredient(event) {
+// //------Перевірити чи є атрибют в API та додати ------
+export async function onIngredient(event) {
+  // console.log('ing', event.target.dataset.name);
+
   event.preventDefault();
   contentEl.innerHTML = '';
   try {
@@ -94,17 +102,17 @@ async function onIngredient(event) {
     contentEl
       .querySelector('.ingredients-list')
       .insertAdjacentHTML('beforeend', listInIngredient(ingredient));
-    document.body.classList.toggle('modal-open-2');
-    refs.modal.classList.toggle('is-hidden');
+    // document.body.classList.toggle('modal-open-2');
+    // modal_ingredients.classList.toggle('is-hidden');
   } catch (error) {
     console.log(error.message);
   }
 }
 
-//-----Додаемо елементи в розмітку------
+// //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
   let exists = getIngredient(data[0].strIngredient);
-
+// console.log('data', data)
   const result = data
     .map(
       ingredient =>
@@ -126,32 +134,6 @@ export function displayMoreInfo(data) {
     )
     .join('');
   contentEl.insertAdjacentHTML('beforeend', result);
-
-  const addBtnEl = contentEl.querySelector('.add-item-btn');
-  const removeBtnEl = contentEl.querySelector('.remove-item-btn');
-
-  addBtnEl.addEventListener(`click`, onAddBtn);
-  removeBtnEl.addEventListener(`click`, onRemoveBtn);
-
-  // ---------Add to favorite кнопка додае назву та тип інгрідіенту коктелю до Local storage-------
-  function onAddBtn(event) {
-    try {
-      addIngredient(event.target.dataset.name, event.target.dataset.type);
-      addBtnEl.classList.add(`is-hidden`);
-      removeBtnEl.classList.remove(`is-hidden`);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
-
-  //------Remove from favorite кнопка видаляе елемент з Local storage-------
-  function onRemoveBtn(event) {
-    try {
-      removeIngredient(event.target.dataset.name, event.target.dataset.type);
-      removeBtnEl.classList.add(`is-hidden`);
-      addBtnEl.classList.remove(`is-hidden`);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
+  addButtonListener();
 }
+

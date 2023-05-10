@@ -1,0 +1,396 @@
+body.modal-open {
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba($color: $main-color2, $alpha: 0.5);
+  opacity: 1;
+  z-index: 30;
+  padding-top: 16px;
+  overflow: auto;
+  -webkit-animation: slide-in-bck-center 0.7s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+hr {
+  display: none;
+  @include tabletPlus {
+    display: block;
+    border: 1px solid $accent;
+  }
+}
+
+.modal-learn-more-container{
+  max-width: 320px;
+  height: auto;
+  background-color: $main-color3;
+  display: block;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+  opacity: 1;
+  z-index: 20;
+
+  box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
+  @include tabletPlus {
+    max-width: 822px;
+  }
+}
+
+@-webkit-keyframes slide-in-bck-center {
+  0% {
+    -webkit-transform: translateZ(600px);
+    transform: translateZ(600px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bck-center {
+  0% {
+    -webkit-transform: translateZ(600px);
+    transform: translateZ(600px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  background: transparent;
+  border: none;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-icon {
+  fill: $fill-color;
+  &:hover {
+    fill: $accent;
+  }
+}
+
+.modal-layout-box {
+  display: block;
+
+  @include tabletPlus {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 32px;
+  }
+}
+
+.modal-layout-flex {
+  @include tabletPlus {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 35px;
+  }
+}
+
+.modal-header {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.19;
+  color: $main-color2;
+  margin-bottom: 20px;
+  text-align: left;
+
+  @include tabletPlus {
+    position: absolute;
+    top: 40px;
+    left: 312px;
+  }
+}
+
+.modal-header.ingredient-header {
+  @include tabletPlus {
+    position: static;
+    text-align: center;
+  }
+}
+
+.modal-sub-header {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.62;
+  text-transform: uppercase;
+  color: $main-color2;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.modal-sub-header.ingredient-sub-header {
+  @include tabletPlus {
+    display: block;
+  }
+}
+
+.modal-desc {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  color: $input_plholder;
+  margin-bottom: 80px;
+  text-align: left;
+}
+
+.modal-image {
+  width: 280px;
+  height: 280px;
+  margin-bottom: 22px;
+  display: block;
+  border-radius: 4px;
+
+  @include tabletPlus {
+    max-width: 288px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+.modal-ingr-box {
+  @include tabletPlus {
+    position: absolute;
+    top: 126px;
+    left: 312px;
+  }
+}
+
+.modal-instraction-box {
+  @include tabletPlus {
+    position: relative;
+    margin-top: 282px;
+  }
+}
+
+.modal-ingr-desk {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $fill-color;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.modal-per-glass {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $main-color2;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.modal-ingredients-list {
+  padding: 0;
+  display: block;
+  margin-bottom: 80px;
+  margin-left: 12px;
+  @include tabletPlus {
+    margin: 0;
+    padding-left: 12px;
+  }
+}
+.ingredients-list {
+  @include tabletPlus {
+    margin-bottom: 80px;
+  }
+}
+.list-scroll {
+  @include tabletPlus {
+    height: 111px;
+    width: 400px;
+    overflow: auto;
+  }
+}
+
+.ingredients-list.modal-ingredients-list,
+.modal-desc.ingredient-desc {
+  @include tabletPlus {
+    display: block;
+  }
+}
+
+.modal-learn-more-item {
+  list-style-type: '✶';
+  color: $fill-color;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.modal-learn-more-data{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+  color: $input_plholder;
+  padding-bottom: 8px;
+}
+
+.backdrop .ingredient-link {
+  color: $input_plholder;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+  cursor: pointer;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.modal-learn-more-item:hover,
+.modal-learn-more-data:hover {
+  color: $main-button;
+}
+
+.modal-learn-more-item:hover .ingredient-link {
+  color: $main-button;
+}
+
+.add-item-btn,
+.remove-item-btn {
+  text-align: center;
+  padding: 12px 24px;
+  float: left;
+  background: $accent;
+  border: 1px solid $accent;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: $main-color3;
+  cursor: pointer;
+  position: absolute;
+  bottom: 40px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  &:hover {
+    color: $accent;
+    background-color: $bgr-color;
+    border: 1px solid $accent;
+  }
+
+  @include tabletPlus {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+  }
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: none;
+}
+
+body.js-bgcblack .modal-learn-more-container,
+body.js-bgcblack .modal-ingredients-container {
+  background-color: $main-color2;
+  box-shadow: 6px 6px 30px 6px $accent;
+}
+
+body.js-bgcblack .modal-header,
+body.js-bgcblack .modal-sub-header,
+body.js-bgcblack .modal-desc,
+body.js-bgcblack .modal-ingr-desk,
+body.js-bgcblack .modal-per-glass,
+body.js-bgcblack .modal-ingredients-list,
+body.js-bgcblack .modal-learn-more-data,
+body.js-bgcblack .modal-learn-more-item {
+  color: $main-color3;
+}
+
+body.js-bgcblack .modal-learn-more-data:hover,
+body.js-bgcblack .modal-learn-more-item:hover {
+  color: $accent;
+}
+body.js-bgcblack .modal-learn-more-item:hover .ingredient-link {
+  color: $accent;
+}
+body.js-bgcblack .backdrop .ingredient-link {
+  color: $main-color3;
+
+  @include tabletPlus {
+    color: $modal-color;
+  }
+}
+body.js-bgcblack .modal-desc,
+body.js-bgcblack .modal-ingredients-list,
+body.js-bgcblack .modal-learn-more-data,
+body.js-bgcblack .modal-learn-more-item {
+  @include tabletPlus {
+    color: $modal-color;
+  }
+}
+
+body.js-bgcblack .modal-learn-more-item,
+body.js-bgcblack .ingredient-list-item {
+  color: $main-color3;
+}
+
+body.js-bgcblack .close-icon {
+  fill: $main-color3;
+  &:hover {
+    fill: $accent;
+  }
+}
+
+body.js-bgcblack .add-item-btn:hover,
+body.js-bgcblack .remove-item-btn:hover {
+  background-color: $main-color2;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $main-button;
+  border-radius: 10px;
+  height: 100px;
+}
+.icon-heart,
+.icon-heart.selected {
+  pointer-events: none;
+}

@@ -1,6 +1,6 @@
 'use strict';
 // export default updateSize;
-import { attachEvents } from '../modallearnmore/modal-learn-more';
+import { attachEvents } from '../modalcocktails/modal-learn-more';
 import {
   renderAddRemoveDrinkButton,
   attachFavouritesRemoveClickEvents,

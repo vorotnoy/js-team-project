@@ -15,11 +15,7 @@ export function getCocktailsCard(data) {
             data.idDrink
           }">Learn more
           </button>
-          ${defuneButton(
-            data.idDrink,
-            data.strDrink,
-            data.strDrinkThumb
-          )}
+          ${defuneButton(data.idDrink, data.strDrink, data.strDrinkThumb)}
         </div>
       </div>
     </li>

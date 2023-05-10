@@ -28,7 +28,9 @@ export const refs = {
 
   openModalBtn: document.querySelectorAll('.js-data-modal-open'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
+  closeModalIngBtn: document.querySelector('.modal-ingredient-close'),  
   modal: document.querySelector('[data-modal]'),
+  modal_ingredients:document.querySelector('[data-modal-ingredients]'),
   modalContainer: document.querySelector('[data-modal] .container'),
   galleryEl: document.querySelector(`.modal-gallery`),
   contentEl: document.querySelector(`.content`),

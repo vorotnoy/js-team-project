@@ -4,7 +4,7 @@ import { renderAddRemoveDrinkButton } from '../favourites';
 import {
   attachFavouriteClickEvents,
   attachFavouritesRemoveClickEvents,
-} from '../favourites';
+} from '../modalcocktails/changebutton';
 import {getPageArr} from './getbutton'
 
 const {ulTag ,prewButton, nextButton} = refs;

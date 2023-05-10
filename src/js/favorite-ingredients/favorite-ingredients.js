@@ -1,7 +1,7 @@
 import {
   attachIngredientEvents,
   getFavouriteIngredients,
-} from '../modallearnmore/modal-learn-more-ingredient';
+} from '../modalingredients/modal-learn-more-ingredient';
 import {
   getFavouriteIngredients,
   renderAddRemoveIngredientButton,

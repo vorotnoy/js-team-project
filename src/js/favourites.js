@@ -1,194 +1,171 @@
 import * as icons from '../images/svg/symbol-defs.svg';
 import { initializeFavourites } from './favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './favorite-ingredients/favorite-ingredients';
+import { defuneButton} from './cocktailspage/getaddremovebutton'
 
-export function getFavouriteDrinks() {
-  return JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
-}
 
-function setFavouriteDrinks(favourites) {
-  localStorage.setItem('favorite-cocktail', JSON.stringify(favourites));
-}
+// export function addDrink(id, name, image) {
+//   if (!getDrink(id)) {
+//     let favouriteDrink = { idDrink: id, strDrink: name, strDrinkThumb: image };
+//     let favourites = getFavouriteDrinks();
+//     favourites.push(favouriteDrink);
+//     setFavouriteDrinks(favourites);
+//   }
+// }
 
-export function addDrink(id, name, image) {
-  if (!getDrink(id)) {
-    let favouriteDrink = { idDrink: id, strDrink: name, strDrinkThumb: image };
-    let favourites = getFavouriteDrinks();
-    favourites.push(favouriteDrink);
-    setFavouriteDrinks(favourites);
-  }
-}
+// export function removeDrink(id) {
+//   let favourites = getFavouriteDrinks();
+//   let updatedFavourites = [];
 
-export function removeDrink(id) {
-  let favourites = getFavouriteDrinks();
-  let updatedFavourites = [];
+//   for (let i = 0; i < favourites.length; i++) {
+//     let drink = favourites[i];
+//     if (drink.idDrink != id) {
+//       updatedFavourites.push(drink);
+//     }
+//   }
+//   setFavouriteDrinks(updatedFavourites);
+// }
 
-  for (let i = 0; i < favourites.length; i++) {
-    let drink = favourites[i];
-    if (drink.idDrink != id) {
-      updatedFavourites.push(drink);
-    }
-  }
-  setFavouriteDrinks(updatedFavourites);
-}
 
-export function getDrink(id) {
-  for (let drink of getFavouriteDrinks()) {
-    if (drink.idDrink == id) {
-      return drink;
-    }
-  }
-}
 
-// export function renderAddRemoveDrinkButton(id, name, image) {
-//  if (getDrink(id))   {
-//     return `<button class="favourite removeFrom" data-id="${id}" data-name="${name}" data-image="${image}">Remove
+// // export function renderAddRemoveDrinkButton(id, name, image) {
+// //  if (getDrink(id))   {
+// //     return `<button class="favourite removeFrom" data-id="${id}" data-name="${name}" data-image="${image}">Remove
+// //         <svg class="icon-heart-selected">
+// //             <use href="${icons}#heart"></use>
+// //         </svg>
+// //       </button>`;
+// //   }
+
+// //   return `<button class="favourite addTo" data-id="${id}" data-name="${name}" data-image="${image}">Add to
+// //       <svg class="icon-heart">
+// //         <use href="${icons}#heart"></use>
+// //       </svg>
+// //       </button>`;
+// // }
+
+// export function getFavouriteIngredients() {
+//   return JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
+// }
+
+// function setFavouriteIngredients(favourites) {
+//   localStorage.setItem('favorite-ingredient', JSON.stringify(favourites));
+// }
+
+// export function addIngredient(name, type) {
+//   if (!getIngredient(name)) {
+//     let favouriteIngredient = { name: name, type: type };
+//     let favourites = getFavouriteIngredients();
+//     favourites.push(favouriteIngredient);
+//     setFavouriteIngredients(favourites);
+//   }
+// }
+
+// export function removeIngredient(name, type) {
+//   let favourites = getFavouriteIngredients();
+//   favourites.splice(
+//     favourites.findIndex(o => {
+//       return o.name === name && o.type === type;
+//     }),
+//     1
+//   );
+//   setFavouriteIngredients(favourites);
+// }
+
+// export function getIngredient(name) {
+//   for (let ingredient of getFavouriteIngredients()) {
+//     if (ingredient.name == name) {
+//       return ingredient;
+//     }
+//   }
+// }
+
+// export function renderAddRemoveIngredientButton(name, type) {
+//   if (getIngredient(name)) {
+//     return `<button class="favourite removeFrom" data-name="${name}" data-type="${type}">Remove
 //         <svg class="icon-heart-selected">
 //             <use href="${icons}#heart"></use>
 //         </svg>
 //       </button>`;
 //   }
 
-//   return `<button class="favourite addTo" data-id="${id}" data-name="${name}" data-image="${image}">Add to
+//   return `<button class="favourite addTo" data-name="${name}" data-type="${type}">Add to
 //       <svg class="icon-heart">
 //         <use href="${icons}#heart"></use>
 //       </svg>
 //       </button>`;
 // }
 
-export function getFavouriteIngredients() {
-  return JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
-}
+// export function refreshFavouriteButtons(id) {
+//   let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
+//   let favourite = getDrink(id);
+//   // console.log('click',favouriteButton, '1', favourite)
 
-function setFavouriteIngredients(favourites) {
-  localStorage.setItem('favorite-ingredient', JSON.stringify(favourites));
-}
+//   if (
+//     (favourite && favouriteButton.classList.contains('addTo')) ||
+//     (!favourite && favouriteButton.classList.contains('removeFrom'))
+//   ) {
+//     let e = { target: favouriteButton };
+//     console.log('e', e)
+//     favouritesClickEvent(e);
+//   }
+// }
 
-export function addIngredient(name, type) {
-  if (!getIngredient(name)) {
-    let favouriteIngredient = { name: name, type: type };
-    let favourites = getFavouriteIngredients();
-    favourites.push(favouriteIngredient);
-    setFavouriteIngredients(favourites);
-  }
-}
+// export function favouritesClickEvent(event) {
+//   let button = event.target;
+//   console.log('event', event)
+//   if (!button || !button.className || typeof(button.className) != 'string')
+//     return;
 
-export function removeIngredient(name, type) {
-  let favourites = getFavouriteIngredients();
-  favourites.splice(
-    favourites.findIndex(o => {
-      return o.name === name && o.type === type;
-    }),
-    1
-  );
-  setFavouriteIngredients(favourites);
-}
+//   if (button.dataset.type) {
+//     if (button.className && button.className.indexOf('addTo') > 0) {
+//       addIngredient(button.dataset.name, button.dataset.type);
+//     } else {
+//       removeIngredient(button.dataset.name, button.dataset.type);
+//     }
+//     button.insertAdjacentHTML(
+//       'beforebegin',
+//       renderAddRemoveIngredientButton(button.dataset.name, button.dataset.type)
+//     );
+//   } else {
+//     if (button.className && button.className.indexOf('addTo') > 0) {
+//       addDrink(button.dataset.id, button.dataset.name, button.dataset.image);
+//     } else {
+//       removeDrink(button.dataset.id);
+//     }
+//     button.insertAdjacentHTML(
+//       'beforebegin',
+//       defuneButton(
+//         button.dataset.id,
+//         button.dataset.name,
+//         button.dataset.image
+//       )
+//     );
+//   }
 
-export function getIngredient(name) {
-  for (let ingredient of getFavouriteIngredients()) {
-    if (ingredient.name == name) {
-      return ingredient;
-    }
-  }
-}
+//   button.remove();
+//   attachFavouriteClickEvents();
+// }
 
-export function renderAddRemoveIngredientButton(name, type) {
-  if (getIngredient(name)) {
-    return `<button class="favourite removeFrom" data-name="${name}" data-type="${type}">Remove
-        <svg class="icon-heart-selected">
-            <use href="${icons}#heart"></use>
-        </svg>
-      </button>`;
-  }
+// export function favouritesRemoveClickEvent(event) {
+//   let button = event.target;
 
-  return `<button class="favourite addTo" data-name="${name}" data-type="${type}">Add to
-      <svg class="icon-heart">
-        <use href="${icons}#heart"></use>
-      </svg>
-      </button>`;
-}
+//   if (!button || !button.className || typeof button.className != 'string')
+//     return;
 
-export function refreshFavouriteButtons(id) {
-  let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
-  let favourite = getDrink(id);
+//   if (button.dataset.type) {
+//     removeIngredient(button.dataset.name, button.dataset.type);
+//   } else {
+//     removeDrink(button.dataset.id);
+//   }
 
-  if (
-    (favourite && favouriteButton.classList.contains('addTo')) ||
-    (!favourite && favouriteButton.classList.contains('removeFrom'))
-  ) {
-    let e = { target: favouriteButton };
-    favouritesClickEvent(e);
-  }
-}
+//   let location = window.location.pathname.split('/').pop();
 
-export function favouritesClickEvent(event) {
-  let button = event.target;
+//   if (location === 'cocktails.html') {
+//     initializeFavourites();
+//   } else if (location === 'ingredients.html') {
+//     initializeFavouritesIng();
+//   }
+// }
 
-  if (!button || !button.className || typeof button.className != 'string')
-    return;
 
-  if (button.dataset.type) {
-    if (button.className && button.className.indexOf('addTo') > 0) {
-      addIngredient(button.dataset.name, button.dataset.type);
-    } else {
-      removeIngredient(button.dataset.name, button.dataset.type);
-    }
-    button.insertAdjacentHTML(
-      'beforebegin',
-      renderAddRemoveIngredientButton(button.dataset.name, button.dataset.type)
-    );
-  } else {
-    if (button.className && button.className.indexOf('addTo') > 0) {
-      addDrink(button.dataset.id, button.dataset.name, button.dataset.image);
-    } else {
-      removeDrink(button.dataset.id);
-    }
-    button.insertAdjacentHTML(
-      'beforebegin',
-      renderAddRemoveDrinkButton(
-        button.dataset.id,
-        button.dataset.name,
-        button.dataset.image
-      )
-    );
-  }
-
-  button.remove();
-  attachFavouriteClickEvents();
-}
-
-export function favouritesRemoveClickEvent(event) {
-  let button = event.target;
-
-  if (!button || !button.className || typeof button.className != 'string')
-    return;
-
-  if (button.dataset.type) {
-    removeIngredient(button.dataset.name, button.dataset.type);
-  } else {
-    removeDrink(button.dataset.id);
-  }
-
-  let location = window.location.pathname.split('/').pop();
-
-  if (location === 'cocktails.html') {
-    initializeFavourites();
-  } else if (location === 'ingredients.html') {
-    initializeFavouritesIng();
-  }
-}
-
-export function attachFavouriteClickEvents() {
-  let buttons = document.querySelectorAll('.favourite');
-  for (let button of buttons) {
-    button.onclick = favouritesClickEvent;
-  }
-}
-
-export function attachFavouritesRemoveClickEvents() {
-  let buttons = document.querySelectorAll('.favourite');
-
-  for (let button of buttons) {
-    button.onclick = favouritesRemoveClickEvent;
-  }
-}

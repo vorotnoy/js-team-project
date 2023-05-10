@@ -1,16 +1,16 @@
 import { refs } from '../global/refs';
-import {
-  renderAddRemoveDrinkButton,
-  attachFavouriteClickEvents,
-} from '../favourites';
-import { attachEvents } from '../modallearnmore/modal-learn-more';
-
+// import {
+//   renderAddRemoveDrinkButton,
+//   attachFavouriteClickEvents,
+// } from '../favourites';
+// import { attachEvents } from '../modallearnmore/modal-learn-more';
+import { defuneButton } from '../cocktailspage/getaddremovebutton';
 const { favoritesList, favoritesTitle, favoriteSearchItem, paginationBlock } =
   refs;
 
 export function searchInFavCocktails(name) {
-  attachFavouriteClickEvents();
-  attachEvents();
+  // attachFavouriteClickEvents();
+  // attachEvents();
   try {
     const response = JSON.parse(localStorage.getItem('favorite-cocktail'));
     for (let item of response) {
@@ -29,11 +29,7 @@ export function searchInFavCocktails(name) {
                       <button type="button" class="learnMore" data-id="${
                         item.id
                       }" data-modal-open>Learn more</button>
-                      ${renderAddRemoveDrinkButton(
-                        item.id,
-                        item.name,
-                        item.img
-                      )}
+                      ${defuneButton(item.id, item.name, item.img)}
                   </div>`;
 
         return;

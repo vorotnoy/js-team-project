@@ -39,7 +39,7 @@ if (useDarkTheme) {
 }
 
 function updateStyle() {
-  burgerOn.classList.toggle('js-bgcblack')
+  burgerOn.classList.toggle('js-bgcblack');
   bodyOn.classList.toggle('js-bgcblack');
   bgclr.classList.toggle('js-bgcblack');
 

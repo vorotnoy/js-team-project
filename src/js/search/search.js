@@ -3,7 +3,6 @@ import { BASE_URL } from '../global/const';
 import { emptyRequest } from '../global/emptyrequest';
 import { createPage } from '../cocktailspage/getcocktailspage';
 import { refs } from '../global/refs';
-const { cocktailsList } = refs;
 
 export async function getDataFromSearch(path, search) {
   try {

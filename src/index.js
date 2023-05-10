@@ -9,7 +9,7 @@ import {
   accumulateCocktails,
   pourCocktails,
 } from './js/mainblock/mainblock';
-import { favouritesClickEvent } from './js/favourites';
+import { favouritesClickEvent } from './js/modalcocktails/changebutton'
 import { getRandomCocktail } from './js/mainblock/rendercocktails';
 
 import { toggleMenu } from './js/header/mobile-menu';
@@ -32,8 +32,11 @@ const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButt
 refs;
 
 document.body.addEventListener('click', defineClick);
+// document.body.addEventListener('click', e=>{
+//   console.log(e.target)
+// } )
 
-import {closeModalOnBody} from './js/modallearnmore/closemodal'
+import {closeModalOnBody} from './js/modalcocktails/closemodal'
 
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
