@@ -1,6 +1,5 @@
-import { addDrink, removeDrink } from '../modalcocktails/localstorage';
 import {refreshFavouriteButtons} from './changebutton'
-import { getDrink } from './localstorage';
+import { getDrink,addDrink, removeDrink } from '../localstorage/localstorageforcocktail';
 import { refs } from '../global/refs';
 const { galleryEl } = refs;
 

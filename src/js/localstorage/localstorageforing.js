@@ -42,7 +42,7 @@ export function getIngredient(name) {
   }
 }
 
-function getFavouriteIngredients() {
+export function getFavouriteIngredients() {
   return JSON.parse(localStorage.getItem('favorite-ingredient')) ?? [];
 }
 

@@ -1,11 +1,7 @@
-import { getDrink } from './localstorage';
-import {
-  addIngredient,
-  removeIngredient,
-} from '../modalingredients/localstorage';
-import { addDrink, removeDrink } from './localstorage';
+import { getDrink } from '../localstorage/localstorageforcocktail';
+import { addDrink, removeDrink } from '../localstorage/localstorageforcocktail';
 import { defuneButton } from '../cocktailspage/getaddremovebutton';
-import { renderAddRemoveIngredientButton } from '../modalingredients/renderbutton';
+import { renderAddRemoveIngredientButton } from '../favorite-ingredients/renderbutton';
 
 
 export function refreshFavouriteButtons(id) {
@@ -22,7 +18,6 @@ export function refreshFavouriteButtons(id) {
 
 export function favouritesClickEvent(event) {
   let button = event.target;
-  console.log('button',button)
   if (!button || !button.className || typeof(button.className) !== 'string')
     return;
   // if (button.dataset.type) {

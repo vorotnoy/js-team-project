@@ -1,4 +1,4 @@
-import { getDrink } from '../modalcocktails/localstorage';
+import { getDrink } from '../localstorage/localstorageforcocktail';
 import * as icons from '../../images/svg/symbol-defs.svg';
 
 export function defuneButton(id, name, image) {

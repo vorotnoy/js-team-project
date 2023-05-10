@@ -2,6 +2,7 @@ import { refs } from './js/global/refs';
 import { onClickDropdownOn } from './js/header/dropdown';
 import { checkBtn } from './js/header/checkbox';
 import {defineClick} from './js/cocktailspage/getaction'
+import {location} from './js/global/location'
 
 import {
   returnCocktails,
@@ -41,11 +42,9 @@ import {closeModalOnBody} from './js/modalcocktails/closemodal'
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
 
-const pathname = window.location.pathname;
-const location = pathname.split('/').pop();
-
 
 if (location === ''|| location === 'index.html') {
+ 
   returnCocktails();
   //cocktailsList.addEventListener('click', favouritesClickEvent);
 

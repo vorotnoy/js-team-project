@@ -1,22 +1,17 @@
+import { attachIngredientEvents } from '../modalingredients/modal-learn-more-ingredient';
+import { getFavouriteIngredients } from '../localstorage/localstorageforing';
+import { viewportWidthCheck } from '../global/viewportsize';
 import {
-  attachIngredientEvents,
-  getFavouriteIngredients,
-} from '../modalingredients/modal-learn-more-ingredient';
-import {
-  getFavouriteIngredients,
   renderAddRemoveIngredientButton,
-  attachFavouritesRemoveClickEvents,
-} from '../favourites';
+} from './renderbutton';
 import { refs } from '../global/refs';
-import { attachFavouriteClickEvents } from '../favourites';
 
 const favIngredientsList = document.querySelector('.fav-ingr__list');
 const favIngredientsTitle = document.querySelector('.fav-ingr__title');
 const { favNoingr } = refs;
 
-
 export function initializeFavouritesIng() {
-  let windowWidth = window.innerWidth;
+  let windowWidth = viewportWidthCheck();
   const localStorage = getFavouriteIngredients();
 
   if (localStorage === null || localStorage.length === 0) {
@@ -26,13 +21,7 @@ export function initializeFavouritesIng() {
     return;
   }
   favNoingr.classList.add('is-hidden');
-  if (windowWidth < 768) {
-    favIngredientsMarkup(0, 3);
-  } else if (windowWidth < 1280) {
-    favIngredientsMarkup(0, 6);
-  } else {
-    favIngredientsMarkup(0, 9);
-  }
+  favIngredientsMarkup(0, windowWidth);
 }
 
 function drinkCheck(ingr) {
@@ -64,6 +53,6 @@ function favIngredientsMarkup(start, end) {
         </li>`
     )
     .join('');
-  attachIngredientEvents();
-  attachFavouritesRemoveClickEvents();
+  // attachIngredientEvents();
+  // attachFavouritesRemoveClickEvents();
 }

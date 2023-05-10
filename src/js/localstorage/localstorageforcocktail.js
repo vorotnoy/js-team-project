@@ -1,3 +1,6 @@
+import {location} from '../global/location';
+import {initializeFavourites} from '../favorite-cocktails/favorite';
+
 export function getDrink(id) {
     for (let drink of getFavouriteDrinks()) {
       if (drink.idDrink == id) {
@@ -20,6 +23,7 @@ export function addDrink(id, name, image) {
     let favourites = getFavouriteDrinks();
     favourites.push(favouriteDrink);
     setFavouriteDrinks(favourites);
+    
   }
 }
 
@@ -34,4 +38,7 @@ export function removeDrink(id) {
     }
   }
   setFavouriteDrinks(updatedFavourites);
+  if (location ==='cocktails.html'){
+    initializeFavourites()
+  }
 }

@@ -6,6 +6,7 @@ import {
   attachFavouritesRemoveClickEvents,
 } from '../modalcocktails/changebutton';
 import {getPageArr} from './getbutton'
+import {location} from '../global/location'
 
 const {ulTag ,prewButton, nextButton} = refs;
 
@@ -19,8 +20,6 @@ export function pagination(totalPages, page) {
   let curentPage = page;
 
   // attachEvents();
-
-  let location = window.location.pathname.split('/').pop();
 
   if (location === '' || location === 'index.html') {
     attachFavouriteClickEvents();

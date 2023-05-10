@@ -1,4 +1,4 @@
-import { getIngredient, addButtonListener} from './localstorage';
+import { getIngredient, addButtonListener} from '../localstorage/localstorageforing';
 import axios from 'axios';
 import { refs } from '../global/refs';
 const {

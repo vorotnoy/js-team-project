@@ -1,14 +1,10 @@
 'use strict';
 // export default updateSize;
-import { attachEvents } from '../modalcocktails/modal-learn-more';
-import {
-  renderAddRemoveDrinkButton,
-  attachFavouritesRemoveClickEvents,
-} from '../favourites';
+import { getFavouriteDrinks } from '../localstorage/localstorageforcocktail';
 import { refs } from '../global/refs';
 import { viewportWidthCheck } from '../global/viewportsize';
 import { pagination } from '../paginations/pagination';
-import {createPage} from '../cocktailspage/getcocktailspage'
+import { createPage } from '../cocktailspage/getcocktailspage';
 export let getValueC = [];
 
 const {
@@ -24,11 +20,9 @@ const {
 export function initializeFavourites() {
   favoriteSearchItem.classList.add('is-hidden');
 
-  const getDataFromlocalStorage = JSON.parse(
-    localStorage.getItem('favorite-cocktail')
-  );
+  const getDataFromlocalStorage = getFavouriteDrinks();
 
-  if (getDataFromlocalStorage === null ) {
+  if (getDataFromlocalStorage === null ||getDataFromlocalStorage.length === 0) {
     favoritesList.innerHTML = '';
     favNococktails.textContent = "You haven't added any favorite cocktails yet";
     prewButton.classList.add('is-hiden');
@@ -36,6 +30,7 @@ export function initializeFavourites() {
     return;
   }
   favNococktails.classList.add('is-hidden');
-  let list = 'favoritesList'
-  createPage(getDataFromlocalStorage, list)
-  }
+  let list = 'favoritesList';
+
+  createPage(getDataFromlocalStorage, list);
+}
