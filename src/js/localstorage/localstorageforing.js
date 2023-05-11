@@ -1,6 +1,10 @@
 import { favouritesClickEvent } from '../modalcocktails/changebutton';
 import { refs } from '../global/refs';
+import {refreshFavouriteIngButtons} from '../modalingredients/changebutton'
 const { contentEl } = refs;
+import { location } from '../global/location';
+import { closeModalIngOnBtn } from '../modalingredients/modalclose';
+import { initializeFavouritesIng } from '../favorite-ingredients/favorite-ingredients';
 
 export function addButtonListener() {
   const addBtnEl = contentEl.querySelector('.add-item-btn');
@@ -11,9 +15,10 @@ export function addButtonListener() {
 
   function onAddBtn(event) {
     try {
-      console.log('click ing', contentEl, addBtnEl);
-      addIngredient(event.target.dataset.name, event.target.dataset.type);
+      const data = event.target.dataset
+      addIngredient(data.name, data.type);
       // favouritesClickEvent(event);
+      refreshFavouriteIngButtons(data.name)
       addBtnEl.classList.add(`is-hidden`);
       removeBtnEl.classList.remove(`is-hidden`);
     } catch (error) {
@@ -54,7 +59,6 @@ export function addIngredient(name, type) {
   if (!getIngredient(name)) {
     let favouriteIngredient = { name: name, type: type };
     let favourites = getFavouriteIngredients();
-    console.log('add ing', favouriteIngredient);
     favourites.push(favouriteIngredient);
     setFavouriteIngredients(favourites);
   }
@@ -69,4 +73,8 @@ export function removeIngredient(name, type) {
     1
   );
   setFavouriteIngredients(favourites);
+  if (location==='ingredients.html'){
+    closeModalIngOnBtn();
+    initializeFavouritesIng()
+  }
 }

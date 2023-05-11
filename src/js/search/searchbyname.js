@@ -2,6 +2,7 @@ import { PATH_SEARCH } from '../global/const';
 import { refs } from '../global/refs';
 import { searchInFavCocktails } from './searchbyfavcocktails';
 import { getDataFromSearch, renderPage } from '../search/search';
+import { location } from '../global/location';
 
 const {
   btnSearchForm,
@@ -33,7 +34,7 @@ export function getInputData(evt) {
     return;
   }
   /**перевірка на сторінку вводу */
-  if (window.location.pathname.includes('cocktails.html')) {
+  if (location ==='cocktails.html') {
     searchInFavCocktails(inputData);
     return;
   }

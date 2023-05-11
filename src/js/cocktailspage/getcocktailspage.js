@@ -11,6 +11,7 @@ const {
   cocktailsTitle,
   noCocktails,
   favoritesList,
+  favIngredientsList,
 } = refs;
 
 export function totalPage(lengthOfArr) {
@@ -23,13 +24,14 @@ export let typeOfList = '';
 export function createPage(getData, list) {
   let tempArray = [];
   typeOfList = list;
-
   if (list === 'cocktailsList') {
+    // рендерим сторінку знайдених напоїв//
     noCocktails.classList.add('is-hidden');
     cocktailsTitle.textContent = 'Searching results';
     cocktailsTitle.classList.remove('is-hidden');
     tempArray = getData.data.drinks;
-  } else if (list === 'favoritesList') {
+  } else if (list === 'favoritesList'|| list === 'favIngredientsList') {
+    // рендерим сторінку обраних напоїв//
     tempArray = getData;
   }
 
@@ -54,7 +56,22 @@ export function createPage(getData, list) {
     pagination(0, 1);
   }
 
-  list === 'cocktailsList'
-    ? (cocktailsList.innerHTML = getCoctailsList(getValue[0]))
-    : (favoritesList.innerHTML = getCoctailsList(getValue[0]));
+  // list === 'cocktailsList'
+  //   ? (cocktailsList.innerHTML = getCoctailsList(getValue[0]))
+  //   : (favoritesList.innerHTML = getCoctailsList(getValue[0]));
+  // favIngredientsList.innerHTML = getCoctailsList(getValue[0]);
+
+  switch (list) {
+    case 'cocktailsList':
+      cocktailsList.innerHTML = getCoctailsList(getValue[0]);
+      break;
+    case 'favoritesList':
+      favoritesList.innerHTML = getCoctailsList(getValue[0]);
+      break;
+    case 'favIngredientsList':
+      favIngredientsList.innerHTML = getCoctailsList(getValue[0]);
+      break;
+    default:
+      cocktailsList.innerHTML = getCoctailsList(getValue[0]);
+  }
 }

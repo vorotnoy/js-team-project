@@ -1,5 +1,9 @@
-import {refreshFavouriteButtons} from './changebutton'
-import { getDrink,addDrink, removeDrink } from '../localstorage/localstorageforcocktail';
+import { refreshFavouriteButtons } from './changebutton';
+import {
+  getDrink,
+  addDrink,
+  removeDrink,
+} from '../localstorage/localstorageforcocktail';
 import { refs } from '../global/refs';
 const { galleryEl } = refs;
 
@@ -67,10 +71,10 @@ export function displayMoreInfo(data) {
   //------Remove from favorite кнопка видаляе елемент з Local storage-------
   function onRemoveBtn(event) {
     try {
-      removeDrink(event.target.dataset.id);
-      refreshFavouriteButtons(event.target.dataset.id);
       removeBtnEl.classList.add(`is-hidden`);
       addBtnEl.classList.remove(`is-hidden`);
+      removeDrink(event.target.dataset.id);
+      refreshFavouriteButtons(event.target.dataset.id);
     } catch (error) {
       console.error(error.message);
     }

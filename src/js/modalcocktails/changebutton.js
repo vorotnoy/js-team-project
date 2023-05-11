@@ -2,9 +2,11 @@ import { getDrink } from '../localstorage/localstorageforcocktail';
 import { addDrink, removeDrink } from '../localstorage/localstorageforcocktail';
 import { defuneButton } from '../cocktailspage/getaddremovebutton';
 import { renderAddRemoveIngredientButton } from '../favorite-ingredients/renderbutton';
+import {location} from '../global/location'
 
 
 export function refreshFavouriteButtons(id) {
+  if (location==='cocktails.html')return;
   let favouriteButton = document.querySelector(`.favourite[data-id="${id}"]`);
   let favourite = getDrink(id);
   if (
@@ -32,11 +34,12 @@ export function favouritesClickEvent(event) {
   //     renderAddRemoveIngredientButton(button.dataset.name, button.dataset.type)
   //   );
   // } else {
-    if (button.className && button.className.indexOf('addTo') > 0) {
-      addDrink(button.dataset.id, button.dataset.name, button.dataset.image);
-    } else {
-      removeDrink(button.dataset.id);
-    }
+    // if (button.className && button.className.indexOf('addTo') > 0) {
+    //   addDrink(button.dataset.id, button.dataset.name, button.dataset.image);
+    // } else {
+    //   removeDrink(button.dataset.id);
+    // }
+
     button.insertAdjacentHTML(
       'beforebegin',
       defuneButton(button.dataset.id, button.dataset.name, button.dataset.image)
@@ -57,7 +60,7 @@ export function attachFavouriteClickEvents() {
 export function attachFavouritesRemoveClickEvents(event) {
 
   let button = event;
-  console.log('attach', button)
+
   // if (!button || !button.className || typeof button.className != 'string')
   //   return;
 

@@ -1,16 +1,15 @@
 import { modalListener } from '../modalcocktails/openmodalmore';
 import { addDrink, removeDrink } from '../localstorage/localstorageforcocktail';
 import { modalIngListener } from '../modalingredients/modalclose';
-
+import { removeIngredient } from '../localstorage/localstorageforing';
+import { initializeFavouritesIng } from '../favorite-ingredients/favorite-ingredients';
 // глобальний прослуховувач клику
 
 export function defineClick(evt) {
   const data = evt.target.dataset;
-
-  console.log('click', evt.target.classList)
   if (evt.target.classList.contains('js-data-modal-open')) {
     modalListener(evt);
-  } else if (evt.target.closest('.modal-learn-more-item')) {
+  } else if (evt.target.closest('.ingredient-link')) {
     modalIngListener(evt);
   } 
   else if(evt.target.classList.contains('learnMore')){
@@ -22,6 +21,11 @@ export function defineClick(evt) {
   } else if (evt.target.classList.contains('removeFrom')) {
     removeDrink(data.id);
     onClickRemove(evt);
+  }
+  else if(evt.target.classList.contains('removeFromIng')){
+    removeIngredient(evt.target.dataset.name,evt.target.dataset.type)
+    initializeFavouritesIng()
+    console.log('yes', evt.target.dataset.name,evt.target.dataset.type )
   }
 }
 

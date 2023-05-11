@@ -50,6 +50,7 @@ export const refs = {
   favoriteSearchItem: document.querySelector('.fav-cocktails__item'),
   favNococktails: document.querySelector('.fav-nofav__cock'),
   favNoingr: document.querySelector('.fav-nofav__ingr'),
+  favIngredientsList: document.querySelector('.fav-ingr__list'),
 
   toTopButton: document.querySelector('.to-top'),
 };

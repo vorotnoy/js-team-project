@@ -12,7 +12,7 @@ export function closeModalOnBody(evt) {
   }
 }
 
-function removeListener() {
+export function removeListener() {
   modal.classList.add('is-hidden');
   document.body.classList.remove('modal-open');
   closeModalBtn.removeEventListener('click', closeModalOnBtn);

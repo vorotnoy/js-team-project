@@ -1,5 +1,6 @@
 import {location} from '../global/location';
 import {initializeFavourites} from '../favorite-cocktails/favorite';
+import {removeListener} from '../modalcocktails/closemodal'
 
 export function getDrink(id) {
     for (let drink of getFavouriteDrinks()) {
@@ -40,5 +41,6 @@ export function removeDrink(id) {
   setFavouriteDrinks(updatedFavourites);
   if (location ==='cocktails.html'){
     initializeFavourites()
+    removeListener()
   }
 }
