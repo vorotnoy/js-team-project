@@ -1,5 +1,3 @@
-
-
 //формуємо список інгридієнтів
 export function listIngredients(drink) {
   let list = '';
@@ -17,9 +15,7 @@ export function listIngredients(drink) {
                   drink[ingredientProperty]
                 }" data-modal-open-2>
                 ${
-                  drink[measureProperty] != null
-                    ? drink[measureProperty]
-                    : ''
+                  drink[measureProperty] != null ? drink[measureProperty] : ''
                 }` +
         ' ' +
         `${drink[ingredientProperty]}

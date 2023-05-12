@@ -1,10 +1,10 @@
-import { favouritesClickEvent } from '../modalcocktails/changebutton';
 import { refs } from '../global/refs';
-import {refreshFavouriteIngButtons} from '../modalingredients/changebutton'
-const { contentEl } = refs;
+import { refreshFavouriteIngButtons } from '../modalingredients/changebutton';
 import { location } from '../global/location';
 import { closeModalIngOnBtn } from '../modalingredients/modalclose';
 import { initializeFavouritesIng } from '../favorite-ingredients/favorite-ingredients';
+
+const { contentEl } = refs;
 
 export function addButtonListener() {
   const addBtnEl = contentEl.querySelector('.add-item-btn');
@@ -15,10 +15,9 @@ export function addButtonListener() {
 
   function onAddBtn(event) {
     try {
-      const data = event.target.dataset
+      const data = event.target.dataset;
       addIngredient(data.name, data.type);
-      // favouritesClickEvent(event);
-      refreshFavouriteIngButtons(data.name)
+      refreshFavouriteIngButtons(data.name);
       addBtnEl.classList.add(`is-hidden`);
       removeBtnEl.classList.remove(`is-hidden`);
     } catch (error) {
@@ -30,7 +29,6 @@ export function addButtonListener() {
   function onRemoveBtn(event) {
     try {
       removeIngredient(event.target.dataset.name, event.target.dataset.type);
-      // favouritesClickEvent(event);
       removeBtnEl.classList.add(`is-hidden`);
       addBtnEl.classList.remove(`is-hidden`);
     } catch (error) {
@@ -73,8 +71,8 @@ export function removeIngredient(name, type) {
     1
   );
   setFavouriteIngredients(favourites);
-  if (location==='ingredients.html'){
+  if (location === 'ingredients.html') {
     closeModalIngOnBtn();
-    initializeFavouritesIng()
+    initializeFavouritesIng();
   }
 }

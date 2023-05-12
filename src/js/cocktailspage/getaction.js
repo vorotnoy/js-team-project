@@ -25,7 +25,6 @@ export function defineClick(evt) {
   else if(evt.target.classList.contains('removeFromIng')){
     removeIngredient(evt.target.dataset.name,evt.target.dataset.type)
     initializeFavouritesIng()
-    console.log('yes', evt.target.dataset.name,evt.target.dataset.type )
   }
 }
 

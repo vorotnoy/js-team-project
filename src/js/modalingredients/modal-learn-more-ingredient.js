@@ -1,4 +1,7 @@
-import { getIngredient, addButtonListener} from '../localstorage/localstorageforing';
+import {
+  getIngredient,
+  addButtonListener,
+} from '../localstorage/localstorageforing';
 import axios from 'axios';
 import { refs } from '../global/refs';
 const {
@@ -9,33 +12,6 @@ const {
   contentEl,
   modal_ingredients,
 } = refs;
-
-// // -----Відкриття та закриття модалки-------
-// export function attachIngredientEvents() {
-//   for (let button of openModalBtn) {
-//     button.addEventListener('click', toggleModal);
-//   }
-//   closeModalBtn.onclick = toggleModal;
-//   modal.onclick = toggleModal;
-
-//   function toggleModal(event) {
-//     event.stopPropagation();
-//     if (
-//       modalContainer.contains(event.target) &&
-//       !closeModalBtn.contains(event.target)
-//     ) {
-//       return;
-//     }
-//     if (!modal.classList.contains('is-hidden')) {
-//       document.body.classList.toggle('data-modal-ingredients');
-//       modal.classList.toggle('is-hidden');
-//     }
-//   }
-//   let ingredientLinkEL = document.querySelectorAll(`.ingredient-link`);
-//   for (let link of ingredientLinkEL) {
-//     link.addEventListener(`click`, onIngredient);
-//   }
-// }
 
 //-------Дістаемо імя з елемента лінка на який натиснули-------
 async function fetchData(name) {
@@ -52,8 +28,6 @@ async function fetchData(name) {
 
 // //------Перевірити чи є атрибют в API та додати ------
 export async function onIngredient(event) {
-  // console.log('ing', event.target.dataset.name);
-
   event.preventDefault();
   contentEl.innerHTML = '';
   try {
@@ -102,8 +76,6 @@ export async function onIngredient(event) {
     contentEl
       .querySelector('.ingredients-list')
       .insertAdjacentHTML('beforeend', listInIngredient(ingredient));
-    // document.body.classList.toggle('modal-open-2');
-    // modal_ingredients.classList.toggle('is-hidden');
   } catch (error) {
     console.log(error.message);
   }
@@ -112,7 +84,6 @@ export async function onIngredient(event) {
 // //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
   let exists = getIngredient(data[0].strIngredient);
-// console.log('data', data)
   const result = data
     .map(
       ingredient =>
@@ -136,4 +107,3 @@ export function displayMoreInfo(data) {
   contentEl.insertAdjacentHTML('beforeend', result);
   addButtonListener();
 }
-

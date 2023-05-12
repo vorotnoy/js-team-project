@@ -1,14 +1,12 @@
 import { refs } from '../global/refs';
-import { renderAddRemoveDrinkButton } from '../favourites';
-// import { attachEvents } from '../modallearnmore/modal-learn-more';
 import {
   attachFavouriteClickEvents,
   attachFavouritesRemoveClickEvents,
 } from '../modalcocktails/changebutton';
-import {getPageArr} from './getbutton'
-import {location} from '../global/location'
+import { getPageArr } from './getbutton';
+import { location } from '../global/location';
 
-const {ulTag ,prewButton, nextButton} = refs;
+const { ulTag, prewButton, nextButton } = refs;
 
 export let page = 1;
 let array = [];
@@ -18,8 +16,6 @@ export function pagination(totalPages, page) {
   let thirdPagesAnd = totalPages - 2;
   let thirdPages = page - 2;
   let curentPage = page;
-
-  // attachEvents();
 
   if (location === '' || location === 'index.html') {
     attachFavouriteClickEvents();

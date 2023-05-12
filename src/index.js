@@ -33,9 +33,6 @@ const { cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButt
 refs;
 
 document.body.addEventListener('click', defineClick);
-// document.body.addEventListener('click', e=>{
-//   console.log(e.target)
-// } )
 
 import {closeModalOnBody} from './js/modalcocktails/closemodal'
 

@@ -34,7 +34,7 @@ export function getInputData(evt) {
     return;
   }
   /**перевірка на сторінку вводу */
-  if (location ==='cocktails.html') {
+  if (location === 'cocktails.html') {
     searchInFavCocktails(inputData);
     return;
   }

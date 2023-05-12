@@ -11,16 +11,3 @@ export function modalListener(evt) {
   closeModalBtn.addEventListener('click', closeModalOnBtn);
   onLearnMore(evt);
 }
-
-// async function onLearnMore(evt) {
-//   evt.preventDefault();
-//   galleryEl.innerHTML = '';
-//   let getID = Number(evt.target.dataset.id);
-//   try {
-//     getDataFromSearch(PATH_SEARCH_ID, getID).then(data => {
-//       displayMoreInfo(data.data.drinks)
-//     });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }

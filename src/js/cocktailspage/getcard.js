@@ -1,4 +1,4 @@
-import { defuneButton, renderAddRemoveDrinkButton } from './getaddremovebutton';
+import { defuneButton } from './getaddremovebutton';
 
 export function getCocktailsCard(data) {
   return `

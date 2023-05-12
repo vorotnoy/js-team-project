@@ -56,11 +56,6 @@ export function createPage(getData, list) {
     pagination(0, 1);
   }
 
-  // list === 'cocktailsList'
-  //   ? (cocktailsList.innerHTML = getCoctailsList(getValue[0]))
-  //   : (favoritesList.innerHTML = getCoctailsList(getValue[0]));
-  // favIngredientsList.innerHTML = getCoctailsList(getValue[0]);
-
   switch (list) {
     case 'cocktailsList':
       cocktailsList.innerHTML = getCoctailsList(getValue[0]);
