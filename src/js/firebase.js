@@ -1,5 +1,5 @@
 import * as icons from '../images/svg/user.svg';
-import { refs } from './refs';
+import { refs } from '../js/global/refs';
 
 const { authorization, linkToSignOut } = refs;
 // Import the functions you need from the SDKs you need
