@@ -12,8 +12,6 @@ import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
-
-authorization.addEventListener('click', authorize);
 const {
   authorization,
   selectBtn,
@@ -23,6 +21,7 @@ const {
   toTopButton,
 } = refs;
 
+authorization.addEventListener('click', authorize);
 document.body.addEventListener('click', defineClick);
 
 openMenuBtn.addEventListener('click', toggleMenu);
