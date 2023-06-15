@@ -9,7 +9,7 @@ import {
   onAlphabetBtnClick,
 } from './js/hero/onclickfunctions';
 import { initializeFavourites } from './js/favorite-cocktails/favorite';
-import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
+import { initializeFavouritesIng } from './js/favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
 const {
