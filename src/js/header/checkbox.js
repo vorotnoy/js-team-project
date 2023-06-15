@@ -1,4 +1,4 @@
-import { refs } from '../refs';
+import { refs } from '../global/refs';
 const {
   burgerOn,
   checkboxBurgerOn,
@@ -39,7 +39,7 @@ if (useDarkTheme) {
 }
 
 function updateStyle() {
-  burgerOn.classList.toggle('js-bgcblack')
+  burgerOn.classList.toggle('js-bgcblack');
   bodyOn.classList.toggle('js-bgcblack');
   bgclr.classList.toggle('js-bgcblack');
 

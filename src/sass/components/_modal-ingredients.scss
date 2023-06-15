@@ -2,14 +2,14 @@ body.modal-open {
   overflow: hidden;
 }
 
-.backdrop {
+.backdrop_ing {
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   background-color: rgba($color: $main-color2, $alpha: 0.5);
   opacity: 1;
-  z-index: 10;
+  z-index: 30;
   padding-top: 16px;
   overflow: auto;
   -webkit-animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -24,7 +24,6 @@ hr {
   }
 }
 
-.modal-learn-more-container,
 .modal-ingredients-container {
   max-width: 320px;
   height: auto;
@@ -34,7 +33,7 @@ hr {
   padding-bottom: 40px;
   position: relative;
   opacity: 1;
-  z-index: 20;
+  z-index: 40;
 
 box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   @include tabletPlus {
@@ -70,7 +69,6 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   }
 }
 
-.modal-close,
 .modal-ingredient-close {
   position: absolute;
   background: transparent;
@@ -162,6 +160,8 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   color: $input_plholder;
   margin-bottom: 80px;
   text-align: left;
+  height: 250px;
+  overflow: auto;
 }
 
 .modal-image {
@@ -394,6 +394,6 @@ body.js-bgcblack .remove-item-btn:hover {
   height: 100px;
 }
 .icon-heart,
-.icon-heart-selected {
+.icon-heart.selected {
   pointer-events: none;
 }

@@ -1,47 +1,28 @@
 import { refs } from './js/refs';
 import { authorize } from './js/firebase';
-import { onClickDropdownOn } from './js/header/dropdown';
-import { checkBtn } from './js/header/checkbox';
-import { VIEWPORT_SIZES } from './js/const';
+import {defineClick} from './js/cocktailspage/getaction'
+import {location} from './js/global/location'
 import {
   returnCocktails,
-  viewportWidthCheck,
-  accumulateCocktails,
-  pourCocktails,
 } from './js/mainblock/mainblock';
-import { favouritesClickEvent } from './js/favourites';
-import { getRandomCocktail } from './js/mainblock/rendercocktails';
-
 import { toggleMenu } from './js/header/mobile-menu';
-
 import {
   onSelectBtnClick,
   onAlphabetBtnClick,
-} from './js/hero/onclickfunctions';
-import { searchCocktail } from './js/header/searchbyname';
-
-import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
-
-//import { favCocktailsEvents } from "./js/favorite-cocktails/favorite"
-// const { cocktailsList, selectBtn, alphabet, inputForm } = refs;
-
-import { searchCoctailByName } from './js/header/searchbyname';
-
+} from './js/hero/onClickFunctions';
 import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
-
 const { authorization, cocktailsList, selectBtn, alphabet, openMenuBtn, closeMenuBtn, toTopButton } = refs;
-
 authorization.addEventListener('click', authorize);
+document.body.addEventListener('click', defineClick);
 
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
-const pathname = window.location.pathname;
-const location = pathname.split('/').pop();
 
 if (location === ''|| location === 'index.html') {
+ 
   returnCocktails();
   //cocktailsList.addEventListener('click', favouritesClickEvent);
 

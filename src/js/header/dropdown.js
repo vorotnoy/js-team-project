@@ -1,4 +1,4 @@
-import { refs } from '../refs';
+import { refs } from '../global/refs';
 const {
   dropDownBtnMob,
   bodyOn,
@@ -19,7 +19,7 @@ function onClickDropdownOff(evt) {
   bodyOn.removeEventListener('click', onClickDropdownOff);
 }
 
-function onClickDropdownOn() {
+export function onClickDropdownOn() {
   dropDownItems.classList.toggle('show');
   dropDownItemsMob.classList.toggle('show');
   bodyOn.addEventListener('click', onClickDropdownOff);

@@ -159,7 +159,8 @@
   filter: none;
 }
 
-.addTo {
+.addTo, 
+.addToIng {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -190,7 +191,9 @@
 }
 
 .addTo:hover,
-.addTo:focus {
+.addTo:focus,
+.addToIng:hover,
+.addToIng:focus {
   transform: scale(1.03);
 }
 
@@ -230,7 +233,8 @@
   }
 }
 
-.removeFrom {
+.removeFrom,
+.removeFromIng {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -261,7 +265,9 @@
 }
 
 .removeFrom:hover,
-.removeFrom:focus {
+.removeFrom:focus,
+.removeFromIng:hover,
+.removeFromIng:focus {
   transform: scale(1.03);
 }
 
@@ -281,7 +287,7 @@
   fill: #202025;
 }
 
-.icon-heart-selected {
+.icon-heart.selected {
   width: 15px;
   height: 15px;
   --color1: $main-color;

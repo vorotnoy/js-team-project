@@ -1,19 +1,13 @@
 /** add your listiener here */
 export const refs = {
-  authorization: document.querySelector('#googleAuthBtn'),
-  linkToSignOut: document.querySelector('#js-sign-out'),
-
-  cocktailsList: document.querySelector('ul.cocktails-list'),
   selectMenu: document.querySelector('#select__menu'),
   selectBtn: document.querySelector('#select__btn'),
   alphabet: document.querySelector('#alphabet'),
+
   dropDownBtn: document.querySelector('.dropbtn'),
   dropDownBtnMob: document.querySelector('.dropbtn-mob'),
-
   dropDownItems: document.querySelector('.js-dropdown-menu'),
   dropDownItemsMob: document.querySelector('.js-dropdown-menu-mob'),
-  cocktailsTitle: document.querySelector('.cocktails-title'),
-  noCocktails: document.querySelector('.no-cocktails__wrapper'),
 
   mobileMenu: document.querySelector('.js-menu-container'),
   openMenuBtn: document.querySelector('.js-open-menu'),
@@ -32,27 +26,34 @@ export const refs = {
   btnSearchForm: document.querySelector('.search__btn'),
   btnSearchFormBurger: document.querySelector('.search__btn.burger'),
 
-  favoritesList: document.querySelector('.fav-cocktails__list'),
-  favoritesTitle: document.querySelector('.fav-cocktails__title'),
-
-  openModalBtn: document.querySelectorAll('[data-modal-open]'),
+  openModalBtn: document.querySelectorAll('.js-data-modal-open'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
+  closeModalIngBtn: document.querySelector('.modal-ingredient-close'),  
   modal: document.querySelector('[data-modal]'),
+  modal_ingredients:document.querySelector('[data-modal-ingredients]'),
+  modalContainer: document.querySelector('[data-modal] .container'),
+  galleryEl: document.querySelector(`.modal-gallery`),
+  contentEl: document.querySelector(`.content`),
 
-  galleryEl: document.querySelector(`.gallery`),
   prewButton: document.querySelector('.prew-button'),
   nextButton: document.querySelector('.next-button'),
   ulTag: document.querySelector('.pagination-list'),
-  pagContainer: document.querySelector('.pagination'),
-  title: document.querySelector('.cocktails-title'),
+  pagContainer: document.querySelector('.pagination') /*** */,
+  paginationBlock: document.querySelector('.pagination') /*** */,
 
+  title: document.querySelector('.cocktails-title') /*** */,
+  cocktailsTitle: document.querySelector('.cocktails-title') /*** */,
+  noCocktails: document.querySelector('.no-cocktails__wrapper'),
+  cocktailsList: document.querySelector('ul.cocktails-list'),
   favoritesList: document.querySelector('.fav-cocktails__list'),
   favoritesTitle: document.querySelector('.fav-cocktails__title'),
   favoriteSearchItem: document.querySelector('.fav-cocktails__item'),
-  paginationBlock: document.querySelector('.pagination'),
-
   favNococktails: document.querySelector('.fav-nofav__cock'),
   favNoingr: document.querySelector('.fav-nofav__ingr'),
+  favIngredientsList: document.querySelector('.fav-ingr__list'),
 
   toTopButton: document.querySelector('.to-top'),
+
+  authorization: document.querySelector('#googleAuthBtn'),
+  linkToSignOut: document.querySelector('#js-sign-out'),
 };
