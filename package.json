@@ -1,21 +1,15 @@
 {
-  "name": "goit-js-project",
+  "name": "js-team-project",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://vorotnoy.github.io/goit-js-project",
+  "homepage": "https://vorotnoy.github.io/js-team-project",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-project/"
+    "build": "parcel build src/*.html --public-url /js-team-project/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vorotnoy/goit-js-project.git"
-  },
-  "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "git+https://github.com/vorotnoy/js-team-project.git"
   },
   "dependencies": {
     "axios": "^1.3.4",
