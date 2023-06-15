@@ -160,6 +160,8 @@ box-shadow: 0px 0px 32px 10px rgba(246, 242, 242, 0.59);
   color: $input_plholder;
   margin-bottom: 80px;
   text-align: left;
+  height: 250px;
+  overflow: auto;
 }
 
 .modal-image {

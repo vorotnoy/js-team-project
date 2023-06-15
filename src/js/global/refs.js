@@ -53,4 +53,7 @@ export const refs = {
   favIngredientsList: document.querySelector('.fav-ingr__list'),
 
   toTopButton: document.querySelector('.to-top'),
+
+  authorization: document.querySelector('#googleAuthBtn'),
+  linkToSignOut: document.querySelector('#js-sign-out'),
 };

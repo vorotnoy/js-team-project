@@ -12,18 +12,21 @@ export let page = 1;
 let array = [];
 
 export function pagination(totalPages, page) {
+  console.log(totalPages, page)
   let liTag = '';
   let thirdPagesAnd = totalPages - 2;
   let thirdPages = page - 2;
   let curentPage = page;
 
-  if (location === '' || location === 'index.html') {
-    attachFavouriteClickEvents();
-  } else if (location === 'cocktails.html') {
-    attachFavouritesRemoveClickEvents();
-  } else if (location === 'ingredients.html') {
-    attachFavouritesRemoveClickEvents();
-  }
+  attachFavouriteClickEvents();
+
+  // if (location === '' || location === 'index.html') {
+  //   attachFavouriteClickEvents();
+  // } else if (location === 'cocktails.html') {
+  //   attachFavouriteClickEvents();
+  // } else if (location === 'ingredients.html') {
+  //   attachFavouriteClickEvents();
+  // }
 
   if (totalPages > 6) {
     if (page < 3) {

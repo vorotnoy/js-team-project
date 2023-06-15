@@ -30,6 +30,7 @@ export function createPage(getData, list) {
     cocktailsTitle.textContent = 'Searching results';
     cocktailsTitle.classList.remove('is-hidden');
     tempArray = getData.data.drinks;
+
   } else if (list === 'favoritesList'|| list === 'favIngredientsList') {
     // рендерим сторінку обраних напоїв//
     tempArray = getData;
