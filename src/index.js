@@ -7,7 +7,7 @@ import { toggleMenu } from './js/header/mobile-menu';
 import {
   onSelectBtnClick,
   onAlphabetBtnClick,
-} from './js/hero/onClickFunctions';
+} from './js/hero/onclickfunctions';
 import { initializeFavourites } from './js/favorite-cocktails/favorite';
 import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
 
