@@ -1,3 +1,4 @@
+import { authorize } from './js/firebase';
 import { refs } from './js/global/refs';
 import { authorize } from './js/firebase';
 import { onClickDropdownOn } from './js/header/dropdown';
@@ -13,22 +14,23 @@ import {
 } from './js/mainblock/mainblock';
 import { favouritesClickEvent } from './js/modalcocktails/changebutton';
 import { getRandomCocktail } from './js/mainblock/rendercocktails';
-
 import { toggleMenu } from './js/header/mobile-menu';
 
 import {
   onSelectBtnClick,
   onAlphabetBtnClick,
-} from './js/hero/onClickFunctions';
+
+} from './js/hero/onClickfunctions';
 
 import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
 
 import { getInputData } from './js/search/searchbyname';
 
 import { initializeFavourites } from './js/favorite-cocktails/favorite';
-import { initializeFavouritesIng } from './js//favorite-ingredients/favorite-ingredients';
+import { initializeFavouritesIng } from './js/favorite-ingredients/favorite-ingredients';
 
 const debounce = require('lodash.debounce');
+
 const {
   authorization,
   cocktailsList,

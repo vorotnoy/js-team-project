@@ -76,6 +76,7 @@ export async function onIngredient(event) {
     contentEl
       .querySelector('.ingredients-list')
       .insertAdjacentHTML('beforeend', listInIngredient(ingredient));
+
   } catch (error) {
     console.log(error.message);
   }
@@ -84,23 +85,29 @@ export async function onIngredient(event) {
 // //-----Додаемо елементи в розмітку------
 export function displayMoreInfo(data) {
   let exists = getIngredient(data[0].strIngredient);
+
   const result = data
     .map(
       ingredient =>
         `<h2 class="modal-header ingredient-header">${
           ingredient.strIngredient
         }</h2>
-        <ul class="ingredients-list modal-ingredients-list"></ul>
-        <button type="submit" class="add-item-btn${
-          exists ? ' is-hidden' : ''
-        }" data-name="${ingredient.strIngredient}" data-type="${
-          ingredient.strType
-        }">Add to favorite</button>
-        <button type="submit" class="remove-item-btn${
-          !exists ? ' is-hidden' : ''
-        }" data-name="${ingredient.strIngredient}" data-type="${
-          ingredient.strType
-        }">Remove from favorite</button>
+        ${checkType(ingredient)}
+        <hr />
+        ${ingredientDescription(ingredient)}
+        <ul class="ingredients-list modal-ingredients-list">${listInIngredient(ingredient)}</ul>
+        <button type="submit" 
+            class="add-item-btn${exists ? ' is-hidden' : ''}" 
+            data-name="${ingredient.strIngredient}" 
+            data-type="${ingredient.strType}">
+          Add to favorite
+        </button>
+        <button type="submit" 
+            class="remove-item-btn${!exists ? ' is-hidden' : ''}" 
+            data-name="${ingredient.strIngredient}" 
+            data-type="${ingredient.strType}">
+          Remove from favorite
+        </button>
         `
     )
     .join('');
