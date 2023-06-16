@@ -1,12 +1,20 @@
 import * as icons from '../images/svg/user.svg';
 import { refs } from '../js/global/refs';
 
-
 const { authorization, linkToSignOut } = refs;
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 
-import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  child,
+  update,
+  remove,
+  onValue,
+} from 'firebase/database';
 
 import {
   getAuth,
@@ -53,7 +61,6 @@ onAuthStateChanged(auth, user => {
       authorization.style.backgroundImage = `url("${icons}")`;
       window.location.reload();
     });
-    
   } else {
     linkToSignOut.removeEventListener('click', () => {
       auth.signOut();
@@ -66,79 +73,79 @@ onAuthStateChanged(auth, user => {
 
 export function authorize() {
   signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    // console.log(user.uid, user.displayName, user.email);
-    window.location.reload();
-    // set(ref(db, 'users/' + user.uid), {
-    //   username: user.displayName,
-    //   email: user.email
-    // });
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
-};
+    .then(result => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      // console.log(user.uid, user.displayName, user.email);
+      window.location.reload();
+      // set(ref(db, 'users/' + user.uid), {
+      //   username: user.displayName,
+      //   email: user.email
+      // });
+    })
+    .catch(error => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+}
 
 export function writeFavoriteDrinks(userId, favoriteDrinks) {
   const db = getDatabase();
   favoriteDrinks.forEach(drink => {
-    set(ref(db, `users/${userId}/favoriteDrinks/${drink.id}`), { 
+    set(ref(db, `users/${userId}/favoriteDrinks/${drink.id}`), {
       id: drink.id,
       img: drink.img,
-      name: drink.name
-     })
-    .catch((error) => alert('unsuccessful, error' + error));
+      name: drink.name,
+    }).catch(error => alert('unsuccessful, error' + error));
   });
   // set(ref(db, `users/${userId}`), { favoriteDrinks })
   // .then(() => console.log('data stored successfully'))
   // .catch((error) => alert('unsuccessful, error' + error));
-};
+}
 
 export function readFavoriteDrinks(userId) {
   const favDrinksArr = [];
   return new Promise((resolve, reject) => {
     const dbRef = ref(getDatabase());
-  get(child(dbRef, `users/${userId}/favoriteDrinks`))
-  .then((snapshot) => {
-    if (snapshot.exists()) {
-      
-      for (const key in snapshot.val()) {
-        favDrinksArr.push(snapshot.val()[key]);
-      }
-      // console.log(favDrinksArr);
-      return favDrinksArr;
-    } else {
-      // alert('No favorite drinks found');
-    };
-  })
-  .catch((error) => {
-    alert(error);
+    get(child(dbRef, `users/${userId}/favoriteDrinks`))
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          for (const key in snapshot.val()) {
+            favDrinksArr.push(snapshot.val()[key]);
+          }
+          // console.log(favDrinksArr);
+          return favDrinksArr;
+        } else {
+          // alert('No favorite drinks found');
+        }
+      })
+      .catch(error => {
+        alert(error);
+      });
+    resolve(favDrinksArr);
   });
-  resolve(favDrinksArr);
-  });
-};
+}
 
 export function updateFavoriteDrinks(userId) {
   const db = getDatabase();
-  const localStorageDrinks = JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
+  const localStorageDrinks =
+    JSON.parse(localStorage.getItem('favorite-cocktail')) ?? [];
   update(ref(db, `users/${userId}/favoriteDrinks`), { localStorageDrinks })
-  .then(() => alert('data updated successfully'))
-  .catch((error) => alert('unsuccessful, error' + error));
-};
+    .then(() => alert('data updated successfully'))
+    .catch(error => alert('unsuccessful, error' + error));
+}
 
 export function deleteFavoriteDrink(userId, drinkId) {
   const db = getDatabase();
   remove(ref(db, `users/${userId}/favoriteDrinks/${drinkId}`));
   // .then(() => alert('data removed successfully'))
   // .catch((error) => alert('unsuccessful, error' + error));
-};
+}
