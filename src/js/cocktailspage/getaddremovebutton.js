@@ -4,21 +4,21 @@ import * as icons from '../../images/svg/symbol-defs.svg';
 export function defuneButton(id, name, image) {
   if (getDrink(id)) {
     return renderAddRemoveDrinkButton(
-      id,
+{      id,
       name,
       image,
-      title = "Remove",
-      typeClass = "removeFrom",
-      svg = "selected"
+      title:"Remove",
+      typeClass :"removeFrom",
+      svg:"selected"}
     );
   }
   return renderAddRemoveDrinkButton(
-    id,
+{    id,
     name,
     image,
-    title = "Add to",
-    typeClass = "addTo",
-    svg = ""
+    title:"Add to",
+    typeClass:"addTo",
+    svg :""}
   );
 }
 
