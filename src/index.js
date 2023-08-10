@@ -20,7 +20,7 @@ import {
   onSelectBtnClick,
   onAlphabetBtnClick,
 
-} from './js/hero/onClickfunctions';
+} from './js/hero/onclickfunctions';
 
 import { getCocktailId, updateSize } from './js/favorite-cocktails/favorite';
 
