@@ -7,18 +7,18 @@ export function defuneButton(id, name, image) {
       id,
       name,
       image,
-      (title = 'Remove'),
-      (typeClass = 'removeFrom'),
-      (svg = ' selected')
+      title = "Remove",
+      typeClass = "removeFrom",
+      svg = "selected"
     );
   }
   return renderAddRemoveDrinkButton(
     id,
     name,
     image,
-    (title = 'Add to'),
-    (typeClass = 'addTo'),
-    (svg = '')
+    title = "Add to",
+    typeClass = "addTo",
+    svg = ""
   );
 }
 
