@@ -3,22 +3,28 @@ import * as icons from '../../images/svg/symbol-defs.svg';
 
 export function defuneButton(id, name, image) {
   if (getDrink(id)) {
+    const title = "Remove"
+    const typeClass = "removeFrom"
+    const svg = "selected"
     return renderAddRemoveDrinkButton(
-{      id,
+      id,
       name,
       image,
-      title:"Remove",
-      typeClass :"removeFrom",
-      svg:"selected"}
+      title = title,
+      typeClass = typeClass,
+      svg = svg
     );
   }
+  const title = "Add to"
+  const typeClass = "addTo"
+  const svg = ""
   return renderAddRemoveDrinkButton(
-{    id,
+    id,
     name,
     image,
-    title:"Add to",
-    typeClass:"addTo",
-    svg :""}
+    title = title,
+    typeClass = typeClass,
+    svg = svg
   );
 }
 
