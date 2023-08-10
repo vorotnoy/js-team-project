@@ -37,6 +37,8 @@ import * as icons from '../../images/svg/symbol-defs.svg';
 //        </button>`;
 // }
 
+
+
 export function defuneButton(id, name, image) {
   let title = 'Add to'
   let typeClass = 'addTo'
