@@ -12,7 +12,6 @@ export let page = 1;
 let array = [];
 
 export function pagination(totalPages, page) {
-  console.log(totalPages, page)
   let liTag = '';
   let thirdPagesAnd = totalPages - 2;
   let thirdPages = page - 2;

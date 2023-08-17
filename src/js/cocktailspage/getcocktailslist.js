@@ -3,7 +3,6 @@ import { location } from '../global/location';
 import { getFavouriteIngredientsCard } from '../favorite-ingredients/getcard';
 
 export function getCoctailsList(data) {
-  console.log(data)
   if (location ==='ingredients.html'){
     return data.map(getFavouriteIngredientsCard).join('')
   }

@@ -4,14 +4,7 @@ import {
 } from '../localstorage/localstorageforing';
 import axios from 'axios';
 import { refs } from '../global/refs';
-const {
-  openModalBtn,
-  closeModalBtn,
-  modal,
-  modalContainer,
-  contentEl,
-  modal_ingredients,
-} = refs;
+const {  contentEl} = refs;
 
 //-------Дістаемо імя з елемента лінка на який натиснули-------
 async function fetchData(name) {
@@ -92,10 +85,8 @@ export function displayMoreInfo(data) {
         `<h2 class="modal-header ingredient-header">${
           ingredient.strIngredient
         }</h2>
-        ${checkType(ingredient)}
         <hr />
-        ${ingredientDescription(ingredient)}
-        <ul class="ingredients-list modal-ingredients-list">${listInIngredient(ingredient)}</ul>
+
         <button type="submit" 
             class="add-item-btn${exists ? ' is-hidden' : ''}" 
             data-name="${ingredient.strIngredient}" 

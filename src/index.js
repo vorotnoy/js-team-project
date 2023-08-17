@@ -42,6 +42,7 @@ const {
   openModalBtn,
 } = refs;
 authorization.addEventListener('click', authorize);
+
 document.body.addEventListener('click', defineClick);
 
 import { closeModalOnBody } from './js/modalcocktails/closemodal';
